@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,9 +21,12 @@ namespace DoAn01
     /// </summary>
     public partial class Home : Page
     {
+        private System.Timers.Timer _timer;
         public Home()
         {
             InitializeComponent();
-        }
+            
+        }  
+        
     }
 }

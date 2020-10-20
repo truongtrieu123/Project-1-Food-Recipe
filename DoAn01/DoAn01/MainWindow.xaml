@@ -13,6 +13,7 @@
         <BitmapImage UriSource="Images/icon_splashscreen.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Icon>
     <Canvas>
+        <TextBlock Name="searchTextBlock" Text="Please enter here!" MouseEnter="searchTextBlock_MouseEnter"  Width="179" Height="30" Canvas.Left="91" Canvas.Top="152" Panel.ZIndex="9999" FontSize="20" Foreground="LightGray"/>
         <StackPanel>
             <StackPanel Background="MediumPurple" Height="50" Width="1300" Orientation="Horizontal" >
                 <Image Source="Images/icon_splashscreen.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="64" Margin="0,5"/>
@@ -32,9 +33,9 @@
                         <Button Name="searchButton" Click="searchButton_Click" Background="LightGray" BorderBrush="LightGray" HorizontalAlignment="Left">
                             <Image Source="Images/search.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="36" Width="48" Margin="0,0,0,0" />
                         </Button>
-                        <TextBox Height="38" Margin="65,-40,0,0" Padding="6"/>
+                        <TextBox Name="searchBox" Height="38" Margin="65,-40,0,0" Padding="6" Panel.ZIndex="1"/>
                     </StackPanel>
-                    <Button Name="newRecipeButton" Width="269"  Background="LightGray" BorderBrush="LightGray" Margin="15,20,0,10" HorizontalAlignment="Left" Click="newRecipeButton_Click">
+                    <Button Name="newRecipeButton" Width="269" Background="LightGray" BorderBrush="LightGray" Margin="15,20,0,10" HorizontalAlignment="Left" Click="newRecipeButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Images/add.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="51" Width="46" RenderTransformOrigin="0.838,0.461" HorizontalAlignment="Left"/>
                             <TextBlock  Text="New recipe" Width="214" Margin="15 5 0 5" FontSize="25" RenderTransformOrigin="0.507,0.793"/>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,41 +24,60 @@ namespace DoAn01
         public MainWindow()
         {
             InitializeComponent();
+            //Main.Content = new Home();
+            Home page = new Home();
+            Main.NavigationService.Navigate(page);
         }
 
         private void menuButton_Click(object sender, RoutedEventArgs e)
         {
             //Main.Content = new Home();
+
         }
 
         private void newRecipeButton_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new NewRecipe();
-        }
+            //Main.Content = new NewRecipe();
 
+        }
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Home();
+            //Main.Content = new Home();
         }
 
         private void favorButton_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Favorite();
+            //Main.Content = new Favorite();
+            //Favorite page = new Favorite();
+            //Main.NavigationService.Navigate(page);
+
         }
 
         private void aboutButton_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new About();
+            //Main.Content = new About();
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Search();
+            //Main.Content = new Search();
         }
 
         private void outButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+
+
+        private void searchTextBlock_MouseMove(object sender, MouseEventArgs e)
+        {
+            searchTextBlock.Text = "";
+        }
+
+        private void searchTextBlock_MouseEnter(object sender, MouseEventArgs e)
+        {
+            searchTextBlock.Text = "";
         }
     }
 }
