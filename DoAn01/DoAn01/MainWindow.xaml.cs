@@ -54,5 +54,10 @@ namespace DoAn01
         {
             Main.Content = new Search();
         }
+
+        private void outButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
