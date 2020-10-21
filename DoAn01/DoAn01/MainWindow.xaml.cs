@@ -37,29 +37,27 @@ namespace DoAn01
 
         private void newRecipeButton_Click(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new NewRecipe();
+            Main.Content = new NewRecipe();
 
         }
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new Home();
+            Main.Content = new Home();
         }
 
         private void favorButton_Click(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new Favorite();
-            //Favorite page = new Favorite();
-            //Main.NavigationService.Navigate(page);
+            Main.Content = new Favorite();
         }
 
         private void aboutButton_Click(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new About();
+            Main.Content = new About();
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new Search();
+            Main.Content = new Search();
         }
 
         private void outButton_Click(object sender, RoutedEventArgs e)
