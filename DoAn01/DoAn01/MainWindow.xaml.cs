@@ -70,6 +70,17 @@ namespace DoAn01
         {
             this.Close();
         }
-        
+
+        private void CanvasOfWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var move = sender as System.Windows.Controls.Canvas;
+            var win = Window.GetWindow(move);
+            win.DragMove();
+        }
+
+        private void menuButton_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            menuButton.Background = new SolidColorBrush(Colors.Red);
+        }
     }
 }

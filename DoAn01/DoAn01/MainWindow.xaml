@@ -12,7 +12,7 @@
     <Window.Icon>
         <BitmapImage UriSource="Images/icon_splashscreen.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Icon>
-    <Canvas>        
+    <Canvas x:Name="GridOfWindow" MouseLeftButtonDown="CanvasOfWindow_MouseLeftButtonDown">        
         <StackPanel>
             <!--Thanh tiêu đề-->
             <StackPanel Background="MediumPurple" Height="50" Width="1400" Orientation="Horizontal" >
@@ -28,7 +28,7 @@
                 <StackPanel></StackPanel>
                 <StackPanel  Background="LightGray" Width="310" Height="750">
                     <!--Menu-->
-                    <Button Name="menuButton" Width="40" HorizontalAlignment="Left" Margin="20 20 10 20" Background="LightGray" BorderBrush="LightGray" BorderThickness="0" Click="menuButton_Click">
+                    <Button Name="menuButton" Width="40" HorizontalAlignment="Left" Margin="20 20 10 20" Background="LightGray" BorderBrush="LightGray" BorderThickness="0" MouseDown="menuButton_MouseDown" Click="menuButton_Click">
                         <Image Source="Images/menu.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="33" Width="33"/>
                     </Button>
                     <!--Search-->
@@ -36,7 +36,7 @@
                         <Button Name="searchButton" Click="searchButton_Click" Background="LightGray" BorderBrush="LightGray"  BorderThickness="0" HorizontalAlignment="Left" RenderTransformOrigin="1.413,0.324" Width="52" Margin="10,0,0,0">
                                 <Image Source="Images/search.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="36" Width="50"  />
                         </Button>                        
-                        <TextBox Height="44" Margin="10,0,0,0" Width="223" Padding="5" FontSize="20">
+                        <TextBox Height="44" Margin="10,0,0,0" Width="223" Padding="5" FontSize="20" BorderBrush="Black" >
                             <TextBox.Style >
                                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                     <Style.Resources>
