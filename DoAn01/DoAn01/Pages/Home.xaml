@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:DoAn01"
       mc:Ignorable="d"
       Background="Green"
-      Title="Home" Width="990" Height="762" >
+      Title="Home" Width="1090" Height="750" >
      
 <Grid>
     <TextBlock Text="home" Margin="727,522,-473,-222" Foreground="red" FontSize="30"/>

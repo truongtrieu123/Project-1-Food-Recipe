@@ -1,7 +1,10 @@
-﻿using System;
+﻿using AngleSharp.Html.Dom.Events;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Messaging;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,6 +24,9 @@ namespace DoAn01
     /// </summary>
     public partial class MainWindow : Window
     {
+        public object Handle { get; private set; }
+        public object lblMoveForm { get; private set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -64,15 +70,6 @@ namespace DoAn01
         {
             this.Close();
         }
-
-        private void searchTextBlock_MouseEnter(object sender, MouseEventArgs e)
-        {
-            //searchBox.
-            //if(searchBox.Text != "")
-            //{
-            //    searchTextBlock.Text = "";
-
-            //}                       
-        }
+        
     }
 }
