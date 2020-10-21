@@ -50,7 +50,6 @@ namespace DoAn01
             //Main.Content = new Favorite();
             //Favorite page = new Favorite();
             //Main.NavigationService.Navigate(page);
-
         }
 
         private void aboutButton_Click(object sender, RoutedEventArgs e)
@@ -68,16 +67,14 @@ namespace DoAn01
             this.Close();
         }
 
-
-
-        private void searchTextBlock_MouseMove(object sender, MouseEventArgs e)
-        {
-            searchTextBlock.Text = "";
-        }
-
         private void searchTextBlock_MouseEnter(object sender, MouseEventArgs e)
         {
-            searchTextBlock.Text = "";
+            //searchBox.
+            //if(searchBox.Text != "")
+            //{
+            //    searchTextBlock.Text = "";
+
+            //}                       
         }
     }
 }
