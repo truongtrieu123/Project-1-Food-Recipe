@@ -42,7 +42,7 @@
                                     <Style.Resources>
                                         <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                                             <VisualBrush.Visual>
-                                                <Label Content="Nhập ở đây!" Foreground="LightCoral" FontSize="20" FontStyle="Italic"/>
+                                                <Label Content="Nhập ở đây!" Foreground="MediumPurple" FontSize="20" FontStyle="Italic"/>
                                             </VisualBrush.Visual>
                                         </VisualBrush>
                                     </Style.Resources>
