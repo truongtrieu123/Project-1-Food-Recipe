@@ -4,86 +4,56 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DoAn01"
-        mc:Ignorable="d"       
-        WindowStyle="None"
-        AllowsTransparency="true"
+        mc:Ignorable="d"
        
-        Title="Food Recipe" Height="800" Width="1400" WindowStartupLocation="CenterScreen" >
+        WindowStyle="none"
+        AllowsTransparency="true"
+        Title="Food Recipe" Height="800" Width="1300" WindowStartupLocation="CenterScreen" >
     <Window.Icon>
         <BitmapImage UriSource="Images/icon_splashscreen.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Icon>
-    <Canvas x:Name="GridOfWindow" MouseLeftButtonDown="CanvasOfWindow_MouseLeftButtonDown">        
+    <Canvas>
+        <TextBlock Name="searchTextBlock" Text="Please enter here!" MouseEnter="searchTextBlock_MouseEnter"  Width="179" Height="30" Canvas.Left="91" Canvas.Top="152" Panel.ZIndex="9999" FontSize="20" Foreground="LightGray"/>
         <StackPanel>
-            <!--Thanh tiêu đề-->
-            <StackPanel Background="MediumPurple" Height="50" Width="1400" Orientation="Horizontal" >
+            <StackPanel Background="MediumPurple" Height="50" Width="1300" Orientation="Horizontal" >
                 <Image Source="Images/icon_splashscreen.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="64" Margin="0,5"/>
                 <Label Foreground="White" Width="176" RenderTransformOrigin="3.919,2.601" Content="Food Recipe" FontSize="30"/>
 
-                <Button x:Name="outButton" Width="70" Background="Purple" BorderThickness="0" Click="outButton_Click" HorizontalAlignment="Right" Margin="1090 0 0 0" >
+                <Button x:Name="outButton" Width="70" Background="Purple"  Click="outButton_Click" HorizontalAlignment="Right" Margin="990 0 0 0" >
                     <Image Source="Images/out.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="40"/>
                 </Button>
             </StackPanel>
-            <!-- -->
             <StackPanel Orientation="Horizontal" >
                 <StackPanel></StackPanel>
                 <StackPanel  Background="LightGray" Width="310" Height="750">
-                    <!--Menu-->
-                    <Button Name="menuButton" Width="40" HorizontalAlignment="Left" Margin="20 20 10 20" Background="LightGray" BorderBrush="LightGray" BorderThickness="0" MouseDown="menuButton_MouseDown" Click="menuButton_Click">
+                    <Button Name="menuButton" Width="40" HorizontalAlignment="Left" Margin="20 20 10 20" Background="LightGray" BorderBrush="LightGray" Click="menuButton_Click">
                         <Image Source="Images/menu.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="33" Width="33"/>
                     </Button>
-                    <!--Search-->
-                    <StackPanel Margin="5 20 10 20" Orientation="Horizontal">
-                        <Button Name="searchButton" Click="searchButton_Click" Background="LightGray" BorderBrush="LightGray"  BorderThickness="0" HorizontalAlignment="Left" RenderTransformOrigin="1.413,0.324" Width="52" Margin="10,0,0,0">
-                                <Image Source="Images/search.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="36" Width="50"  />
-                        </Button>                        
-                        <TextBox Height="44" Margin="10,0,0,0" Width="223" Padding="5" FontSize="20" BorderBrush="Black" BorderThickness="3">
-                            <TextBox.Style >
-                                <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
-                                    <Style.Resources>
-                                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
-                                            <VisualBrush.Visual>
-                                                <Label Content=" Nhập ở đây!" Foreground="Gray" FontSize="20" FontStyle="Italic"/>
-                                            </VisualBrush.Visual>
-                                        </VisualBrush>
-                                    </Style.Resources>
-                                    <Style.Triggers>
-                                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                        </Trigger>
-                                        <Trigger Property="Text" Value="{x:Null}">
-                                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
-                                        </Trigger>
-                                        <Trigger Property="IsKeyboardFocused" Value="True">
-                                            <Setter Property="Background" Value="White" />
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBox.Style>
-                        </TextBox>                       
+                    <StackPanel Margin="15 20 10 20">
+                        <Button Name="searchButton" Click="searchButton_Click" Background="LightGray" BorderBrush="LightGray" HorizontalAlignment="Left">
+                            <Image Source="Images/search.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="36" Width="48" Margin="0,0,0,0" />
+                        </Button>
+                        <TextBox Name="searchBox" Height="38" Margin="65,-40,0,0" Padding="6" Panel.ZIndex="1"/>
                     </StackPanel>
-                    <!--New recipe-->
-                    <Button Name="newRecipeButton" Width="269" Background="LightGray" BorderBrush="LightGray" BorderThickness="0" Margin="15,20,0,10" HorizontalAlignment="Left" Click="newRecipeButton_Click">
+                    <Button Name="newRecipeButton" Width="269" Background="LightGray" BorderBrush="LightGray" Margin="15,20,0,10" HorizontalAlignment="Left" Click="newRecipeButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Images/add.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="51" Width="46" RenderTransformOrigin="0.838,0.461" HorizontalAlignment="Left"/>
                             <TextBlock  Text="New recipe" Width="214" Margin="15 5 0 5" FontSize="25" RenderTransformOrigin="0.507,0.793"/>
                         </StackPanel>
                     </Button>
-                    <!--Home-->
-                    <Button Name="homeButton" Width="269"  Background="LightGray" BorderBrush="LightGray"  BorderThickness="0" Margin="15,25,0,10" HorizontalAlignment="Left" Click="homeButton_Click">
+                    <Button Name="homeButton" Width="269"  Background="LightGray" BorderBrush="LightGray" Margin="15,25,0,10" HorizontalAlignment="Left" Click="homeButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Images/home.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="38" Width="46" RenderTransformOrigin="0.838,0.461" HorizontalAlignment="Left"/>
                             <TextBlock  Text="Home" Width="214" Margin="15 0 0 5" FontSize="25"/>
                         </StackPanel>
                     </Button>
-                    <!--Favorite-->
-                    <Button Name="favorButton" Width="269"  Background="LightGray" BorderBrush="LightGray"  BorderThickness="0" Margin="15,30,0,10" HorizontalAlignment="Left" Click="favorButton_Click">
+                    <Button Name="favorButton" Width="269"  Background="LightGray" BorderBrush="LightGray" Margin="15,30,0,10" HorizontalAlignment="Left" Click="favorButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Images/like.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="38" Width="46" RenderTransformOrigin="0.838,0.461" HorizontalAlignment="Left"/>
                             <TextBlock  Text="Favorite" Width="214" Margin="15 0 0 5" FontSize="25"/>
                         </StackPanel>
                     </Button>
-                    <!--About-->
-                    <Button Name="aboutButton" Width="269"  Background="LightGray" BorderBrush="LightGray"  BorderThickness="0" Margin="15,30,0,10" HorizontalAlignment="Left" Click="aboutButton_Click">
+                    <Button Name="aboutButton" Width="269"  Background="LightGray" BorderBrush="LightGray" Margin="15,30,0,10" HorizontalAlignment="Left" Click="aboutButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Images/information.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="46" RenderTransformOrigin="0.838,0.461" HorizontalAlignment="Left"/>
                             <TextBlock  Text="About" Width="214" Margin="15 0 0 5" FontSize="25"/>
@@ -93,7 +63,7 @@
             </StackPanel>
         </StackPanel>
 
-        <Frame Name="Main" Margin="310 50 0 0" NavigationUIVisibility="Hidden"/>
+        <Frame Name="Main" Margin="310 50 0 0"/>
     </Canvas>
 
 
