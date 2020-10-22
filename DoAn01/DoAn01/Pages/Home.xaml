@@ -4,75 +4,13 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DoAn01"
-      xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
-        mc:Ignorable="d"
-      Background="White"
-      Title="Home" Width="990" Height="762" Loaded="HomePage_Loaded">
-    <Page.Resources>
-        <local:AbsoluteConverter x:Key="AbsoluteConverter"  />
-    </Page.Resources>
-
-    <Grid>
-        <StackPanel>
-            <ListView x:Name="mealListView" 
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                      Background="Transparent"  Height="700" Margin="10,10,10,5" >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Button Margin="5,5,5,5"  Width="220" Height="200" Background="Transparent" >
-                            <StackPanel Width="210" Height="190">
-                                <Rectangle RadiusX="20" RadiusY="20"  Height="131">
-                                    <Rectangle.Fill>
-                                        <ImageBrush ImageSource="{Binding imageMeal}"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBox Text="{Binding mealName}" Background="Transparent" Width="180" TextWrapping="Wrap"  FontSize="16"/>
-                                    <Button Width="30" Height="30" Background="Transparent"  Panel.ZIndex="99"  Margin="0,0,0,40">
-                                        <fa:ImageAwesome Icon="Heart" Width="20" Height="20" Foreground="{Binding favorite}" />
-                                    </Button>
-                                </StackPanel>
-                            </StackPanel>
-                        </Button>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel/>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListViewItem>
-                </ListViewItem>
-
-            </ListView>
-            <StackPanel Orientation="Horizontal" Margin="700,0,0,0"  Height="40">
-                <Border BorderBrush="#FF000000" Background="LightGreen" BorderThickness="1" CornerRadius="8" Margin="5,0,5,0">
-                    <Button  Width="60" Background="Transparent" BorderBrush="Transparent">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Prev" Width="40" Height="30" FontSize="20" />
-                        </StackPanel>
-                    </Button>
-                </Border>
-                <Border Width="40" BorderBrush="#FF000000" Background="LightGreen" BorderThickness="1" CornerRadius="20" Margin="5,0,5,0">
-                    <TextBlock Text="1" HorizontalAlignment="Center" FontSize="20"/>
-                </Border>
-                <Border Width="40" BorderBrush="#FF000000" Background="LightGreen" BorderThickness="1" CornerRadius="20" Margin="5,0,5,0">
-
-                    <TextBlock Text="2" HorizontalAlignment="Center" FontSize="20"/>
-                </Border>
-
-                <Border BorderBrush="#FF000000" Background="LightGreen" BorderThickness="1" CornerRadius="8" Margin="5,0,5,0">
-                    <Button  Width="60"   Background="Transparent" BorderBrush="Transparent" >
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Next" Width="40" Height="30" FontSize="20" />
-                        </StackPanel>
-                    </Button>
-                </Border>
-            </StackPanel>
-        </StackPanel>
-    </Grid>
-
+      mc:Ignorable="d"
+      Background="Green"
+      Title="Home" Width="990" Height="762" >
+     
+<Grid>
+    <TextBlock Text="home" Margin="727,522,-473,-222" Foreground="red" FontSize="30"/>
+</Grid>
 </Page>
 
 
