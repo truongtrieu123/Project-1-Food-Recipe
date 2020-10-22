@@ -6,13 +6,7 @@
       xmlns:local="clr-namespace:DoAn01"
       xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d"
-      Background="Green"
-  
-      Title="Home" Width="1090" Height="850" >
-     
-<Grid>
-    <TextBlock Text="home" Margin="727,522,-473,-222" Foreground="red" FontSize="30"/>
-</Grid>
+      
       Background="white"
       Title="Home" Width="990" Height="762" Loaded="HomePage_Loaded">
     <Page.Resources>
