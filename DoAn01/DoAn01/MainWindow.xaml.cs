@@ -24,9 +24,6 @@ namespace DoAn01
     /// </summary>
     public partial class MainWindow : Window
     {
-        public object Handle { get; private set; }
-        public object lblMoveForm { get; private set; }
-
         public MainWindow()
         {
             InitializeComponent();
@@ -41,10 +38,17 @@ namespace DoAn01
 
         }
 
+        //Thay doi cua so cho button new recipe
         private void newRecipeButton_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new NewRecipe();
-
+            var screen = new AddRecipe();
+            screen.Dying += XuLiHapHoi;
+            screen.Show();
+            this.Hide(); 
+        }
+        private void XuLiHapHoi()
+        {
+            this.Show();
         }
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -71,6 +75,7 @@ namespace DoAn01
             this.Close();
         }
 
+        //Di chuyen man hinh
         private void CanvasOfWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var move = sender as System.Windows.Controls.Canvas;
@@ -80,7 +85,7 @@ namespace DoAn01
 
         private void menuButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            menuButton.Background = new SolidColorBrush(Colors.Red);
+            //menuButton.Background = new SolidColorBrush(Colors.Red);
         }
     }
 }

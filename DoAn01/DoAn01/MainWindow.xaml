@@ -36,13 +36,13 @@
                         <Button Name="searchButton" Click="searchButton_Click" Background="LightGray" BorderBrush="LightGray"  BorderThickness="0" HorizontalAlignment="Left" RenderTransformOrigin="1.413,0.324" Width="52" Margin="10,0,0,0">
                                 <Image Source="Images/search.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="36" Width="50"  />
                         </Button>                        
-                        <TextBox Height="44" Margin="10,0,0,0" Width="223" Padding="5" FontSize="20" BorderBrush="Black" >
+                        <TextBox Height="44" Margin="10,0,0,0" Width="223" Padding="5" FontSize="20" BorderBrush="Black" BorderThickness="3">
                             <TextBox.Style >
                                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                     <Style.Resources>
                                         <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                                             <VisualBrush.Visual>
-                                                <Label Content="Nhập ở đây!" Foreground="Gray" FontSize="20" FontStyle="Italic"/>
+                                                <Label Content=" Nhập ở đây!" Foreground="Gray" FontSize="20" FontStyle="Italic"/>
                                             </VisualBrush.Visual>
                                         </VisualBrush>
                                     </Style.Resources>
