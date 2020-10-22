@@ -1,7 +1,10 @@
-﻿using System;
+﻿using AngleSharp.Html.Dom.Events;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Messaging;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -35,32 +38,36 @@ namespace DoAn01
 
         }
 
+        //Thay doi cua so cho button new recipe
         private void newRecipeButton_Click(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new NewRecipe();
-
+            var screen = new AddRecipe();
+            screen.Dying += XuLiHapHoi;
+            screen.Show();
+            this.Hide(); 
+        }
+        private void XuLiHapHoi()
+        {
+            this.Show();
         }
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new Home();
+            Main.Content = new Home();
         }
 
         private void favorButton_Click(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new Favorite();
-            //Favorite page = new Favorite();
-            //Main.NavigationService.Navigate(page);
-
+            Main.Content = new Favorite();
         }
 
         private void aboutButton_Click(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new About();
+            Main.Content = new About();
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new Search();
+            Main.Content = new Search();
         }
 
         private void outButton_Click(object sender, RoutedEventArgs e)
@@ -68,16 +75,17 @@ namespace DoAn01
             this.Close();
         }
 
-
-
-        private void searchTextBlock_MouseMove(object sender, MouseEventArgs e)
+        //Di chuyen man hinh
+        private void CanvasOfWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            searchTextBlock.Text = "";
+            var move = sender as System.Windows.Controls.Canvas;
+            var win = Window.GetWindow(move);
+            win.DragMove();
         }
 
-        private void searchTextBlock_MouseEnter(object sender, MouseEventArgs e)
+        private void menuButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            searchTextBlock.Text = "";
+            //menuButton.Background = new SolidColorBrush(Colors.Red);
         }
     }
 }

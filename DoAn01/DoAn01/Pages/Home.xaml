@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DoAn01"
+<<<<<<< HEAD
       xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
         mc:Ignorable="d"
       Background="White"
@@ -73,6 +74,15 @@
         </StackPanel>
     </Grid>
 
+=======
+      mc:Ignorable="d"
+      Background="Green"
+      Title="Home" Width="1090" Height="750" >
+     
+<Grid>
+    <TextBlock Text="home" Margin="727,522,-473,-222" Foreground="red" FontSize="30"/>
+</Grid>
+>>>>>>> e73f4329d94f76f4fb98abc70861234a14ae7bc3
 </Page>
 
 
