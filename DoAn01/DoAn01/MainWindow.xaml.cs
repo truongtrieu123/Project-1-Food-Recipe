@@ -32,52 +32,51 @@ namespace DoAn01
         private void menuButton_Click(object sender, RoutedEventArgs e)
         {
             //Main.Content = new Home();
-
         }
 
-        private void newRecipeButton_Click(object sender, RoutedEventArgs e)
-        {
-            //Main.Content = new NewRecipe();
-
-        }
-        private void homeButton_Click(object sender, RoutedEventArgs e)
-        {
-            //Main.Content = new Home();
-        }
 
         private void favorButton_Click(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new Favorite();
-            //Favorite page = new Favorite();
-            //Main.NavigationService.Navigate(page);
-
+            Main.Content = new Favorite();
         }
 
         private void aboutButton_Click(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new About();
+            Main.Content = new About();
         }
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
-            //Main.Content = new Search();
+            Main.Content = new Search();
         }
 
         private void outButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
-
-
-        private void searchTextBlock_MouseMove(object sender, MouseEventArgs e)
+        private void newRecipeButton_Click(object sender, RoutedEventArgs e)
         {
-            searchTextBlock.Text = "";
+            var screen = new AddRecipe();
+            screen.Dying += XuLiHapHoi;
+            screen.Show();
+            this.Hide();
+        }
+        private void XuLiHapHoi()
+        {
+            this.Show();
+        }
+        private void homeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new Home();
         }
 
-        private void searchTextBlock_MouseEnter(object sender, MouseEventArgs e)
+        //Di chuyen man hinh
+        private void CanvasOfWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            searchTextBlock.Text = "";
+            var move = sender as System.Windows.Controls.Canvas;
+            var win = Window.GetWindow(move);
+            win.DragMove();
         }
+
     }
 }
