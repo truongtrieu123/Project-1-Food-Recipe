@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Background="blue"
-      Title="About" Width="1090" Height="750">
+      Title="About" Width="1090" Height="850">
 
     <Grid>
         <TextBlock Text="About" Margin="632,481,-378,-181" Foreground="red" FontSize="30"/>

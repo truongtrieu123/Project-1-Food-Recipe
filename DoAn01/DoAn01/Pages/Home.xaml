@@ -7,7 +7,7 @@
       mc:Ignorable="d"
       Background="Green"
   
-      Title="Home" Width="1090" Height="750" >
+      Title="Home" Width="1090" Height="850" >
      
 <Grid>
     <TextBlock Text="home" Margin="727,522,-473,-222" Foreground="red" FontSize="30"/>

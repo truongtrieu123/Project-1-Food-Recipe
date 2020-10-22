@@ -26,6 +26,7 @@ namespace DoAn01
         public AddRecipe()
         {
             InitializeComponent();
+            
         }
 
         private void returnButton_Click(object sender, RoutedEventArgs e)
