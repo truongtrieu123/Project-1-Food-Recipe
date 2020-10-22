@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,9 +43,9 @@ namespace DoAn01
         }
 
         //Di chuyen man hinh
-        private void CanvasOfWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void TitleOfWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var move = sender as System.Windows.Controls.Canvas;
+            var move = sender as System.Windows.Controls.StackPanel;
             var win = Window.GetWindow(move);
             win.DragMove();
         }
@@ -66,12 +67,72 @@ namespace DoAn01
 
         private void add_image_foodButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var screen = new OpenFileDialog();
+            if (screen.ShowDialog() == true)
+            {
+                var filepath = screen.FileName;
+                Uri bitmap = new Uri(filepath);
+                foodImage.Source = new BitmapImage(bitmap);
+            }
         }
 
         private void add_image_stepButton_Click(object sender, RoutedEventArgs e)
         {
+            var screen = new OpenFileDialog();
 
+            if (screen.ShowDialog() == true)
+            {
+                var filepath1 = screen.FileName;
+                var filepath2 = screen.FileName;
+                var filepath3 = screen.FileName;
+                var filepath4 = screen.FileName;
+                Uri bitmap = new Uri(filepath1);
+                stepImage01.Source = new BitmapImage(bitmap);
+                bitmap = new Uri(filepath1);
+                stepImage02.Source = new BitmapImage(bitmap);
+                bitmap = new Uri(filepath1);
+                stepImage03.Source = new BitmapImage(bitmap);
+                bitmap = new Uri(filepath1);
+                stepImage04.Source = new BitmapImage(bitmap);
+            }
+            else
+                return;
+
+            //if (screen.ShowDialog() == true)
+            //{
+            //    var filepath = screen.FileName;
+            //    Uri bitmap = new Uri(filepath);
+            //    stepImage01.Source = new BitmapImage(bitmap);
+            //}
+            //else
+            //    return;
+            //screen = new OpenFileDialog();
+            //if (screen.ShowDialog() == true)
+            //{
+            //    var filepath = screen.FileName;
+            //    Uri bitmap = new Uri(filepath);
+            //    stepImage02.Source = new BitmapImage(bitmap);
+            //}
+            //else
+            //    return;
+            //screen = new OpenFileDialog();
+            //if (screen.ShowDialog() == true)
+            //{
+            //    var filepath = screen.FileName;
+            //    Uri bitmap = new Uri(filepath);
+            //    stepImage03.Source = new BitmapImage(bitmap);
+            //}
+            //else
+            //    return;
+            //screen = new OpenFileDialog();
+            //if (screen.ShowDialog() == true)
+            //{
+            //    var filepath = screen.FileName;
+            //    Uri bitmap = new Uri(filepath);
+            //    stepImage04.Source = new BitmapImage(bitmap);
+            //}
+            //else
+            //    return;
         }
 
         private void add_stepButton_Click(object sender, RoutedEventArgs e)

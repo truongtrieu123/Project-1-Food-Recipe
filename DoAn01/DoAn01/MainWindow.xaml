@@ -12,9 +12,9 @@
     <Window.Icon>
         <BitmapImage UriSource="Images/icon_splashscreen.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Icon>
-    <Canvas x:Name="CanvasOfWindow" MouseLeftButtonDown="CanvasOfWindow_MouseLeftButtonDown">
+    <Canvas >
         <StackPanel>
-            <StackPanel Background="MediumPurple" Height="50" Width="1400" Orientation="Horizontal" >
+            <StackPanel Background="MediumPurple" Height="50" Width="1400" Orientation="Horizontal" x:Name="TitleOfWindow" MouseLeftButtonDown="TitleOfWindow_MouseLeftButtonDown">
                 <Image Source="Images/icon_splashscreen.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="64" Margin="0,5"/>
                 <Label Foreground="White" Width="176" RenderTransformOrigin="3.919,2.601" Content="Food Recipe" FontSize="30"/>
 

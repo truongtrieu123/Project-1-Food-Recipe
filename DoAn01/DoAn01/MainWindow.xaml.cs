@@ -71,9 +71,9 @@ namespace DoAn01
         }
 
         //Di chuyen man hinh
-        private void CanvasOfWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void TitleOfWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var move = sender as System.Windows.Controls.Canvas;
+            var move = sender as System.Windows.Controls.StackPanel;
             var win = Window.GetWindow(move);
             win.DragMove();
         }
