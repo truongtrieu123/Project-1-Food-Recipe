@@ -11,10 +11,9 @@
     <Window.Icon>
         <BitmapImage x:Name="addrecipeicon" UriSource="Images/icon_splashscreen.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Icon>
-
-    <Canvas x:Name="CanvasOfWindow" MouseLeftButtonDown="CanvasOfWindow_MouseLeftButtonDown" Margin="0,0,0,684">
+    <Canvas  Margin="0,0,0,684">
         <StackPanel Height="900">
-            <StackPanel Background="MediumPurple" Height="50" Width="1400" Orientation="Horizontal" >
+            <StackPanel Background="MediumPurple" Height="50" Width="1400" Orientation="Horizontal" x:Name="TitleOfWindow" MouseLeftButtonDown="TitleOfWindow_MouseLeftButtonDown">
                 <Button x:Name="returnButton" Width="50" Background="MediumPurple" Click="returnButton_Click" Margin="0 0 0 0" BorderThickness="0" >
                     <Image Source="Images/return.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="40"/>
                 </Button>
@@ -113,7 +112,7 @@
                     </TextBox>
                     <Border BorderBrush="black" BorderThickness="3" Margin="10,20,10,0" Height="376">
                         <StackPanel Margin="0,0,-3,0">
-                            <Image Source="Images/food01.jpg" RenderOptions.BitmapScalingMode="HighQuality" Margin="10,7,10,5" Height="297"/>
+                            <Image x:Name="foodImage" RenderOptions.BitmapScalingMode="HighQuality"  Margin="10,5,10,10" Height="297" Width="391"/>
                             <Button x:Name="add_image_foodButton" Background="LightGray" Click="add_image_foodButton_Click" BorderThickness="0" Height="63" HorizontalAlignment="Left" Width="387" Margin="10,0,0,0">
                                 <Image Source="Images/add_image.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="57" Width="78" RenderTransformOrigin="0.673,-6.619" />
                             </Button>
@@ -122,7 +121,7 @@
                 </StackPanel>
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBox Height="298" Margin="10,0,0,0" Width="402" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" TextWrapping="Wrap" TextAlignment="Justify" >
+                        <TextBox Height="298" Margin="10,0,0,0" Width="390" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" TextWrapping="Wrap" TextAlignment="Justify" >
                             <TextBox.Style>
                                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                     <Style.Resources>
@@ -146,20 +145,30 @@
                                 </Style>
                             </TextBox.Style>
                         </TextBox>
-                        <Border BorderBrush="black" BorderThickness="3" Margin="10,0,10,0" Height="298">
-                            <Image Source="Images/food01.jpg" RenderOptions.BitmapScalingMode="HighQuality" Width="404" Margin="0,7"/>
+                        <Border BorderBrush="black" BorderThickness="3" Margin="10,0,10,0" Height="298" Width="431">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel>
+                                    <Image Name="stepImage01" RenderOptions.BitmapScalingMode="HighQuality" Width="215" Margin="0 0 0 30" Height="131"/>
+                                    <Image Name="stepImage02" RenderOptions.BitmapScalingMode="HighQuality" Width="215" Margin="0 0 0 0" Height="131"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <Image Name="stepImage03" RenderOptions.BitmapScalingMode="HighQuality" Width="215" Margin="0 0 0 30" Height="131"/>
+                                    <Image Name="stepImage04" RenderOptions.BitmapScalingMode="HighQuality" Width="215" Margin="0 0 0 0" Height="131"/>
+                                </StackPanel>
+                            </StackPanel>
+
                         </Border>
-                        <StackPanel>
+                        <StackPanel Width="98">
                             <Button Name="add_image_stepButton" Width="100" Background="white" Click="add_image_stepButton_Click" VerticalAlignment="Top" Margin="0 20 10 0" BorderThickness="0">
                                 <Image Source="Images/add_image.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="75" Width="68" RenderTransformOrigin="0.838,0.461" />
                             </Button>
-                            <Button Name="add_stepButton" Width="74" Background="white" Click="add_stepButton_Click" VerticalAlignment="Top" Margin="-5 20 10 0" BorderThickness="0">
+                            <Button Name="add_stepButton" Width="74" Background="white" Click="add_stepButton_Click" VerticalAlignment="Top" Margin="5 20 10 0" BorderThickness="0">
                                 <StackPanel>
                                     <Image Source="Images/add_step.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="61" Width="68" RenderTransformOrigin="0.838,0.461" />
                                     <TextBlock  Text="Thêm" Width="69" Margin="2 5 0 0" FontSize="25" RenderTransformOrigin="0.604,2.968" TextAlignment="Center"/>
                                 </StackPanel>
                             </Button>
-                        </StackPanel>                        
+                        </StackPanel>
                     </StackPanel>
                     <Border BorderBrush="black" BorderThickness="3" Margin="10,20,10,0" Height="452" Width="928">
                     </Border>
