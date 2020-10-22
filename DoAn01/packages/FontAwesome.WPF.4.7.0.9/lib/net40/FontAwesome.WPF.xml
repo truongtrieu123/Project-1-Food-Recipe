@@ -1,3 +1,45 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FontAwesome.WPF</name>
+    </assembly>
+    <members>
+        <member name="T:FontAwesome.WPF.Awesome">
+            <summary>
+            Provides attached properties to set FontAwesome icons on controls.
+            </summary>
+        </member>
+        <member name="F:FontAwesome.WPF.Awesome.FontAwesomeFontFamily">
+            <summary>
+            FontAwesome FontFamily.
+            </summary>
+        </member>
+        <member name="F:FontAwesome.WPF.Awesome.ContentProperty">
+            <summary>
+            Identifies the FontAwesome.WPF.Awesome.Content attached dependency property.
+            </summary>
+        </member>
+        <member name="M:FontAwesome.WPF.Awesome.GetContent(System.Windows.DependencyObject)">
+            <summary>
+            Gets the content of a ContentControl, expressed as a FontAwesome icon.
+            </summary>
+            <param name="target">The ContentControl subject of the query</param>
+            <returns>FontAwesome icon found as content</returns>
+        </member>
+        <member name="M:FontAwesome.WPF.Awesome.SetContent(System.Windows.DependencyObject,FontAwesome.WPF.FontAwesomeIcon)">
+            <summary>
+            Sets the content of a ContentControl expressed as a FontAwesome icon. This will cause the content to be redrawn.
+            </summary>
+            <param name="target">The ContentControl where to set the content</param>
+            <param name="value">FontAwesome icon to set as content</param>
+        </member>
+        <member name="T:FontAwesome.WPF.ControlExtensions">
+            <summary>
+            Control extensions
+            </summary>
+        </member>
+        <member name="F:FontAwesome.WPF.ControlExtensions.SpinnerStoryBoardName">
+            <summary>
             The key used for storing the spinner Storyboard.
             </summary>
         </member>
