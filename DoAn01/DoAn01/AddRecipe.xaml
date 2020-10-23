@@ -18,27 +18,24 @@
                     <Image Source="Images/return.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="40"/>
                 </Button>
                 <Label Foreground="White" Width="175" RenderTransformOrigin="3.919,2.601" Content="New Recipe" FontSize="30"/>
-                <Button x:Name="outButton" Width="70" Background="Purple" BorderThickness="0" Click="outButton_Click" HorizontalAlignment="Right" Margin="1105 0 0 0" >
-                    <Image Source="Images/out.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="40"/>
-                </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Height="55" Margin="0 5 0 5">
                 <Button Name="saveButton" Width="100" Background="white" Click="saveButton_Click" VerticalAlignment="Top" Margin="0 0 10 0" BorderThickness="0">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Images/save.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="51" Width="42" RenderTransformOrigin="0.838,0.461" />
-                        <TextBlock  Text="Save" Width="131" Margin="2 5 0 0" FontSize="25" RenderTransformOrigin="0.604,2.968"/>
+                        <TextBlock  Text="Lưu" Width="46" Margin="5 5 0 0" FontSize="25" RenderTransformOrigin="0.604,2.968"/>
                     </StackPanel>
                 </Button>
                 <Button Name="canceleButton" Width="122" Background="white" Click="cancelButton_Click"  VerticalAlignment="Top" Margin="0 0 20 0" BorderThickness="0">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Images/cancel.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="51" Width="42" RenderTransformOrigin="0.838,0.461" />
-                        <TextBlock  Text="Cancel" Width="76" Margin="2 5 0 0" FontSize="25" RenderTransformOrigin="0.507,0.793"/>
+                        <TextBlock  Text="Hủy" Width="45" Margin="2 5 0 0" FontSize="25" RenderTransformOrigin="0.507,0.793"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="776" >
                 <StackPanel Height="770" Margin="7 -5 0 0" Width="434">
-                    <TextBox Height="58" Margin="10,0" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" >
+                    <TextBox Height="58" Margin="10,0" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" Name="nameFoodBox">
                         <TextBox.Style>
                             <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                 <Style.Resources>
@@ -62,7 +59,7 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-                    <TextBox Height="218" Margin="10,20,10,0" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20"  TextWrapping="Wrap" TextAlignment="Justify">
+                    <TextBox Height="218" Margin="10,20,10,0" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20"  TextWrapping="Wrap" TextAlignment="Justify" Name="descriptionBox">
                         <TextBox.Style>
                             <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                 <Style.Resources>
@@ -86,7 +83,7 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-                    <TextBox Height="56" Margin="10,20,10,0" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20"  >
+                    <TextBox Height="56" Margin="10,20,10,0" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" Name="youtubeLinkBox" >
                         <TextBox.Style>
                             <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                 <Style.Resources>
@@ -121,7 +118,7 @@
                 </StackPanel>
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <TextBox Height="298" Margin="10,0,0,0" Width="390" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" TextWrapping="Wrap" TextAlignment="Justify" >
+                        <TextBox Height="298" Margin="10,0,0,0" Width="333" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" TextWrapping="Wrap" TextAlignment="Justify" Name="stepFoodBox" >
                             <TextBox.Style>
                                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                     <Style.Resources>
@@ -145,17 +142,19 @@
                                 </Style>
                             </TextBox.Style>
                         </TextBox>
-                        <Border BorderBrush="black" BorderThickness="3" Margin="10,0,10,0" Height="298" Width="431">
-                            <StackPanel Orientation="Horizontal">
-                                <StackPanel>
-                                    <Image Name="stepImage01" RenderOptions.BitmapScalingMode="HighQuality" Width="215" Margin="0 0 0 30" Height="131"/>
-                                    <Image Name="stepImage02" RenderOptions.BitmapScalingMode="HighQuality" Width="215" Margin="0 0 0 0" Height="131"/>
-                                </StackPanel>
-                                <StackPanel>
-                                    <Image Name="stepImage03" RenderOptions.BitmapScalingMode="HighQuality" Width="215" Margin="0 0 0 30" Height="131"/>
-                                    <Image Name="stepImage04" RenderOptions.BitmapScalingMode="HighQuality" Width="215" Margin="0 0 0 0" Height="131"/>
-                                </StackPanel>
-                            </StackPanel>
+                        <Border BorderBrush="black" BorderThickness="3" Margin="10,0,10,0" Height="298" Width="485">
+                            <ListView Name="listView" Margin="0,0,0,0">
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="2"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding}" Width="200" Height="150"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
 
                         </Border>
                         <StackPanel Width="98">
@@ -171,6 +170,7 @@
                         </StackPanel>
                     </StackPanel>
                     <Border BorderBrush="black" BorderThickness="3" Margin="10,20,10,0" Height="452" Width="928">
+                        <TextBlock Name="allStepBox"></TextBlock>
                     </Border>
                 </StackPanel>
             </StackPanel>

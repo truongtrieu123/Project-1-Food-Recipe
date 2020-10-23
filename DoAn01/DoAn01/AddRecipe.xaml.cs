@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace DoAn01
         public AddRecipe()
         {
             InitializeComponent();
-            
+
         }
 
         private void returnButton_Click(object sender, RoutedEventArgs e)
@@ -57,7 +58,17 @@ namespace DoAn01
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            youtubeLinkBox.Text = "";
+            descriptionBox.Text = "";
+            nameFoodBox.Text = "";
+            stepFoodBox.Text = "";
+            listView.Items.Clear();
+            var bitmap = new BitmapImage(
+                                new Uri(
+                                       "",
+                                       UriKind.Relative)
+                                );
+            foodImage.Source = bitmap;
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
@@ -78,61 +89,16 @@ namespace DoAn01
 
         private void add_image_stepButton_Click(object sender, RoutedEventArgs e)
         {
-            var screen = new OpenFileDialog();
 
+            var screen = new OpenFileDialog();
+            screen.Multiselect = true;
             if (screen.ShowDialog() == true)
             {
-                var filepath1 = screen.FileName;
-                var filepath2 = screen.FileName;
-                var filepath3 = screen.FileName;
-                var filepath4 = screen.FileName;
-                Uri bitmap = new Uri(filepath1);
-                stepImage01.Source = new BitmapImage(bitmap);
-                bitmap = new Uri(filepath1);
-                stepImage02.Source = new BitmapImage(bitmap);
-                bitmap = new Uri(filepath1);
-                stepImage03.Source = new BitmapImage(bitmap);
-                bitmap = new Uri(filepath1);
-                stepImage04.Source = new BitmapImage(bitmap);
+                foreach (var filepath in screen.FileNames)
+                {
+                    listView.Items.Add(new BitmapImage(new Uri(filepath)));
+                }
             }
-            else
-                return;
-
-            //if (screen.ShowDialog() == true)
-            //{
-            //    var filepath = screen.FileName;
-            //    Uri bitmap = new Uri(filepath);
-            //    stepImage01.Source = new BitmapImage(bitmap);
-            //}
-            //else
-            //    return;
-            //screen = new OpenFileDialog();
-            //if (screen.ShowDialog() == true)
-            //{
-            //    var filepath = screen.FileName;
-            //    Uri bitmap = new Uri(filepath);
-            //    stepImage02.Source = new BitmapImage(bitmap);
-            //}
-            //else
-            //    return;
-            //screen = new OpenFileDialog();
-            //if (screen.ShowDialog() == true)
-            //{
-            //    var filepath = screen.FileName;
-            //    Uri bitmap = new Uri(filepath);
-            //    stepImage03.Source = new BitmapImage(bitmap);
-            //}
-            //else
-            //    return;
-            //screen = new OpenFileDialog();
-            //if (screen.ShowDialog() == true)
-            //{
-            //    var filepath = screen.FileName;
-            //    Uri bitmap = new Uri(filepath);
-            //    stepImage04.Source = new BitmapImage(bitmap);
-            //}
-            //else
-            //    return;
         }
 
         private void add_stepButton_Click(object sender, RoutedEventArgs e)

@@ -8,7 +8,7 @@
       mc:Ignorable="d"
       
       Background="white"
-      Title="Home" Width="990" Height="762" Loaded="HomePage_Loaded">
+      Title="Home" Width="1090" Height="850" Loaded="HomePage_Loaded">
     <Page.Resources>
         <local:AbsolutePathConverter x:Key="Converter"/>
     </Page.Resources>
@@ -17,8 +17,8 @@
 
         <StackPanel Orientation="Vertical" >
 
-            <ListView x:Name="mealListView" Height="650" BorderBrush="Transparent" 
-                      Background="Transparent" Margin="30,40,30,20"
+            <ListView x:Name="mealListView" Height="730" BorderBrush="Transparent" 
+                      Background="Transparent" Margin="30,60,30,20"
                       
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                       ScrollViewer.VerticalScrollBarVisibility="Disabled" 
@@ -31,7 +31,7 @@
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Width="210" Height="200"  Background="Transparent" Margin="5,5,5,5" >
+                        <StackPanel Width="235" Height="200"  Background="Transparent" Margin="5,5,5,5" >
                             <StackPanel  Height="190"  >
                                 <Rectangle RadiusX="20" RadiusY="20"  Height="150">
                                     <Rectangle.Fill>
@@ -50,7 +50,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <StackPanel Height="50" Orientation="Horizontal" Margin="650,0,20,30">
+            <StackPanel Height="59" Orientation="Horizontal" Margin="864,-50,20,30">
                 <Border Background="LightGreen"   BorderThickness="1" BorderBrush="Black" Width="60" Height="30" CornerRadius="10,10,10,10" Margin="5,0,5,0">
                     <Button Click="prevPage_Click" Background="Transparent" Content="Prev" BorderBrush="Transparent" FontSize="20"/>
                 </Border>
