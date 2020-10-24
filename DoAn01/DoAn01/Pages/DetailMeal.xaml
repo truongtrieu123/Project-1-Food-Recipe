@@ -21,6 +21,16 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="600"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+<<<<<<< HEAD
+
+        <StackPanel>
+            <!--Nhúng video hướng dẫn nấu món ăn-->
+            <TextBlock Height="300" Width="400">
+                <!--<MediaElement Margin="20,20,20,20" Height="300" Width="400" Source="https://www.youtube.com/watch?v=5UOhoYgeFHU"></MediaElement>-->
+            </TextBlock>
+
+            <StackPanel Width="400" Height="444" Margin="20,0">
+=======
         <StackPanel Margin="-30,0,0,0" Grid.RowSpan="3">
             <Button x:Name="returnButton" Width="50" Background="White" Click="returnButton_Click" Margin="40 0 0 0" BorderThickness="0" BorderBrush="White" HorizontalAlignment="Left" >
                 <Image Source="../Images/return.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="40" RenderTransformOrigin="2.171,4.193"/>
@@ -34,11 +44,17 @@
 
 
             <StackPanel Width="400" Height="594" Margin="60,0">
+>>>>>>> d7a9dcd083ac65e4fbd562f727686f038626bc1f
                 <TextBlock FontWeight="Bold" FontSize="30" Margin="10,0,0,10">
                     <Run Text="Thịt kho hột vịt" Foreground="Blue"></Run>
                 </TextBlock>
                 <ScrollViewer Height="200" Width="400"  IsTabStop="True" 
                               VerticalScrollBarVisibility="Hidden">
+<<<<<<< HEAD
+                    <TextBlock Text="Thịt kho hột vịt (còn gọi là thịt kho tàu hay thịt kho riệu) là một món ăn phổ biến tại miền Nam Việt Nam. Món ăn này đặc biệt thường được chế biến để dùng trong các ngày Tết Nguyên đán vì có thể làm sẵn, giữ được lâu ngày. giữ được lâu ngày.giữ được lâu ngày."
+                    TextWrapping="Wrap" FontSize="22" TextAlignment="Justify"          >
+
+=======
                     <TextBlock Text="Thịt kho hột vịt (còn gọi là
                                thịt kho tàu hay thịt kho riệu) 
                                là một món ăn phổ biến tại miền 
@@ -50,6 +66,7 @@
                                giữ được lâu ngày.
                                "
                     TextWrapping="Wrap" FontSize="22" >
+>>>>>>> d7a9dcd083ac65e4fbd562f727686f038626bc1f
                     </TextBlock>
                 </ScrollViewer>
                 <ScrollViewer Margin="0,30,0,20" Height="120" Width="400" 
