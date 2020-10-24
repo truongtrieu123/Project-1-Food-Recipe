@@ -22,9 +22,6 @@ namespace DoAn01.Pages
     /// </summary>
     public partial class DetailMeal : Page
     {
-        public delegate void DeathHandler();
-        public event DeathHandler Dying;
-
         public DetailMeal()
         {
             InitializeComponent();
@@ -33,7 +30,7 @@ namespace DoAn01.Pages
 
         private void DetailMeal_Loaded(object sender, RoutedEventArgs e)
         {
-            //web.Source=new Uri("https://www.google.com/");
+            
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -43,7 +40,7 @@ namespace DoAn01.Pages
 
         private void returnButton_Click(object sender, RoutedEventArgs e)
         {
-            Dying?.Invoke();
+            this.NavigationService.GoBack();
         }
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {           

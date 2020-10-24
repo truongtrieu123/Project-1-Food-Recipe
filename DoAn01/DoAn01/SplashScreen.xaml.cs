@@ -38,7 +38,6 @@ namespace DoAn01
             {
                 var screen = new MainWindow();
                 screen.Show();
-
                 this.Close();
             }
             else
@@ -113,7 +112,8 @@ namespace DoAn01
 
             //    }
             //}
-            infoFood.Text = "Thịt kho hột vịt là món ăn đặc trưng của ngày Tết cổ truyền nhưng cũng rất quen thuộc trong các bữa ăn hằng ngày của mọi gia đình. Món ăn chỉ với 2 nguyên liệu chính là thịt ba rọi và trứng vịt nhưng khi được nêm nếm gia vị và thực hiện phương pháp kho đặc trưng thì trở nên hấp dẫn và ngon miệng lạ kỳ.";
+
+            infoFood.Text = "Thịt kho hột vịt là món ăn đặc trưng của ngày Tết cổ truyền nhưng cũng rất quen thuộc trong các bữa ăn hằng ngày của mọi gia đình. Món ăn chỉ với 2 nguyên liệu chính là thịt ba rọi và trứng vịt nhưng khi được nêm nếm gia vị và thực hiện phương pháp kho đặc trưng thì trở nên hấp dẫn và ngon miệng lạ kỳ. Thịt kho hột vịt là món ăn đặc trưng của ngày Tết cổ truyền nhưng cũng rất quen thuộc trong các bữa ăn hằng ngày của mọi gia đình. Món ăn chỉ với 2 nguyên liệu chính là thịt ba rọi và trứng vịt nhưng khi được nêm nếm gia vị và thực hiện phương pháp kho đặc trưng thì trở nên hấp dẫn và ngon miệng lạ kỳ.";
         }
 
         

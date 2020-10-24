@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,38 @@ namespace DoAn01
     /// Interaction logic for AddRecipe.xaml
     /// </summary>
 
+    
+
     public partial class AddRecipe : Window
     {
+        class Add_Recipe
+        {
+            public string numberStep { get; set; }
+            public string stepMakeFood { get; set; }
+        }
+        class listImage
+        {
+            public string listImages { get; set; }
+        }
+        BindingList<Add_Recipe> listStep;
+        BindingList<listImage> listImagePath;
+        class stepDao
+        {
+            public static BindingList<Add_Recipe> GetAll()
+            {
+                var list = new BindingList<Add_Recipe>() { };
+                return list;
+            }
+        }
+        class stepImageDao
+        {
+            public static BindingList<listImage> GetAll()
+            {
+                var list = new BindingList<listImage>() { };
+                return list;
+            }
+        }
+
         public delegate void DeathHandler();
         public event DeathHandler Dying;
 
@@ -96,14 +127,35 @@ namespace DoAn01
             {
                 foreach (var filepath in screen.FileNames)
                 {
-                    listView.Items.Add(new BitmapImage(new Uri(filepath)));
+                    //listView.Items.Add(new BitmapImage(new Uri(filepath)));
+                    listImagePath.Add(new listImage() {listImages= filepath});
                 }
             }
         }
 
         private void add_stepButton_Click(object sender, RoutedEventArgs e)
         {
+            listStep.Add(new Add_Recipe()
+            {
+                numberStep = $"Bước {listStep.Count + 1}",
+                stepMakeFood= stepFoodBox.Text                
+            });
 
+            foreach (var item in listImagePath)
+            {
+                listImageBox.Items.Add(new BitmapImage(new Uri(item.listImages)));
+            }            
+            stepFoodBox.Text = "";
+            listImagePath.Clear();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            listStep = stepDao.GetAll();
+            listViewBox.ItemsSource = listStep;
+
+            listImagePath = stepImageDao.GetAll();
+            listView.ItemsSource = listImagePath;
         }
     }
 }

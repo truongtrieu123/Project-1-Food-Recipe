@@ -21,7 +21,7 @@
         <Label Content="Không hiện hộp thoại này mỗi khi khởi động" Canvas.Left="543" Canvas.Top="734"/>
         <TextBlock x:Name="nameFood" RenderTransformOrigin="39.495,4.391" Canvas.Left="232" Canvas.Top="10" Width="360" Height="40" Padding="0.5" TextAlignment="Center" FontSize="30" Foreground="#FF812BEA" FontWeight="Bold" FontFamily="Verdana"><Run Text="Thịt kho hột "/><Run Text="vịt"/></TextBlock>
         <Image x:Name="foodImage" RenderTransformOrigin="0.5,0.5" Width="605" Height="409" Canvas.Left="96" Canvas.Top="66" />
-        <TextBlock Name="infoFood" Width="605" Height="187" Padding="2" FontSize="18" Foreground="DarkBlue" Canvas.Left="96" Canvas.Top="495" TextWrapping="Wrap" TextAlignment="Justify" FontStyle="Italic" FontWeight="Bold" />
+        <TextBlock Name="infoFood" Width="605"  Padding="2" FontSize="18" Foreground="DarkBlue" Canvas.Left="96" Canvas.Top="495" TextWrapping="Wrap" TextAlignment="Justify" FontStyle="Italic" FontWeight="Bold" />
     </Canvas>
 
 </Window>
