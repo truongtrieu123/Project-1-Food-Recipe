@@ -206,6 +206,8 @@
     <Resource Include="Images\return.jpg" />
     <Resource Include="Images\save.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Videos\food01.wmv" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
