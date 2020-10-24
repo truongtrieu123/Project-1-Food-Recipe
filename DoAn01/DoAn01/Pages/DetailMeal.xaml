@@ -7,22 +7,33 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Background="white"
-      Title="Home" Width="990" Height="762" Loaded="DetailMeal_Loaded">
+      Title="Home" Width="1090" Height="850" Loaded="DetailMeal_Loaded">
 
     <Page.Resources>
     </Page.Resources>
-    <Grid>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="24*"/>
+            <RowDefinition Height="400*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions >
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="550"></ColumnDefinition>
+            <ColumnDefinition Width="600"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
-        <StackPanel>
-            <TextBlock Height="300" Width="400">
-                <!--<MediaElement Margin="20,20,20,20" Height="300" Width="400" Source="https://www.youtube.com/watch?v=5UOhoYgeFHU"></MediaElement>-->
+        <StackPanel Margin="-30,0,0,0" Grid.RowSpan="3">
+            <Button x:Name="returnButton" Width="50" Background="White" Click="returnButton_Click" Margin="40 0 0 0" BorderThickness="0" BorderBrush="White" HorizontalAlignment="Left" >
+                <Image Source="../Images/return.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="40" RenderTransformOrigin="2.171,4.193"/>
+            </Button>
+            <!--<MediaElement Name="mediaFood" Width="400" Height="300" Margin="0 30 0 50"></MediaElement>-->
+            <TextBlock Height="57" Margin="60,50,10,50" FontSize="25">           
+                <Hyperlink NavigateUri="https://youtu.be/5UOhoYgeFHU" RequestNavigate="Hyperlink_RequestNavigate">
+                    Video demo (Click here)
+                </Hyperlink>
             </TextBlock>
 
-            <StackPanel Width="400">
+
+            <StackPanel Width="400" Height="594" Margin="60,0">
                 <TextBlock FontWeight="Bold" FontSize="30" Margin="10,0,0,10">
                     <Run Text="Thịt kho hột vịt" Foreground="Blue"></Run>
                 </TextBlock>
@@ -38,31 +49,25 @@
                                giữ được lâu ngày.
                                giữ được lâu ngày.
                                "
-                    TextWrapping="Wrap" FontSize="22"          >
-
+                    TextWrapping="Wrap" FontSize="22" >
                     </TextBlock>
-
                 </ScrollViewer>
-
                 <ScrollViewer Margin="0,30,0,20" Height="120" Width="400" 
                                IsTabStop="True" VerticalScrollBarVisibility="Disabled">
-                    <ListView 
-                                ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    <ListView ScrollViewer.VerticalScrollBarVisibility="Disabled" >
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel/>
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
                         <ListViewItem Width="100" Height="100">
-
                             <Rectangle RadiusX="20" RadiusY="20"  Height="90" Width="90">
                                 <Rectangle.Fill>
                                     <ImageBrush ImageSource="./../Images/food01.jpg"/>
                                 </Rectangle.Fill>
                             </Rectangle>
-
                         </ListViewItem>
-                        <ListViewItem Width="100" Height="100">
+                        <ListViewItem Width="100" Height="100" >
                             <Rectangle RadiusX="20" RadiusY="20"  Height="90" Width="90">
                                 <Rectangle.Fill>
                                     <ImageBrush ImageSource="./../Images/food01.jpg"/>
@@ -92,18 +97,12 @@
                         </ListViewItem>
                     </ListView>
                 </ScrollViewer>
-
-
             </StackPanel>
         </StackPanel>
-
-
-
-        <ScrollViewer Grid.Column="1"   IsTabStop="True" VerticalScrollBarVisibility="Auto">
-            <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ScrollViewer Grid.Column="1" IsTabStop="True" VerticalScrollBarVisibility="Auto" Margin="0,2,10,10" Grid.RowSpan="2" Grid.Row="1">
+            <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="1198">
                 <ListViewItem HorizontalAlignment="Center">
                     <StackPanel Width="520" >
-
                         <StackPanel Orientation="Horizontal" Width="500">
                             <StackPanel Width="90" Height="100" VerticalAlignment="Top" Margin="0,10,0,10" Background="LightGreen">
                                 <TextBlock Text="Bước" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"></TextBlock>
@@ -113,11 +112,10 @@
                             </StackPanel>
                             <TextBlock Text="Sơ chế thịt ba chỉ: rửa sạch, cắt miếng vừa ăn. Ướp muối, tiêu, bột ngọt, hạt nêm, nước mắm và hành tím với thịt trong 15 phút cho ngấm đều gia vị." 
                                    TextWrapping="Wrap"  Margin="10,10,10,5" Width="400" FontSize="24" ></TextBlock>
-
                         </StackPanel>
                         <ListView Width="500" ScrollViewer.VerticalScrollBarVisibility="Disabled"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                  BorderBrush="Transparent">
+                                  BorderBrush="Transparent" SelectionChanged="ListView_SelectionChanged">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel/>
@@ -136,7 +134,6 @@
                                         <ImageBrush ImageSource="./../Images/food01.jpg"/>
                                     </Rectangle.Fill>
                                 </Rectangle>
-
                             </ListViewItem>
                             <ListViewItem Width="230" >
                                 <Rectangle  RadiusX="20" RadiusY="20"  Height="150" Width="220">
@@ -147,12 +144,9 @@
                             </ListViewItem>
                         </ListView>
                     </StackPanel>
-
                 </ListViewItem>
-
-                <ListViewItem HorizontalAlignment="Center">
+                <ListViewItem HorizontalAlignment="Center" Height="729">
                     <StackPanel Width="520" >
-
                         <StackPanel Orientation="Horizontal" Width="500">
                             <StackPanel Width="90" Height="100" VerticalAlignment="Top" Margin="0,10,0,10" Background="LightGreen">
                                 <TextBlock Text="Bước" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"></TextBlock>
@@ -162,11 +156,10 @@
                             </StackPanel>
                             <TextBlock Text="Sơ chế thịt ba chỉ: rửa sạch, cắt miếng vừa ăn. Ướp muối, tiêu, bột ngọt, hạt nêm, nước mắm và hành tím với thịt trong 15 phút cho ngấm đều gia vị." 
                                    TextWrapping="Wrap"  Margin="10,10,10,5" Width="400" FontSize="24" ></TextBlock>
-
                         </StackPanel>
                         <ListView Width="500" ScrollViewer.VerticalScrollBarVisibility="Disabled"
                               ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                  BorderBrush="Transparent">
+                                  BorderBrush="Transparent" Height="552" Margin="10,0">
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel/>
@@ -185,7 +178,6 @@
                                         <ImageBrush ImageSource="./../Images/food01.jpg"/>
                                     </Rectangle.Fill>
                                 </Rectangle>
-
                             </ListViewItem>
                             <ListViewItem Width="230">
                                 <Rectangle  RadiusX="20" RadiusY="20"  Height="150" Width="220">
@@ -196,12 +188,8 @@
                             </ListViewItem>
                         </ListView>
                     </StackPanel>
-
                 </ListViewItem>
-
             </ListView>
         </ScrollViewer>
-
-
     </Grid>
 </Page>

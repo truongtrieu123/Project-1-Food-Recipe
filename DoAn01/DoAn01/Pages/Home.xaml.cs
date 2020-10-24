@@ -59,11 +59,7 @@ namespace DoAn01
     {
 
         public List<MealInfo> _list;
-
         private System.Timers.Timer _timer;
-
-
-
 
         public Home()
         {
