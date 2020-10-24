@@ -18,27 +18,19 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel>
+            <!--Nhúng video hướng dẫn nấu món ăn-->
             <TextBlock Height="300" Width="400">
                 <!--<MediaElement Margin="20,20,20,20" Height="300" Width="400" Source="https://www.youtube.com/watch?v=5UOhoYgeFHU"></MediaElement>-->
             </TextBlock>
 
-            <StackPanel Width="400">
+            <StackPanel Width="400" Height="444" Margin="20,0">
                 <TextBlock FontWeight="Bold" FontSize="30" Margin="10,0,0,10">
                     <Run Text="Thịt kho hột vịt" Foreground="Blue"></Run>
                 </TextBlock>
                 <ScrollViewer Height="200" Width="400"  IsTabStop="True" 
                               VerticalScrollBarVisibility="Hidden">
-                    <TextBlock Text="Thịt kho hột vịt (còn gọi là
-                               thịt kho tàu hay thịt kho riệu) 
-                               là một món ăn phổ biến tại miền 
-                               Nam Việt Nam. Món ăn này đặc biệt thường được chế biến 
-                               để dùng trong các ngày Tết Nguyên 
-                               đán vì có thể làm sẵn, 
-                               giữ được lâu ngày.
-                               giữ được lâu ngày.
-                               giữ được lâu ngày.
-                               "
-                    TextWrapping="Wrap" FontSize="22"          >
+                    <TextBlock Text="Thịt kho hột vịt (còn gọi là thịt kho tàu hay thịt kho riệu) là một món ăn phổ biến tại miền Nam Việt Nam. Món ăn này đặc biệt thường được chế biến để dùng trong các ngày Tết Nguyên đán vì có thể làm sẵn, giữ được lâu ngày. giữ được lâu ngày.giữ được lâu ngày."
+                    TextWrapping="Wrap" FontSize="22" TextAlignment="Justify"          >
 
                     </TextBlock>
 
