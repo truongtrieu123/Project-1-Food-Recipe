@@ -54,8 +54,6 @@ namespace DoAn01.Pages
             CreateMealDetailPage();
         }
 
-
-
         public void CreateMealDetailPage()
         {
             TenMonAn.Text = Info.Name;
@@ -93,12 +91,6 @@ namespace DoAn01.Pages
             return _list;
         }
 
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             if (CurrentStep <= 1)
@@ -125,8 +117,6 @@ namespace DoAn01.Pages
                 CurrentStep++;
                 InitializeStepDetailInfo();
             }
-
-
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

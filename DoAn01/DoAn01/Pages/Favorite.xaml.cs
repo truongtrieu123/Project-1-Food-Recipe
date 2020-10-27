@@ -36,7 +36,6 @@ namespace DoAn01
 
             for (int i = 0; i < _foodList.Count; i++)
             {
-
                 if (_foodList[i].Favorite == "Red")
                 {
                     Food a = _foodList[i];
@@ -49,12 +48,10 @@ namespace DoAn01
         {
             return _favoriteList;
         }
-
     }
 
     public partial class Favorite : Page, INotifyPropertyChanged
     {
-
         public List<Food> _list;
 
         private System.Timers.Timer _timer;
@@ -163,7 +160,6 @@ namespace DoAn01
 
             DetailMeal page = new DetailMeal(p);
             this.NavigationService.Navigate(page);
-
         }
 
         private void SelectCurrentItem(object sender, KeyboardFocusChangedEventArgs e)
@@ -174,7 +170,5 @@ namespace DoAn01
             MessageBox.Show(SelectedItemIndex.ToString());
             Console.WriteLine(SelectedItemIndex);
         }
-
-
     }
 }

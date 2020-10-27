@@ -26,28 +26,9 @@ namespace DoAn01
 
     public partial class AddRecipe : Window
     {
-        //
-        //addRecipeTest test;
-        //stepTest imageTest;
+        public delegate void DeathHandler();
+        public event DeathHandler Dying;
 
-        //struct stepTest
-        //{
-        //    public int countStep;
-        //    public string infoStep;
-        //    public int countImageStep;
-        //    public List<string> pathImage;
-        //}
-        //List<stepTest> tmpStep =new List<stepTest>();
-        //struct addRecipeTest {
-        //    public string nameFood;
-        //    public string motaFood;
-        //    public string nguyenlieuFood;
-        //    public string youtubeLink;
-        //    public string imagePath;
-        //    public List<stepTest> stepFood;
-        //};
-       
-        //
         class Add_Recipe
         {
             public string numberStep { get; set; }
@@ -75,28 +56,29 @@ namespace DoAn01
                 return list;
             }
         }
-
-        public delegate void DeathHandler();
-        public event DeathHandler Dying;
-
-        StreamWriter writer;
+       
         public AddRecipe()
         {
             InitializeComponent();
-            var filepath = "..//..//test.txt";
-            writer = File.AppendText(filepath);
         }
 
-        private void returnButton_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Dying?.Invoke();
-            this.Close();
+            listStep = stepDao.GetAll();
+            listViewFullStepFood.ItemsSource = listStep;
+
+            listImagePath = stepImageDao.GetAll();
+            listViewStepFood.ItemsSource = listImagePath;
         }
 
-        private void outButton_Click(object sender, RoutedEventArgs e)
+        private void Window_Closed(object sender, EventArgs e)
         {
             Dying?.Invoke();
-            this.Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Dying?.Invoke();
         }
 
         //Di chuyen man hinh
@@ -107,10 +89,11 @@ namespace DoAn01
             win.DragMove();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void returnButton_Click(object sender, RoutedEventArgs e)
         {
             Dying?.Invoke();
-        }
+            this.Close();
+        }       
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
@@ -119,110 +102,77 @@ namespace DoAn01
                                            "",
                                            UriKind.Relative)
                                     );
-            if (youtubeLinkBox.Text != "" || descriptionBox.Text != "" || nameFoodBox.Text != "" || stepFoodBox.Text != "" || ingradientBox.Text != "" || listView.Items.IsEmpty == false || foodImage.Source != bitmap)
+            if (youtubeLinkBox.Text != "" || descriptionFoodBox.Text != "" || nameFoodBox.Text != "" || stepFoodBox.Text != "" || ingradientFoodBox.Text != "" || listViewStepFood.Items.IsEmpty == false || foodImageBox.Source != bitmap)
             {
                 youtubeLinkBox.Text = "";
-                descriptionBox.Text = "";
+                descriptionFoodBox.Text = "";
                 nameFoodBox.Text = "";
                 stepFoodBox.Text = "";
-                ingradientBox.Text = "";
+                ingradientFoodBox.Text = "";
                 listImagePath.Clear();
-                listImageBox.Items.Clear();
+                listImageFullStepFood.Items.Clear();
                 listStep.Clear();
-                foodImage.Source = bitmap;
+                foodImageBox.Source = bitmap;
             }
 
         }
 
-        int countIngradient;
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            countIngradient = 0;
             var bitmap = new BitmapImage(
                                     new Uri(
                                            "",
                                            UriKind.Relative)
                                     );
-            if (youtubeLinkBox.Text != "" && descriptionBox.Text != "" && nameFoodBox.Text != "" && ingradientBox.Text != "" && foodImage.Source != bitmap)
+            if (youtubeLinkBox.Text != "" && descriptionFoodBox.Text != "" && nameFoodBox.Text != "" && ingradientFoodBox.Text != "" && foodImageBox.Source != bitmap)
             {
                 //test.nameFood = nameFoodBox.Text;
                 //test.motaFood = descriptionBox.Text;
                 //test.youtubeLink = youtubeLinkBox.Text;
                 //test.nguyenlieuFood = ingradientBox.Text;
-                    
-                //int strt = 0;
-                //int cnt = -1;
-                //int idx = -1;
-                //while (strt != -1)
-                //{
-                //    strt = test.nguyenlieuFood.IndexOf("\n", idx + 1);
-                //    cnt += 1;
-                //    idx = strt;
-                //}
-
-                //countIngradient = cnt + 1;
-
-                //test.imagePath = foodImage.Source.ToString();
-
-                ////test.stepFood.Add(listStep);
-             
-                //writer.WriteLine(test.nameFood);
-                //writer.WriteLine(test.youtubeLink);
-                //writer.WriteLine(test.motaFood);
-                //writer.WriteLine(countIngradient);
-                //writer.WriteLine(test.nguyenlieuFood);
-                //writer.WriteLine(test.imagePath);  
-                //foreach(var item in tmpStep)
-                //{                    
-                //    writer.WriteLine(item.countStep);
-                //    writer.WriteLine(item.infoStep);
-                //    writer.WriteLine(item.countImageStep);
-                //}
                 
-
-                //writer.WriteLine(tmp);
-                if (listImageBox.Items.IsEmpty == false && listViewBox.Items.IsEmpty==false)
+                if (listImageFullStepFood.Items.IsEmpty == false && listViewFullStepFood.Items.IsEmpty == false)
                 {
                     youtubeLinkBox.Text = "";
-                    descriptionBox.Text = "";
+                    descriptionFoodBox.Text = "";
                     nameFoodBox.Text = "";
-                    ingradientBox.Text = "";
-                    foodImage.Source = bitmap;
+                    ingradientFoodBox.Text = "";
+                    foodImageBox.Source = bitmap;
                     stepFoodBox.Text = "";
                     listImagePath.Clear();
-                    listImageBox.Items.Clear();
-                    listViewBox.Items.Clear();
+                    listImageFullStepFood.Items.Clear();
+                    listStep.Clear();
                     MessageBox.Show("Thành công!");
+                    Dying?.Invoke();
+                    this.Close();
                 }
-                if (listImageBox.Items.IsEmpty == true && listViewBox.Items.IsEmpty==true && youtubeLinkBox.Text != "" && descriptionBox.Text != "" && nameFoodBox.Text != "" && ingradientBox.Text != "" && foodImage.Source != bitmap)
+                if (listImageFullStepFood.Items.IsEmpty == true && listViewFullStepFood.Items.IsEmpty==true && youtubeLinkBox.Text != "" && descriptionFoodBox.Text != "" && nameFoodBox.Text != "" && ingradientFoodBox.Text != "" && foodImageBox.Source != bitmap)
                 {
                     MessageBox.Show("Bạn phải thêm bước nấu ăn (bao gồm thông tin, hình ảnh và thêm vào danh sách)!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-
-                //stepFoodBox.Text = "";                
-                //listImagePath.Clear();
-                //listImageBox.Items.Clear();               
+                }            
             }
             else
             {            
                 MessageBox.Show("Bạn phải thêm đủ tất cả thông tin!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);              
             }
         }
-        string tmp = ""; 
+
+        //add image Food 
         private void add_image_foodButton_Click(object sender, RoutedEventArgs e)
         {
             var screen = new OpenFileDialog();
             if (screen.ShowDialog() == true)
             {
                 var filepath = screen.FileName;
-                //var file = new FileInfo(filepath);
-                //file.CopyTo(@"D:/Desktop/image01.jpg");
                 Uri bitmap = new Uri(filepath);
-                foodImage.Source = new BitmapImage(bitmap);
+                foodImageBox.Source = new BitmapImage(bitmap);
             }
         }
 
+        //Dem hinh anh moi buoc
         int countImageStep;
+
+        //add image step food
         private void add_image_stepButton_Click(object sender, RoutedEventArgs e)
         {
             countImageStep = 0;
@@ -233,16 +183,16 @@ namespace DoAn01
                 foreach (var filepath in screen.FileNames)
                 {
                     countImageStep++;
-                    //listView.Items.Add(new BitmapImage(new Uri(filepath)));
                     listImagePath.Add(new listImage() {listImages= filepath});
                 }
                 //imageTest.countImageStep = countImageStep;
             }
         }
 
+        //add buoc nau an vao list
         private void add_stepButton_Click(object sender, RoutedEventArgs e)
         {
-            if (stepFoodBox.Text != "" && listView.Items.IsEmpty == false)
+            if (stepFoodBox.Text != "" && listViewStepFood.Items.IsEmpty == false)
             {
                 listStep.Add(new Add_Recipe()
                 {
@@ -252,37 +202,18 @@ namespace DoAn01
 
                 foreach (var item in listImagePath)
                 {
-                    listImageBox.Items.Add(new BitmapImage(new Uri(item.listImages)));
+                    listImageFullStepFood.Items.Add(new BitmapImage(new Uri(item.listImages)));
                 }
-
-                //imageTest.countStep = (listStep.Count);
-                //imageTest.infoStep = stepFoodBox.Text;
-                //tmpStep.Add(imageTest);
-
                 stepFoodBox.Text = "";
                 listImagePath.Clear();
             }
             else
             {
                 MessageBox.Show("Bạn phải thêm đủ thông tin bước và ảnh", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-
             }
-
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            listStep = stepDao.GetAll();
-            listViewBox.ItemsSource = listStep;
-
-            listImagePath = stepImageDao.GetAll();
-            listView.ItemsSource = listImagePath;
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            writer.Close();
-        }
+       
     }
 }
 

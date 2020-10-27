@@ -48,48 +48,37 @@
         </LinearGradientBrush>
     </Page.Resources>
     <Grid >
-
-
         <Grid.ColumnDefinitions >
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="600"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
         <StackPanel Background="LightYellow">
             <StackPanel Width="470" Margin="10,30,10,20" Panel.ZIndex="4" HorizontalAlignment="Center" >
-
                 <TextBlock  Name="TenMonAn" Text="{Binding Name}" Visibility="Visible" TextWrapping="Wrap"  Width="450" FontWeight="Bold" FontSize="30"  Height="68" HorizontalAlignment="Center" VerticalAlignment="Center" >
                     <Run Foreground="blue"></Run>
                 </TextBlock>
-
                 <WebBrowser Source="https://www.youtube.com/watch?v=_dK2tDK9grQ"  Panel.ZIndex="99" Height="232" Width="440"  Margin="15,30,15,10" ClipToBounds="True" />
-
                 <ScrollViewer  Height="194" Width="430"  IsTabStop="True" Margin="20,10,20,20" 
                               VerticalScrollBarVisibility="Hidden">
                     <TextBlock  Name="NoiDungMonAn" Text="{Binding Introduction}"
                                TextWrapping="Wrap" FontSize="22" Height="300"  HorizontalAlignment="Center">
                     </TextBlock>
                 </ScrollViewer>
-
                 <TextBlock Text="Nguyên liệu: " Width="400"
                                TextWrapping="Wrap"  FontSize="22" Height="30" FontWeight="Bold" Margin="41,0,0,0">
                 </TextBlock>
                 <TextBlock Name="NguyenLieu" Text="{Binding Ingredients}" Width="430"
                                TextWrapping="Wrap"  FontSize="22" Height="128" Margin="20,0">
                 </TextBlock>
-
                 <Button Width="190" Height="60" Content="Xem Video" Style="{StaticResource ClickButton}" Background="{StaticResource XemVideo}" Margin="0,20,0,20" FontSize="35" FontFamily="Caladea">
                 </Button>
             </StackPanel>
         </StackPanel>
-
         <StackPanel Width="600" Height="850" Grid.Column="1">
-
             <Button x:Name="returnButton" Width="50" Background="White" Click="returnButton_Click" Margin="0 0 0 0" BorderThickness="0" BorderBrush="White" HorizontalAlignment="Left" >
                 <Image Source="../Images/return.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="40" RenderTransformOrigin="2.171,4.193"/>
             </Button>
-
-            <Border   Width="100" Height="120" CornerRadius="10,10,10,10" BorderBrush="Black"  BorderThickness="2" Background="LightGreen">
+            <Border Width="100" Height="120" CornerRadius="10,10,10,10" BorderBrush="Black"  BorderThickness="2" Background="LightGreen">
                 <StackPanel>
                     <TextBlock Text="Bước" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"></TextBlock>
                     <TextBlock   Name="step" FontSize="45" FontWeight="Bold" HorizontalAlignment="Center">
@@ -97,24 +86,19 @@
                     </TextBlock>
                 </StackPanel>
             </Border>
-
             <TextBlock Text="Cách thực hiện: " Height="40" Margin="84,30,40,0" FontSize="25" FontWeight="Bold">
             </TextBlock>
-
             <TextBlock Name="guides" TextWrapping="Wrap" Height="227" Margin="40,10,40,10" FontSize="25" HorizontalAlignment="Stretch">
             </TextBlock>
-
             <ListView Name="HinhAnhTungStep" Width="550" 
                             BorderBrush="Transparent" Height="240"  Margin="10,10,10,50"
                               ScrollViewer.HorizontalScrollBarVisibility="auto"
                               ScrollViewer.VerticalScrollBarVisibility="Disabled">
-
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel/>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
-
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <Setter Property="Template">
@@ -137,7 +121,6 @@
                         </Setter>
                     </Style>
                 </ListView.ItemContainerStyle>
-
                 <ListView.ItemTemplate >
                     <DataTemplate>
                         <Rectangle RadiusX="20" RadiusY="20"  Height="200" Width="260">
@@ -147,16 +130,13 @@
                         </Rectangle>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-
             </ListView>
-            <!--</ScrollViewer>-->
             <StackPanel Orientation="Horizontal">
                 <Button Style="{StaticResource ClickButton}" Margin="50,0,0,0" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Height="50" Width="120" Content="BACK" Background="LightBlue" FontSize="30" Click="Back_Click">
                 </Button>
                 <Button Style="{StaticResource ClickButton}" Margin="220,0,50,0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="50" Width="120" Content="NEXT" Background="LightBlue" FontSize="30" Click="Next_Click"  >
                 </Button>
             </StackPanel>
-
         </StackPanel>
     </Grid>
 </Page>
