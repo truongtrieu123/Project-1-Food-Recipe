@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FontAwesome.WPF;
 
 namespace DoAn01
 {
@@ -44,10 +45,11 @@ namespace DoAn01
         public string Favorite { get; set; }
 
     }
+
     public class FoodMenu
     {
 
-        public List<Food> _list;
+        public static List<Food> _list;
         public bool Favorite { get; set; }
         public FoodMenu()
         {
@@ -122,11 +124,17 @@ namespace DoAn01
 
         public List<Food> _list;
 
+        public List<Food> SubList;
+
         private System.Timers.Timer _timer;
 
         public int _currentPage;
 
         public int SelectedItemIndex { get; set; }
+
+        public int Index { get; set; }
+
+        public const int TotalItemsPerPage = 12;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -141,96 +149,107 @@ namespace DoAn01
 
         private void HomePage_Loaded(object sender, RoutedEventArgs e)
         {
-
-            List<Food> subList = new List<Food>();
-
             mealListView.Items.Clear();
-            subList = _list.GetRange(0, 12);
-            CreateHomePage(subList);
+            CreateHomePage();
             Console.WriteLine("lallaalla");
         }
 
-        public void CreateHomePage(List<Food> subList)
+        public void CreateHomePage()
         {
+            SubList = new List<Food>();
+
+            if (_list.Count < TotalItemsPerPage)
+                SubList = _list.GetRange(0, _list.Count);
+            else
+                SubList =  _list.GetRange(0, TotalItemsPerPage);
+
             pageNumber.Content = _currentPage;
-            mealListView.ItemsSource = subList;
+            mealListView.ItemsSource = SubList;
         }
 
-        private List<Food> SublistForNextPage()
+        private List<Food> SubListForNextPage()
         {
-            int nextIndex = (_currentPage) * 12;
-            int currentIndex = (_currentPage - 1) * 12;
-            List<Food> sublist = new List<Food>();
+            int nextIndex = (_currentPage) * TotalItemsPerPage;
+            int currentIndex = (_currentPage - 1) * TotalItemsPerPage;
+            SubList = new List<Food>();
 
             if (nextIndex + 1 > _list.Count)
-                sublist = _list.GetRange(currentIndex, _list.Count - currentIndex);
+                SubList = _list.GetRange(currentIndex, _list.Count - currentIndex);
             else
             {
-                if (_list.Count - nextIndex > 12)
-                    sublist = _list.GetRange(nextIndex, 12);
+                if (_list.Count - nextIndex > TotalItemsPerPage)
+                    SubList = _list.GetRange(nextIndex, TotalItemsPerPage);
                 else
-                    sublist = _list.GetRange(nextIndex, _list.Count - nextIndex);
+                    SubList = _list.GetRange(nextIndex, _list.Count - nextIndex);
 
                 _currentPage++;
             }
 
-            return sublist;
+            return SubList;
         }
 
         private void nextPage_Click(object sender, RoutedEventArgs e)
         {
-            mealListView.ItemsSource = SublistForNextPage();
+            mealListView.ItemsSource = SubListForNextPage();
             pageNumber.Content = _currentPage;
         }
 
-        private List<Food> SublistForPrevPage()
+        private List<Food> SubListForPrevPage()
         {
-            int currentPage = (_currentPage - 1) * 12;
-            int prevPage = (_currentPage - 2) * 12;
-            List<Food> sublist = new List<Food>();
+            int currentPage = (_currentPage - 1) * TotalItemsPerPage;
+            int prevPage = (_currentPage - 2) * TotalItemsPerPage;
+            SubList = new List<Food>();
 
             if (prevPage < 0)
             {
-                if (_list.Count < 12) sublist = _list.GetRange(0, _list.Count);
-                else sublist = _list.GetRange(0, 12); // _list.count>=12;
+                if (_list.Count < TotalItemsPerPage) SubList = _list.GetRange(0, _list.Count);
+                else SubList = _list.GetRange(0, TotalItemsPerPage); // _list.count>=TotalItemsPerPage;
             }
             else
             {
-                sublist = _list.GetRange(prevPage, 12);
+                SubList = _list.GetRange(prevPage, TotalItemsPerPage);
                 _currentPage--;
             }
 
-            return sublist;
+            return SubList;
         }
         private void prevPage_Click(object sender, RoutedEventArgs e)
         {
-            mealListView.ItemsSource = SublistForPrevPage();
+            mealListView.ItemsSource = SubListForPrevPage();
             pageNumber.Content = _currentPage;
         }
 
         private void Favorite_Click(object sender, RoutedEventArgs e)
         {
-            // Console.WriteLine(SelectedItemIndex);
+            try
+            {
+                Button btn = sender as Button;
+                ImageAwesome aws = btn.Content as ImageAwesome;
+                //change heart icon's color
+                (aws.Foreground) = (aws.Foreground == Brushes.Red) ? Brushes.Black : Brushes.Red;
 
-        }
-
-        private void mealListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int a = (int)mealListView.SelectedIndex;
-            Food p = (Food)mealListView.SelectedItem;
-
-            DetailMeal page = new DetailMeal(p);
-            this.NavigationService.Navigate(page);
-
+                int indexInList = Index + (_currentPage - 1) * TotalItemsPerPage;
+                _ = (_list[indexInList].Favorite == "Black") ? _list[indexInList].Favorite = "Red" : _list[indexInList].Favorite = "Black";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void SelectCurrentItem(object sender, KeyboardFocusChangedEventArgs e)
         {
             ListViewItem item = (ListViewItem)sender;
             item.IsSelected = true;
-            SelectedItemIndex = mealListView.SelectedIndex;
-            MessageBox.Show(SelectedItemIndex.ToString());
-            Console.WriteLine(SelectedItemIndex);
+            Index = mealListView.SelectedIndex;
+            item.IsSelected = false;
+        }
+
+        private void ListViewItem_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Food p = (Food)mealListView.Items[Index];
+            DetailMeal page = new DetailMeal(p);
+            this.NavigationService.Navigate(page);
         }
 
 

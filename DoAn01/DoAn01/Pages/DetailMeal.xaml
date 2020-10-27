@@ -57,7 +57,7 @@
                 <TextBlock  Name="TenMonAn" Text="{Binding Name}" Visibility="Visible" TextWrapping="Wrap"  Width="450" FontWeight="Bold" FontSize="30"  Height="68" HorizontalAlignment="Center" VerticalAlignment="Center" >
                     <Run Foreground="blue"></Run>
                 </TextBlock>
-                <WebBrowser Source="https://www.youtube.com/watch?v=_dK2tDK9grQ"  Panel.ZIndex="99" Height="232" Width="440"  Margin="15,30,15,10" ClipToBounds="True" />
+                <WebBrowser Height="232" Width="440"  Margin="15,30,15,10" ClipToBounds="True" />
                 <ScrollViewer  Height="194" Width="430"  IsTabStop="True" Margin="20,10,20,20" 
                               VerticalScrollBarVisibility="Hidden">
                     <TextBlock  Name="NoiDungMonAn" Text="{Binding Introduction}"

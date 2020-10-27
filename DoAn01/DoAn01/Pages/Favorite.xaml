@@ -42,10 +42,16 @@
                       Background="Transparent" Margin="30,60,30,20"
                       BorderBrush="Transparent"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                      ScrollViewer.VerticalScrollBarVisibility="Disabled" 
-                      SelectionChanged="mealListView_SelectionChanged">
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled" >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
+                        <Style.Triggers>
+                            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                <Setter Property="IsSelected" Value="True"/>
+                            </Trigger>
+                        </Style.Triggers>
+                        <EventSetter Event="PreviewMouseDoubleClick" Handler="ListViewItem_PreviewMouseDoubleClick"/>
+                        <EventSetter Event="PreviewGotKeyboardFocus" Handler="SelectCurrentItem"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type ListBoxItem}">

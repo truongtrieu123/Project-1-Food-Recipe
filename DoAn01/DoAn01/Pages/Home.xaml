@@ -15,6 +15,37 @@
             <GradientStop Color="DarkGray" Offset="0.75"/>
             <GradientStop Color="Gray" Offset="0.1"/>
         </LinearGradientBrush>
+        
+        <Style x:Key="ClickButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Name="Btt" CornerRadius="10,10,10,10" Background="{TemplateBinding Background}" BorderBrush="white" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Btt" Value="darkGray"/>
+                                <Setter Property="BorderBrush" TargetName="Btt" Value="darkgray"/>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="Green"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
         <Style x:Key="HeartButton" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Template">
@@ -42,10 +73,16 @@
                       Background="Transparent" Margin="30,60,30,20"
                       BorderBrush="Transparent"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                      ScrollViewer.VerticalScrollBarVisibility="Disabled" 
-                      SelectionChanged="mealListView_SelectionChanged">
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled" >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
+                        <Style.Triggers>
+                            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                <Setter Property="IsSelected" Value="True"/>
+                            </Trigger>
+                        </Style.Triggers>
+                        <EventSetter Event="PreviewMouseDoubleClick" Handler="ListViewItem_PreviewMouseDoubleClick"/>
+                        <EventSetter Event="PreviewGotKeyboardFocus" Handler="SelectCurrentItem"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -93,15 +130,17 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackPanel Height="60" Orientation="Horizontal" Margin="800,10,10,30">
+            
+            <StackPanel Height="60" Orientation="Horizontal" Margin="800,10,10,30" >
+
                 <Border Background="LightGreen"   BorderThickness="1" BorderBrush="Black" Width="80" Height="50" CornerRadius="10,10,10,10" Margin="5,0,5,0">
-                    <Button Click="prevPage_Click" Background="Transparent" Content="Prev" FontFamily="Caladea" BorderBrush="Transparent" FontSize="30"/>
+                    <Button Click="prevPage_Click" Style="{StaticResource ClickButton}" Background="Transparent" Content="Prev" FontFamily="Caladea" BorderBrush="Transparent" FontSize="30"/>
                 </Border>
                 <Border  Background="LightGreen" BorderThickness="1" BorderBrush="Black"  Width="50" Height="50" CornerRadius="20,20,20,20" Margin="5,0,5,0">
                     <Label Name="pageNumber" Content="{Binding _currentPage}" FontSize="30" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent" />
                 </Border>
                 <Border Background="LightGreen" BorderThickness="1" BorderBrush="Black" Width="80" Height="50" CornerRadius="10,10,10,10" Margin="5,0,5,0">
-                    <Button Click="nextPage_Click" Background="Transparent" Content="Next" FontFamily="Caladea"  BorderBrush="Transparent"  FontSize="30" />
+                    <Button Click="nextPage_Click"   Style="{StaticResource ClickButton}"  Background="Transparent" Content="Next" FontFamily="Caladea"  BorderBrush="Transparent"  FontSize="30" />
                 </Border>
             </StackPanel>
         </StackPanel>
