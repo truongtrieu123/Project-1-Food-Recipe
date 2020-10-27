@@ -7,17 +7,41 @@
         mc:Ignorable="d"
          WindowStyle="None"
         AllowsTransparency="true"
-        Title="Food Recipe" Height="900" Width="1400" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded">
+        Title="Food Recipe" Height="950" Width="1400" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded" Closed="Window_Closed">
     <Window.Icon>
         <BitmapImage x:Name="addrecipeicon" UriSource="Images/icon_splashscreen.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Icon>
+    <Window.Resources>
+        <Style  TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="bg"
+                   Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                               VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                      Value="True">
+                                <Setter Property="Background"
+                       Value="Gray"
+                       TargetName="bg" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Canvas  Margin="0,0,0,684">
-        <StackPanel Height="900">
-            <StackPanel Background="MediumPurple" Height="50" Width="1400" Orientation="Horizontal" x:Name="TitleOfWindow" MouseLeftButtonDown="TitleOfWindow_MouseLeftButtonDown">
-                <Button x:Name="returnButton" Width="50" Background="MediumPurple" Click="returnButton_Click" Margin="0 0 0 0" BorderThickness="0" >
+
+        <StackPanel Height="947">
+            <StackPanel Background="MediumPurple" Height="45" Width="1400" Orientation="Horizontal" x:Name="TitleOfWindow" MouseLeftButtonDown="TitleOfWindow_MouseLeftButtonDown">
+                <Button x:Name="returnButton" Width="50" Background="MediumPurple" Click="returnButton_Click" Margin="-2 0 0 0" BorderThickness="0" >
                     <Image Source="Images/return.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="40"/>
                 </Button>
-                <Label Foreground="White" Width="175" RenderTransformOrigin="3.919,2.601" Content="New Recipe" FontSize="30"/>
+                <Label Foreground="White" Width="175" RenderTransformOrigin="3.919,2.601" Content="New Recipe" FontSize="28"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Height="55" Margin="0 5 0 5">
                 <Button Name="saveButton" Width="100" Background="white" Click="saveButton_Click" VerticalAlignment="Top" Margin="0 0 10 0" BorderThickness="0">
@@ -34,8 +58,8 @@
                 </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="776" >
-                <StackPanel Height="770" Margin="7 -5 0 0" Width="434">
-                    <TextBox Height="58" Margin="10,0" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" Name="nameFoodBox">
+                <StackPanel Margin="7,0,0,-61" Width="434">
+                    <TextBox Height="51" Margin="10 0 10 -5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" Name="nameFoodBox">
                         <TextBox.Style>
                             <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                 <Style.Resources>
@@ -59,13 +83,13 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-                    <TextBox Height="218" Margin="10,20,10,0" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20"  TextWrapping="Wrap" TextAlignment="Justify" Name="descriptionBox">
+                    <TextBox  AcceptsReturn="true" Height="102" Margin="10,20,10,-5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20"  TextWrapping="Wrap" TextAlignment="Justify" Name="descriptionBox">
                         <TextBox.Style>
                             <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                 <Style.Resources>
                                     <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Top" Stretch="None">
                                         <VisualBrush.Visual>
-                                            <Label Content=" Nhập tên món ăn" Foreground="Gray" FontSize="20" FontStyle="Italic"/>
+                                            <Label Content=" Nhập mô tả món ăn" Foreground="Gray" FontSize="20" FontStyle="Italic"/>
                                         </VisualBrush.Visual>
                                     </VisualBrush>
                                 </Style.Resources>
@@ -83,7 +107,31 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-                    <TextBox Height="56" Margin="10,20,10,0" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" Name="youtubeLinkBox" >
+                    <TextBox  AcceptsReturn="true" Height="215" Margin="10,20,10,-5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20"  TextWrapping="Wrap" TextAlignment="Justify" Name="ingradientBox">
+                        <TextBox.Style>
+                            <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
+                                <Style.Resources>
+                                    <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Top" Stretch="None">
+                                        <VisualBrush.Visual>
+                                            <Label Content=" Nguyên liệu" Foreground="Gray" FontSize="20" FontStyle="Italic"/>
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </Style.Resources>
+                                <Style.Triggers>
+                                    <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                    </Trigger>
+                                    <Trigger Property="Text" Value="{x:Null}">
+                                        <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                    </Trigger>
+                                    <Trigger Property="IsKeyboardFocused" Value="True">
+                                        <Setter Property="Background" Value="White" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                    <TextBox Height="51" Margin="10,20,10,-5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" Name="youtubeLinkBox" >
                         <TextBox.Style>
                             <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                 <Style.Resources>
@@ -107,18 +155,21 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-                    <Border BorderBrush="black" BorderThickness="3" Margin="10,20,10,0" Height="376">
+                    <Border BorderBrush="black" BorderThickness="3" Margin="10,20,10,0" Height="353">
                         <StackPanel Margin="0,0,-3,0">
-                            <Image x:Name="foodImage" RenderOptions.BitmapScalingMode="HighQuality"  Margin="10,5,10,10" Height="297" Width="391"/>
+                            <Image x:Name="foodImage" RenderOptions.BitmapScalingMode="HighQuality"  Margin="0,5,10,10" Height="260"/>
                             <Button x:Name="add_image_foodButton" Background="LightGray" Click="add_image_foodButton_Click" BorderThickness="0" Height="63" HorizontalAlignment="Left" Width="387" Margin="10,0,0,0">
-                                <Image Source="Images/add_image.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="57" Width="78" RenderTransformOrigin="0.673,-6.619" />
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="Images/add_image.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="57" Width="78" RenderTransformOrigin="0.673,-6.619" />
+                                    <TextBlock  Text="Thêm hình món ăn" Width="217" Margin="5 10 0 0" FontSize="25" RenderTransformOrigin="0.604,2.968" FontWeight="Medium"/>
+                                </StackPanel>
                             </Button>
                         </StackPanel>
                     </Border>
                 </StackPanel>
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox Height="298" Margin="10,0,0,0" Width="333" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" TextWrapping="Wrap" TextAlignment="Justify" Name="stepFoodBox" >
+                <StackPanel Margin="0,0,0,-61">
+                    <StackPanel Orientation="Horizontal" Margin="-3 0 0 0" Height="241">
+                        <TextBox Margin="10,0,0,0" Width="590" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" TextWrapping="Wrap" TextAlignment="Justify" Name="stepFoodBox" >
                             <TextBox.Style>
                                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                     <Style.Resources>
@@ -142,11 +193,11 @@
                                 </Style>
                             </TextBox.Style>
                         </TextBox>
-                        <Border BorderBrush="black" BorderThickness="3" Margin="10,0,10,0" Height="298" Width="485">
-                            <ListView Name="listView" Margin="0,0,0,0">
+                        <Border BorderBrush="black" BorderThickness="3" Margin="10,0,10,0" Width="240">
+                            <ListView Name="listView" Margin="0,7" BorderThickness="0">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <UniformGrid Columns="2"/>
+                                        <UniformGrid Columns="1"/>
                                     </ItemsPanelTemplate>
                                 </ListView.ItemsPanel>
                                 <ListView.ItemTemplate>
@@ -158,19 +209,22 @@
 
                         </Border>
                         <StackPanel Width="98">
-                            <Button Name="add_image_stepButton" Width="100" Background="white" Click="add_image_stepButton_Click" VerticalAlignment="Top" Margin="0 20 10 0" BorderThickness="0">
-                                <Image Source="Images/add_image.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="75" Width="68" RenderTransformOrigin="0.838,0.461" />
+                            <Button Name="add_image_stepButton" Background="white" Click="add_image_stepButton_Click" VerticalAlignment="Top" Margin="15,0,10,0" BorderThickness="0">
+                                <StackPanel>
+                                    <Image Source="Images/add_image.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="75" Width="68" RenderTransformOrigin="0.838,0.461" />
+                                    <TextBlock  Text="Hình" Width="64" Margin="-5 0 0 0" FontSize="25" RenderTransformOrigin="0.604,2.968" TextAlignment="Center" Height="38"/>
+                                </StackPanel>
                             </Button>
-                            <Button Name="add_stepButton" Width="74" Background="white" Click="add_stepButton_Click" VerticalAlignment="Top" Margin="5 20 10 0" BorderThickness="0">
+                            <Button Name="add_stepButton" Width="74" Background="white" Click="add_stepButton_Click" VerticalAlignment="Top" Margin="10,10,14,0" BorderThickness="0" Height="116">
                                 <StackPanel>
                                     <Image Source="Images/add_step.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="61" Width="68" RenderTransformOrigin="0.838,0.461" />
                                     <TextBlock  Text="Thêm" Width="69" Margin="2 5 0 0" FontSize="25" RenderTransformOrigin="0.604,2.968" TextAlignment="Center"/>
                                 </StackPanel>
                             </Button>
-                        </StackPanel>                        
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Border BorderBrush="black" BorderThickness="3" Margin="10,20,10,0" Height="452" Width="454">
+                    <StackPanel Margin="-2 0 0 0">
+                        <Border BorderBrush="black" BorderThickness="3" Margin="0,20,10,0" Height="345" Width="922">
                             <ListView x:Name="listViewBox" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="0">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -181,24 +235,25 @@
                                     <DataTemplate >
                                         <StackPanel>
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock x:Name="numberStep" Text="{Binding numberStep}" Width="300" Height="30" FontSize="25" Foreground="Red" VerticalAlignment="Top"/>
+                                                <TextBlock x:Name="numberStep" Text="{Binding numberStep}" Width="100" Height="40" FontSize="25" Foreground="white" VerticalAlignment="Top" Background="MediumPurple" Margin="0 0 20 0"/>
                                                 <TextBlock x:Name="stepMakeFood" Text="{Binding stepMakeFood}" Width="400"  FontSize="23" TextWrapping="Wrap" TextAlignment="Justify"/>
-                                            </StackPanel>                                            
+                                            </StackPanel>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
                         </Border>
-                        <Border BorderBrush="black" BorderThickness="3" Margin="0,20,10,0" Height="452" Width="478">
+                        <Border BorderBrush="black" BorderThickness="3" Margin="0,20,10,0" Height="205" Width="922">
                             <ListView Name="listImageBox" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="0">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <UniformGrid Columns="4"/>
+                                <ListView.ItemsPanel >
+                                    <ItemsPanelTemplate >
+                                        <UniformGrid Columns="8"/>
                                     </ItemsPanelTemplate>
                                 </ListView.ItemsPanel>
+                            
                                 <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Image Source="{Binding}" Width="100" Height="80"/>
+                                    <DataTemplate >
+                                        <Image Source="{Binding}" Width="100" Height="80" />
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>

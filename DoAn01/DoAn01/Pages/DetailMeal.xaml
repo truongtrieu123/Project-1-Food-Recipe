@@ -3,210 +3,160 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:DoAn01.Pages"
+      xmlns:local="clr-namespace:DoAn01.Pages" xmlns:local1="clr-namespace:DoAn01"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Background="white"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       Title="Home" Width="1090" Height="850" Loaded="DetailMeal_Loaded">
 
     <Page.Resources>
+        <local1:AbsolutePathConverter x:Key="Converter"/>
+        <Style x:Key="ClickButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Name="Btt" CornerRadius="10,10,10,10" Background="{TemplateBinding Background}" BorderBrush="white" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Btt" Value="darkGray"/>
+                                <Setter Property="BorderBrush" TargetName="Btt" Value="darkgray"/>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="Green"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <LinearGradientBrush x:Key="XemVideo">
+            <GradientStop Color="Gold" Offset="0.0" />
+            <GradientStop Color="LimeGreen" Offset="1.0" />
+        </LinearGradientBrush>
     </Page.Resources>
     <Grid >
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="24*"/>
-            <RowDefinition Height="400*"/>
-        </Grid.RowDefinitions>
+
+
         <Grid.ColumnDefinitions >
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="600"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-<<<<<<< HEAD
 
-        <StackPanel>
-            <!--Nhúng video hướng dẫn nấu món ăn-->
-            <TextBlock Height="300" Width="400">
-                <!--<MediaElement Margin="20,20,20,20" Height="300" Width="400" Source="https://www.youtube.com/watch?v=5UOhoYgeFHU"></MediaElement>-->
-            </TextBlock>
+        <StackPanel Background="LightYellow">
+            <StackPanel Width="470" Margin="10,30,10,20" Panel.ZIndex="4" HorizontalAlignment="Center" >
 
-            <StackPanel Width="400" Height="444" Margin="20,0">
-=======
-        <StackPanel Margin="-30,0,0,0" Grid.RowSpan="3">
-            <Button x:Name="returnButton" Width="50" Background="White" Click="returnButton_Click" Margin="40 0 0 0" BorderThickness="0" BorderBrush="White" HorizontalAlignment="Left" >
-                <Image Source="../Images/return.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="40" RenderTransformOrigin="2.171,4.193"/>
-            </Button>
-            <!--<MediaElement Name="mediaFood" Width="400" Height="300" Margin="0 30 0 50"></MediaElement>-->
-            <TextBlock Height="57" Margin="60,50,10,50" FontSize="25">           
-                <Hyperlink NavigateUri="https://youtu.be/5UOhoYgeFHU" RequestNavigate="Hyperlink_RequestNavigate">
-                    Video demo (Click here)
-                </Hyperlink>
-            </TextBlock>
-
-
-            <StackPanel Width="400" Height="594" Margin="60,0">
->>>>>>> d7a9dcd083ac65e4fbd562f727686f038626bc1f
-                <TextBlock FontWeight="Bold" FontSize="30" Margin="10,0,0,10">
-                    <Run Text="Thịt kho hột vịt" Foreground="Blue"></Run>
+                <TextBlock  Name="TenMonAn" Text="{Binding Name}" Visibility="Visible" TextWrapping="Wrap"  Width="450" FontWeight="Bold" FontSize="30"  Height="68" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <Run Foreground="blue"></Run>
                 </TextBlock>
-                <ScrollViewer Height="200" Width="400"  IsTabStop="True" 
-                              VerticalScrollBarVisibility="Hidden">
-<<<<<<< HEAD
-                    <TextBlock Text="Thịt kho hột vịt (còn gọi là thịt kho tàu hay thịt kho riệu) là một món ăn phổ biến tại miền Nam Việt Nam. Món ăn này đặc biệt thường được chế biến để dùng trong các ngày Tết Nguyên đán vì có thể làm sẵn, giữ được lâu ngày. giữ được lâu ngày.giữ được lâu ngày."
-                    TextWrapping="Wrap" FontSize="22" TextAlignment="Justify"          >
 
-=======
-                    <TextBlock Text="Thịt kho hột vịt (còn gọi là
-                               thịt kho tàu hay thịt kho riệu) 
-                               là một món ăn phổ biến tại miền 
-                               Nam Việt Nam. Món ăn này đặc biệt thường được chế biến 
-                               để dùng trong các ngày Tết Nguyên 
-                               đán vì có thể làm sẵn, 
-                               giữ được lâu ngày.
-                               giữ được lâu ngày.
-                               giữ được lâu ngày.
-                               "
-                    TextWrapping="Wrap" FontSize="22" >
->>>>>>> d7a9dcd083ac65e4fbd562f727686f038626bc1f
+                <WebBrowser Source="https://www.youtube.com/watch?v=_dK2tDK9grQ"  Panel.ZIndex="99" Height="232" Width="440"  Margin="15,30,15,10" ClipToBounds="True" />
+
+                <ScrollViewer  Height="194" Width="430"  IsTabStop="True" Margin="20,10,20,20" 
+                              VerticalScrollBarVisibility="Hidden">
+                    <TextBlock  Name="NoiDungMonAn" Text="{Binding Introduction}"
+                               TextWrapping="Wrap" FontSize="22" Height="300"  HorizontalAlignment="Center">
                     </TextBlock>
                 </ScrollViewer>
-                <ScrollViewer Margin="0,30,0,20" Height="120" Width="400" 
-                               IsTabStop="True" VerticalScrollBarVisibility="Disabled">
-                    <ListView ScrollViewer.VerticalScrollBarVisibility="Disabled" >
-                        <ListView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel/>
-                            </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
-                        <ListViewItem Width="100" Height="100">
-                            <Rectangle RadiusX="20" RadiusY="20"  Height="90" Width="90">
-                                <Rectangle.Fill>
-                                    <ImageBrush ImageSource="./../Images/food01.jpg"/>
-                                </Rectangle.Fill>
-                            </Rectangle>
-                        </ListViewItem>
-                        <ListViewItem Width="100" Height="100" >
-                            <Rectangle RadiusX="20" RadiusY="20"  Height="90" Width="90">
-                                <Rectangle.Fill>
-                                    <ImageBrush ImageSource="./../Images/food01.jpg"/>
-                                </Rectangle.Fill>
-                            </Rectangle>
-                        </ListViewItem>
-                        <ListViewItem Width="100" Height="100">
-                            <Rectangle RadiusX="20" RadiusY="20"  Height="90" Width="90">
-                                <Rectangle.Fill>
-                                    <ImageBrush ImageSource="./../Images/food01.jpg"/>
-                                </Rectangle.Fill>
-                            </Rectangle>
-                        </ListViewItem>
-                        <ListViewItem Width="100" Height="100">
-                            <Rectangle RadiusX="20" RadiusY="20"  Height="90" Width="90">
-                                <Rectangle.Fill>
-                                    <ImageBrush ImageSource="./../Images/food01.jpg"/>
-                                </Rectangle.Fill>
-                            </Rectangle>
-                        </ListViewItem>
-                        <ListViewItem Width="100" Height="100">
-                            <Rectangle RadiusX="20" RadiusY="20"  Height="90" Width="90">
-                                <Rectangle.Fill>
-                                    <ImageBrush ImageSource="./../Images/food01.jpg"/>
-                                </Rectangle.Fill>
-                            </Rectangle>
-                        </ListViewItem>
-                    </ListView>
-                </ScrollViewer>
+
+                <TextBlock Text="Nguyên liệu: " Width="400"
+                               TextWrapping="Wrap"  FontSize="22" Height="30" FontWeight="Bold" Margin="41,0,0,0">
+                </TextBlock>
+                <TextBlock Name="NguyenLieu" Text="{Binding Ingredients}" Width="430"
+                               TextWrapping="Wrap"  FontSize="22" Height="128" Margin="20,0">
+                </TextBlock>
+
+                <Button Width="190" Height="60" Content="Xem Video" Style="{StaticResource ClickButton}" Background="{StaticResource XemVideo}" Margin="0,20,0,20" FontSize="35" FontFamily="Caladea">
+                </Button>
             </StackPanel>
         </StackPanel>
-        <ScrollViewer Grid.Column="1" IsTabStop="True" VerticalScrollBarVisibility="Auto" Margin="0,2,10,10" Grid.RowSpan="2" Grid.Row="1">
-            <ListView  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="1198">
-                <ListViewItem HorizontalAlignment="Center">
-                    <StackPanel Width="520" >
-                        <StackPanel Orientation="Horizontal" Width="500">
-                            <StackPanel Width="90" Height="100" VerticalAlignment="Top" Margin="0,10,0,10" Background="LightGreen">
-                                <TextBlock Text="Bước" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"></TextBlock>
-                                <TextBlock  FontSize="45" FontWeight="Bold" HorizontalAlignment="Center" >
-                                <Run Text="1" Foreground="Blue"></Run>
-                                </TextBlock>
-                            </StackPanel>
-                            <TextBlock Text="Sơ chế thịt ba chỉ: rửa sạch, cắt miếng vừa ăn. Ướp muối, tiêu, bột ngọt, hạt nêm, nước mắm và hành tím với thịt trong 15 phút cho ngấm đều gia vị." 
-                                   TextWrapping="Wrap"  Margin="10,10,10,5" Width="400" FontSize="24" ></TextBlock>
-                        </StackPanel>
-                        <ListView Width="500" ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                  BorderBrush="Transparent" SelectionChanged="ListView_SelectionChanged">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel/>
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                            <ListViewItem Width="230">
-                                <Rectangle RadiusX="20" RadiusY="20"  Height="150" Width="220">
-                                    <Rectangle.Fill>
-                                        <ImageBrush ImageSource="./../Images/food01.jpg"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                            </ListViewItem>
-                            <ListViewItem Width="230">
-                                <Rectangle RadiusX="20" RadiusY="20"  Height="150" Width="220">
-                                    <Rectangle.Fill>
-                                        <ImageBrush ImageSource="./../Images/food01.jpg"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                            </ListViewItem>
-                            <ListViewItem Width="230" >
-                                <Rectangle  RadiusX="20" RadiusY="20"  Height="150" Width="220">
-                                    <Rectangle.Fill>
-                                        <ImageBrush ImageSource="./../Images/food01.jpg"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                            </ListViewItem>
-                        </ListView>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem HorizontalAlignment="Center" Height="729">
-                    <StackPanel Width="520" >
-                        <StackPanel Orientation="Horizontal" Width="500">
-                            <StackPanel Width="90" Height="100" VerticalAlignment="Top" Margin="0,10,0,10" Background="LightGreen">
-                                <TextBlock Text="Bước" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"></TextBlock>
-                                <TextBlock  FontSize="45" FontWeight="Bold" HorizontalAlignment="Center" >
-                                <Run Text="2" Foreground="Blue"></Run>
-                                </TextBlock>
-                            </StackPanel>
-                            <TextBlock Text="Sơ chế thịt ba chỉ: rửa sạch, cắt miếng vừa ăn. Ướp muối, tiêu, bột ngọt, hạt nêm, nước mắm và hành tím với thịt trong 15 phút cho ngấm đều gia vị." 
-                                   TextWrapping="Wrap"  Margin="10,10,10,5" Width="400" FontSize="24" ></TextBlock>
-                        </StackPanel>
-                        <ListView Width="500" ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                  BorderBrush="Transparent" Height="552" Margin="10,0">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel/>
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                            <ListViewItem Width="230">
-                                <Rectangle RadiusX="20" RadiusY="20"  Height="150" Width="220">
-                                    <Rectangle.Fill>
-                                        <ImageBrush ImageSource="./../Images/food01.jpg"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                            </ListViewItem>
-                            <ListViewItem Width="230">
-                                <Rectangle RadiusX="20" RadiusY="20"  Height="150" Width="220">
-                                    <Rectangle.Fill>
-                                        <ImageBrush ImageSource="./../Images/food01.jpg"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                            </ListViewItem>
-                            <ListViewItem Width="230">
-                                <Rectangle  RadiusX="20" RadiusY="20"  Height="150" Width="220">
-                                    <Rectangle.Fill>
-                                        <ImageBrush ImageSource="./../Images/food01.jpg"/>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                            </ListViewItem>
-                        </ListView>
-                    </StackPanel>
-                </ListViewItem>
+
+        <StackPanel Width="600" Height="850" Grid.Column="1">
+
+            <Button x:Name="returnButton" Width="50" Background="White" Click="returnButton_Click" Margin="0 0 0 0" BorderThickness="0" BorderBrush="White" HorizontalAlignment="Left" >
+                <Image Source="../Images/return.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="40" RenderTransformOrigin="2.171,4.193"/>
+            </Button>
+
+            <Border   Width="100" Height="120" CornerRadius="10,10,10,10" BorderBrush="Black"  BorderThickness="2" Background="LightGreen">
+                <StackPanel>
+                    <TextBlock Text="Bước" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock   Name="step" FontSize="45" FontWeight="Bold" HorizontalAlignment="Center">
+                                <Run Text="{Binding _currentStep}" Foreground="Blue"></Run>
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+
+            <TextBlock Text="Cách thực hiện: " Height="40" Margin="84,30,40,0" FontSize="25" FontWeight="Bold">
+            </TextBlock>
+
+            <TextBlock Name="guides" TextWrapping="Wrap" Height="227" Margin="40,10,40,10" FontSize="25" HorizontalAlignment="Stretch">
+            </TextBlock>
+
+            <ListView Name="HinhAnhTungStep" Width="550" 
+                            BorderBrush="Transparent" Height="240"  Margin="10,10,10,50"
+                              ScrollViewer.HorizontalScrollBarVisibility="auto"
+                              ScrollViewer.VerticalScrollBarVisibility="Disabled">
+
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border x:Name="Bd" CornerRadius="10,10,10,10"  Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition Property="IsMouseOver" Value="True"/>
+                                            </MultiTrigger.Conditions>
+                                            <Setter Property="Background" TargetName="Bd" Value="WhiteSmoke"/>
+                                            <Setter Property="BorderBrush" TargetName="Bd" Value="WhiteSmoke"/>
+                                        </MultiTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <Rectangle RadiusX="20" RadiusY="20"  Height="200" Width="260">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="{Binding path, Converter={StaticResource Converter}}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
             </ListView>
-        </ScrollViewer>
+            <!--</ScrollViewer>-->
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource ClickButton}" Margin="50,0,0,0" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Height="50" Width="120" Content="BACK" Background="LightBlue" FontSize="30" Click="Back_Click">
+                </Button>
+                <Button Style="{StaticResource ClickButton}" Margin="220,0,50,0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="50" Width="120" Content="NEXT" Background="LightBlue" FontSize="30" Click="Next_Click"  >
+                </Button>
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
 </Page>

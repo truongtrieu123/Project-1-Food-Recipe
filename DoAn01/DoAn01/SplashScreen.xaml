@@ -11,17 +11,40 @@
     <Window.Icon>
         <BitmapImage UriSource="Images/icon_splashscreen.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Icon>
+    <Window.Resources>
+        <Style  TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="bg"
+                   Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                               VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                      Value="True">
+                                <Setter Property="Background"
+                       Value="Gray"
+                       TargetName="bg" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Window.Background >
         <ImageBrush ImageSource="Images/background_splashscreen.jpg"/>
     </Window.Background>
     <Canvas >
         <ProgressBar x:Name="progress" Width="200"  Minimum="0" Maximum="10" Value="0" Height="15" Canvas.Left="305" Canvas.Top="765" />
-        <Button Name="nextButton" Width="100" Height="25" Content="Bỏ qua" IsDefault="True" Click="nextButton_Click" Canvas.Left="611" Canvas.Top="765"/>
+        <Button Name="nextButton" Width="100" Height="25" Content="Bỏ qua" IsDefault="True" Click="nextButton_Click" Canvas.Left="611" Canvas.Top="765" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <CheckBox Name="turnOffCheckBox" Width="15" Height="20" Click="turnOffCheckBox_Click" Canvas.Left="523" Canvas.Top="740" RenderTransformOrigin="0.687,1.153"/>
         <Label Content="Không hiện hộp thoại này mỗi khi khởi động" Canvas.Left="543" Canvas.Top="734"/>
-        <TextBlock x:Name="nameFood" RenderTransformOrigin="39.495,4.391" Canvas.Left="232" Canvas.Top="10" Width="360" Height="40" Padding="0.5" TextAlignment="Center" FontSize="30" Foreground="#FF812BEA" FontWeight="Bold" FontFamily="Verdana"><Run Text="Thịt kho hột "/><Run Text="vịt"/></TextBlock>
-        <Image x:Name="foodImage" RenderTransformOrigin="0.5,0.5" Width="605" Height="409" Canvas.Left="96" Canvas.Top="66" />
-        <TextBlock Name="infoFood" Width="605"  Padding="2" FontSize="18" Foreground="DarkBlue" Canvas.Left="96" Canvas.Top="495" TextWrapping="Wrap" TextAlignment="Justify" FontStyle="Italic" FontWeight="Bold" />
+        <TextBlock x:Name="nameFood" Text="{Binding nameFood}" RenderTransformOrigin="39.495,4.391" Canvas.Left="232" Canvas.Top="10" Width="360" Height="40" Padding="0.5" TextAlignment="Center" FontSize="30" Foreground="#FF812BEA" FontWeight="Bold" FontFamily="Verdana"><Run Text="Thịt kho hột "/><Run Text="vịt"/></TextBlock>
+        <Image x:Name="foodImage" Source="{Binding foodImage}" RenderTransformOrigin="0.5,0.5" Width="605" Height="409" Canvas.Left="96" Canvas.Top="66" />
+        <TextBlock Name="infoFood" Text="{Binding infoFood}" Width="605"  Padding="2" FontSize="18" Foreground="DarkBlue" Canvas.Left="96" Canvas.Top="495" TextWrapping="Wrap" TextAlignment="Justify" FontStyle="Italic" FontWeight="Bold" />
     </Canvas>
 
 </Window>
