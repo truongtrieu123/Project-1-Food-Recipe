@@ -24,163 +24,53 @@ namespace DoAn01
     /// </summary>
     /// 
 
-    public class Step
-    {
-        public string StepDetail { get; set; }
-        public List<string> StepImage { get; set; }
-        public int StepNumber { get; set; }
-
-    }
-
-    public class Food : Step
-    {
-
-        public List<Step> Recipe { get; set; }
-        public string Name { get; set; }
-        public string CoverSource { get; set; }
-        public string VideosSource { get; set; }
-        public string Introduction { get; set; }
-        public string Ingredients { get; set; }
-        public int Index { get; set; }
-        public string Favorite { get; set; }
-
-    }
-
-    public class FoodMenu
-    {
-
-        public static List<Food> _list;
-        public bool Favorite { get; set; }
-        public FoodMenu()
-        {
-            _list = new List<Food>();
-            Food item1 = new Food
-            {
-                Name = "Món ăn ngày tết ",
-                CoverSource = "../../Images/home.jpg",
-                Introduction = "Thịt kho hột vịt (còn gọi là thịt kho tàu hay thịt kho riệu) là một món ăn phổ biến tại miền Nam Việt Nam. Món ăn này đặc biệt thường được chế biến để dùng trong các ngày Tết Nguyên đán vì có thể làm sẵn, giữ được lâu ngày. Thịt kho hột vịt (còn gọi là thịt kho tàu hay thịt kho riệu) là một món ăn phổ biến tại miền Nam Việt Nam.Món ăn này đặc biệt thường được chế biến để dùng trong các ngày Tết Nguyên đán vì có thể làm sẵn, giữ được lâu ngày.",
-                Recipe = new List<Step>
-                {
-                    new Step() { StepNumber = 1,
-                        StepDetail = "Sơ chế thịt ba chỉ: rửa sạch, cắt miếng vừa ăn. Ướp muối, tiêu, bột ngọt, hạt nêm, nước mắm và hành tím với thịt trong 15 phút cho ngấm đều gia vị.",
-                        StepImage = new List<string> { "../../Images/food01.jpg", "../../Images/food01.jpg", "../../Images/food01.jpg" }
-                    },
-                    new Step() { StepNumber = 2,
-                        StepDetail = "Sơ chế thịt ba chỉ: rửa sạch, cắt miếng vừa ăn. Ướp muối, tiêu, bột ngọt, hạt nêm, nước mắm và hành tím với thịt trong 15 phút cho ngấm đều gia vị.",
-                        StepImage = new List<string> { "../../Images/food01.jpg", "../../Images/food01.jpg", "../../Images/food01.jpg" }
-                    },
-                    new Step() { StepNumber = 3,
-                        StepDetail = "Sơ chế thịt ba chỉ: rửa sạch, cắt miếng vừa ăn. Ướp muối, tiêu, bột ngọt, hạt nêm, nước mắm và hành tím với thịt trong 15 phút cho ngấm đều gia vị.",
-                        StepImage = new List<string> { "../../Images/food01.jpg", "../../Images/food01.jpg", "../../Images/food01.jpg" }
-                    },
-                },
-                Index = 0,
-                Favorite = "Red",
-                VideosSource = "https://www.youtube.com/watch?v=_dK2tDK9grQ",
-                Ingredients = "1kg thịt heo, 5 quả hột vịt, 500ml nước dừa,...",
-            };
-            _list.Add(item1);
-
-            for (int i = 1; i <= 25; i++)
-            {
-                Food item = new Food
-                {
-                    Name = "Thịt kho hột vịt",
-                    CoverSource = "../../Images/food01.jpg",
-                    Introduction = "Thịt kho hột vịt (còn gọi là thịt kho tàu hay thịt kho riệu) là một món ăn phổ biến tại miền Nam Việt Nam. Món ăn này đặc biệt thường được chế biến để dùng trong các ngày Tết Nguyên đán vì có thể làm sẵn, giữ được lâu ngày. Thịt kho hột vịt (còn gọi là thịt kho tàu hay thịt kho riệu) là một món ăn phổ biến tại miền Nam Việt Nam.Món ăn này đặc biệt thường được chế biến để dùng trong các ngày Tết Nguyên đán vì có thể làm sẵn, giữ được lâu ngày.",
-                    Recipe = new List<Step>
-                    {
-                        new Step() { StepNumber = 1,
-                            StepDetail = "Sơ chế thịt ba chỉ: rửa sạch, cắt miếng vừa ăn. Ướp muối, tiêu, bột ngọt, hạt nêm, nước mắm và hành tím với thịt trong 15 phút cho ngấm đều gia vị.",
-                            StepImage = new List<string> {"../../Images/food01.jpg", "../../Images/food01.jpg", "../../Images/food01.jpg" }
-                        },
-                        new Step() { StepNumber = 2,
-                            StepDetail = "Sơ chế thịt ba chỉ: rửa sạch, cắt miếng vừa ăn. Ướp muối, tiêu, bột ngọt, hạt nêm, nước mắm và hành tím với thịt trong 15 phút cho ngấm đều gia vị.",
-                            StepImage = new List<string> {"../../Images/food01.jpg", "../../Images/food01.jpg", "../../Images/food01.jpg" }
-                        },
-                        new Step() { StepNumber = 3,
-                            StepDetail = "Sơ chế thịt ba chỉ: rửa sạch, cắt miếng vừa ăn. Ướp muối, tiêu, bột ngọt, hạt nêm, nước mắm và hành tím với thịt trong 15 phút cho ngấm đều gia vị.",
-                            StepImage = new List<string> { "../../Images/food01.jpg", "../../Images/food01.jpg", "../../Images/food01.jpg" }
-                        },
-                    },
-
-                    Ingredients = "1kg thịt heo, 5 quả hột vịt, 500ml nước dừa,...",
-                    Favorite = (i % 5 == 0) ? "Red" : "Black",
-                    Index = i,
-                    VideosSource = "https://www.youtube.com/watch?v=_dK2tDK9grQ",
-                };
-                _list.Add(item);
-            }
-        }
-
-        public List<Food> GetAll()
-        {
-            return _list;
-        }
-
-    }
     public partial class Home : Page, INotifyPropertyChanged
     {
-
-        public List<Food> _list;
-
-        public List<Food> SubList;
-
-        private System.Timers.Timer _timer;
-
-        public int _currentPage;
-
+        private const int TotalItemsPerPage = 12;
+        private List<Food> SubList;
+        private int _currentPage;
         public int SelectedItemIndex { get; set; }
-
         public int Index { get; set; }
-
-        public const int TotalItemsPerPage = 12;
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Home()
         {
             InitializeComponent();
-
             _currentPage = 1;
-            FoodMenu p = new FoodMenu();
-            _list = p.GetAll();
         }
 
         private void HomePage_Loaded(object sender, RoutedEventArgs e)
         {
             mealListView.Items.Clear();
             CreateHomePage();
-            Console.WriteLine("lallaalla");
         }
 
         public void CreateHomePage()
         {
             SubList = new List<Food>();
 
-            if (_list.Count < TotalItemsPerPage)
-                SubList = _list.GetRange(0, _list.Count);
+            if (Global.FoodList.Count < TotalItemsPerPage)
+                SubList = Global.FoodList.GetRange(0, TotalItemsPerPage);
             else
-                SubList =  _list.GetRange(0, TotalItemsPerPage);
+                SubList = Global.FoodList.GetRange(0, TotalItemsPerPage);
 
             pageNumber.Content = _currentPage;
             mealListView.ItemsSource = SubList;
         }
-
         private List<Food> SubListForNextPage()
         {
             int nextIndex = (_currentPage) * TotalItemsPerPage;
             int currentIndex = (_currentPage - 1) * TotalItemsPerPage;
             SubList = new List<Food>();
 
-            if (nextIndex + 1 > _list.Count)
-                SubList = _list.GetRange(currentIndex, _list.Count - currentIndex);
+            if (nextIndex + 1 > Global.FoodList.Count)
+                SubList = Global.FoodList.GetRange(currentIndex, Global.FoodList.Count - currentIndex);
             else
             {
-                if (_list.Count - nextIndex > TotalItemsPerPage)
-                    SubList = _list.GetRange(nextIndex, TotalItemsPerPage);
+                if (Global.FoodList.Count - nextIndex > TotalItemsPerPage)
+                    SubList = Global.FoodList.GetRange(nextIndex, TotalItemsPerPage);
                 else
-                    SubList = _list.GetRange(nextIndex, _list.Count - nextIndex);
+                    SubList = Global.FoodList.GetRange(nextIndex, Global.FoodList.Count - nextIndex);
 
                 _currentPage++;
             }
@@ -202,17 +92,20 @@ namespace DoAn01
 
             if (prevPage < 0)
             {
-                if (_list.Count < TotalItemsPerPage) SubList = _list.GetRange(0, _list.Count);
-                else SubList = _list.GetRange(0, TotalItemsPerPage); // _list.count>=TotalItemsPerPage;
+                if (Global.FoodList.Count < TotalItemsPerPage) 
+                    SubList = Global.FoodList.GetRange(0, Global.FoodList.Count);
+                else 
+                    SubList = Global.FoodList.GetRange(0, TotalItemsPerPage); // Global.FoodList.count>=TotalItemsPerPage;
             }
             else
             {
-                SubList = _list.GetRange(prevPage, TotalItemsPerPage);
+                SubList = Global.FoodList.GetRange(prevPage, TotalItemsPerPage);
                 _currentPage--;
             }
 
             return SubList;
         }
+
         private void prevPage_Click(object sender, RoutedEventArgs e)
         {
             mealListView.ItemsSource = SubListForPrevPage();
@@ -229,7 +122,9 @@ namespace DoAn01
                 (aws.Foreground) = (aws.Foreground == Brushes.Red) ? Brushes.Black : Brushes.Red;
 
                 int indexInList = Index + (_currentPage - 1) * TotalItemsPerPage;
-                _ = (_list[indexInList].Favorite == "Black") ? _list[indexInList].Favorite = "Red" : _list[indexInList].Favorite = "Black";
+                _ = (Global.FoodList[indexInList].Favorite == "Black") ? 
+                    Global.FoodList[indexInList].Favorite = "Red" : 
+                    Global.FoodList[indexInList].Favorite = "Black";
             }
             catch (Exception ex)
             {

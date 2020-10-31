@@ -1,19 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace DoAn01
 {
@@ -22,6 +10,13 @@ namespace DoAn01
     /// </summary>
     public partial class SplashScreen : Window
     {
+        private const int MaxTime = 10; // Thời gian hiển thị tối đa hiển thị
+
+        private int MyTime = 0; // Biến đếm thời gian hiển thị của màn hình
+        private System.Timers.Timer _timer; // Biến timer để đếm thời gian chạy của chương trình
+        private Random _rng;
+        private Food _food = new Food();
+        private int _foodindex;
         public delegate void DeathHandler();
         public event DeathHandler Dying;
 
@@ -29,10 +24,19 @@ namespace DoAn01
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Hàm khi màn hình khởi tạo xong.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var value = ConfigurationManager.AppSettings["ShowSplashScreen"];
             var showSplash = bool.Parse(value);
+            FoodDAO dao = new ExcelFoodDAO();
+            Global.FoodList = dao.GetAll();
+            Global.CreateFavoriteList();
 
             if (showSplash == false)
             {
@@ -42,25 +46,31 @@ namespace DoAn01
             }
             else
             {
-                test();
-                timer = new System.Timers.Timer();
-                timer.Elapsed += Timer_Elapsed;
-                timer.Interval = 1000;
-                timer.Start();
+                MyTime = 0;
+
+                _rng = new Random();
+                _foodindex = _rng.Next(Global.FoodList.Count);
+                _food = Global.FoodList[_foodindex];
+                DataContext = _food;
+
+                _timer = new System.Timers.Timer();
+                _timer.Elapsed += Timer_Elapsed;
+                _timer.Interval = 1000;
+                _timer.Start();
             }
         }
 
-        System.Timers.Timer timer;
-        int count = 0;
-        int target = 10;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            count++;
-            if (count == target)
+            MyTime++;
+            if (MyTime == MaxTime)
             {
-                timer.Stop();
-
+                _timer.Stop();
 
                 Dispatcher.Invoke(() =>
                 {
@@ -69,53 +79,40 @@ namespace DoAn01
 
                     this.Close();
                 });
-
             }
 
             Dispatcher.Invoke(() =>
             {
-                progress.Value = count;
+                progress.Value = MyTime;
             });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void turnOffCheckBox_Click(object sender, RoutedEventArgs e)
         {
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             config.AppSettings.Settings["ShowSplashScreen"].Value = "false";
             config.Save(ConfigurationSaveMode.Minimal);
+
+            ConfigurationManager.RefreshSection("appSettings");
         }
 
-        private void nextButton_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void skipButton_Click(object sender, RoutedEventArgs e)
         {
-            timer.Stop();           
+            _timer.Stop();           
             Dying?.Invoke();
             var screen = new MainWindow();
             screen.Show();
             this.Close();
         }
-
-        private void test()
-        {
-            var bitmap = new BitmapImage(new Uri($"Images/food01.jpg",UriKind.Relative));
-            foodImage.Source = bitmap;
-            //var folder = AppDomain.CurrentDomain.BaseDirectory;
-            //var filepath = $"Data/infoFood.txt";
-            //using (var reader = new StreamReader("Data/infoFood.txt"))
-            //{
-            //    while (!reader.EndOfStream)
-            //    {
-            //        var line = reader.ReadLine();
-            //        Dispatcher.Invoke(() =>
-            //        {
-            //            infoFood.Text = line;
-            //        });
-
-            //    }
-            //}
-
-            infoFood.Text = "Thịt kho hột vịt là món ăn đặc trưng của ngày Tết cổ truyền nhưng cũng rất quen thuộc trong các bữa ăn hằng ngày của mọi gia đình. Món ăn chỉ với 2 nguyên liệu chính là thịt ba rọi và trứng vịt nhưng khi được nêm nếm gia vị và thực hiện phương pháp kho đặc trưng thì trở nên hấp dẫn và ngon miệng lạ kỳ. Thịt kho hột vịt là món ăn đặc trưng của ngày Tết cổ truyền nhưng cũng rất quen thuộc trong các bữa ăn hằng ngày của mọi gia đình. Món ăn chỉ với 2 nguyên liệu chính là thịt ba rọi và trứng vịt nhưng khi được nêm nếm gia vị và thực hiện phương pháp kho đặc trưng thì trở nên hấp dẫn và ngon miệng lạ kỳ.";
-        }
-
-        
     }
 }

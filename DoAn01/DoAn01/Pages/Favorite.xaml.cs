@@ -23,42 +23,11 @@ namespace DoAn01
     /// </summary>
     /// 
 
-    public class FavoriteMenu
-    {
-        public List<Food> _foodList;
-        public BindingList<Food> _favoriteList;
-        public FavoriteMenu()
-        {
-            _foodList = new List<Food>();
-            _favoriteList = new BindingList<Food>();
-
-            FoodMenu p = new FoodMenu();
-            _foodList = p.GetAll();
-
-            for (int i = 0; i < _foodList.Count; i++)
-            {
-                if (_foodList[i].Favorite == "Red")
-                {
-                    Food a = _foodList[i];
-                    _favoriteList.Add(a);
-                }
-            }
-        }
-
-        public BindingList<Food> GetAll()
-        {
-            return _favoriteList;
-        }
-    }
-
     public partial class Favorite : Page, INotifyPropertyChanged
     {
         public BindingList<Food> _list;
 
         public BindingList<Food> Sublist { get; set; }
-
-        //List contains elements which have black heart icon were deleted from _list
-        public List<Food> BlackList { get; set; }
 
         private System.Timers.Timer _timer;
 
@@ -66,11 +35,12 @@ namespace DoAn01
 
         private const int TotalItemsPerPage = 12;
 
-        //item index in current page;
+        // item index in current page;
         public int IndexCurrentPage { get; set; }
 
-        //element index in _list
+        // element index in _list
         public int IndexInList { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Favorite()
@@ -78,9 +48,6 @@ namespace DoAn01
             InitializeComponent();
 
             _currentPage = 1;
-            FavoriteMenu p = new FavoriteMenu();
-            _list = p.GetAll();
-            BlackList = new List<Food>();
         }
 
         public BindingList<Food> GetRange(BindingList<Food> p, int start, int count)
@@ -154,7 +121,7 @@ namespace DoAn01
             if (prevPage < 0)
             {
                 if (_list.Count < 12) Sublist = GetRange(_list, 0, _list.Count);
-                else Sublist = GetRange(_list, 0, TotalItemsPerPage);// _list.count>=12;
+                else Sublist = GetRange(_list, 0, TotalItemsPerPage);
             }
             else
             {

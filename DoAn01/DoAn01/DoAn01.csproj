@@ -38,6 +38,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Cells">
+      <HintPath>..\..\..\Aspose.Cells\Aspose.Cells.dll</HintPath>
+    </Reference>
     <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
     </Reference>
@@ -84,6 +87,10 @@
     <Compile Include="AddRecipe.xaml.cs">
       <DependentUpon>AddRecipe.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Food.cs" />
+    <Compile Include="FoodDAO.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Page.cs" />
     <Compile Include="Pages\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
@@ -161,6 +168,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Data\DataBase\FoodList.xlsx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -171,33 +179,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\icon_splashscreen.jpg" />
+    <Resource Include="Data\Images\splash_bckgrnd.jpg" />
+    <Resource Include="Data\Images\Icons\addIcon.jpg" />
+    <Resource Include="Data\Images\Icons\add_imageIcon.jpg" />
+    <Resource Include="Data\Images\Icons\add_stepIcon.jpg" />
+    <Resource Include="Data\Images\Icons\appIcon.jpg" />
+    <Resource Include="Data\Images\Icons\outIcon.jpg" />
+    <Resource Include="Data\Images\Icons\food01.jpg" />
+    <Resource Include="Data\Images\Icons\homeIcon.jpg" />
+    <Resource Include="Data\Images\Icons\inforIcon.jpg" />
+    <Resource Include="Data\Images\Icons\leftarrowIcon.jpg" />
+    <Resource Include="Data\Images\Icons\loveIcon.jpg" />
+    <Resource Include="Data\Images\Icons\quitIcon.jpg" />
+    <Resource Include="Data\Images\Icons\saveIcon.jpg" />
+    <Resource Include="Data\Images\Icons\searchIcon.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\background_splashscreen.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\food01.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\home.jpg" />
-    <Resource Include="Images\information.jpg" />
-    <Resource Include="Images\like.jpg" />
-    <Resource Include="Images\menu.jpg" />
-    <Resource Include="Images\search.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\out.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\add.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\add_image.jpg" />
-    <Resource Include="Images\add_step.jpg" />
-    <Resource Include="Images\cancel.jpg" />
-    <Resource Include="Images\return.jpg" />
-    <Resource Include="Images\save.jpg" />
+    <Folder Include="Data\Images\Food\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

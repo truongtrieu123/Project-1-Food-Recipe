@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DoAn01"
         mc:Ignorable="d"
-        WindowStyle="none"
-        AllowsTransparency="true"
-         Height="800" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" >
+        WindowStyle="none"  AllowsTransparency="true"
+         Height="800" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Title="Welcom to FoodRecipe">
+    
     <Window.Icon>
-        <BitmapImage UriSource="Images/icon_splashscreen.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
+        <BitmapImage UriSource="Data/Images/Icons/appIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Icon>
+    
     <Window.Resources>
+        <local:AbsolutePathConverter x:Key="pathConverter"/>
         <Style  TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>
@@ -34,17 +36,26 @@
             </Setter>
         </Style>
     </Window.Resources>
+
     <Window.Background >
-        <ImageBrush ImageSource="Images/background_splashscreen.jpg"/>
+        <ImageBrush ImageSource="Data/Images/splash_bckgrnd.jpg"/>
     </Window.Background>
-    <Canvas >
+
+    <Canvas>
         <ProgressBar x:Name="progress" Width="200"  Minimum="0" Maximum="10" Value="0" Height="15" Canvas.Left="305" Canvas.Top="765" />
-        <Button Name="nextButton" Width="100" Height="25" Content="Bỏ qua" IsDefault="True" Click="nextButton_Click" Canvas.Left="611" Canvas.Top="765" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <Button Name="skipButton" Width="100" Height="25" Content="Bỏ qua" IsDefault="True" Click="skipButton_Click" Canvas.Left="611" Canvas.Top="765" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
         <CheckBox Name="turnOffCheckBox" Width="15" Height="20" Click="turnOffCheckBox_Click" Canvas.Left="523" Canvas.Top="740" RenderTransformOrigin="0.687,1.153"/>
-        <Label Content="Không hiện hộp thoại này mỗi khi khởi động" Canvas.Left="543" Canvas.Top="734"/>
-        <TextBlock x:Name="nameFood" Text="{Binding nameFood}" RenderTransformOrigin="39.495,4.391" Canvas.Left="232" Canvas.Top="10" Width="360" Height="40" Padding="0.5" TextAlignment="Center" FontSize="30" Foreground="#FF812BEA" FontWeight="Bold" FontFamily="Verdana"><Run Text="Thịt kho hột "/><Run Text="vịt"/></TextBlock>
-        <Image x:Name="foodImage" Source="{Binding foodImage}" RenderTransformOrigin="0.5,0.5" Width="605" Height="409" Canvas.Left="96" Canvas.Top="66" />
-        <TextBlock Name="infoFood" Text="{Binding infoFood}" Width="605"  Padding="2" FontSize="18" Foreground="DarkBlue" Canvas.Left="96" Canvas.Top="495" TextWrapping="Wrap" TextAlignment="Justify" FontStyle="Italic" FontWeight="Bold" />
+
+        <Label Content="Không hiện hộp thoại này khi khởi động" Canvas.Left="543" Canvas.Top="734"/>
+
+        <TextBlock x:Name="nameFood" Text="{Binding Name}" RenderTransformOrigin="39.495,4.391" Canvas.Left="232" Canvas.Top="10" Width="360" Height="40" Padding="0.5" TextAlignment="Center" FontSize="30" Foreground="#FF812BEA" FontWeight="Bold" FontFamily="Verdana"><Run Text="Thịt kho hột "/><Run Text="vịt"/></TextBlock>
+
+        <Image x:Name="foodImage" Source="{Binding CoverSource, Converter={StaticResource pathConverter}}" RenderTransformOrigin="0.5,0.5" Width="605" Height="409" Canvas.Left="96" Canvas.Top="66" />
+
+        <TextBlock Name="infoFood" Text="{Binding Introduction}" Width="605"  Padding="2" FontSize="18" Foreground="DarkBlue" Canvas.Left="96" Canvas.Top="495" TextWrapping="Wrap" TextAlignment="Justify" FontStyle="Italic" FontWeight="Bold" />
+
     </Canvas>
 
 </Window>

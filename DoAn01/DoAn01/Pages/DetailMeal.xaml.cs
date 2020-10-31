@@ -45,7 +45,7 @@ namespace DoAn01.Pages
         {
             Info = p;
             CurrentStep = 1;
-            TotalStep = Info.Recipe.Count;
+            TotalStep = Info.StepList.Count;
             InitializeComponent();
         }
 
@@ -67,24 +67,24 @@ namespace DoAn01.Pages
             int index = CurrentStep - 1;
 
             step.Text = $"{CurrentStep}";
-            guides.Text = Info.Recipe[index].StepDetail;
+            guides.Text = Info.StepList[index].StepDetail;
             // Remove and clear source 
             HinhAnhTungStep.ItemsSource = null;
             HinhAnhTungStep.Items.Clear();
             // The list<> has been updated so reload the listview
-            HinhAnhTungStep.ItemsSource = CreateListImagePath(Info.Recipe[index].StepImage);
+            HinhAnhTungStep.ItemsSource = CreateListImagePath(Info.StepList[index].StepImages);
 
         }
 
-        public List<ImagePath> CreateListImagePath(List<string> StepImage)
+        public List<ImagePath> CreateListImagePath(List<string> stepImage)
         {
             List<ImagePath> _list = new List<ImagePath>();
 
-            foreach (var i in StepImage)
+            foreach (var img in stepImage)
             {
                 ImagePath temp = new ImagePath();
 
-                temp.path = i;
+                temp.path = img;
                 _list.Add(temp);
             }
 
@@ -95,10 +95,10 @@ namespace DoAn01.Pages
         {
             if (CurrentStep <= 1)
             {
-                CurrentStep = Info.Recipe.Count;
+                CurrentStep = Info.StepList.Count;
                 InitializeStepDetailInfo();
             }
-            else if (CurrentStep > 1 && CurrentStep <= Info.Recipe.Count)
+            else if (CurrentStep > 1 && CurrentStep <= Info.StepList.Count)
             {
                 CurrentStep--;
                 InitializeStepDetailInfo();
@@ -107,12 +107,12 @@ namespace DoAn01.Pages
 
         private void Next_Click(object sender, RoutedEventArgs e)
         {
-            if (CurrentStep >= Info.Recipe.Count)
+            if (CurrentStep >= Info.StepList.Count)
             {
                 CurrentStep = 1;
                 InitializeStepDetailInfo();
             }
-            else if (CurrentStep < Info.Recipe.Count && CurrentStep >= 1)
+            else if (CurrentStep < Info.StepList.Count && CurrentStep >= 1)
             {
                 CurrentStep++;
                 InitializeStepDetailInfo();

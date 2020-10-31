@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aspose.Cells;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -24,16 +25,9 @@ namespace DoAn01
         public MainWindow()
         {
             InitializeComponent();
-            //Main.Content = new Home();
-            Home page = new Home();
+            var page = new Home();
             Main.NavigationService.Navigate(page);
         }
-
-        private void menuButton_Click(object sender, RoutedEventArgs e)
-        {
-            //Main.Content = new Home();
-        }
-
 
         private void favorButton_Click(object sender, RoutedEventArgs e)
         {
@@ -54,17 +48,20 @@ namespace DoAn01
         {
             this.Close();
         }
+
         private void newRecipeButton_Click(object sender, RoutedEventArgs e)
         {
             var screen = new AddRecipe();
-            screen.Dying += XuLiHapHoi;
+            screen.Dying += DyingHadle;
             screen.Show();
             this.Hide();
         }
-        private void XuLiHapHoi()
+
+        private void DyingHadle()
         {
             this.Show();
         }
+
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new Home();
@@ -78,5 +75,46 @@ namespace DoAn01
             win.DragMove();
         }
 
+        private void ExcelExportData()
+        {
+            var folder = AppDomain.CurrentDomain.BaseDirectory;
+            var database = $"{folder}FoodList.xlsx";
+            var workbook = new Workbook(database);
+            var sheet = workbook.Worksheets[0];
+            sheet.AutoFitColumns();
+            sheet.AutoFitRows();
+            var row = 1;
+            var col = 7;
+            var countsteps = new int[] { };
+
+            foreach (var value in Global.FoodList)
+            {
+                sheet.Cells[row, 1].Value = value.Name;
+                sheet.Cells[row, 2].Value = value.VideoSource;
+                sheet.Cells[row, 3].Value = value.Favorite.ToString();
+                sheet.Cells[row, 4].Value = value.Introduction;
+                sheet.Cells[row, 5].Value = value.Ingredients;
+                col = 7;
+                Array.Clear(countsteps, 0, countsteps.Length);
+                countsteps.Append(value.CountSteps);
+
+                foreach (var step in value.StepList)
+                {
+                    sheet.Cells[row, col].Value = step.StepDetail;
+                    col++;
+                    countsteps.Append(step.StepImages.Count);
+                }
+
+                sheet.Cells[row, col].Value = String.Join(" ", countsteps);
+                row++;
+            }
+
+            workbook.Save($"{folder}data.xlsx");
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            ExcelExportData();
+        }
     }
 }
