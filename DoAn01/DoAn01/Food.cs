@@ -13,7 +13,7 @@ namespace DoAn01
 
     public class Food: INotifyCollectionChanged
     {
-        public string Index { get; set; }
+        public string DayIndex { get; set; }
         public string Name { get; set; }
         public string CoverSource { get; set; }
         public string VideoSource { get; set; }
@@ -31,6 +31,14 @@ namespace DoAn01
         public int Compare(Food x, Food y)
         {
             return (x.Name.CompareTo(y.Name));
+        }
+    }
+
+    public class FoodDayIndex: IComparer<Food>
+    {
+        public int Compare(Food x, Food y)
+        {
+            return (x.DayIndex.CompareTo(y.DayIndex));
         }
     }
 

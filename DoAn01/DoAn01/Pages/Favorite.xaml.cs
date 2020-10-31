@@ -25,8 +25,6 @@ namespace DoAn01
 
     public partial class Favorite : Page, INotifyPropertyChanged
     {
-        public BindingList<Food> _list;
-
         public BindingList<Food> Sublist { get; set; }
 
         private System.Timers.Timer _timer;
@@ -73,7 +71,7 @@ namespace DoAn01
         {
             Sublist = new BindingList<Food>();
 
-            if (_list.Count < TotalItemsPerPage)
+            if (_list.Count < TotalItemsPerPage) 
                 Sublist = GetRange(_list, 0, _list.Count);
             else
                 Sublist = GetRange(_list, 0, TotalItemsPerPage);

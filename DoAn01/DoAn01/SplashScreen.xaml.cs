@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -10,16 +11,23 @@ namespace DoAn01
     /// </summary>
     public partial class SplashScreen : Window
     {
-        private const int MaxTime = 10; // Thời gian hiển thị tối đa hiển thị
+        #region Constant
+        private const int MaxTime = 10; // Thời gian hiển thị tối đa hiển thị 
+        #endregion
 
+        #region Attributes
         private int MyTime = 0; // Biến đếm thời gian hiển thị của màn hình
         private System.Timers.Timer _timer; // Biến timer để đếm thời gian chạy của chương trình
         private Random _rng;
         private Food _food = new Food();
         private int _foodindex;
         public delegate void DeathHandler();
-        public event DeathHandler Dying;
+        public event DeathHandler Dying; 
+        #endregion
 
+        /// <summary>
+        /// Hàm khởi tạo màn hình Splash Screen
+        /// </summary>
         public SplashScreen()
         {
             InitializeComponent();
@@ -52,7 +60,8 @@ namespace DoAn01
                 _foodindex = _rng.Next(Global.FoodList.Count);
                 _food = Global.FoodList[_foodindex];
                 DataContext = _food;
-
+                Debug.WriteLine(_food.CoverSource);
+                
                 _timer = new System.Timers.Timer();
                 _timer.Elapsed += Timer_Elapsed;
                 _timer.Interval = 1000;
@@ -61,7 +70,7 @@ namespace DoAn01
         }
 
         /// <summary>
-        /// 
+        /// Hàm xử lí bộ đếm thời gian sau mỗi chu kỳ
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -88,11 +97,11 @@ namespace DoAn01
         }
 
         /// <summary>
-        /// 
+        /// Hàm xử lí sự kiện khi check vào never show agian check box
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void turnOffCheckBox_Click(object sender, RoutedEventArgs e)
+        private void neverShowAgainCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             config.AppSettings.Settings["ShowSplashScreen"].Value = "false";
@@ -102,7 +111,7 @@ namespace DoAn01
         }
 
         /// <summary>
-        /// 
+        /// Hàm xử lí sự kiện khi nhấn vào button skip Splash Screen
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -114,5 +123,6 @@ namespace DoAn01
             screen.Show();
             this.Close();
         }
+
     }
 }

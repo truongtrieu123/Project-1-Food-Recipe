@@ -89,6 +89,7 @@ namespace DoAn01
 
             foreach (var value in Global.FoodList)
             {
+                sheet.Cells[row, 0].Value = value.DayIndex;
                 sheet.Cells[row, 1].Value = value.Name;
                 sheet.Cells[row, 2].Value = value.VideoSource;
                 sheet.Cells[row, 3].Value = value.Favorite.ToString();

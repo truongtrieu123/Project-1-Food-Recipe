@@ -43,12 +43,13 @@ namespace DoAn01
 
             while (cell.Value != null)
             {
-                var index = sheet.Cells[$"A{row}"].StringValue;
+                var dayindex = sheet.Cells[$"A{row}"].StringValue;
                 var name = cell.StringValue;
                 var videosorce = sheet.Cells[$"C{row}"].StringValue;
                 var favorite = sheet.Cells[$"D{row}"].StringValue;
                 var introduction = sheet.Cells[$"E{row}"].StringValue;
                 var ingredients = sheet.Cells[$"F{row}"].StringValue;
+                var coversource = $"Data\\Images\\Food\\{dayindex}\\ava.jpg";
 
                 var countsteps_countimages = sheet.Cells[$"G{row}"].StringValue;
                 var tokens = countsteps_countimages.Split(new string[] { Space }, StringSplitOptions.RemoveEmptyEntries);
@@ -66,7 +67,7 @@ namespace DoAn01
 
                     for (var pos1 = 0; pos1 < countimages; pos1++)
                     {
-                        path = $"Data\\Images\\Food\\{index}\\step{pos + 1} ({pos1 + 1}).jpg";
+                        path = $"Data\\Images\\Food\\{dayindex}\\step{pos + 1} ({pos1 + 1}).jpg";
                         temp_step.StepImages.Add(path);
                     }
 
@@ -76,11 +77,13 @@ namespace DoAn01
                 var food = new Food()
                 {
                     Name = name,
-                    Favorite = favorite,
+                    DayIndex = dayindex,
                     VideoSource = videosorce,
+                    CoverSource = coversource,
                     Introduction = introduction,
                     Ingredients = ingredients,
                     CountSteps = countsteps,
+                    Favorite = favorite,
                     StepList = steplist
                 };
                 result.Add(food);

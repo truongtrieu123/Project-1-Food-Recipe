@@ -43,6 +43,7 @@ namespace DoAn01
         {
             mealListView.Items.Clear();
             CreateHomePage();
+
         }
 
         public void CreateHomePage()
