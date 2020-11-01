@@ -7,7 +7,7 @@
         mc:Ignorable="d"
          WindowStyle="None"
         AllowsTransparency="true"
-        Title="Food Recipe" Height="950" Width="1400" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="Food Recipe" Height="950" Width="1400" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closed="Window_Closed">
     <Window.Icon>
         <BitmapImage x:Name="addrecipeicon" UriSource="Data/Images/Icons/appIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Icon>

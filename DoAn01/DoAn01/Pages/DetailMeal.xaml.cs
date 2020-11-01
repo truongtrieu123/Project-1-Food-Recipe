@@ -24,6 +24,9 @@ namespace DoAn01.Pages
     /// </summary>
     public partial class DetailMeal : Page, INotifyCollectionChanged
     {
+        public delegate void DyingHandler();
+        public event DyingHandler Dying;
+
         public class ImagePath
         {
             public string path { get; set; }
@@ -128,6 +131,7 @@ namespace DoAn01.Pages
         {
             this.NavigationService.GoBack();
         }
+
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));

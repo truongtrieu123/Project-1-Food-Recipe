@@ -26,6 +26,13 @@ namespace DoAn01
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Global.HomeSubLists = Global.ConvertListToSubLists(Global.ItemsPerPage, Global.FoodList);
+            Global.FavorSubLists = Global.ConvertListToSubLists(Global.ItemsPerPage, Global.FavoriteFoodList);
+
             var page = new Home();
             Main.NavigationService.Navigate(page);
         }
@@ -120,17 +127,8 @@ namespace DoAn01
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            ExcelExportData();
+            //ExcelExportData();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            Global.HomeSubLists = Global.ConvertListToSubLists(Global.ItemsPerPage, Global.FoodList);
-            Global.FavorSubLists = Global.ConvertListToSubLists(Global.ItemsPerPage, Global.FavoriteFoodList);
-            foreach(var list in Global.HomeSubLists)
-            {
-                Debug.WriteLine(list.First().Name);
-            }
-        }
     }
 }

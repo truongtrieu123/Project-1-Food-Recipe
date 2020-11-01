@@ -4,12 +4,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DoAn01"
-      xmlns:local1="clr-namespace:DoAn01"
       xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d"      
       Background="white"
       Title="Home" Width="1090" Height="850" Loaded="Favorite_Loaded">
     <Page.Resources>
+        <local:PageNumberConverter x:Key="pagenumConverter"/>
         <local:AbsolutePathConverter x:Key="Converter"/>
         <LinearGradientBrush x:Key="backgroundListViewItem">
             <GradientStop Color="LightGray" Offset="0.0"/>
@@ -68,8 +68,8 @@
     </Page.Resources>
     <Grid>
         <StackPanel Orientation="Vertical" >
-            <ListView x:Name="mealListView" Height="670" ItemsSource="{Binding}" 
-                      Background="Transparent" Margin="30,60,30,20"
+            <ListView x:Name="mealListView" Height="690"  Width="1028"
+                      Background="Transparent" Margin="20,30,20,25"
                       BorderBrush="Transparent"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                       ScrollViewer.VerticalScrollBarVisibility="Disabled" >
@@ -109,21 +109,24 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate >
                     <DataTemplate>
-                        <StackPanel Width="235" Height="200"  Background="Transparent" Margin="5,5,5,10" >
-                            <StackPanel  Height="190">
+                        <StackPanel Width="235" Height="210"  Background="Transparent" Margin="5,5,5,5" >
+                            <StackPanel  Height="202">
                                 <Rectangle RadiusX="20" RadiusY="20"  Height="150">
                                     <Rectangle.Fill>
                                         <ImageBrush ImageSource="{Binding CoverSource, Converter={StaticResource Converter}}"/>
                                     </Rectangle.Fill>
                                 </Rectangle>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label  Content="{Binding Name}" Background="Transparent" FontSize="15" Width="150" Height="40"  BorderBrush="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                                    <Button Style="{StaticResource HeartButton}" Click="Favorite_Click">
-                                        <Button.Content>
-                                            <fa:ImageAwesome Icon="Heart"  Foreground="{Binding Favorite}"  Width="30" Height="28"  Margin="5,0,5,0"/>
-                                        </Button.Content>
+
+                                <DockPanel>
+                                    <Label Background="Transparent" FontSize="18" Width="185" Height="52"  BorderBrush="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" FontFamily="Desinosaur">
+                                        <AccessText TextWrapping="Wrap" Text="{Binding Name}"/>
+                                    </Label>
+
+                                    <Button Style="{StaticResource HeartButton}" Click="Favorite_Click" DockPanel.Dock="Right" Width="40">
+                                        <fa:ImageAwesome Icon="Heart"  Foreground="{Binding Favorite}"    Margin="5,0,5,0"/>
                                     </Button>
-                                </StackPanel>
+                                </DockPanel>
+
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>
@@ -136,9 +139,9 @@
                 <Border  Background="LightGreen" BorderThickness="1" BorderBrush="Black"  Width="77" Height="50" CornerRadius="20,20,20,20" Margin="5">
                     <Label x:Name="pageNumber" FontSize="30" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent">
                         <Label.Content>
-                            <MultiBinding StringFormat="{}{0}/{1}">
-                                <Binding Path="_favorite.CurrentPage"></Binding>
-                                <Binding Path="_favorite.MaxPage"></Binding>
+                            <MultiBinding  Converter="{StaticResource pagenumConverter}">
+                                <Binding Path="CurrentPage"/>
+                                <Binding Path="MaxPages"/>
                             </MultiBinding>
                         </Label.Content>
                     </Label>

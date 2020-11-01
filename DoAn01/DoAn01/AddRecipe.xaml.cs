@@ -76,11 +76,6 @@ namespace DoAn01
             Dying?.Invoke();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Dying?.Invoke();
-        }
-
         //Di chuyen man hinh
         private void TitleOfWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

@@ -49,7 +49,7 @@ namespace DoAn01
             var value = ConfigurationManager.AppSettings["FavorCurrentPage"];
             var favorcrtpage = int.Parse(value);
             _favorpage.CurrentPage = favorcrtpage;
-            Sublist = Global.FavorSubLists[favorcrtpage];
+            Sublist = Global.FavorSubLists[favorcrtpage - 1];
 
             mealListView.Items.Clear();
             mealListView.ItemsSource = Sublist;

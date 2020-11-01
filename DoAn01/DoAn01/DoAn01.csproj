@@ -91,6 +91,7 @@
     <Compile Include="FoodDAO.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="CPage.cs" />
+    <Compile Include="PageNumberConverter.cs" />
     <Compile Include="Pages\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>

@@ -46,6 +46,7 @@
             <GradientStop Color="Gold" Offset="0.0" />
             <GradientStop Color="LimeGreen" Offset="1.0" />
         </LinearGradientBrush>
+        
     </Page.Resources>
     <Grid >
         <Grid.ColumnDefinitions >
@@ -53,30 +54,41 @@
             <ColumnDefinition Width="600"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Background="LightYellow">
-            <StackPanel Width="470" Margin="10,30,10,20" Panel.ZIndex="4" HorizontalAlignment="Center" >
-                <TextBlock  Name="TenMonAn" Text="{Binding Name}" Visibility="Visible" TextWrapping="Wrap"  Width="450" FontWeight="Bold" FontSize="30"  Height="68" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                    <Run Foreground="blue"></Run>
+            <StackPanel Width="470" Margin="10,30,10,20" Panel.ZIndex="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <TextBlock  Name="TenMonAn" Text="{Binding Name}" Visibility="Visible" TextWrapping="Wrap"  Width="450" FontWeight="Bold" FontSize="30"  Height="68" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="blue">
                 </TextBlock>
-                <WebBrowser Height="232" Width="440"  Margin="15,30,15,10" ClipToBounds="True" />
-                <ScrollViewer  Height="194" Width="430"  IsTabStop="True" Margin="20,10,20,20" 
-                              VerticalScrollBarVisibility="Hidden">
-                    <TextBlock  Name="NoiDungMonAn" Text="{Binding Introduction}"
-                               TextWrapping="Wrap" FontSize="22" Height="300"  HorizontalAlignment="Center">
-                    </TextBlock>
+
+                <ScrollViewer  Height="120" Width="430"  IsTabStop="True" Margin="20,10,20,20" 
+                              VerticalScrollBarVisibility="Auto">
+                    <TextBlock  x:Name="NoiDungMonAn" Text="{Binding Introduction}" FontStyle="Italic"
+                               TextWrapping="Wrap" FontSize="18"  HorizontalAlignment="Center"/>
                 </ScrollViewer>
-                <TextBlock Text="Nguyên liệu: " Width="400"
+
+                <WebBrowser x:Name="foodVideo" Height="150"  Margin="100,15,103,10" ClipToBounds="True" Source="{Binding VideoSource}">
+                    <WebBrowser.DataContext>
+                        <BitmapImage UriSource="̉{Binding CoverSource}"/>
+                    </WebBrowser.DataContext>
+                </WebBrowser>
+
+                <Button Width="150" Height="60" Content="Xem Video" Style="{StaticResource ClickButton}" Background="{StaticResource XemVideo}" Margin="140,20" FontSize="20" FontFamily="Caladea" FontStyle="Italic"/>
+
+                <TextBlock Text="Nguyên liệu: " Width="400" Foreground="Red"
                                TextWrapping="Wrap"  FontSize="22" Height="30" FontWeight="Bold" Margin="41,0,0,0">
                 </TextBlock>
-                <TextBlock Name="NguyenLieu" Text="{Binding Ingredients}" Width="430"
-                               TextWrapping="Wrap"  FontSize="22" Height="128" Margin="20,0">
-                </TextBlock>
-                <Button Width="190" Height="60" Content="Xem Video" Style="{StaticResource ClickButton}" Background="{StaticResource XemVideo}" Margin="0,20,0,20" FontSize="35" FontFamily="Caladea">
-                </Button>
+                <ScrollViewer Width="430" Height="272" VerticalScrollBarVisibility="Auto">
+
+                    <TextBlock Name="NguyenLieu" Text="{Binding Ingredients}" 
+                               TextWrapping="Wrap"  FontSize="22" Width="405"/>
+                </ScrollViewer>
             </StackPanel>
         </StackPanel>
         <StackPanel Width="600" Height="850" Grid.Column="1">
+            
             <Button x:Name="returnButton" Width="50" Background="White" Click="returnButton_Click" Margin="0 0 0 0" BorderThickness="0" BorderBrush="White" HorizontalAlignment="Left" >
-                <Image Source="../Images/return.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="40" RenderTransformOrigin="2.171,4.193"/>
+                
+                <Image Source="Data\Images\Icons\leftarrowIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="40" RenderTransformOrigin="2.171,4.193"/>
+                
             </Button>
             <Border Width="100" Height="120" CornerRadius="10,10,10,10" BorderBrush="Black"  BorderThickness="2" Background="LightGreen">
                 <StackPanel>
@@ -90,6 +102,7 @@
             </TextBlock>
             <TextBlock Name="guides" TextWrapping="Wrap" Height="227" Margin="40,10,40,10" FontSize="25" HorizontalAlignment="Stretch">
             </TextBlock>
+
             <ListView Name="HinhAnhTungStep" Width="550" 
                             BorderBrush="Transparent" Height="240"  Margin="10,10,10,50"
                               ScrollViewer.HorizontalScrollBarVisibility="auto"
@@ -131,6 +144,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
             <StackPanel Orientation="Horizontal">
                 <Button Style="{StaticResource ClickButton}" Margin="50,0,0,0" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Height="50" Width="120" Content="BACK" Background="LightBlue" FontSize="30" Click="Back_Click">
                 </Button>

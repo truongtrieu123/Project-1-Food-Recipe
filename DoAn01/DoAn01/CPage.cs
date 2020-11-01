@@ -12,6 +12,7 @@ namespace FoodRecipe
             CurrentPage = 1;
             MaxPages = 1;
         }
+
         public CPage(int maxpages)
         {
             MaxPages = maxpages;

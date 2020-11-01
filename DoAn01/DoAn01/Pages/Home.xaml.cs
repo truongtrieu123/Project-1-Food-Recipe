@@ -22,7 +22,7 @@ namespace DoAn01
 
         public BindingList<Food> Sublist { get; set; }
         //
-        public CPage _homepage = new CPage(Global.FoodList.Count);
+        public CPage _homepage = new CPage(Global.HomeSubLists.Count);
         // item index in current page;
         public int IndexCurrentPage { get; set; }
         //
@@ -38,13 +38,13 @@ namespace DoAn01
 
         private void HomePage_Loaded(object sender, RoutedEventArgs e)
         {
-            var value = ConfigurationManager.AppSettings["FavorCurrentPage"];
+            var value = ConfigurationManager.AppSettings["HomeCurrentPage"];
             var homecrtpage = int.Parse(value);
             _homepage.CurrentPage = homecrtpage;
             Sublist = Global.HomeSubLists[homecrtpage];
-
-            mealListView.Items.Clear();
+            
             mealListView.ItemsSource = Sublist;
+            DataContext = _homepage;
         }
 
         private void nextPage_Click(object sender, RoutedEventArgs e)
@@ -69,8 +69,8 @@ namespace DoAn01
                 (aws.Foreground) = (aws.Foreground == Brushes.Red) ? Brushes.Black : Brushes.Red;
 
                 int indexInList = Index + (_homepage.CurrentPage - 1) * TotalItemsPerPage;
-                _ = (Global.FoodList[indexInList].Favorite == "Black") ? 
-                    Global.FoodList[indexInList].Favorite = "Red" : 
+                _ = (Global.FoodList[indexInList].Favorite == "Black") ?
+                    Global.FoodList[indexInList].Favorite = "Red" :
                     Global.FoodList[indexInList].Favorite = "Black";
             }
             catch (Exception ex)
@@ -87,10 +87,22 @@ namespace DoAn01
             item.IsSelected = false;
         }
 
+        private void DyingHadle()
+        {
+            this.Visibility = Visibility.Visible;
+        }
+
         private void ListViewItem_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Food p = (Food)mealListView.Items[Index];
             DetailMeal page = new DetailMeal(p);
+
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["HomeCurrentPage"].Value = _homepage.CurrentPage.ToString();
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            ConfigurationManager.RefreshSection("appSettings");
+
             this.NavigationService.Navigate(page);
         }
 
