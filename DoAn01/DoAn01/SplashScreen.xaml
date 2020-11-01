@@ -54,9 +54,6 @@
         <Border RenderTransformOrigin="39.495,4.391" Canvas.Left="83" Canvas.Top="26" Height="101" Width="646">
 
             <TextBlock x:Name="nameFood" TextAlignment="Center" FontSize="30" Foreground="#FF812BEA" FontWeight="Bold" FontFamily="Verdana" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  Text="{Binding Name}">
-
-            
-            
             </TextBlock>
         </Border>
 

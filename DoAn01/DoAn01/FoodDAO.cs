@@ -31,7 +31,7 @@ namespace DoAn01
         {
             var result = new List<Food>();
             var folder = AppDomain.CurrentDomain.BaseDirectory;
-            var database = $"{folder}FoodList.xlsx";
+            var database = $"{folder}\\Data\\DataBase\\FoodList.xlsx";
             var workbook = new Workbook(database);
             var sheet = workbook.Worksheets[0];
             var row = 2;

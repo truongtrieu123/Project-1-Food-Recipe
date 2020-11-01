@@ -1,21 +1,13 @@
-﻿using System;
-using DoAn01.Pages;
-using System.Collections.Generic;
+﻿using DoAn01.Pages;
+using FontAwesome.WPF;
+using FoodRecipe;
+using System;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
+using System.Configuration;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using FontAwesome.WPF;
 
 namespace DoAn01
 {
@@ -27,90 +19,44 @@ namespace DoAn01
     public partial class Home : Page, INotifyPropertyChanged
     {
         private const int TotalItemsPerPage = 12;
-        private List<Food> SubList;
-        private int _currentPage;
+
+        public BindingList<Food> Sublist { get; set; }
+        //
+        public CPage _homepage = new CPage(Global.FoodList.Count);
+        // item index in current page;
+        public int IndexCurrentPage { get; set; }
+        //
         public int SelectedItemIndex { get; set; }
+        //
         public int Index { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Home()
         {
             InitializeComponent();
-            _currentPage = 1;
         }
 
         private void HomePage_Loaded(object sender, RoutedEventArgs e)
         {
+            var value = ConfigurationManager.AppSettings["FavorCurrentPage"];
+            var homecrtpage = int.Parse(value);
+            _homepage.CurrentPage = homecrtpage;
+            Sublist = Global.HomeSubLists[homecrtpage];
+
             mealListView.Items.Clear();
-            CreateHomePage();
-
-        }
-
-        public void CreateHomePage()
-        {
-            SubList = new List<Food>();
-
-            if (Global.FoodList.Count < TotalItemsPerPage)
-                SubList = Global.FoodList.GetRange(0, TotalItemsPerPage);
-            else
-                SubList = Global.FoodList.GetRange(0, TotalItemsPerPage);
-
-            pageNumber.Content = _currentPage;
-            mealListView.ItemsSource = SubList;
-        }
-        private List<Food> SubListForNextPage()
-        {
-            int nextIndex = (_currentPage) * TotalItemsPerPage;
-            int currentIndex = (_currentPage - 1) * TotalItemsPerPage;
-            SubList = new List<Food>();
-
-            if (nextIndex + 1 > Global.FoodList.Count)
-                SubList = Global.FoodList.GetRange(currentIndex, Global.FoodList.Count - currentIndex);
-            else
-            {
-                if (Global.FoodList.Count - nextIndex > TotalItemsPerPage)
-                    SubList = Global.FoodList.GetRange(nextIndex, TotalItemsPerPage);
-                else
-                    SubList = Global.FoodList.GetRange(nextIndex, Global.FoodList.Count - nextIndex);
-
-                _currentPage++;
-            }
-
-            return SubList;
+            mealListView.ItemsSource = Sublist;
         }
 
         private void nextPage_Click(object sender, RoutedEventArgs e)
         {
-            mealListView.ItemsSource = SubListForNextPage();
-            pageNumber.Content = _currentPage;
-        }
-
-        private List<Food> SubListForPrevPage()
-        {
-            int currentPage = (_currentPage - 1) * TotalItemsPerPage;
-            int prevPage = (_currentPage - 2) * TotalItemsPerPage;
-            SubList = new List<Food>();
-
-            if (prevPage < 0)
-            {
-                if (Global.FoodList.Count < TotalItemsPerPage) 
-                    SubList = Global.FoodList.GetRange(0, Global.FoodList.Count);
-                else 
-                    SubList = Global.FoodList.GetRange(0, TotalItemsPerPage); // Global.FoodList.count>=TotalItemsPerPage;
-            }
-            else
-            {
-                SubList = Global.FoodList.GetRange(prevPage, TotalItemsPerPage);
-                _currentPage--;
-            }
-
-            return SubList;
+            //_homepage.CurrentPage++;
+            //Sublist = Global.HomeSubLists[_homepage.CurrentPage];
         }
 
         private void prevPage_Click(object sender, RoutedEventArgs e)
         {
-            mealListView.ItemsSource = SubListForPrevPage();
-            pageNumber.Content = _currentPage;
+            //_homepage.CurrentPage--;
+            //Sublist = Global.HomeSubLists[_homepage.CurrentPage];
         }
 
         private void Favorite_Click(object sender, RoutedEventArgs e)
@@ -122,7 +68,7 @@ namespace DoAn01
                 //change heart icon's color
                 (aws.Foreground) = (aws.Foreground == Brushes.Red) ? Brushes.Black : Brushes.Red;
 
-                int indexInList = Index + (_currentPage - 1) * TotalItemsPerPage;
+                int indexInList = Index + (_homepage.CurrentPage - 1) * TotalItemsPerPage;
                 _ = (Global.FoodList[indexInList].Favorite == "Black") ? 
                     Global.FoodList[indexInList].Favorite = "Red" : 
                     Global.FoodList[indexInList].Favorite = "Black";

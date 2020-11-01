@@ -1,10 +1,6 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoAn01
 {
@@ -14,6 +10,7 @@ namespace DoAn01
         public static List<Food> FavoriteFoodList { get; set; }
         public static List<BindingList<Food>> HomeSubLists { get; set; }
         public static List<BindingList<Food>> FavorSubLists { get; set; }
+        public static int ItemsPerPage { get; set; } = 12;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -40,33 +37,36 @@ namespace DoAn01
                 }
             }
 
+            if (FavoriteFoodList != null && FavoriteFoodList.Count != 0)
+            {
+                FavoriteFoodList.Clear();
+            }
             FavoriteFoodList = favoritelist;
         }
 
-        public static void ConvertListToSubLists(int itemsPerSublist, ref List<BindingList<Food>> sublists, List<Food> list)
+        public static List<BindingList<Food>> ConvertListToSubLists(int itemsPerSublist, List<Food> list)
         {
+            var result = new List<BindingList<Food>>();
             var maxSubLists = list.Count / itemsPerSublist + ((list.Count % itemsPerSublist == 0) ? 0 : 1);
-            sublists.Clear(); // Xóa hết để cập nhật lại
 
-            if (sublists.Count == 0)
+            BindingList<Food> tempSublist;
+            var leftitems = list.Count;
+            var items = itemsPerSublist;
+
+            for (var count = 0; count < maxSubLists; count++)
             {
-                var tempSublist = new BindingList<Food>();
-
-                for (var count = 0; count < maxSubLists; count++)
+                if (leftitems < itemsPerSublist)
                 {
-                    tempSublist.Clear();
-                    tempSublist = new BindingList<Food>(list.GetRange(count * itemsPerSublist, itemsPerSublist));
-                    sublists.Add(tempSublist);
+                    items = leftitems;
                 }
-            }
-            else if (sublists.Last().Count == itemsPerSublist)
-            {
 
-            }
-            else
-            {
+                tempSublist = new BindingList<Food>(list.GetRange(count * itemsPerSublist, items));
+                result.Add(tempSublist);
 
+                leftitems -= itemsPerSublist;
             }
+
+            return result;
         }
     }
 }

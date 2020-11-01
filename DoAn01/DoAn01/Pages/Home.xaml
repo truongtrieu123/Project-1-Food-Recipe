@@ -120,7 +120,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Label Background="Transparent" FontSize="15" Width="150" Height="40"  BorderBrush="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
                                         <Label.Content>
-                                            <AccessText TextWrapping="Wrap" Text="{Binding Name}"/>
+                                            <AccessText TextWrapping="NoWrap" Text="{Binding Name}"/>
                                         </Label.Content>
                                     </Label>
                                     <Button Style="{StaticResource HeartButton}" Click="Favorite_Click">
@@ -140,11 +140,14 @@
                     <Button Click="prevPage_Click" Style="{StaticResource ClickButton}" Background="Transparent" Content="Prev" FontFamily="Caladea" BorderBrush="Transparent" FontSize="30"/>
                 </Border>
                 <Border  Background="LightGreen" BorderThickness="1" BorderBrush="Black"  Width="77" Height="50" CornerRadius="20,20,20,20" Margin="5">
-                    <Label x:Name="pageNumber" Content="{Binding _currentPage}" FontSize="30" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent" />
+                    <Label x:Name="pageNumber" FontSize="30" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent">
+                        
+                    </Label>
                 </Border>
                 <Border Background="LightGreen" BorderThickness="1" BorderBrush="Black" Width="113" Height="50" CornerRadius="10,40,40,10" Margin="5">
                     <Button Click="nextPage_Click"   Style="{StaticResource ClickButton}"  Background="Transparent" Content="Next" FontFamily="Caladea"  BorderBrush="Transparent"  FontSize="30" />
                 </Border>
+                
             </StackPanel>
         </StackPanel>
     </Canvas>

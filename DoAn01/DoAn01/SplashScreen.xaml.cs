@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.Diagnostics;
 using System.Windows;
-using System.Windows.Media.Imaging;
 
 namespace DoAn01
 {
@@ -60,7 +59,6 @@ namespace DoAn01
                 _foodindex = _rng.Next(Global.FoodList.Count);
                 _food = Global.FoodList[_foodindex];
                 DataContext = _food;
-                Debug.WriteLine(_food.CoverSource);
                 
                 _timer = new System.Timers.Timer();
                 _timer.Elapsed += Timer_Elapsed;
@@ -77,6 +75,7 @@ namespace DoAn01
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             MyTime++;
+
             if (MyTime == MaxTime)
             {
                 _timer.Stop();
@@ -85,7 +84,6 @@ namespace DoAn01
                 {
                     var screen = new MainWindow();
                     screen.Show();
-
                     this.Close();
                 });
             }
@@ -118,7 +116,7 @@ namespace DoAn01
         private void skipButton_Click(object sender, RoutedEventArgs e)
         {
             _timer.Stop();           
-            Dying?.Invoke();
+            //Dying?.Invoke();
             var screen = new MainWindow();
             screen.Show();
             this.Close();

@@ -90,7 +90,7 @@
     <Compile Include="Food.cs" />
     <Compile Include="FoodDAO.cs" />
     <Compile Include="Global.cs" />
-    <Compile Include="Page.cs" />
+    <Compile Include="CPage.cs" />
     <Compile Include="Pages\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>

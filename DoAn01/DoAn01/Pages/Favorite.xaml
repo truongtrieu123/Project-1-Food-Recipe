@@ -16,6 +16,35 @@
             <GradientStop Color="DarkGray" Offset="0.75"/>
             <GradientStop Color="Gray" Offset="0.1"/>
         </LinearGradientBrush>
+        <Style x:Key="ClickButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Name="Btt" CornerRadius="10,10,10,10" Background="{TemplateBinding Background}" BorderBrush="white" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Btt" Value="darkGray"/>
+                                <Setter Property="BorderBrush" TargetName="Btt" Value="darkgray"/>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="Green"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style x:Key="HeartButton" TargetType="{x:Type Button}">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Template">
@@ -78,7 +107,6 @@
                         <WrapPanel />
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
-
                 <ListView.ItemTemplate >
                     <DataTemplate>
                         <StackPanel Width="235" Height="200"  Background="Transparent" Margin="5,5,5,10" >
@@ -101,15 +129,22 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackPanel Height="60" Orientation="Horizontal" Margin="800,10,10,30">
-                <Border Background="LightGreen"   BorderThickness="1" BorderBrush="Black" Width="80" Height="50" CornerRadius="10,10,10,10" Margin="5,0,5,0">
-                    <Button Click="prevPage_Click" Background="Transparent" Content="Prev" FontFamily="Caladea" BorderBrush="Transparent" FontSize="30"/>
+            <StackPanel Height="60" Orientation="Horizontal" Margin="708,10,10,30">
+                <Border Background="LightGreen"   BorderThickness="1" BorderBrush="Black" Width="110" Height="50" CornerRadius="40,10,10,40" Margin="5">
+                    <Button Click="prevPage_Click" Style="{StaticResource ClickButton}" Background="Transparent" Content="Prev" FontFamily="Caladea" BorderBrush="Transparent" FontSize="30"/>
                 </Border>
-                <Border  Background="LightGreen" BorderThickness="1" BorderBrush="Black"  Width="50" Height="50" CornerRadius="20,20,20,20" Margin="5,0,5,0">
-                    <Label Name="pageNumber" Content="{Binding _currentPage}" FontSize="30" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent" />
+                <Border  Background="LightGreen" BorderThickness="1" BorderBrush="Black"  Width="77" Height="50" CornerRadius="20,20,20,20" Margin="5">
+                    <Label x:Name="pageNumber" FontSize="30" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent">
+                        <Label.Content>
+                            <MultiBinding StringFormat="{}{0}/{1}">
+                                <Binding Path="_favorite.CurrentPage"></Binding>
+                                <Binding Path="_favorite.MaxPage"></Binding>
+                            </MultiBinding>
+                        </Label.Content>
+                    </Label>
                 </Border>
-                <Border Background="LightGreen" BorderThickness="1" BorderBrush="Black" Width="80" Height="50" CornerRadius="10,10,10,10" Margin="5,0,5,0">
-                    <Button Click="nextPage_Click" Background="Transparent" Content="Next" FontFamily="Caladea"  BorderBrush="Transparent"  FontSize="30" />
+                <Border Background="LightGreen" BorderThickness="1" BorderBrush="Black" Width="113" Height="50" CornerRadius="10,40,40,10" Margin="5">
+                    <Button Click="nextPage_Click"   Style="{StaticResource ClickButton}"  Background="Transparent" Content="Next" FontFamily="Caladea"  BorderBrush="Transparent"  FontSize="30" />
                 </Border>
             </StackPanel>
         </StackPanel>

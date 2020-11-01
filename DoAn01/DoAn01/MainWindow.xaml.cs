@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,7 +68,11 @@ namespace DoAn01
             Main.Content = new Home();
         }
 
-        //Di chuyen man hinh
+        /// <summary>
+        /// Hàm di chuyển màn hình
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TitleOfWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var move = sender as System.Windows.Controls.StackPanel;
@@ -116,6 +121,16 @@ namespace DoAn01
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             ExcelExportData();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Global.HomeSubLists = Global.ConvertListToSubLists(Global.ItemsPerPage, Global.FoodList);
+            Global.FavorSubLists = Global.ConvertListToSubLists(Global.ItemsPerPage, Global.FavoriteFoodList);
+            foreach(var list in Global.HomeSubLists)
+            {
+                Debug.WriteLine(list.First().Name);
+            }
         }
     }
 }
