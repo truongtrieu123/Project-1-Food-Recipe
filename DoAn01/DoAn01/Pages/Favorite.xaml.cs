@@ -33,8 +33,8 @@ namespace DoAn01
         // element index in _list
         public int IndexInList { get; set; }
         //
-        public delegate void LikeHandle();
-
+        public delegate void LikeDislikeHandle();
+        public event LikeDislikeHandle FavorHandle;
         #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -42,66 +42,100 @@ namespace DoAn01
         public Favorite()
         {
             InitializeComponent();
+            var value = ConfigurationManager.AppSettings["FavorCurrentPage"];
+            var favorcrtpage = int.Parse(value);
+
+            if (Global.FavorSubLists.Count > 0)
+            {
+                if (IsValuablePageNumber(favorcrtpage) == true)
+                {
+                    _favorpage.CurrentPage = favorcrtpage;
+
+                }
+                mealListView.ItemsSource = Global.FavorSubLists[favorcrtpage - 1];
+            }
+
+
+            DataContext = _favorpage;
+        }
+
+        private bool IsValuablePageNumber(int pagenumber)
+        {
+                var check = false;
+                check = pagenumber >= _favorpage.CurrentPage && pagenumber <= _favorpage.MaxPages;
+                return check;
         }
 
         private void Favorite_Loaded(object sender, RoutedEventArgs e)
         {
-            var value = ConfigurationManager.AppSettings["FavorCurrentPage"];
-            var favorcrtpage = int.Parse(value);
-            _favorpage.CurrentPage = favorcrtpage;
-            Sublist = Global.FavorSubLists[favorcrtpage - 1];
 
-            mealListView.Items.Clear();
-            mealListView.ItemsSource = Sublist;
+
+            //if (_favorpage.CurrentPage == 1)
+            //{
+            //    prevPageButton.IsEnabled = false;
+            //}
+            //else
+            //{
+            //    // Do nothing
+            //}
+
+            //if (_favorpage.CurrentPage == _favorpage.MaxPages)
+            //{
+            //    nextPageButton.IsEnabled = false;
+            //}
+            //else
+            //{
+            //    // Doo nothing
+            //}
         }
 
-        private void nextPage_Click(object sender, RoutedEventArgs e)
+        private void nextPageButton_Click(object sender, RoutedEventArgs e)
         {
-            _favorpage.CurrentPage++;
-            Sublist = Global.FavorSubLists[_favorpage.CurrentPage];
+            if (_favorpage.CurrentPage < _favorpage.MaxPages)
+            {
+                _favorpage.CurrentPage++;
+
+                //if(_favorpage.CurrentPage == _favorpage.MaxPages)
+                //{
+                //    nextPageButton.IsEnabled = false;
+                //}
+
+                mealListView.ItemsSource = Global.FavorSubLists[_favorpage.CurrentPage - 1];
+            }
         }
 
-        private void prevPage_Click(object sender, RoutedEventArgs e)
+        private void prevPageButton_Click(object sender, RoutedEventArgs e)
         {
-            _favorpage.CurrentPage--;
-            Sublist = Global.FavorSubLists[_favorpage.CurrentPage];
+            if (_favorpage.CurrentPage > 1)
+            {
+                _favorpage.CurrentPage--;
+
+                //if(_favorpage.CurrentPage == 1)
+                //{
+                //    prevPageButton.IsEnabled = false;
+                //}
+
+                mealListView.ItemsSource = Global.FavorSubLists[_favorpage.CurrentPage - 1];
+            }
         }
 
-        private void Favorite_Click(object sender, RoutedEventArgs e)
+        private void dislikeButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                // remove selected meal out of  menu
+                IndexInList = IndexCurrentPage + (_favorpage.CurrentPage - 1) * TotalItemsPerPage;
+                var food = Global.FoodList[IndexCurrentPage];
                 Button btn = sender as Button;
                 ImageAwesome aws = btn.Content as ImageAwesome;
 
                 // change color on icon
                 (aws.Foreground) = Brushes.Black;
-                //(aws.Foreground) = (aws.Foreground == Brushes.Red) ? Brushes.Black : Brushes.Red;
 
-                // remove selected meal out of  menu
-                IndexInList = IndexCurrentPage + (_favorpage.CurrentPage - 1) * TotalItemsPerPage;
-
-                Global.FavoriteFoodList[IndexInList].Favorite = "Black";
-                Global.FavorSubLists.Clear();
+                Global.FoodList[IndexInList].Favorite = "Black";
+                Global.FavoriteFoodList.Remove(food);
                 Global.FavorSubLists = Global.ConvertListToSubLists(TotalItemsPerPage, Global.FavoriteFoodList);
-
-                if (_favorpage.CurrentPage == _favorpage.MaxPages)
-                {
-                    if (_favorpage.MaxPages > Global.FavorSubLists.Count)
-                    {
-                        if (Global.FavorSubLists.Count == 0)
-                        {
-                            _favorpage.CurrentPage = 1;
-                            _favorpage.CurrentPage = 1;
-                            Sublist.Clear();
-                        }
-                    }
-                    {
-                        _favorpage.CurrentPage--;
-                    }
-                    _favorpage.MaxPages = Global.FavorSubLists.Count;
-                }
-
+                PageViewPrePare();
             }
             catch (Exception ex)
             {
@@ -109,6 +143,21 @@ namespace DoAn01
             }
         }
 
+        private void PageViewPrePare()
+        {
+            _favorpage.MaxPages = Global.FavorSubLists.Count;
+
+            if (_favorpage.CurrentPage > Global.FavorSubLists.Count)
+            {
+                _favorpage.CurrentPage = Global.FavorSubLists.Count;
+            }
+            else
+            {
+                // Do nothing
+            }
+            mealListView.ItemsSource = Global.FavorSubLists[_favorpage.CurrentPage - 1];
+
+        }
 
         private void SelectCurrentItem(object sender, KeyboardFocusChangedEventArgs e)
         {

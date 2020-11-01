@@ -34,7 +34,7 @@ namespace DoAn01
         }
     }
 
-    public class FoodDayIndex: IComparer<Food>
+    public class FoodDayIndexComparer: IComparer<Food>
     {
         public int Compare(Food x, Food y)
         {

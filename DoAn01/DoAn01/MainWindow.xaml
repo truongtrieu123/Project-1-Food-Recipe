@@ -8,11 +8,11 @@
         WindowStyle="none"
         AllowsTransparency="true"
         Title="Food Recipe" Height="900" Width="1400" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded">
-    
+
     <Window.Icon>
         <BitmapImage UriSource="Data/Images/Icons/appIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Icon>
-    
+
     <Window.Resources>
         <Style  TargetType="Button">
             <Setter Property="Template">
@@ -36,7 +36,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    
+
     <Canvas >
         <StackPanel>
             <StackPanel Background="MediumPurple" Height="50" Width="1400" Orientation="Horizontal" x:Name="TitleOfWindow" MouseLeftButtonDown="TitleOfWindow_MouseLeftButtonDown">
@@ -47,23 +47,23 @@
                     <Image Source="Data/Images/Icons/quitIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" VerticalAlignment="Center" HorizontalAlignment="Center" Width="76"/>
                 </Button>
             </StackPanel>
-            
+
             <StackPanel Orientation="Horizontal" >
-                <StackPanel></StackPanel>
-                <StackPanel  Background="LightGray" Width="310" Height="850">
-                   
+                <StackPanel  Background="LightGray" Width="310" Height="850" FocusManager.FocusedElement="{Binding homeButton}">
+
                     <StackPanel Margin="15 40 10 20">
                         <StackPanel Orientation="Horizontal">
                             <Button Name="searchButton" Click="searchButton_Click" BorderThickness="0" Background="LightGray" BorderBrush="LightGray" HorizontalAlignment="Left">
-                                <Image Source="Data/Images/Icons/searchIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="36" Width="48" Margin="0,0,0,0" />
+                                <Image Source="Data/Images/Icons/searchIcon.jpg" Margin="10, 0, 0, 0" RenderOptions.BitmapScalingMode="HighQuality" Height="36" Width="48" />
                             </Button>
+
                             <TextBox Height="58" Margin="10,0,0,0" Width="218" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20">
                                 <TextBox.Style>
                                     <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                                         <Style.Resources>
                                             <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                                                 <VisualBrush.Visual>
-                                                    <Label Content=" Nhập ở đây!" Foreground="Gray" FontSize="20" FontStyle="Italic"/>
+                                                    <Label Content=" Tìm kiếm ở đây" Foreground="Gray" FontSize="20" FontStyle="Italic"/>
                                                 </VisualBrush.Visual>
                                             </VisualBrush>
                                         </Style.Resources>
@@ -81,32 +81,39 @@
                                     </Style>
                                 </TextBox.Style>
                             </TextBox>
-                        </StackPanel>                        
-                    </StackPanel>
-                    <Button Name="newRecipeButton" Width="269" Background="LightGray" BorderThickness="0" BorderBrush="LightGray" Margin="15,20,0,10" HorizontalAlignment="Left" Click="newRecipeButton_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="Data/Images/Icons/addIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="51" Width="46" RenderTransformOrigin="0.838,0.461" HorizontalAlignment="Left"/>
-                            <TextBlock  Text="New recipe" Width="214" Margin="15 5 0 5" FontSize="25" RenderTransformOrigin="0.507,0.793"/>
                         </StackPanel>
-                    </Button>
+                    </StackPanel>
+
                     <Button Name="homeButton" Width="269"  Background="LightGray" BorderBrush="LightGray" BorderThickness="0" Margin="15,25,0,10" HorizontalAlignment="Left" Click="homeButton_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="Data/Images/Icons/homeIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="38" Width="46" RenderTransformOrigin="0.838,0.461" HorizontalAlignment="Left"/>
-                            <TextBlock  Text="Home" Width="214" Margin="15 0 0 5" FontSize="25"/>
+                            <Image Source="Data/Images/Icons/homeIcon.jpg" Margin="10, 0, 10, 0" RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="58" RenderTransformOrigin="0.838,0.461" HorizontalAlignment="Left"/>
+                            <TextBlock  Text="Home" Width="183" Margin="15 0 0 5" FontSize="30"/>
                         </StackPanel>
                     </Button>
+
+                    <Button Name="newRecipeButton" Width="269" Background="LightGray" BorderThickness="0" BorderBrush="LightGray" Margin="15,20,0,10" HorizontalAlignment="Left" Click="newRecipeButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Data/Images/Icons/addIcon.jpg" Margin="10, 0, 10, 0" RenderOptions.BitmapScalingMode="HighQuality" Height="51" Width="60" RenderTransformOrigin="0.838,0.461" HorizontalAlignment="Left"/>
+                            <TextBlock  Text="New recipe" Width="184" Margin="15 5 0 5" FontSize="30" RenderTransformOrigin="0.507,0.793"/>
+                        </StackPanel>
+                    </Button>
+
+
+
                     <Button Name="favorButton" Width="269"  Background="LightGray" BorderBrush="LightGray" BorderThickness="0" Margin="15,30,0,10" HorizontalAlignment="Left" Click="favorButton_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="Data/Images/Icons/loveIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="38" Width="46" RenderTransformOrigin="0.838,0.461" HorizontalAlignment="Left"/>
-                            <TextBlock  Text="Favorite" Width="214" Margin="15 0 0 5" FontSize="25"/>
+                            <Image Source="Data/Images/Icons/loveIcon.jpg" Margin="10, 0, 10, 0"  RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="58" RenderTransformOrigin="0.838,0.461" HorizontalAlignment="Left"/>
+                            <TextBlock  Text="Favorite" Width="191" Margin="15 0 0 5" FontSize="30"/>
                         </StackPanel>
                     </Button>
+
                     <Button Name="aboutButton" Width="269"  Background="LightGray" BorderBrush="LightGray" BorderThickness="0" Margin="15,30,0,10" HorizontalAlignment="Left" Click="aboutButton_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="Data/Images/Icons/inforIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="46" RenderTransformOrigin="0.838,0.461" HorizontalAlignment="Left"/>
-                            <TextBlock  Text="About" Width="214" Margin="15 0 0 5" FontSize="25"/>
+                            <Image Source="Data/Images/Icons/inforIcon.jpg" Margin="10, 0, 10, 0" RenderOptions.BitmapScalingMode="HighQuality" Height="53" Width="56" RenderTransformOrigin="0.838,0.461" HorizontalAlignment="Left"/>
+                            <TextBlock  Text="About" Width="177" Margin="15 0 0 5" FontSize="30"/>
                         </StackPanel>
                     </Button>
+
                 </StackPanel>
             </StackPanel>
         </StackPanel>

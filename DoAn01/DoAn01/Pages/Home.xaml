@@ -36,6 +36,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="LightGreen"/>
@@ -73,7 +74,7 @@
                       Background="Transparent" Margin="20,30,20,25"
                       BorderBrush="Transparent"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                      ScrollViewer.VerticalScrollBarVisibility="Disabled" >
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemsSource="{Binding Sublist, BindsDirectlyToSource=True}" >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <EventSetter Event="Control.PreviewMouseDoubleClick" Handler="ListViewItem_PreviewMouseDoubleClick"/>
@@ -123,7 +124,7 @@
                                         <AccessText TextWrapping="Wrap" Text="{Binding Name}"/>
                                     </Label>
 
-                                    <Button Style="{StaticResource HeartButton}" Click="Favorite_Click" DockPanel.Dock="Right" Width="40">
+                                    <Button Name="favoriteButton" Style="{StaticResource HeartButton}" Click="favoriteButton_Click" DockPanel.Dock="Right" Width="40">
                                         <fa:ImageAwesome Icon="Heart"  Foreground="{Binding Favorite}"    Margin="5,0,5,0"/>
                                     </Button>
                                 </DockPanel>
@@ -137,21 +138,23 @@
 
                 <Border Background="LightGreen"   BorderThickness="1" BorderBrush="Black" Width="110" Height="50" CornerRadius="40,10,10,40" Margin="5">
 
-                    <Button Click="prevPage_Click" Style="{StaticResource ClickButton}" Background="Transparent" Content="Prev" FontFamily="Caladea" BorderBrush="Transparent" FontSize="30" Margin="23,0,0,0"/>
+                    <Button Name="prevPageButton" Click="prevPageButton_Click" Style="{StaticResource ClickButton}" Background="Transparent" Content="Prev" FontFamily="Caladea" BorderBrush="Transparent" FontSize="30" Margin="23,0,0,0"/>
                 </Border>
 
                 <Border  Background="LightGreen" BorderThickness="1" BorderBrush="Black"  Width="77" Height="50" CornerRadius="20,20,20,20" Margin="5,6,5,7" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Label x:Name="pageNumber" FontSize="30" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent" Height="50" Margin="0,-1">
-                        <MultiBinding Converter="{StaticResource pagenumConverter}">
-                            <Binding Path="CurrentPage"/>
-                            <Binding Path="MaxPages"/>
+                        
+                        <MultiBinding Converter="{StaticResource pagenumConverter}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                            <Binding Path="CurrentPage" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" BindsDirectlyToSource="True"/>
+                            <Binding Path="MaxPages" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" BindsDirectlyToSource="True"/>
                         </MultiBinding>
+                        
                     </Label>
                 </Border>
 
                 <Border Background="LightGreen" BorderThickness="1" BorderBrush="Black" Width="114" Height="50" CornerRadius="10,40,40,10" Margin="5,6,5,7">
 
-                    <Button Click="nextPage_Click"   Style="{StaticResource ClickButton}"  Background="Transparent" Content="Next" FontFamily="Caladea"  BorderBrush="LightGreen"   FontSize="30" Margin="0,0,19,0" RenderTransformOrigin="1.065,0.5" />
+                    <Button Name ="nextPageButton" Click="nextPageButton_Click"   Style="{StaticResource ClickButton}"  Background="Transparent" Content="Next" FontFamily="Caladea"  BorderBrush="LightGreen"   FontSize="30" Margin="0,0,19,0" RenderTransformOrigin="1.065,0.5" />
                 </Border>
 
             </StackPanel>

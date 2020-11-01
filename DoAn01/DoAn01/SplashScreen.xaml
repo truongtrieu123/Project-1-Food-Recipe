@@ -59,7 +59,7 @@
 
         <Image x:Name="foodImage" Source="{Binding CoverSource, Converter={StaticResource pathConverter}}" RenderTransformOrigin="0.5,0.5" Width="590" Height="381" Canvas.Left="109" Canvas.Top="127" />
 
-        <TextBlock Name="infoFood"  Width="620"  Padding="2" FontSize="18" Foreground="DarkBlue" Canvas.Left="95" Canvas.Top="536" TextWrapping="Wrap" TextAlignment="Justify" FontStyle="Italic" FontWeight="Bold" Height="140">
+        <TextBlock Name="infoFood"  Width="620"  Padding="2" FontSize="18" Foreground="DarkBlue" Canvas.Left="95" Canvas.Top="536" TextWrapping="Wrap" TextAlignment="Justify" FontStyle="Italic" FontWeight="Bold" Height="176">
             <Run Text="&#x09;"/>           
             <Run Text="{Binding Path=Introduction}"/>
         </TextBlock>
