@@ -66,9 +66,8 @@
                 </ScrollViewer>
 
                 <WebBrowser x:Name="foodVideo" Height="150"  Margin="100,15,103,10" ClipToBounds="True" Source="{Binding VideoSource}">
-                    <WebBrowser.DataContext>
-                        <BitmapImage UriSource="̉{Binding CoverSource}"/>
-                    </WebBrowser.DataContext>
+                    <!--<WebBrowser.DataContext>
+                    </WebBrowser.DataContext>-->
                 </WebBrowser>
 
                 <Button Width="150" Height="60" Content="Xem Video" Style="{StaticResource ClickButton}" Background="{StaticResource XemVideo}" Margin="140,20" FontSize="20" FontFamily="Caladea" FontStyle="Italic"/>

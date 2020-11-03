@@ -56,9 +56,11 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
+            
             <StackPanel Orientation="Horizontal" Height="776" >
                 <StackPanel Margin="7,0,0,-61" Width="434">
-                    <TextBox Height="51" Margin="10 0 10 -5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" Name="nameFoodBox">
+                    
+                    <TextBox Height="51" Margin="10 0 10 -5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" Name="foodNameTextBox" TextChanged="foodNameTextBox_TextChanged">
                         <TextBox.Style>
                             <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                 <Style.Resources>
@@ -82,7 +84,8 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-                    <TextBox  AcceptsReturn="true" Height="102" Margin="10,20,10,-5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20"  TextWrapping="Wrap" TextAlignment="Justify" Name="descriptionFoodBox">
+                    
+                    <TextBox  AcceptsReturn="true" Height="102" Margin="10,20,10,-5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20"  TextWrapping="Wrap" TextAlignment="Justify" Name="introductionTextBox" TextChanged="introductionTextBox_TextChanged">
                         <TextBox.Style>
                             <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                 <Style.Resources>
@@ -106,7 +109,8 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-                    <TextBox  AcceptsReturn="true" Height="215" Margin="10,20,10,-5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20"  TextWrapping="Wrap" TextAlignment="Justify" Name="ingradientFoodBox">
+                    
+                    <TextBox  AcceptsReturn="true" Height="215" Margin="10,20,10,-5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20"  TextWrapping="Wrap" TextAlignment="Justify" Name="ingradientsTextBox" TextChanged="ingradientsTextBox_TextChanged">
                         <TextBox.Style>
                             <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                 <Style.Resources>
@@ -130,7 +134,7 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-                    <TextBox Height="51" Margin="10,20,10,-5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" Name="youtubeLinkBox" >
+                    <TextBox Height="51" Margin="10,20,10,-5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" Name="videoSourceTextBox" TextChanged="videoSourceTextBox_TextChanged">
                         <TextBox.Style>
                             <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                 <Style.Resources>
@@ -156,19 +160,22 @@
                     </TextBox>
                     <Border BorderBrush="black" BorderThickness="3" Margin="10,20,10,0" Height="353">
                         <StackPanel Margin="0,0,-3,0">
-                            <Image x:Name="foodImageBox" RenderOptions.BitmapScalingMode="HighQuality"  Margin="0,5,10,10" Height="260"/>
+                            <Image x:Name="foodImageBox" RenderOptions.BitmapScalingMode="HighQuality"  Margin="0,5,10,10" Height="260" SourceUpdated="foodImageBox_SourceUpdated"/>
+
                             <Button x:Name="add_image_foodButton" Background="LightGray" Click="add_image_foodButton_Click" BorderThickness="0" Height="63" HorizontalAlignment="Left" Width="387" Margin="10,0,0,0">
-                                <StackPanel Orientation="Horizontal">
+
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                                     <Image Source="Data/Images/Icons/add_imageIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="57" Width="78" RenderTransformOrigin="0.673,-6.619" />
-                                    <TextBlock  Text="Thêm hình món ăn" Width="217" Margin="5 10 0 0" FontSize="25" RenderTransformOrigin="0.604,2.968" FontWeight="Medium"/>
+                                    <TextBlock  Text="Thêm ảnh đại diện" Width="294" FontSize="25" RenderTransformOrigin="0.604,2.968" FontWeight="Medium" TextAlignment="Justify" VerticalAlignment="Center"/>
                                 </StackPanel>
+
                             </Button>
                         </StackPanel>
                     </Border>
                 </StackPanel>
                 <StackPanel Margin="0,0,0,-61">
                     <StackPanel Orientation="Horizontal" Margin="-3 0 0 0" Height="241">
-                        <TextBox Margin="10,0,0,0" Width="590" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" TextWrapping="Wrap" TextAlignment="Justify" Name="stepFoodBox" >
+                        <TextBox Margin="10,0,0,0" Width="590" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" TextWrapping="Wrap" TextAlignment="Justify" Name="stepDetailTextBox" TextChanged="stepDetailTextBox_TextChanged">
                             <TextBox.Style>
                                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                     <Style.Resources>
@@ -222,7 +229,7 @@
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Margin="-2 0 0 0">
-                        <Border BorderBrush="black" BorderThickness="3" Margin="0,20,10,0" Height="345" Width="922">
+                        <Border BorderBrush="black" BorderThickness="3" Margin="0,20,10,0" Height="232" Width="922">
                             <ListView x:Name="listViewFullStepFood" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="0">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -241,13 +248,13 @@
                                 </ListView.ItemTemplate>
                             </ListView>
                         </Border>
-                        <Border BorderBrush="black" BorderThickness="3" Margin="0,20,10,0" Height="205" Width="922">
+                        <Border BorderBrush="black" BorderThickness="3" Margin="0,20,10,0" Height="315" Width="922">
                             <ListView Name="listImageFullStepFood" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="0">
                                 <ListView.ItemsPanel >
                                     <ItemsPanelTemplate >
                                         <UniformGrid Columns="8"/>
                                     </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>                            
+                                </ListView.ItemsPanel>
                                 <ListView.ItemTemplate>
                                     <DataTemplate >
                                         <Image Source="{Binding}" Width="100" Height="80" />

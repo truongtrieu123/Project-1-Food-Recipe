@@ -40,8 +40,8 @@ namespace DoAn01
             var value = ConfigurationManager.AppSettings["HomeCurrentPage"];
             var homecrtpage = int.Parse(value);
             _homepage.CurrentPage = homecrtpage;
-            Sublist = Global.HomeSubLists[homecrtpage - 1];
-            mealListView.ItemsSource = Sublist;
+            mealListView.ItemsSource = Global.HomeSubLists[homecrtpage - 1];
+            
             DataContext = _homepage;
         }
 
@@ -76,7 +76,7 @@ namespace DoAn01
                 //{
                 //    nextPageButton.IsEnabled = false;
                 //}
-
+                pageNumber.Content = _homepage.CurrentPage.ToString() + "/" + _homepage.MaxPages.ToString();
                 mealListView.ItemsSource = Global.HomeSubLists[_homepage.CurrentPage - 1];
             }
         }
@@ -92,6 +92,7 @@ namespace DoAn01
                 //    prevPageButton.IsEnabled = false;
                 //}
 
+                pageNumber.Content = _homepage.CurrentPage.ToString() + "/" + _homepage.MaxPages.ToString();
                 mealListView.ItemsSource = Global.HomeSubLists[_homepage.CurrentPage - 1];
             }
         }
