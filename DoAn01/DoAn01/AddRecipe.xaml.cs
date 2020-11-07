@@ -22,8 +22,8 @@ namespace DoAn01
 
         private Food _temp_food;
         private int _index;
-        private List<BindingList<Step>> _temp_liststeps;
         private BindingList<Step> _temp_step;
+
         public AddRecipe()
         {
             InitializeComponent();
@@ -32,7 +32,6 @@ namespace DoAn01
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _temp_food = new Food();
-            _temp_liststeps = new List<BindingList<Step>>();
             _temp_step = new BindingList<Step>();
          
             _index = Global.FoodList.Count;
@@ -42,8 +41,12 @@ namespace DoAn01
         {
             Dying?.Invoke();
         }
-        ///
-        ///Di chuyen man hinh
+        
+        /// <summary>
+        /// Hàm di chuyển cửa sổ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TitleOfWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var move = sender as System.Windows.Controls.StackPanel;
@@ -52,7 +55,7 @@ namespace DoAn01
         }
 
         /// <summary>
-        /// 
+        /// Hàm xử lí khi nhấn Return Button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -63,7 +66,7 @@ namespace DoAn01
         }
 
         /// <summary>
-        /// 
+        /// Hàm xử lí khi nhấn khi nhấn Cancel Button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -75,13 +78,14 @@ namespace DoAn01
                                            UriKind.Relative)
                                     );
             if (videoSourceTextBox.Text != "" || introductionTextBox.Text != "" || foodNameTextBox.Text != ""
-                || stepDetailTextBox.Text != "" || ingradientsTextBox.Text != "" || listViewStepFood.Items.IsEmpty == false || foodImageBox.Source != bitmap)
+                || stepDetailTextBox.Text != "" || ingredientsTextBox.Text != "" 
+                || listViewStepFood.Items.IsEmpty == false || foodImageBox.Source != bitmap)
             {
                 videoSourceTextBox.Text = "";
                 introductionTextBox.Text = "";
                 foodNameTextBox.Text = "";
                 stepDetailTextBox.Text = "";
-                ingradientsTextBox.Text = "";
+                ingredientsTextBox.Text = "";
                 //listImagePath.Clear();
                 listImageFullStepFood.Items.Clear();
                 //listStep.Clear();
@@ -89,7 +93,7 @@ namespace DoAn01
             }
 
         }
-
+        
         /// <summary>
         /// 
         /// </summary>
@@ -102,7 +106,7 @@ namespace DoAn01
                                            "",
                                            UriKind.Relative)
                                     );
-            if (videoSourceTextBox.Text != "" && introductionTextBox.Text != "" && foodNameTextBox.Text != "" && ingradientsTextBox.Text != "" && foodImageBox.Source != bitmap)
+            if (videoSourceTextBox.Text != "" && introductionTextBox.Text != "" && foodNameTextBox.Text != "" && ingredientsTextBox.Text != "" && foodImageBox.Source != bitmap)
             {
                 //test.nameFood = foodNameTextBox.Text;
                 //test.motaFood = descriptionBox.Text;
@@ -114,7 +118,7 @@ namespace DoAn01
                     videoSourceTextBox.Text = "";
                     introductionTextBox.Text = "";
                     foodNameTextBox.Text = "";
-                    ingradientsTextBox.Text = "";
+                    ingredientsTextBox.Text = "";
                     foodImageBox.Source = bitmap;
                     stepDetailTextBox.Text = "";
                     listImageFullStepFood.Items.Clear();
@@ -217,17 +221,41 @@ namespace DoAn01
 
         private void introductionTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            var textbox = sender as TextBox;
 
+            if(textbox != null)
+            {
+                if(textbox.Text != "")
+                {
+                    _temp_food.Introduction = textbox.Text;
+                }
+            }
         }
 
-        private void ingradientsTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void ingredientsTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            var textbox = sender as TextBox;
 
+            if (textbox != null)
+            {
+                if (textbox.Text != "")
+                {
+                    _temp_food.Ingredients = textbox.Text;
+                }
+            }
         }
 
         private void videoSourceTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            var textbox = sender as TextBox;
 
+            if (textbox != null)
+            {
+                if (textbox.Text != "")
+                {
+                    _temp_food.VideoSource = textbox.Text;
+                }
+            }
         }
 
         private void foodImageBox_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
@@ -242,7 +270,15 @@ namespace DoAn01
 
         private void stepDetailTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            //var textbox = sender as TextBox;
 
+            //if (textbox != null)
+            //{
+            //    if (textbox.Text != "")
+            //    {
+                    
+            //    }
+            //}
         }
     }
 }

@@ -110,7 +110,7 @@
                         </TextBox.Style>
                     </TextBox>
                     
-                    <TextBox  AcceptsReturn="true" Height="215" Margin="10,20,10,-5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20"  TextWrapping="Wrap" TextAlignment="Justify" Name="ingradientsTextBox" TextChanged="ingradientsTextBox_TextChanged">
+                    <TextBox  AcceptsReturn="true" Height="215" Margin="10,20,10,-5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20"  TextWrapping="Wrap" TextAlignment="Justify" Name="ingredientsTextBox" TextChanged="ingredientsTextBox_TextChanged">
                         <TextBox.Style>
                             <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                 <Style.Resources>
