@@ -63,7 +63,7 @@ namespace DoAn01.Pages
             HinhAnhTungStep.ItemsSource = null;
             HinhAnhTungStep.Items.Clear();
             // The list<> has been updated so reload the listview
-            HinhAnhTungStep.ItemsSource = CreateListImagePath(Info.StepList[index].StepImages);
+            //HinhAnhTungStep.ItemsSource = CreateListImagePath(Info.StepList[index].StepImages);
 
         }
 

@@ -56,10 +56,10 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
-            
+
             <StackPanel Orientation="Horizontal" Height="776" >
                 <StackPanel Margin="7,0,0,-61" Width="434">
-                    
+
                     <TextBox Height="51" Margin="10 0 10 -5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" Name="foodNameTextBox" TextChanged="foodNameTextBox_TextChanged">
                         <TextBox.Style>
                             <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
@@ -84,7 +84,7 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-                    
+
                     <TextBox  AcceptsReturn="true" Height="102" Margin="10,20,10,-5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20"  TextWrapping="Wrap" TextAlignment="Justify" Name="introductionTextBox" TextChanged="introductionTextBox_TextChanged">
                         <TextBox.Style>
                             <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
@@ -109,7 +109,7 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-                    
+
                     <TextBox  AcceptsReturn="true" Height="215" Margin="10,20,10,-5" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20"  TextWrapping="Wrap" TextAlignment="Justify" Name="ingredientsTextBox" TextChanged="ingredientsTextBox_TextChanged">
                         <TextBox.Style>
                             <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
@@ -160,7 +160,7 @@
                     </TextBox>
                     <Border BorderBrush="black" BorderThickness="3" Margin="10,20,10,0" Height="353">
                         <StackPanel Margin="0,0,-3,0">
-                            <Image x:Name="foodImageBox" RenderOptions.BitmapScalingMode="HighQuality"  Margin="0,5,10,10" Height="260" SourceUpdated="foodImageBox_SourceUpdated"/>
+                            <Image x:Name="foodCoverImage" RenderOptions.BitmapScalingMode="HighQuality"  Margin="0,5,10,10" Height="260"/>
 
                             <Button x:Name="add_image_foodButton" Background="LightGray" Click="add_image_foodButton_Click" BorderThickness="0" Height="63" HorizontalAlignment="Left" Width="387" Margin="10,0,0,0">
 
@@ -175,13 +175,13 @@
                 </StackPanel>
                 <StackPanel Margin="0,0,0,-61">
                     <StackPanel Orientation="Horizontal" Margin="-3 0 0 0" Height="241">
-                        <TextBox Margin="10,0,0,0" Width="590" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" TextWrapping="Wrap" TextAlignment="Justify" Name="stepDetailTextBox" TextChanged="stepDetailTextBox_TextChanged">
+                        <TextBox Margin="10,0,0,0" Width="376" BorderThickness="3" BorderBrush="black" Padding="5" FontSize="20" TextWrapping="Wrap" TextAlignment="Justify" Name="stepDetailTextBox" TextChanged="stepDetailTextBox_TextChanged">
                             <TextBox.Style>
                                 <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
                                     <Style.Resources>
                                         <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Top" Stretch="None">
                                             <VisualBrush.Visual>
-                                                <Label Content=" Bước nấu ăn" Foreground="Gray" FontSize="20" FontStyle="Italic"/>
+                                                <Label Content=" Chi tiết bước nấu ăn" Foreground="Gray" FontSize="20" FontStyle="Italic"/>
                                             </VisualBrush.Visual>
                                         </VisualBrush>
                                     </Style.Resources>
@@ -199,20 +199,22 @@
                                 </Style>
                             </TextBox.Style>
                         </TextBox>
-                        <Border BorderBrush="black" BorderThickness="3" Margin="10,0,10,0" Width="240">
-                            <ListView Name="listViewStepFood" Margin="0,7" BorderThickness="0">
+
+                        <Border BorderBrush="black" BorderThickness="3" Margin="10,0,10,0" Width="434">
+                            <ListView Name="stepImageslListView" Margin="0" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <UniformGrid Columns="1"/>
+                                        <WrapPanel/>
                                     </ItemsPanelTemplate>
                                 </ListView.ItemsPanel>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Image Source="{Binding listImages}" Width="200" Height="150"/>
+                                        <Image Source="{Binding ImgPath}" Width="185" Margin="3"/>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
                         </Border>
+
                         <StackPanel Width="98">
                             <Button Name="add_image_stepButton" Background="white" Click="add_image_stepButton_Click" VerticalAlignment="Top" Margin="15,0,10,0" BorderThickness="0">
                                 <StackPanel>
@@ -228,36 +230,35 @@
                             </Button>
                         </StackPanel>
                     </StackPanel>
+
                     <StackPanel Margin="-2 0 0 0">
-                        <Border BorderBrush="black" BorderThickness="3" Margin="0,20,10,0" Height="232" Width="922">
-                            <ListView x:Name="listViewFullStepFood" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="0">
-                                <ListView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <UniformGrid Columns="1"/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                                <ListView.ItemTemplate>
-                                    <DataTemplate >
-                                        <StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock x:Name="numberStep" Text="{Binding numberStep}" Width="100" Height="40" FontSize="25" Foreground="white" VerticalAlignment="Top" Background="MediumPurple" Margin="0 0 20 0"/>
-                                                <TextBlock x:Name="stepMakeFood" Text="{Binding stepMakeFood}" Width="400"  FontSize="23" TextWrapping="Wrap" TextAlignment="Justify"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </Border>
-                        <Border BorderBrush="black" BorderThickness="3" Margin="0,20,10,0" Height="315" Width="922">
-                            <ListView Name="listImageFullStepFood" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="0">
+                        <Border BorderBrush="black" BorderThickness="3" Margin="5,10,10,0" Height="568" Width="909">
+                            <ListView Name="stepsListView" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="0">
                                 <ListView.ItemsPanel >
                                     <ItemsPanelTemplate >
-                                        <UniformGrid Columns="8"/>
+                                        <StackPanel/>
                                     </ItemsPanelTemplate>
                                 </ListView.ItemsPanel>
                                 <ListView.ItemTemplate>
-                                    <DataTemplate >
-                                        <Image Source="{Binding}" Width="100" Height="80" />
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding StepDetail}"/>
+                                            <ListView x:Name="stepListView" Margin="0" BorderThickness="0" ItemsSource="{Binding StepImages}">
+                                                <ListView.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal"></StackPanel>
+                                                    </ItemsPanelTemplate>
+                                                </ListView.ItemsPanel>
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel>
+                                                            <Image Source="{Binding ImgPath}"></Image> 
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                        </StackPanel>
+
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>

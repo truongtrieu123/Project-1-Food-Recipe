@@ -36,14 +36,14 @@ namespace DoAn01
             var sheet = workbook.Worksheets[0];
             var row = 2;
             var col = 'H';
-            var steplist = new List<Step>();
+            var steplist = new BindingList<Step>();
             var temp_step = new Step();
-            temp_step.StepImages = new List<String>();
+            temp_step.StepImages = new BindingList<Image>();
             var cell = sheet.Cells[$"B{row}"];
 
             while (cell.Value != null)
             {
-                var dayindex = sheet.Cells[$"A{row}"].StringValue;
+                var dayindex = sheet.Cells[$"A{row}"].IntValue;
                 var name = cell.StringValue;
                 var videosorce = sheet.Cells[$"C{row}"].StringValue;
                 var favorite = sheet.Cells[$"D{row}"].StringValue;
@@ -56,7 +56,7 @@ namespace DoAn01
 
                 var countsteps = int.Parse(tokens[0]);
                 var countimages = 0;
-                var path = "";
+                var img = new Image();
 
                 for (var pos = 0; pos < countsteps; pos++)
                 {
@@ -67,8 +67,8 @@ namespace DoAn01
 
                     for (var pos1 = 0; pos1 < countimages; pos1++)
                     {
-                        path = $"Data\\Images\\Food\\{dayindex}\\step{pos + 1} ({pos1 + 1}).jpg";
-                        temp_step.StepImages.Add(path);
+                        img.ImgPath = $"Data\\Images\\Food\\{dayindex}\\step{pos + 1} ({pos1 + 1}).jpg";
+                        temp_step.StepImages.Add(img);
                     }
 
                     steplist.Add(temp_step);
