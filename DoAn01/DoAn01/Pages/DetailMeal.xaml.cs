@@ -47,9 +47,9 @@ namespace DoAn01.Pages
 
         public void CreateMealDetailPage()
         {
-            TenMonAn.Text = Info.Name;
-            NoiDungMonAn.Text = Info.Introduction;
-            NguyenLieu.Text = Info.Ingredients;
+            TenMonAn.Text = Info.Name.ToString();
+            NoiDungMonAn.Text = Info.Introduction.ToString();
+            NguyenLieu.Text = Info.Ingredients.ToString();
             InitializeStepDetailInfo();
         }
 
@@ -58,7 +58,7 @@ namespace DoAn01.Pages
             int index = CurrentStep - 1;
 
             step.Text = $"{CurrentStep}";
-            guides.Text = Info.StepList[index].StepDetail;
+            guides.Text = Info.StepList[index].StepDetail.ToString();
             // Remove and clear source 
             HinhAnhTungStep.ItemsSource = null;
             HinhAnhTungStep.Items.Clear();

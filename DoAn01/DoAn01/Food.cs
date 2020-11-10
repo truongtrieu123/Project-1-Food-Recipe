@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Text;
 
 namespace DoAn01
 {
     public class Image : INotifyPropertyChanged
     {
-        private string imgPath;
-        public string ImgPath
+        private StringBuilder imgPath;
+        public StringBuilder ImgPath
         {
             get { return this.imgPath; }
             set
@@ -34,14 +35,15 @@ namespace DoAn01
             {
                 handler(this, new PropertyChangedEventArgs(name));
             }
+            else { }
         }
     }
 
     public class Step : INotifyPropertyChanged
     {
-        private string stepDetail;
-
-        public string StepDetail
+        public int StepIndex { get; set; }
+        private StringBuilder stepDetail;
+        public StringBuilder StepDetail
         {
             get
             {
@@ -71,20 +73,30 @@ namespace DoAn01
             {
                 handler(this, new PropertyChangedEventArgs(name));
             }
+            else { }
+        }
+        public Step()
+        {
+
+        }
+        public Step(Step step)
+        {
+            this.stepDetail = step.StepDetail;
+            this.StepImages = StepImages;
         }
     }
 
     public class Food : INotifyPropertyChanged
     {
         public int DayIndex { get; set; }
-        public string Name { get; set; }
-        public string CoverSource { get; set; }
-        public string VideoSource { get; set; }
-        public string Introduction { get; set; }
-        public string Ingredients { get; set; }
+        public StringBuilder Name { get; set; }
+        public StringBuilder CoverSource { get; set; }
+        public StringBuilder VideoSource { get; set; }
+        public StringBuilder Introduction { get; set; }
+        public StringBuilder Ingredients { get; set; }
         public int CountSteps { get; set; }
         public BindingList<Step> StepList { get; set; }
-        public string Favorite { get; set; }
+        public StringBuilder Favorite { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -103,7 +115,7 @@ namespace DoAn01
     {
         public int Compare(Food x, Food y)
         {
-            return (x.Name.CompareTo(y.Name));
+            return (x.Name.ToString().CompareTo(y.Name.ToString()));
         }
     }
 

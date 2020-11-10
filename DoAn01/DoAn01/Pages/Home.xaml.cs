@@ -6,6 +6,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Configuration;
 using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -113,7 +114,7 @@ namespace DoAn01
                     //change heart icon's color
                     aws.Foreground = Brushes.Black;
                     // update property in food list
-                    Global.FoodList[indexInList].Favorite = "Black";
+                    Global.FoodList[indexInList].Favorite = new StringBuilder("Black");
                     changeCheck = 1;
                 }
                 else if (aws.Foreground == Brushes.Black)
@@ -121,7 +122,7 @@ namespace DoAn01
                     //change heart icon's color
                     aws.Foreground = Brushes.Red;
                     // update property in food list
-                    Global.FoodList[indexInList].Favorite = "Red";
+                    Global.FoodList[indexInList].Favorite = new StringBuilder("Red");
                     changeCheck = -1;
                 }
                 else
@@ -136,7 +137,7 @@ namespace DoAn01
                     }
                     else if (changeCheck == 1)
                     {
-                        food.Favorite = "Red";
+                        food.Favorite = new StringBuilder("Red");
                         Global.FavoriteFoodList.Add(food);
                     }
                     Global.FavorSubLists = Global.ConvertListToSubLists(Global.ItemsPerPage, Global.FoodList);

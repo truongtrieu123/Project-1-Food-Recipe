@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Configuration;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -132,7 +133,7 @@ namespace DoAn01
                 // change color on icon
                 (aws.Foreground) = Brushes.Black;
 
-                Global.FoodList[IndexInList].Favorite = "Black";
+                Global.FoodList[IndexInList].Favorite = new StringBuilder("Black");
                 Global.FavoriteFoodList.Remove(food);
                 Global.FavorSubLists = Global.ConvertListToSubLists(TotalItemsPerPage, Global.FavoriteFoodList);
                 PageViewPrePare();

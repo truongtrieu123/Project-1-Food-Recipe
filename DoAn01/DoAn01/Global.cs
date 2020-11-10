@@ -26,7 +26,7 @@ namespace DoAn01
             {
                 foreach (var food in FoodList)
                 {
-                    if (food.Favorite == "Red")
+                    if (food.Favorite.ToString() == "Red")
                     {
                         favoritelist.Add(food);
                     }

@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -22,30 +25,64 @@ namespace DoAn01
         public event DeathHandler Dying;
 
         private Food _temp_food;
-        private int _index;
-        private Step _temp_step;
-        private BindingList<Step> _temp_steplist;
-        private string _imagesPath = string.Empty;
+        private int _dayindex;
+        class AddRecipeViewModel : INotifyPropertyChanged
+        {
+            public Step TempStep { get; set; }
+            public BindingList<Step> StepList { get; set; }
+
+            public AddRecipeViewModel()
+            {
+                TempStep = new Step();
+                TempStep.StepImages = new BindingList<Image>();
+                StepList = new BindingList<Step>();
+            }
+            public void ClearStep()
+            {
+                TempStep.StepIndex = -1;
+                TempStep.StepDetail = new StringBuilder();
+                TempStep.StepImages.Clear();
+            }
+            public void ClearImgList()
+            {
+                TempStep.StepImages.Clear();
+            }
+            public void ClearView()
+            {
+                ClearStep();
+                StepList.Clear();
+            }
+            public event PropertyChangedEventHandler PropertyChanged;
+        }
+        private string _imagesFolder = string.Empty;
+        private AddRecipeViewModel _mainVM;
+
+        /// <summary>
+        /// Khởi tạo cửa sổ App Recipe
+        /// </summary>
         public AddRecipe()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Hàm xử lí sau khi cửa khổ đã khởi động xong
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // Khởi tạo biến
+            _mainVM = new AddRecipeViewModel();
             _temp_food = new Food();
             _temp_food.DayIndex = Global.FoodList.Count;
-            _temp_step = new Step();
-            _temp_step.StepImages = new BindingList<Image>();
-            _temp_steplist = new BindingList<Step>();
-
-            _index = Global.FoodList.Count + 1;
+            _dayindex = Global.FoodList.Count + 1;
 
             // Tạo thư mục chứa ảnh
             var appFolder = AppDomain.CurrentDomain.BaseDirectory;
-            var imageFolder = Path.Combine(appFolder, @"Data\Images\Food\", _index.ToString());
-            _imagesPath = imageFolder;
+            _imagesFolder = @"Data\Images\Food\" + _dayindex.ToString();
+            var imageFolder = Path.Combine(appFolder, _imagesFolder);
+            _imagesFolder += @"\";
 
             if (Directory.Exists(imageFolder))
             {
@@ -58,9 +95,8 @@ namespace DoAn01
 
             Directory.CreateDirectory(imageFolder);
 
-            //
-            stepImageslListView.ItemsSource = _temp_step.StepImages;
-            stepsListView.ItemsSource = _temp_steplist;
+            // View Model
+            DataContext = _mainVM;
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -93,8 +129,8 @@ namespace DoAn01
             {
                 if (textbox.Text != "")
                 {
-
-                    _temp_food.Name = textbox.Text;
+                    var text = textbox.Text;
+                    _temp_food.Name = new StringBuilder(text);
                 }
                 else { }
             }
@@ -114,7 +150,7 @@ namespace DoAn01
             {
                 if (textbox.Text != "")
                 {
-                    _temp_food.Introduction = textbox.Text;
+                    _temp_food.Introduction = new StringBuilder(textbox.Text);
                 }
                 else { }
             }
@@ -134,7 +170,7 @@ namespace DoAn01
             {
                 if (textbox.Text != "")
                 {
-                    _temp_food.Ingredients = textbox.Text;
+                    _temp_food.Ingredients = new StringBuilder(textbox.Text);
                 }
                 else { }
             }
@@ -154,7 +190,7 @@ namespace DoAn01
             {
                 if (textbox.Text != "")
                 {
-                    _temp_food.VideoSource = textbox.Text;
+                    _temp_food.VideoSource = new StringBuilder(textbox.Text);
                 }
                 else { }
             }
@@ -162,7 +198,7 @@ namespace DoAn01
         }
 
         /// <summary>
-        /// Xử lí khi click thêm ảnh cover cho món ăn
+        /// Xử lí khi click thêm ảnh Cover cho món ăn
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -195,7 +231,7 @@ namespace DoAn01
                 Uri bitmap = new Uri(filepath);
 
                 foodCoverImage.Source = new BitmapImage(bitmap);
-                _temp_food.CoverSource = filepath;
+                _temp_food.CoverSource = new StringBuilder(filepath);
             }
 
         }
@@ -213,7 +249,7 @@ namespace DoAn01
             {
                 if (textbox.Text != "")
                 {
-                    _temp_step.StepDetail = textbox.Text;
+                    _mainVM.TempStep.StepDetail = new StringBuilder(textbox.Text);
                 }
                 else { }
             }
@@ -227,7 +263,7 @@ namespace DoAn01
         /// <param name="e"></param>
         private void add_image_stepButton_Click(object sender, RoutedEventArgs e)
         {
-            _temp_step.StepImages.Clear();
+            _mainVM.ClearImgList();
 
             var screen = new OpenFileDialog();
             var folder = AppDomain.CurrentDomain.BaseDirectory;
@@ -244,7 +280,7 @@ namespace DoAn01
             screen.Filter = String.Format("{0}{1}{2} ({3})|{3}", screen.Filter, sep, "All Files", "*.*");
 
             screen.Multiselect = true;
-            screen.Title = "Choose food cover image";
+            screen.Title = "Choose Food Step Images";
             screen.InitialDirectory = folder;
             screen.FilterIndex = 2;
             screen.RestoreDirectory = true;
@@ -257,8 +293,8 @@ namespace DoAn01
                 foreach (var filepath in paths)
                 {
                     // Thêm hình ảnh vào list view của bươcs 
-                    _temp_step.StepImages.Add(
-                        new Image { ImgPath = filepath }
+                    _mainVM.TempStep.StepImages.Add(
+                        new Image { ImgPath = new StringBuilder(filepath) }
                         );
                 }
 
@@ -273,14 +309,28 @@ namespace DoAn01
         /// <param name="e"></param>
         private void add_stepButton_Click(object sender, RoutedEventArgs e)
         {
-            if (stepDetailTextBox.Text != "" && stepImageslListView.Items.IsEmpty == false)
+            if (stepDetailTextBox.Text != "")
             {
                 stepDetailTextBox.Text = "";
-                _temp_steplist.Add(_temp_step);
+                var step = new Step()
+                {
+                    StepDetail = _mainVM.TempStep.StepDetail,
+                    StepImages = new BindingList<Image>(_mainVM.TempStep.StepImages.ToList<Image>()),
+                    StepIndex = _mainVM.StepList.Count + 1
+                };
+
+                //foreach (var imgpath in _mainVM.TempStep.StepImages)
+                //{
+                //    step.StepImages.Add(imgpath);
+                //}
+
+                _mainVM.StepList.Add(step);
+                // Xóa ảnh minh họa của bước
+                _mainVM.ClearStep();
             }
             else
             {
-                MessageBox.Show("Bạn phải thêm đủ thông tin bước và ảnh", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Bạn phải bổ sung đầy đủ chi tiết bước", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -305,10 +355,8 @@ namespace DoAn01
                 foodNameTextBox.Text = "";
                 stepDetailTextBox.Text = "";
                 ingredientsTextBox.Text = "";
-                //listImagePath.Clear();
-                stepsListView.Items.Clear();
-                //listStep.Clear();
                 foodCoverImage.Source = bitmap;
+                _mainVM.StepList.Clear();
             }
 
         }
@@ -320,36 +368,34 @@ namespace DoAn01
         /// <param name="e"></param>
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            var bitmap = new BitmapImage(
-                                    new Uri(
-                                           "",
-                                           UriKind.Relative)
-                                    );
-            if (videoSourceTextBox.Text != "" && introductionTextBox.Text != "" && foodNameTextBox.Text != "" && ingredientsTextBox.Text != "" && foodCoverImage.Source != bitmap)
+            if (videoSourceTextBox.Text != "" && introductionTextBox.Text != "" && foodNameTextBox.Text != "" && ingredientsTextBox.Text != "" && foodCoverImage.Source != null)
             {
-                //test.nameFood = foodNameTextBox.Text;
-                //test.motaFood = descriptionBox.Text;
-                //test.youtubeLink = videoSourceTextBox.Text;
-                //test.nguyenlieuFood = ingradientBox.Text;
-
                 if (stepsListView.Items.IsEmpty == false)
                 {
-                    videoSourceTextBox.Text = "";
-                    introductionTextBox.Text = "";
+                    // Xóa dữ liệu hiển thị
                     foodNameTextBox.Text = "";
+                    introductionTextBox.Text = "";
                     ingredientsTextBox.Text = "";
-                    foodCoverImage.Source = bitmap;
+                    videoSourceTextBox.Text = "";
+                    foodCoverImage.Source = null;
                     stepDetailTextBox.Text = "";
-                    stepsListView.Items.Clear();
-                    //listImagePath.Clear();
-                    //listStep.Clear();
-                    MessageBox.Show("Thành công!");
-                    Dying?.Invoke();
-                    this.Close();
+
+
+                    _mainVM.ClearView();
+                    var confirmBox = MessageBox.Show($"Thêm thành công món {_temp_food.Name} vào danh sách!\nBạn có muốn tiếp tục?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                    if (confirmBox == MessageBoxResult.Yes)
+                    {
+
+                    }
+                    else
+                    {
+                        this.Close();
+                    }
                 }
                 if (stepsListView.Items.IsEmpty == true
                     && videoSourceTextBox.Text != "" && introductionTextBox.Text != ""
-                    && foodNameTextBox.Text != "" && ingredientsTextBox.Text != "" && foodCoverImage.Source != bitmap)
+                    && foodNameTextBox.Text != "" && ingredientsTextBox.Text != "")
                 {
                     MessageBox.Show("Bạn phải thêm bước nấu ăn (bao gồm thông tin, hình ảnh và thêm vào danh sách)!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -367,8 +413,65 @@ namespace DoAn01
         /// <param name="e"></param>
         private void returnButton_Click(object sender, RoutedEventArgs e)
         {
-            Dying?.Invoke();
+            //Dying?.Invoke();
             this.Close();
+        }
+
+        /// <summary>
+        ///  Hàm lưu hình ảnh vào thư mục Project
+        /// </summary>
+        private void SaveImgsToData()
+        {
+
+        }
+
+        /// <summary>
+        /// Hàm cập nhật GlobalFoodList
+        /// </summary>
+        private void UpdateFoodList()
+        {
+            // Cập nhật số bước của biến Temp Food
+            _temp_food.CountSteps = _mainVM.StepList.Count;
+            // Cập nhật đường dẫn ảnh Cover của Temp Food
+            _temp_food.CoverSource = new StringBuilder($"{_imagesFolder}ava.jpg");
+            // Cập nhật ngày tạo cho Temp Food
+            _temp_food.DayIndex = _dayindex;
+
+            // Thêm step vào Step List
+            for(var pos = 0; pos<_mainVM.StepList.Count;  pos++)
+            {
+                var tmp_step = new Step
+                {
+                    StepDetail = _mainVM.StepList[pos].StepDetail,
+                    StepIndex = _mainVM.StepList[pos].StepIndex
+                };
+                var pos2 = 1;
+                foreach (var img in _mainVM.StepList[pos].StepImages)
+                {
+                    tmp_step.StepImages.Add(new Image
+                    {
+                        ImgPath = new StringBuilder($"{_imagesFolder}step{pos+1} ({pos2}).jpg")
+                    });
+
+                    pos2++;
+                }
+
+                _temp_food.StepList.Add(tmp_step);
+            }
+
+            // Cập nhật dự liệu
+            Global.FoodList.Add(new Food()
+            {
+                Name = _temp_food.Name,
+                Introduction = _temp_food.Introduction,
+                Ingredients = _temp_food.Ingredients,
+                VideoSource = _temp_food.VideoSource,
+                CoverSource = _temp_food.CoverSource,
+                StepList = new BindingList<Step>(_temp_food.StepList),
+                CountSteps = _temp_food.CountSteps,
+                DayIndex = _temp_food.DayIndex,
+                Favorite = new StringBuilder("Black")
+            });
         }
     }
 }

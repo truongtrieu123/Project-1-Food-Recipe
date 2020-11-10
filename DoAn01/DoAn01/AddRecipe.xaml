@@ -12,6 +12,7 @@
         <BitmapImage x:Name="addrecipeicon" UriSource="Data/Images/Icons/appIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Icon>
     <Window.Resources>
+        <local:PathConverter x:Key="pathConverter"/>
         <Style  TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>
@@ -201,7 +202,7 @@
                         </TextBox>
 
                         <Border BorderBrush="black" BorderThickness="3" Margin="10,0,10,0" Width="434">
-                            <ListView Name="stepImageslListView" Margin="0" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            <ListView Name="stepImageslListView" Margin="0" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" ItemsSource="{Binding TempStep.StepImages}">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel/>
@@ -209,7 +210,7 @@
                                 </ListView.ItemsPanel>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Image Source="{Binding ImgPath}" Width="185" Margin="3"/>
+                                        <Image Source="{Binding ImgPath, Converter={StaticResource pathConverter}}" Width="185" Margin="3"/>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
@@ -233,35 +234,48 @@
 
                     <StackPanel Margin="-2 0 0 0">
                         <Border BorderBrush="black" BorderThickness="3" Margin="5,10,10,0" Height="568" Width="909">
-                            <ListView Name="stepsListView" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="0">
-                                <ListView.ItemsPanel >
-                                    <ItemsPanelTemplate >
-                                        <StackPanel/>
-                                    </ItemsPanelTemplate>
-                                </ListView.ItemsPanel>
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel>
-                                            <TextBlock Text="{Binding StepDetail}"/>
-                                            <ListView x:Name="stepListView" Margin="0" BorderThickness="0" ItemsSource="{Binding StepImages}">
-                                                <ListView.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal"></StackPanel>
-                                                    </ItemsPanelTemplate>
-                                                </ListView.ItemsPanel>
-                                                <ListView.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <StackPanel>
-                                                            <Image Source="{Binding ImgPath}"></Image> 
-                                                        </StackPanel>
-                                                    </DataTemplate>
-                                                </ListView.ItemTemplate>
-                                            </ListView>
-                                        </StackPanel>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                                <StackPanel>
+                                    <Label Name="foodNameLabel" HorizontalContentAlignment="Center"  FontFamily="Verdana" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Arrow" FontSize="24" FontWeight="Bold" Foreground="#FF812BEA" Margin="0,15,0,3" Content="{Binding ElementName=foodNameTextBox, Path=Text}"/>
+                                    <ListView Name="stepsListView" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemsSource="{Binding StepList}">
+                                        <ListView.ItemsPanel >
+                                            <ItemsPanelTemplate >
+                                                <StackPanel/>
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Margin="0,0,0,0">
+                                                    <TextBlock  Margin="0,5,0,5">
+                                                        <TextBlock.Text>
+                                                            <MultiBinding StringFormat="{}Bước {0}: {1}">
+                                                                <Binding Path="StepIndex"></Binding>
+                                                                <Binding Path="StepDetail"></Binding>
+                                                            </MultiBinding>
+                                                        </TextBlock.Text>
+                                                    </TextBlock>
+                                                    <ListView x:Name="stepImagesListView_D" Margin="0" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding StepImages}">
+                                                        <ListView.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <WrapPanel/>
+                                                            </ItemsPanelTemplate>
+                                                        </ListView.ItemsPanel>
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <StackPanel>
+                                                                    <Image Source="{Binding ImgPath, Converter={StaticResource pathConverter}}" Height="120" ></Image>
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+                                                    </ListView>
+                                                </StackPanel>
 
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+
+                                </StackPanel>
+                            </ScrollViewer>
                         </Border>
                     </StackPanel>
                 </StackPanel>
