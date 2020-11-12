@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 
 namespace DoAn01
@@ -41,7 +42,23 @@ namespace DoAn01
 
     public class Step : INotifyPropertyChanged
     {
-        public int StepIndex { get; set; }
+        private int stepIndex;
+        public int StepIndex
+        {
+            get { return this.stepIndex; }
+            set
+            {
+                if (value != this.stepIndex)
+                {
+                    this.stepIndex = value;
+                    OnPropertyChanged("StepIndex");
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
         private StringBuilder stepDetail;
         public StringBuilder StepDetail
         {
@@ -49,7 +66,8 @@ namespace DoAn01
             {
                 return this.stepDetail;
             }
-            set {
+            set
+            {
                 if (value != this.stepDetail)
                 {
                     this.stepDetail = value;
@@ -61,7 +79,23 @@ namespace DoAn01
                 }
             }
         }
-        public BindingList<Image> StepImages { get; set; }
+        private BindingList<Image> stepImages;
+        public BindingList<Image> StepImages
+        {
+            get { return this.stepImages; }
+            set
+            {
+                if (value != this.stepImages)
+                {
+                    this.stepImages = new BindingList<Image>(value.ToList<Image>());
+                    OnPropertyChanged("StepImages");
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -77,12 +111,13 @@ namespace DoAn01
         }
         public Step()
         {
-
+            stepImages = new BindingList<Image>();
         }
         public Step(Step step)
         {
             this.stepDetail = step.StepDetail;
-            this.StepImages = StepImages;
+            this.StepImages = step.stepImages;
+            this.StepIndex = step.StepIndex;
         }
     }
 

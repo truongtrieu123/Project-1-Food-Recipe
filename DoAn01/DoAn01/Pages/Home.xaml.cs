@@ -1,11 +1,9 @@
-﻿using DoAn01.Pages;
-using FontAwesome.WPF;
+﻿using FontAwesome.WPF;
 using FoodRecipe;
 using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Configuration;
-using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;

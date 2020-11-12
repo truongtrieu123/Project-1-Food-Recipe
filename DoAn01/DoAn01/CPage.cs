@@ -4,27 +4,70 @@ namespace FoodRecipe
 {
     public class CPage : INotifyPropertyChanged
     {
-        public int CurrentPage { get; set; }
-        public int MaxPages { get; set; }
+        private int currentPage;
+        public int CurrentPage
+        {
+            get { return this.currentPage; }
+            set
+            {
+                if (value != this.currentPage)
+                {
+                    this.currentPage = value;
+                    OnPropertyChanged("CurrentPage");
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+        public int maxPages;
+        public int MaxPages
+        {
+            get { return this.maxPages; }
+            set
+            {
+                if (value != this.maxPages)
+                {
+                    this.maxPages = value;
+                    OnPropertyChanged("MaxPages");
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
 
         public CPage()
         {
-            CurrentPage = 1;
-            MaxPages = 1;
+            this.currentPage = 1;
+            this.maxPages = 1;
         }
 
         public CPage(int maxpages)
         {
             if (maxpages > 0)
             {
-                MaxPages = maxpages;
+                this.maxPages = maxpages;
             }
             else
             {
-                MaxPages = 1;
+                this.maxPages = 1;
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string name)
+        {
+            var handler = PropertyChanged;
+
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+            else { }
+        }
     }
 }

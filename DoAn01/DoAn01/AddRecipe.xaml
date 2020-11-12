@@ -12,7 +12,7 @@
         <BitmapImage x:Name="addrecipeicon" UriSource="Data/Images/Icons/appIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Icon>
     <Window.Resources>
-        <local:PathConverter x:Key="pathConverter"/>
+        <local:StringBuilderToStringConverter x:Key="pathConverter"/>
         <Style  TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>

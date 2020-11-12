@@ -1,120 +1,115 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
 
-namespace DoAn01.Pages
+namespace DoAn01
 {
     /// <summary>
     /// Interaction logic for DetailMeal.xaml
     /// </summary>
-    public partial class DetailMeal : Page, INotifyCollectionChanged
+    public partial class DetailMeal : Page
     {
         public delegate void DyingHandler();
         public event DyingHandler Dying;
 
-        public class ImagePath
+        private DetailMealViewModel _mainVM;
+
+        class DetailMealViewModel
         {
-            public string path { get; set; }
+            public Food MainFood { get; set; }
+            public Step CurrentStep { get; set; }
         }
 
-        public int TotalImages { get; set; }
-        public Food Info { get; set; }
-        public int CurrentStep { get; set; }
-        public int TotalStep { get; set; }
-
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public DetailMeal()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="p"></param>
         public DetailMeal(Food p)
         {
             InitializeComponent();
-            Info = p;
-            CurrentStep = 1;
-            TotalStep = Info.StepList.Count;
+
+            _mainVM.MainFood = p;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DetailMeal_Loaded(object sender, RoutedEventArgs e)
         {
-            CreateMealDetailPage();
+            CreateFoodDetailPage();
         }
 
-        public void CreateMealDetailPage()
+        /// <summary>
+        /// 
+        /// </summary>
+        public void CreateFoodDetailPage()
         {
-            TenMonAn.Text = Info.Name.ToString();
-            NoiDungMonAn.Text = Info.Introduction.ToString();
-            NguyenLieu.Text = Info.Ingredients.ToString();
+            //foodNameTextBlock.Text = Info.Name.ToString();
+            //introTextBlock.Text = Info.Introduction.ToString();
+            //introTextBlock.Text = Info.Ingredients.ToString();
+
             InitializeStepDetailInfo();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void InitializeStepDetailInfo()
         {
-            int index = CurrentStep - 1;
+            //int index = CurrentStep - 1;
 
-            step.Text = $"{CurrentStep}";
-            guides.Text = Info.StepList[index].StepDetail.ToString();
-            // Remove and clear source 
-            HinhAnhTungStep.ItemsSource = null;
-            HinhAnhTungStep.Items.Clear();
-            // The list<> has been updated so reload the listview
+            //stepDetailTextBlock.Text = Info.StepList[index].StepDetail.ToString();
+
+            // List ảnh của step
             //HinhAnhTungStep.ItemsSource = CreateListImagePath(Info.StepList[index].StepImages);
-
         }
 
-        public List<ImagePath> CreateListImagePath(List<string> stepImage)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void backStepButton_Click(object sender, RoutedEventArgs e)
         {
-            List<ImagePath> _list = new List<ImagePath>();
-
-            foreach (var img in stepImage)
-            {
-                ImagePath temp = new ImagePath();
-
-                temp.path = img;
-                _list.Add(temp);
-            }
-
-            return _list;
+            
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void nextStepButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CurrentStep <= 1)
-            {
-                CurrentStep = Info.StepList.Count;
-                InitializeStepDetailInfo();
-            }
-            else if (CurrentStep > 1 && CurrentStep <= Info.StepList.Count)
-            {
-                CurrentStep--;
-                InitializeStepDetailInfo();
-            }
+            
         }
 
-        private void Next_Click(object sender, RoutedEventArgs e)
-        {
-            if (CurrentStep >= Info.StepList.Count)
-            {
-                CurrentStep = 1;
-                InitializeStepDetailInfo();
-            }
-            else if (CurrentStep < Info.StepList.Count && CurrentStep >= 1)
-            {
-                CurrentStep++;
-                InitializeStepDetailInfo();
-            }
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Hàm xử lí khi nhấn return Button để trở về trang Home/Favorite
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void returnButton_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.GoBack();

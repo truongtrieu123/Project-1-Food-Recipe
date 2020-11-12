@@ -9,6 +9,7 @@
       Background="white"
       Title="Home" Width="1090" Height="850" Loaded="HomePage_Loaded">
     <Page.Resources>
+        <local:StringBuilderToStringConverter x:Key="heartConverter"/>
         <local:PageNumberConverter x:Key="pagenumConverter"/>
         <local:AbsolutePathConverter x:Key="Converter"/>
         <LinearGradientBrush x:Key="backgroundListViewItem">
@@ -125,7 +126,7 @@
                                     </Label>
 
                                     <Button Name="favoriteButton" Style="{StaticResource HeartButton}" Click="favoriteButton_Click" DockPanel.Dock="Right" Width="40">
-                                        <fa:ImageAwesome Icon="Heart"  Foreground="{Binding Favorite}"    Margin="5,0,5,0"/>
+                                        <fa:ImageAwesome Icon="Heart"  Foreground="{Binding Favorite, Converter={StaticResource heartConverter}}"    Margin="5,0,5,0"/>
                                     </Button>
                                 </DockPanel>
 

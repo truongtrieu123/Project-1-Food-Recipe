@@ -341,24 +341,13 @@ namespace DoAn01
         /// <param name="e"></param>
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-            var bitmap = new BitmapImage(
-                                    new Uri(
-                                           "",
-                                           UriKind.Relative)
-                                    );
-            if (videoSourceTextBox.Text != "" || introductionTextBox.Text != "" || foodNameTextBox.Text != ""
-                || stepDetailTextBox.Text != "" || ingredientsTextBox.Text != ""
-                || stepImageslListView.Items.IsEmpty == false || foodCoverImage.Source != bitmap)
-            {
-                videoSourceTextBox.Text = "";
-                introductionTextBox.Text = "";
                 foodNameTextBox.Text = "";
-                stepDetailTextBox.Text = "";
+                introductionTextBox.Text = "";
                 ingredientsTextBox.Text = "";
-                foodCoverImage.Source = bitmap;
-                _mainVM.StepList.Clear();
-            }
-
+                videoSourceTextBox.Text = "";
+                stepDetailTextBox.Text = "";
+                foodCoverImage.Source = null;
+                _mainVM.ClearView();
         }
 
         /// <summary>
@@ -370,7 +359,7 @@ namespace DoAn01
         {
             if (videoSourceTextBox.Text != "" && introductionTextBox.Text != "" && foodNameTextBox.Text != "" && ingredientsTextBox.Text != "" && foodCoverImage.Source != null)
             {
-                if (stepsListView.Items.IsEmpty == false)
+                if (_mainVM.StepList.Count != 0)
                 {
                     // Xóa dữ liệu hiển thị
                     foodNameTextBox.Text = "";
@@ -379,8 +368,10 @@ namespace DoAn01
                     videoSourceTextBox.Text = "";
                     foodCoverImage.Source = null;
                     stepDetailTextBox.Text = "";
-
-
+                    // Cập nhật dữ liệu trên ứng dụng và trên bộ nhớ
+                    UpdateFoodList();
+                    SaveImgsToData();
+                    // Xóa dữ liệu View Model
                     _mainVM.ClearView();
                     var confirmBox = MessageBox.Show($"Thêm thành công món {_temp_food.Name} vào danh sách!\nBạn có muốn tiếp tục?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
@@ -426,26 +417,27 @@ namespace DoAn01
         }
 
         /// <summary>
-        /// Hàm cập nhật GlobalFoodList
+        /// Hàm cập nhật Global.FoodList
         /// </summary>
         private void UpdateFoodList()
         {
-            // Cập nhật số bước của biến Temp Food
-            _temp_food.CountSteps = _mainVM.StepList.Count;
             // Cập nhật đường dẫn ảnh Cover của Temp Food
             _temp_food.CoverSource = new StringBuilder($"{_imagesFolder}ava.jpg");
+            // Cập nhật số bước của biến Temp Food
+            _temp_food.CountSteps = _mainVM.StepList.Count;
             // Cập nhật ngày tạo cho Temp Food
             _temp_food.DayIndex = _dayindex;
 
             // Thêm step vào Step List
             for(var pos = 0; pos<_mainVM.StepList.Count;  pos++)
             {
-                var tmp_step = new Step
+                var tmp_step = new Step()
                 {
                     StepDetail = _mainVM.StepList[pos].StepDetail,
                     StepIndex = _mainVM.StepList[pos].StepIndex
                 };
                 var pos2 = 1;
+
                 foreach (var img in _mainVM.StepList[pos].StepImages)
                 {
                     tmp_step.StepImages.Add(new Image
@@ -467,7 +459,7 @@ namespace DoAn01
                 Ingredients = _temp_food.Ingredients,
                 VideoSource = _temp_food.VideoSource,
                 CoverSource = _temp_food.CoverSource,
-                StepList = new BindingList<Step>(_temp_food.StepList),
+                StepList = new BindingList<Step>(_temp_food.StepList.ToList<Step>()),
                 CountSteps = _temp_food.CountSteps,
                 DayIndex = _temp_food.DayIndex,
                 Favorite = new StringBuilder("Black")
