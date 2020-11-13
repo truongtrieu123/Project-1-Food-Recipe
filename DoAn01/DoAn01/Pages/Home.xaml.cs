@@ -93,7 +93,7 @@ namespace DoAn01
             }
 
             _mainVM.CurrentSublist = Global.HomeSubLists[_mainVM.PageInfor.CurrentPage - 1];
-
+            
             DataContext = _mainVM;
 
             //if(_mainVM.PageInfor.CurrentPage == 1)
@@ -114,7 +114,6 @@ namespace DoAn01
             //    // Do nothing
             //}
         }
-
         /// <summary>
         /// 
         /// </summary>
@@ -242,18 +241,21 @@ namespace DoAn01
         private void ListViewItem_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Food p = (Food)mealListView.Items[IndexCurrentPage];
-            Debug.WriteLine(p.Name);
-            Debug.WriteLine(p.Introduction);
             DetailMeal page = new DetailMeal(p);
+            //
+            UpdateAppConfig();
+            // Chuyển hướng hiển thị xang page
+            this.NavigationService.Navigate(page);
+        }
 
+        private void UpdateAppConfig()
+        {
             // Lưu lại trang hiện tại của PageInfor
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             config.AppSettings.Settings["HomeCurrentPage"].Value = _mainVM.PageInfor.CurrentPage.ToString();
             config.Save(ConfigurationSaveMode.Minimal);
 
             ConfigurationManager.RefreshSection("appSettings");
-            // Chuyển hướng hiển thị xang oage
-            this.NavigationService.Navigate(page);
         }
     }
 }

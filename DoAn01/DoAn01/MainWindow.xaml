@@ -8,7 +8,7 @@
         WindowStyle="none" AllowsTransparency="true" Title="Food Recipe" Height="900" Width="1400" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded">
 
     <Window.Icon>
-        <BitmapImage UriSource="Data/Images/Icons/appIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
+        <BitmapImage UriSource="Data/Images/Icons/appIcon.ico" RenderOptions.BitmapScalingMode="HighQuality"/>
     </Window.Icon>
 
     <Window.Resources>

@@ -15,7 +15,7 @@ namespace DoAn01
     /// </summary>
     /// 
 
-    public partial class Favorite : Page, INotifyPropertyChanged
+    public partial class Favorite : Page
     {
         #region Constant
         private const int TotalItemsPerPage = 12;
@@ -35,25 +35,11 @@ namespace DoAn01
         public event LikeDislikeHandle FavorHandle;
         #endregion
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public Favorite()
         {
             InitializeComponent();
-            var value = ConfigurationManager.AppSettings["FavorCurrentPage"];
-            var favorcrtpage = int.Parse(value);
-
-            if (Global.FavorSubLists.Count > 0)
-            {
-                if (IsValuablePageNumber(favorcrtpage) == true)
-                {
-                    _favorpage.CurrentPage = favorcrtpage;
-
-                }
-                mealListView.ItemsSource = Global.FavorSubLists[favorcrtpage - 1];
-            }
-
-
+           
             DataContext = _favorpage;
         }
 
@@ -66,6 +52,18 @@ namespace DoAn01
 
         private void Favorite_Loaded(object sender, RoutedEventArgs e)
         {
+            var value = ConfigurationManager.AppSettings["FavorCurrentPage"];
+            var favorcrtpage = int.Parse(value);
+
+            if (Global.FavorSubLists.Count > 0)
+            {
+                if (IsValuablePageNumber(favorcrtpage) == true)
+                {
+                    _favorpage.CurrentPage = favorcrtpage;
+
+                }
+                mealListView.ItemsSource = Global.FavorSubLists[favorcrtpage - 1];
+            }
 
 
             //if (_favorpage.CurrentPage == 1)

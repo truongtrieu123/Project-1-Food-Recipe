@@ -60,7 +60,7 @@ namespace DoAn01
 
                 for (var pos = 0; pos < countsteps; pos++)
                 {
-                    temp_step.StepDetail =new StringBuilder( sheet.Cells[$"{char.ConvertFromUtf32(col + pos)}{row}"].StringValue);
+                    temp_step.StepDetail = new StringBuilder(sheet.Cells[$"{char.ConvertFromUtf32(col + pos)}{row}"].StringValue);
                     temp_step.StepImages.Clear();
                     temp_step.StepIndex = pos + 1;
 
@@ -69,10 +69,15 @@ namespace DoAn01
                     for (var pos1 = 0; pos1 < countimages; pos1++)
                     {
                         img.ImgPath = new StringBuilder($"Data\\Images\\Food\\{dayindex}\\step{pos + 1} ({pos1 + 1}).jpg");
-                        temp_step.StepImages.Add(img);
+                        temp_step.StepImages.Add(new Image { ImgPath = img.ImgPath });
                     }
 
-                    steplist.Add(temp_step);
+                    steplist.Add(new Step
+                    {
+                        StepDetail = temp_step.StepDetail,
+                        StepImages = temp_step.StepImages,
+                        StepIndex = temp_step.StepIndex
+                    });
                 }
 
                 var food = new Food()
@@ -85,10 +90,11 @@ namespace DoAn01
                     Ingredients = ingredients,
                     CountSteps = countsteps,
                     Favorite = favorite,
-                    StepList = steplist
+                    StepList = new BindingList<Step>(steplist.ToList<Step>())
                 };
                 result.Add(food);
 
+                steplist.Clear();
                 row = row + 1;
                 cell = sheet.Cells[$"B{row}"];
             }

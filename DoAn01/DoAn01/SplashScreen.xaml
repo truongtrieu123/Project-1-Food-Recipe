@@ -13,6 +13,7 @@
     </Window.Icon>
 
     <Window.Resources>
+        <local:StringBuilderToStringConverter x:Key="Converter"/>
         <local:AbsolutePathConverter x:Key="pathConverter"/>
         <Style  TargetType="Button">
             <Setter Property="Template">
@@ -53,7 +54,7 @@
 
         <Border RenderTransformOrigin="39.495,4.391" Canvas.Left="83" Canvas.Top="26" Height="101" Width="646">
 
-            <TextBlock x:Name="nameFood" TextAlignment="Center" FontSize="30" Foreground="#FF812BEA" FontWeight="Bold" FontFamily="Verdana" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  Text="{Binding Name}">
+            <TextBlock x:Name="nameFood" TextAlignment="Center" FontSize="30" Foreground="#FF812BEA" FontWeight="Bold" FontFamily="Verdana" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"  Text="{Binding Name, Converter={StaticResource Converter}}">
             </TextBlock>
         </Border>
 
@@ -61,7 +62,7 @@
 
         <TextBlock Name="infoFood"  Width="620"  Padding="2" FontSize="18" Foreground="DarkBlue" Canvas.Left="95" Canvas.Top="536" TextWrapping="Wrap" TextAlignment="Justify" FontStyle="Italic" FontWeight="Bold" Height="176">
             <Run Text="&#x09;"/>           
-            <Run Text="{Binding Path=Introduction}"/>
+            <Run Text="{Binding Path=Introduction, Converter={StaticResource Converter}}"/>
         </TextBlock>
 
 

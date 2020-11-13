@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,17 +16,48 @@ namespace DoAn01
         public event DyingHandler Dying;
 
         private DetailMealViewModel _mainVM;
-        
+
         // Định nghĩa View Model cho trang Detail Meal
-        class DetailMealViewModel
+        class DetailMealViewModel : INotifyPropertyChanged
         {
             // Món ăn chính của màn hình
             public Food MainFood { get; set; }
             // Bước hiện tại hiển thị
-            public Step CurrentStep { get; set; } = new Step();
+            private Step currentStep;
+            public Step CurrentStep
+            {
+                get
+                { return this.currentStep; }
+                set
+                {
+                    if (value != this.currentStep)
+                    {
+                        this.currentStep = new Step()
+                        {
+                            StepDetail = value.StepDetail,
+                            StepIndex = value.StepIndex,
+                            StepImages = value.StepImages
+                        };
+                        OnPropertyChanged("CurrentStep");
+                    }
+                }
+            }
             // Số bước tối đa và tối thiểu của công thức
-            public int MaxStepIndex { get; set; } = 1;
             public int MinStepIndex { get; } = 1;
+            public int MaxStepIndex { get; set; } = 1;
+
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            private void OnPropertyChanged(string name)
+            {
+                var handler = PropertyChanged;
+
+                if (handler != null)
+                {
+                    handler(this, new PropertyChangedEventArgs(name));
+                }
+                else { }
+            }
         }
 
         /// <summary>
@@ -55,7 +88,10 @@ namespace DoAn01
         private void DetailMeal_Loaded(object sender, RoutedEventArgs e)
         {
             CreateFoodDetailPage();
-
+            foreach (var step in _mainVM.MainFood.StepList)
+            {
+                Debug.WriteLine(step.StepDetail.ToString());
+            }
             DataContext = _mainVM;
         }
 
@@ -64,8 +100,7 @@ namespace DoAn01
         /// </summary>
         public void CreateFoodDetailPage()
         {
-            _mainVM.MaxStepIndex = _mainVM.MainFood.StepList.Count;
-
+            _mainVM.MaxStepIndex = _mainVM.MainFood.CountSteps;
             _mainVM.CurrentStep = _mainVM.MainFood.StepList[_mainVM.MinStepIndex - 1];
         }
 

@@ -11,7 +11,8 @@
       Title="Home" Width="1090" Height="850" Loaded="DetailMeal_Loaded">
 
     <Page.Resources>
-        <local:AbsolutePathConverter x:Key="Converter"/>
+        <local:StringBuilderToStringConverter x:Key="Converter"/>
+        <local:AbsolutePathConverter x:Key="pathConverter"/>
         <Style x:Key="ClickButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Template">
@@ -57,13 +58,15 @@
         <StackPanel Background="LightYellow">
             <StackPanel Width="470" Margin="10,30,10,20" Panel.ZIndex="4" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <TextBlock  Name="foodNameTextBlock" Text="{Binding MainFood.Name}" Visibility="Visible" TextWrapping="Wrap"  Width="450" FontWeight="Bold" FontSize="30"  Height="68" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="blue">
+                <TextBlock  Name="foodNameTextBlock" Text="{Binding MainFood.Name, Converter={StaticResource Converter}}" Visibility="Visible" TextWrapping="Wrap"  Width="450" FontWeight="Bold" FontSize="30"  Height="68"  TextAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="blue">
                 </TextBlock>
 
                 <ScrollViewer  Height="120" Width="430"  IsTabStop="True" Margin="20,10,20,20" 
                               VerticalScrollBarVisibility="Auto">
-                    <TextBlock  x:Name="introTextBlock" Text="{Binding MainFood.Introduction}" FontStyle="Italic"
-                               TextWrapping="Wrap" FontSize="18"  HorizontalAlignment="Center"/>
+                    <TextBlock  x:Name="introTextBlock"  FontStyle="Italic" TextWrapping="Wrap" FontSize="18"  HorizontalAlignment="Center" TextAlignment="Justify">
+                        <Run Text="&#x09;"/>
+                        <Run Text="{Binding MainFood.Introduction, Converter={StaticResource Converter}}"/>
+                    </TextBlock>
                 </ScrollViewer>
 
                 <!--<WebBrowser x:Name="foodVideo" Height="150"  Margin="100,15,103,10" ClipToBounds="True" Source="{Binding VideoSource}">
@@ -71,7 +74,7 @@
 
                 <Button Width="150" Height="60" Content="Xem Video" Style="{StaticResource ClickButton}" Background="{StaticResource XemVideo}" Margin="140,20" FontSize="20" FontFamily="Caladea" FontStyle="Italic"/>
 
-                <Label Name="ingredientsLabel"  Content="Nguyên liệu: " Width="400" Foreground="Red" FontSize="22" FontWeight="Bold" Margin="56,0,14,0">
+                <Label Name="ingredientsLabel"  Content="Nguyên liệu: " Width="400" Foreground="Red" FontSize="24" FontWeight="Bold" Margin="56,0,14,0">
                 </Label>
 
                 <ScrollViewer Width="430" Height="272" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
@@ -101,9 +104,9 @@
             </Label>
             <ScrollViewer Height="227" Margin="40,10,40,10" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
 
-                <TextBlock Name="stepDetailTextBlock" TextWrapping="Wrap" Text="{Binding CurrentStep.StepDetail}"  FontSize="25" HorizontalAlignment="Stretch">
+                <TextBlock Name="stepDetailTextBlock" TextWrapping="Wrap" Text="{Binding CurrentStep.StepDetail, Converter={StaticResource Converter}}"  FontSize="25" HorizontalAlignment="Stretch" TextAlignment="Justify">
                 </TextBlock>
-                
+
             </ScrollViewer>
 
             <!--<ListView Name="HinhAnhTungStep" Width="550" 

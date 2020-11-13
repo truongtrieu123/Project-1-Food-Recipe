@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.Windows;
@@ -42,7 +43,7 @@ namespace DoAn01
             var value = ConfigurationManager.AppSettings["ShowSplashScreen"];
             var showSplash = bool.Parse(value);
             FoodDAO dao = new ExcelFoodDAO();
-            Global.FoodList = dao.GetAll();
+            Global.FoodList = new List<Food>(dao.GetAll());
             Global.CreateFavoriteList();
 
             if (showSplash == false)
