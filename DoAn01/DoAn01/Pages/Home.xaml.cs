@@ -26,8 +26,6 @@ namespace DoAn01
         // item index in current page;
         public int IndexCurrentPage { get; set; }
         //
-        public int SelectedItemIndex { get; set; }
-        //
         public class HomeViewModel : INotifyPropertyChanged
         {
             public CPage PageInfor { get; set; }
@@ -37,7 +35,8 @@ namespace DoAn01
                 get { return this.currentSubList; }
                 set
                 {
-                    if (value != this.currentSubList) {
+                    if (value != this.currentSubList)
+                    {
                         this.currentSubList = new BindingList<Food>(value.ToList<Food>());
                         OnPropertyChanged("CurrentSublist");
                     }
@@ -83,7 +82,7 @@ namespace DoAn01
             var value = ConfigurationManager.AppSettings["HomeCurrentPage"];
             var homecrtpage = int.Parse(value);
 
-            if (homecrtpage > 0 && homecrtpage <= _mainVM.PageInfor.MaxPages)
+            if (IsValuablePageNumber(homecrtpage) == true)
             {
                 _mainVM.PageInfor.CurrentPage = homecrtpage;
             }
@@ -93,7 +92,7 @@ namespace DoAn01
             }
 
             _mainVM.CurrentSublist = Global.HomeSubLists[_mainVM.PageInfor.CurrentPage - 1];
-            
+
             DataContext = _mainVM;
 
             //if(_mainVM.PageInfor.CurrentPage == 1)
@@ -114,8 +113,21 @@ namespace DoAn01
             //    // Do nothing
             //}
         }
+
         /// <summary>
         /// 
+        /// </summary>
+        /// <param name="pagenumber"></param>
+        /// <returns></returns>
+        private bool IsValuablePageNumber(int pagenumber)
+        {
+            var check = false;
+            check = pagenumber >= _mainVM.PageInfor.CurrentPage && pagenumber <= _mainVM.PageInfor.MaxPages;
+            return check;
+        }
+
+        /// <summary>
+        /// Hàm xử lí khi nhấn Next Page Button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -130,11 +142,12 @@ namespace DoAn01
                 //    nextPageButton.IsEnabled = false;
                 //}
                 _mainVM.CurrentSublist = Global.HomeSubLists[_mainVM.PageInfor.CurrentPage - 1];
+                UpdateAppConfig("HomeCurrentPage");
             }
         }
 
         /// <summary>
-        /// 
+        /// Hàm xử lí khi nhấn Previous Page Button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -149,6 +162,7 @@ namespace DoAn01
                 //    prevPageButton.IsEnabled = false;
                 //}
                 _mainVM.CurrentSublist = Global.HomeSubLists[_mainVM.PageInfor.CurrentPage - 1];
+                UpdateAppConfig("HomeCurrentPage");
             }
         }
 
@@ -174,7 +188,7 @@ namespace DoAn01
                     aws.Foreground = Brushes.Black;
                     // update property in food list
                     Global.FoodList[indexInList].Favorite = new StringBuilder("Black");
-                    changeCheck = 1;
+                    changeCheck = -1;
                 }
                 else if (aws.Foreground == Brushes.Black)
                 {
@@ -182,12 +196,10 @@ namespace DoAn01
                     aws.Foreground = Brushes.Red;
                     // update property in food list
                     Global.FoodList[indexInList].Favorite = new StringBuilder("Red");
-                    changeCheck = -1;
+                    changeCheck = 1;
                 }
-                else
-                {
-                    // Throw exception
-                }
+                else { }
+
                 if (changeCheck != 0)
                 {
                     if (changeCheck == -1)
@@ -196,15 +208,11 @@ namespace DoAn01
                     }
                     else if (changeCheck == 1)
                     {
-                        food.Favorite = new StringBuilder("Red");
                         Global.FavoriteFoodList.Add(food);
                     }
-                    Global.FavorSubLists = Global.ConvertListToSubLists(Global.ItemsPerPage, Global.FoodList);
+                    Global.FavorSubLists = Global.ConvertListToSubLists(Global.ItemsPerPage, Global.FavoriteFoodList);
                 }
-                else
-                { //Do nothing
-
-                }
+                else { }
             }
             catch (Exception ex)
             {
@@ -234,7 +242,7 @@ namespace DoAn01
         }
 
         /// <summary>
-        /// 
+        /// Hàm xử lí khi nhấn double click vào một món ăn để xem chi tiết
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -243,16 +251,20 @@ namespace DoAn01
             Food p = (Food)mealListView.Items[IndexCurrentPage];
             DetailMeal page = new DetailMeal(p);
             //
-            UpdateAppConfig();
+            UpdateAppConfig("HomeCurrentPage");
             // Chuyển hướng hiển thị xang page
             this.NavigationService.Navigate(page);
         }
 
-        private void UpdateAppConfig()
+        /// <summary>
+        /// Hàm cập nhập file App.Config
+        /// </summary>
+        /// <param name="_name"></param>
+        private void UpdateAppConfig(string _name)
         {
             // Lưu lại trang hiện tại của PageInfor
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            config.AppSettings.Settings["HomeCurrentPage"].Value = _mainVM.PageInfor.CurrentPage.ToString();
+            config.AppSettings.Settings[_name].Value = _mainVM.PageInfor.CurrentPage.ToString();
             config.Save(ConfigurationSaveMode.Minimal);
 
             ConfigurationManager.RefreshSection("appSettings");

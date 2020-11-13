@@ -12,20 +12,7 @@ namespace WpfApp1
     {
         public MainWindow()
         {
-            InitializeComponent();
-            string path1 = AppDomain.CurrentDomain.BaseDirectory;
-            string path2 = Path.Combine(path1 + "Demo");
-            Directory.CreateDirectory(path2);
             
-            //if(!Directory.Exists(path2))
-            //{
-            //    Directory.CreateDirectory(path2);
-            //}
-            //else
-            //{
-            //    Directory.Delete(path2);
-            //}
-            this.Close();
         }
 
     }

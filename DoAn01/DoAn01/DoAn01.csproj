@@ -38,8 +38,9 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>appIcon.ico</ApplicationIcon>
+    <ApplicationIcon>Data\Images\Icons\appIcon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="Aspose.Cells">
       <HintPath>..\..\..\..\Aspose.Cells\Aspose.Cells.dll</HintPath>
@@ -187,7 +188,6 @@
     <Resource Include="Data\Images\Icons\addIcon.jpg" />
     <Resource Include="Data\Images\Icons\add_imageIcon.jpg" />
     <Resource Include="Data\Images\Icons\add_stepIcon.jpg" />
-    <Resource Include="Data\Images\Icons\appIcon.jpg" />
     <Resource Include="Data\Images\Icons\outIcon.jpg" />
     <Resource Include="Data\Images\Icons\food01.jpg" />
     <Resource Include="Data\Images\Icons\homeIcon.jpg" />
@@ -197,9 +197,6 @@
     <Resource Include="Data\Images\Icons\quitIcon.jpg" />
     <Resource Include="Data\Images\Icons\saveIcon.jpg" />
     <Resource Include="Data\Images\Icons\searchIcon.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="appIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Data\Images\Food\10\ava.jpg" />
@@ -696,6 +693,9 @@
     <Resource Include="Data\Images\Food\9\step7 %281%29.jpg" />
     <Resource Include="Data\Images\Food\9\step7 %282%29.jpg" />
     <Resource Include="Data\Images\Food\9\step7 %283%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\Images\Icons\appIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

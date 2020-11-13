@@ -10,6 +10,15 @@ namespace DoAn01
         public static List<Food> FavoriteFoodList { get; set; }
         public static List<BindingList<Food>> HomeSubLists { get; set; }
         public static List<BindingList<Food>> FavorSubLists { get; set; }
+        private void OnPropertyChanged(string name)
+        {
+            var handler = PropertyChanged;
+
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
         public static int ItemsPerPage { get; set; } = 12;
 
         public event PropertyChangedEventHandler PropertyChanged;

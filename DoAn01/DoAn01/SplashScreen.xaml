@@ -8,9 +8,9 @@
         WindowStyle="none"  AllowsTransparency="true"
          Height="800" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Title="Welcom to FoodRecipe">
 
-    <Window.Icon>
+    <!--<Window.Icon>
         <BitmapImage UriSource="Data/Images/Icons/appIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
-    </Window.Icon>
+    </Window.Icon>-->
 
     <Window.Resources>
         <local:StringBuilderToStringConverter x:Key="Converter"/>

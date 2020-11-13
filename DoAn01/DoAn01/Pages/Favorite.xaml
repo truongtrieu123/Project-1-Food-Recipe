@@ -10,7 +10,8 @@
       Title="Home" Width="1090" Height="850" Loaded="Favorite_Loaded">
     <Page.Resources>
         <local:PageNumberConverter x:Key="pagenumConverter"/>
-        <local:AbsolutePathConverter x:Key="Converter"/>
+        <local:AbsolutePathConverter x:Key="pathConverter"/>
+        <local:StringBuilderToStringConverter x:Key="Converter"/>
         <LinearGradientBrush x:Key="backgroundListViewItem">
             <GradientStop Color="LightGray" Offset="0.0"/>
             <GradientStop Color="DarkGray" Offset="0.75"/>
@@ -72,7 +73,7 @@
                       Background="Transparent" Margin="20,30,20,25"
                       BorderBrush="Transparent"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                      ScrollViewer.VerticalScrollBarVisibility="Disabled" >
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemsSource="{Binding CurrentSublist, BindsDirectlyToSource=True}">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <Style.Triggers>
@@ -113,17 +114,17 @@
                             <StackPanel  Height="202">
                                 <Rectangle RadiusX="20" RadiusY="20"  Height="150">
                                     <Rectangle.Fill>
-                                        <ImageBrush ImageSource="{Binding CoverSource, Converter={StaticResource Converter}}"/>
+                                        <ImageBrush ImageSource="{Binding CoverSource, Converter={StaticResource pathConverter}}"/>
                                     </Rectangle.Fill>
                                 </Rectangle>
 
                                 <DockPanel>
                                     <Label Background="Transparent" FontSize="18" Width="185" Height="52"  BorderBrush="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" FontFamily="Desinosaur">
-                                        <AccessText TextWrapping="Wrap" Text="{Binding Name}"/>
+                                        <AccessText TextWrapping="Wrap" Text="{Binding Name, Converter={StaticResource Converter}}"/>
                                     </Label>
 
                                     <Button Name ="dislikeButton" Style="{StaticResource HeartButton}" Click="dislikeButton_Click" DockPanel.Dock="Right" Width="40">
-                                        <fa:ImageAwesome Icon="Heart"  Foreground="{Binding Favorite}"    Margin="5,0,5,0"/>
+                                        <fa:ImageAwesome Icon="Heart"  Foreground="{Binding Favorite, Converter={StaticResource Converter}}"    Margin="5,0,5,0"/>
                                     </Button>
                                 </DockPanel>
 
@@ -140,8 +141,8 @@
                     <Label x:Name="pageNumber" FontSize="30" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent">
                         <Label.Content>
                             <MultiBinding  Converter="{StaticResource pagenumConverter}">
-                                <Binding Path="CurrentPage" BindsDirectlyToSource="True"/>
-                                <Binding Path="MaxPages" BindsDirectlyToSource="True"/>
+                                <Binding Path="PageInfor.CurrentPage" BindsDirectlyToSource="True"/>
+                                <Binding Path="PageInfor.MaxPages" BindsDirectlyToSource="True"/>
                             </MultiBinding>
                         </Label.Content>
                     </Label>

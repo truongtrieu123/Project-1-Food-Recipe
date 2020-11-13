@@ -131,7 +131,20 @@ namespace DoAn01
         public StringBuilder Ingredients { get; set; }
         public int CountSteps { get; set; }
         public BindingList<Step> StepList { get; set; }
-        public StringBuilder Favorite { get; set; }
+        private StringBuilder favorite;
+        public StringBuilder Favorite
+        {
+            get
+            { return this.favorite; }
+            set
+            {
+                if (value != this.favorite)
+                {
+                    this.favorite = new StringBuilder(value.ToString());
+                    OnPropertyChanged("Favorite");
+                }
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

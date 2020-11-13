@@ -37,26 +37,51 @@ namespace DoAn01
             Main.NavigationService.Navigate(page);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void favorButton_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new Favorite();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void aboutButton_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new About();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new Search();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void outButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void newRecipeButton_Click(object sender, RoutedEventArgs e)
         {
             var screen = new AddRecipe();
@@ -65,11 +90,19 @@ namespace DoAn01
             this.Hide();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void DyingHadle()
         {
             this.Show();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new Home();
@@ -87,10 +120,13 @@ namespace DoAn01
             win.DragMove();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void ExcelExportData()
         {
             var folder = AppDomain.CurrentDomain.BaseDirectory;
-            var database = $"{folder}FoodList.xlsx";
+            var database = $"{folder}Data\\DataBase\\FoodList.xlsx";
             var workbook = new Workbook(database);
             var sheet = workbook.Worksheets[0];
             sheet.AutoFitColumns();
@@ -102,18 +138,18 @@ namespace DoAn01
             foreach (var value in Global.FoodList)
             {
                 sheet.Cells[row, 0].Value = value.DayIndex;
-                sheet.Cells[row, 1].Value = value.Name;
-                sheet.Cells[row, 2].Value = value.VideoSource;
+                sheet.Cells[row, 1].Value = value.Name.ToString();
+                sheet.Cells[row, 2].Value = value.VideoSource.ToString();
                 sheet.Cells[row, 3].Value = value.Favorite.ToString();
-                sheet.Cells[row, 4].Value = value.Introduction;
-                sheet.Cells[row, 5].Value = value.Ingredients;
+                sheet.Cells[row, 4].Value = value.Introduction.ToString();
+                sheet.Cells[row, 5].Value = value.Ingredients.ToString();
                 col = 7;
                 Array.Clear(countsteps, 0, countsteps.Length);
                 countsteps.Append(value.CountSteps);
 
                 foreach (var step in value.StepList)
                 {
-                    sheet.Cells[row, col].Value = step.StepDetail;
+                    sheet.Cells[row, col].Value = step.StepDetail.ToString();
                     col++;
                     countsteps.Append(step.StepImages.Count);
                 }
@@ -125,10 +161,16 @@ namespace DoAn01
             workbook.Save($"{folder}data.xlsx");
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Closed(object sender, EventArgs e)
         {
-            //ExcelExportData();
+            ExcelExportData();
         }
+
 
     }
 }

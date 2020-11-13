@@ -55,6 +55,7 @@ namespace DoAn01
             {
                 this.maxPages = 1;
             }
+            this.currentPage = 1;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
