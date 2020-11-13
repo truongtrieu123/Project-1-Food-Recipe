@@ -1,9 +1,10 @@
 ﻿using FontAwesome.WPF;
-using FoodRecipe;
 using System;
-using System.Collections.Specialized;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
+using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,36 +18,85 @@ namespace DoAn01
     /// </summary>
     /// 
 
-    public partial class Home : Page, INotifyCollectionChanged
+    public partial class Home : Page
     {
         private const int TotalItemsPerPage = 12;
 
         public BindingList<Food> Sublist { get; set; }
-        //
-        public CPage _homepage { get; set; } = new CPage(Global.HomeSubLists.Count);
         // item index in current page;
         public int IndexCurrentPage { get; set; }
         //
         public int SelectedItemIndex { get; set; }
         //
-        public int Index { get; set; }
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
+        public class HomeViewModel : INotifyPropertyChanged
+        {
+            public CPage PageInfor { get; set; }
+            private BindingList<Food> currentSubList = null;
+            public BindingList<Food> CurrentSublist
+            {
+                get { return this.currentSubList; }
+                set
+                {
+                    if (value != this.currentSubList) {
+                        this.currentSubList = new BindingList<Food>(value.ToList<Food>());
+                        OnPropertyChanged("CurrentSublist");
+                    }
+                    else { return; }
+                }
+            }
+            private void OnPropertyChanged(string name)
+            {
+                var handler = PropertyChanged;
+
+                if (handler != null)
+                {
+                    handler(this, new PropertyChangedEventArgs(name));
+                }
+                else { }
+            }
+
+            public HomeViewModel()
+            {
+                this.PageInfor = new CPage(Global.HomeSubLists.Count);
+                this.CurrentSublist = new BindingList<Food>();
+            }
+
+            public event PropertyChangedEventHandler PropertyChanged;
+        }
+
+        private HomeViewModel _mainVM;
 
         public Home()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HomePage_Loaded(object sender, RoutedEventArgs e)
+        {
+            _mainVM = new HomeViewModel();
 
             var value = ConfigurationManager.AppSettings["HomeCurrentPage"];
             var homecrtpage = int.Parse(value);
-            _homepage.CurrentPage = homecrtpage;
-            mealListView.ItemsSource = Global.HomeSubLists[homecrtpage - 1];
-            
-            DataContext = _homepage;
-        }
 
-        private void HomePage_Loaded(object sender, RoutedEventArgs e)
-        {
-            //if(_homepage.CurrentPage == 1)
+            if (homecrtpage > 0 && homecrtpage <= _mainVM.PageInfor.MaxPages)
+            {
+                _mainVM.PageInfor.CurrentPage = homecrtpage;
+            }
+            else
+            {
+                // current page bằng 1
+            }
+
+            _mainVM.CurrentSublist = Global.HomeSubLists[_mainVM.PageInfor.CurrentPage - 1];
+
+            DataContext = _mainVM;
+
+            //if(_mainVM.PageInfor.CurrentPage == 1)
             //{
             //    prevPageButton.IsEnabled = false;
             //}
@@ -55,53 +105,65 @@ namespace DoAn01
             //    // Do nothing
             //}
 
-            //if(_homepage.CurrentPage == _homepage.MaxPages)
+            //if(_mainVM.PageInfor.CurrentPage == _mainVM.PageInfor.MaxPages)
             //{
             //    nextPageButton.IsEnabled = false;
             //}
             //else
             //{
-            //    // Doo nothing
+            //    // Do nothing
             //}
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void nextPageButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_homepage.CurrentPage < _homepage.MaxPages)
+            if (_mainVM.PageInfor.CurrentPage > 0 && _mainVM.PageInfor.CurrentPage < _mainVM.PageInfor.MaxPages)
             {
-                _homepage.CurrentPage++;
+                _mainVM.PageInfor.CurrentPage++;
 
-                //if(_homepage.CurrentPage == _homepage.MaxPages)
+                //if(_mainVM.PageInfor.CurrentPage == _mainVM.PageInfor.MaxPages)
                 //{
                 //    nextPageButton.IsEnabled = false;
                 //}
-                pageNumber.Content = _homepage.CurrentPage.ToString() + "/" + _homepage.MaxPages.ToString();
-                mealListView.ItemsSource = Global.HomeSubLists[_homepage.CurrentPage - 1];
+                _mainVM.CurrentSublist = Global.HomeSubLists[_mainVM.PageInfor.CurrentPage - 1];
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void prevPageButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_homepage.CurrentPage > 1)
+            if (_mainVM.PageInfor.CurrentPage > 1 && _mainVM.PageInfor.CurrentPage <= _mainVM.PageInfor.MaxPages)
             {
-                _homepage.CurrentPage--;
+                _mainVM.PageInfor.CurrentPage--;
 
-                //if(_homepage.CurrentPage == 1)
+                //if(_mainVM.PageInfor.CurrentPage == 1)
                 //{
                 //    prevPageButton.IsEnabled = false;
                 //}
-
-                pageNumber.Content = _homepage.CurrentPage.ToString() + "/" + _homepage.MaxPages.ToString();
-                mealListView.ItemsSource = Global.HomeSubLists[_homepage.CurrentPage - 1];
+                _mainVM.CurrentSublist = Global.HomeSubLists[_mainVM.PageInfor.CurrentPage - 1];
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void favoriteButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 // index of this food in food list
-                int indexInList = IndexCurrentPage + (_homepage.CurrentPage - 1) * TotalItemsPerPage;
+                int indexInList = IndexCurrentPage + (_mainVM.PageInfor.CurrentPage - 1) * TotalItemsPerPage;
                 var food = Global.FoodList[indexInList];
                 var changeCheck = 0;
                 var btn = sender as Button;
@@ -151,33 +213,47 @@ namespace DoAn01
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SelectCurrentItem(object sender, KeyboardFocusChangedEventArgs e)
         {
-            ListViewItem item = (ListViewItem)sender;
+            var item = sender as ListViewItem;
             item.IsSelected = true;
             IndexCurrentPage = mealListView.SelectedIndex;
             item.IsSelected = false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void DyingHadle()
         {
             this.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListViewItem_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Food p = (Food)mealListView.Items[IndexCurrentPage];
+            Debug.WriteLine(p.Name);
+            Debug.WriteLine(p.Introduction);
             DetailMeal page = new DetailMeal(p);
 
+            // Lưu lại trang hiện tại của PageInfor
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            config.AppSettings.Settings["HomeCurrentPage"].Value = _homepage.CurrentPage.ToString();
+            config.AppSettings.Settings["HomeCurrentPage"].Value = _mainVM.PageInfor.CurrentPage.ToString();
             config.Save(ConfigurationSaveMode.Minimal);
 
             ConfigurationManager.RefreshSection("appSettings");
-
+            // Chuyển hướng hiển thị xang oage
             this.NavigationService.Navigate(page);
         }
-
-
     }
 }

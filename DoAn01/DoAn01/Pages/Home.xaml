@@ -75,7 +75,7 @@
                       Background="Transparent" Margin="20,30,20,25"
                       BorderBrush="Transparent"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                      ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemsSource="{Binding Sublist, BindsDirectlyToSource=True}" >
+                      ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemsSource="{Binding CurrentSublist, BindsDirectlyToSource=True}" >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <EventSetter Event="Control.PreviewMouseDoubleClick" Handler="ListViewItem_PreviewMouseDoubleClick"/>
@@ -146,8 +146,8 @@
                     <Label x:Name="pageNumber" FontSize="30" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent" Height="50" Margin="0,-1">
                         
                         <MultiBinding Converter="{StaticResource pagenumConverter}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
-                            <Binding Path="CurrentPage" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" BindsDirectlyToSource="True"/>
-                            <Binding Path="MaxPages" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" BindsDirectlyToSource="True"/>
+                            <Binding Path="PageInfor.CurrentPage" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" BindsDirectlyToSource="True"/>
+                            <Binding Path="PageInfor.MaxPages" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" BindsDirectlyToSource="True"/>
                         </MultiBinding>
                         
                     </Label>

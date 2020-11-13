@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace FoodRecipe
+namespace DoAn01
 {
     public class CPage : INotifyPropertyChanged
     {
