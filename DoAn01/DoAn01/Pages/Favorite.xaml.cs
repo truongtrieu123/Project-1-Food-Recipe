@@ -23,8 +23,8 @@ namespace DoAn01
         // item index in current page;
         public int IndexCurrentPage { get; set; }
 
-        public delegate void LikeDislikeHandle();
-        public event LikeDislikeHandle FavorHandle;
+        //public delegate void LikeDislikeHandle();
+        //public event LikeDislikeHandle FavorHandle;
 
         public class FavoriteViewModel : INotifyPropertyChanged
         {

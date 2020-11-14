@@ -13,8 +13,8 @@ namespace DoAn01
     /// </summary>
     public partial class DetailMeal : Page
     {
-        public delegate void DyingHandler();
-        public event DyingHandler Dying;
+        //public delegate void DyingHandler();
+        //public event DyingHandler Dying;
 
         private DetailMealViewModel _mainVM;
 
@@ -48,7 +48,10 @@ namespace DoAn01
             public int MaxStepIndex { get; set; } = 1;
 
             public event PropertyChangedEventHandler PropertyChanged;
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="name"></param>
             private void OnPropertyChanged(string name)
             {
                 var handler = PropertyChanged;
@@ -64,21 +67,25 @@ namespace DoAn01
         /// <summary>
         /// 
         /// </summary>
-        public DetailMeal()
-        {
-            InitializeComponent();
-        }
+        //public DetailMeal()
+        //{
+        //    InitializeComponent();
+        //}
 
         /// <summary>
         /// Hàm khởi tạo có tham số cho Page Detail Meal
         /// </summary>
         /// <param name="p"></param>
-        public DetailMeal(Food p)
+        public DetailMeal(Food p = null)
         {
             InitializeComponent();
 
-            _mainVM = new DetailMealViewModel();
-            _mainVM.MainFood = p;
+            if (p != null)
+            {
+                _mainVM = new DetailMealViewModel();
+                _mainVM.MainFood = p;
+
+            }
         }
 
         /// <summary>
@@ -88,14 +95,9 @@ namespace DoAn01
         /// <param name="e"></param>
         private void DetailMeal_Loaded(object sender, RoutedEventArgs e)
         {
-
-
             CreateFoodDetailPage();
-            foreach (var step in _mainVM.MainFood.StepList)
-            {
-                Debug.WriteLine(step.StepDetail.ToString());
-            }
             DataContext = _mainVM;
+            foodVideoWebBrowser.Visibility = Visibility.Hidden;
         }
 
         /// <summary>
@@ -124,10 +126,9 @@ namespace DoAn01
                 //Console.WriteLine(videoCode);
                 string html = "<html><head>";
                 html += "<meta content='IE=Edge' http-equiv='X-UA-Compatible'/>";
-                html += "</head><body>";
-                html += $"<iframe width='425' height='235' src='{videoCode}' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen style='overflow-x: hidden'> ";
+                html += "</head><body style=\"overflow: hidden;\">" ;
+                html += $"<iframe width='380' height='210' src='{videoCode}' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' style='overflow-x: hidden'>";
                 html += "</body></html>";
-                //foodVideoWebBrowser.Document.Body.Style = "overflow:hidden";
                 foodVideoWebBrowser.NavigateToString(html);
             }
             catch (Exception e)
@@ -195,10 +196,11 @@ namespace DoAn01
         /// <param name="e"></param>
         private void returnButton_Click(object sender, RoutedEventArgs e)
         {
+            // Dừng video
+            foodVideoWebBrowser.Dispose();
+            //
             this.NavigationService.GoBack();
         }
-
-
     }
 }
 

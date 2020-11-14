@@ -21,8 +21,8 @@ namespace DoAn01
         private Random _rng;
         private Food _food = new Food();
         private int _foodindex;
-        public delegate void DeathHandler();
-        public event DeathHandler Dying; 
+        //public delegate void DeathHandler();
+        //public event DeathHandler Dying; 
         #endregion
 
         /// <summary>

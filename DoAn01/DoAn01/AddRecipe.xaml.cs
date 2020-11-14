@@ -341,13 +341,13 @@ namespace DoAn01
         /// <param name="e"></param>
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-                foodNameTextBox.Text = "";
-                introductionTextBox.Text = "";
-                ingredientsTextBox.Text = "";
-                videoSourceTextBox.Text = "";
-                stepDetailTextBox.Text = "";
-                foodCoverImage.Source = null;
-                _mainVM.ClearView();
+            foodNameTextBox.Text = "";
+            introductionTextBox.Text = "";
+            ingredientsTextBox.Text = "";
+            videoSourceTextBox.Text = "";
+            stepDetailTextBox.Text = "";
+            foodCoverImage.Source = null;
+            _mainVM.ClearView();
         }
 
         /// <summary>
@@ -413,7 +413,35 @@ namespace DoAn01
         /// </summary>
         private void SaveImgsToData()
         {
+            var coverimgpath = _temp_food.CoverSource.ToString();
+            var coverimg = new FileInfo(coverimgpath);
+            var coverimgpath_filename = Path.GetFileName(coverimgpath);
 
+            //File.Create(_imagesFolder)
+            //File.Copy(coverimgpath, _imagesFolder + "ava.jpg", true);
+            //Path.CreateFile()
+            //coverimg.CopyTo(_imagesFolder + coverimgpath_filename);
+            //coverimg.(_imagesFolder + "ava.jpg");
+
+            for (var pos = 0; pos < _temp_food.StepList.Count; pos++)
+            {
+                var pos2 = 1;
+
+                // Nếu bước này có hình ảnh minh họa
+                if (_mainVM.StepList[pos].StepImages.Count > 0)
+                {
+                    foreach (var imgage in _mainVM.StepList[pos].StepImages)
+                    {
+                        var imgpath = imgage.ImgPath.ToString();
+                        var img = new FileInfo(imgpath);
+
+                        img.CopyTo(_imagesFolder + _temp_food.StepList[pos].StepImages[pos2 - 1]);
+                        pos2++;
+                    }
+                }
+                else { }
+
+            }
         }
 
         /// <summary>
@@ -429,7 +457,8 @@ namespace DoAn01
             _temp_food.DayIndex = _dayindex;
 
             // Thêm step vào Step List
-            for(var pos = 0; pos<_mainVM.StepList.Count;  pos++)
+            _temp_food.StepList.Clear();
+            for (var pos = 0; pos < _mainVM.StepList.Count; pos++)
             {
                 var tmp_step = new Step()
                 {
@@ -438,15 +467,20 @@ namespace DoAn01
                 };
                 var pos2 = 1;
 
-                foreach (var img in _mainVM.StepList[pos].StepImages)
+                // Nếu bước này có hình ảnh minh họa
+                if (_mainVM.StepList[pos].StepImages.Count > 0)
                 {
-                    tmp_step.StepImages.Add(new Image
+                    foreach (var img in _mainVM.StepList[pos].StepImages)
                     {
-                        ImgPath = new StringBuilder($"{_imagesFolder}step{pos+1} ({pos2}).jpg")
-                    });
+                        tmp_step.StepImages.Add(new Image
+                        {
+                            ImgPath = new StringBuilder($"{_imagesFolder}step{pos + 1} ({pos2}).jpg")
+                        });
 
-                    pos2++;
+                        pos2++;
+                    }
                 }
+                else { }
 
                 _temp_food.StepList.Add(tmp_step);
             }

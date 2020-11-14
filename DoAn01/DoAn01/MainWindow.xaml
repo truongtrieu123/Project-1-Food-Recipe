@@ -5,11 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DoAn01"
         mc:Ignorable="d"
-        WindowStyle="none" AllowsTransparency="true" Title="Food Recipe" Height="900" Width="1400" WindowStartupLocation="CenterScreen" Closed="Window_Closed" Loaded="Window_Loaded">
-
-    <!--<Window.Icon>
-        <BitmapImage UriSource="Data/Images/Icons/appIcon.ico" RenderOptions.BitmapScalingMode="HighQuality"/>
-    </Window.Icon>-->
+        WindowStyle="none" AllowsTransparency="False" Title="Food Recipe" Height="900" Width="1400" WindowStartupLocation="CenterScreen" Closed="Window_Closed" Loaded="Window_Loaded" ResizeMode="NoResize">
 
     <Window.Resources>
         <Style  TargetType="Button">
@@ -35,9 +31,10 @@
         </Style>
     </Window.Resources>
 
-    <Canvas >
-        <StackPanel>
-            <StackPanel Background="MediumPurple" Height="50" Width="1400" Orientation="Horizontal" x:Name="TitleOfWindow" MouseLeftButtonDown="TitleOfWindow_MouseLeftButtonDown">
+    <Canvas Height="900" Width="1400">
+        <StackPanel >
+            <StackPanel Background="MediumPurple" Height="50" Width="1400" Orientation="Horizontal" x:Name="TitleOfWindow" MouseLeftButtonDown="TitleOfWindow_MouseLeftButtonDown" Margin="0,0,0,0">
+                
                 <Image Source="Data/Images/Icons/appIcon.ico" RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="64" Margin="0,5"/>
                 <Label Foreground="White" Width="176" RenderTransformOrigin="3.919,2.601" Content="Food Recipe" FontSize="30"/>
 
@@ -116,7 +113,7 @@
             </StackPanel>
         </StackPanel>
 
-        <Frame Name="Main" Margin="310 50 0 0" NavigationUIVisibility="Hidden"/>
+        <Frame Height="850" Width="1090" Name="Main" Margin="310,50,0,0" NavigationUIVisibility="Hidden"/>
     </Canvas>
 
 

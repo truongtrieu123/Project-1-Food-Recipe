@@ -56,41 +56,37 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Background="LightYellow">
-            <StackPanel Width="470" Margin="10,30,10,20" Panel.ZIndex="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Width="470" Margin="10,5,10,20" Panel.ZIndex="4" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <TextBlock  Name="foodNameTextBlock" Text="{Binding MainFood.Name, Converter={StaticResource Converter}}" Visibility="Visible" TextWrapping="Wrap"  Width="450" FontWeight="Bold" FontSize="30"  Height="68"  TextAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="blue">
+                <TextBlock  Name="foodNameTextBlock" Text="{Binding MainFood.Name, Converter={StaticResource Converter}}" Visibility="Visible" TextWrapping="Wrap"  Width="450" FontWeight="Bold" FontSize="30"  Height="92"  TextAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="blue" Margin="10,5" Padding="5,5,7,5">
                 </TextBlock>
 
-                <ScrollViewer  Height="120" Width="430"  IsTabStop="True" Margin="20,10,20,20" 
+                <ScrollViewer  Height="129" Width="430"  IsTabStop="True" Margin="20,15,20,15" 
                               VerticalScrollBarVisibility="Auto">
-                    <TextBlock  x:Name="introTextBlock"  FontStyle="Italic" TextWrapping="Wrap" FontSize="18"  HorizontalAlignment="Center" TextAlignment="Justify">
+                    <TextBlock  x:Name="introTextBlock"  FontStyle="Italic" TextWrapping="Wrap" FontSize="18"  HorizontalAlignment="Center" TextAlignment="Justify" Height="110">
                         <Run Text="&#x09;"/>
                         <Run Text="{Binding MainFood.Introduction, Converter={StaticResource Converter}}"/>
                     </TextBlock>
                 </ScrollViewer>
 
-                <Border Height="240" Width="430"  Margin="20,15,20,10"  BorderBrush="Black" BorderThickness="2" >
+                <Border Height="210" Width="380" Margin="0,10"  BorderBrush="Black" BorderThickness="2" >
                     <Border.Background>
                         <ImageBrush x:Name="foodCoverImage" ImageSource="{Binding MainFood.CoverSource, Converter={StaticResource Converter}}"/>
                     </Border.Background>
 
-                    <WebBrowser Name="foodVideoWebBrowser" Margin="0"
-                                Width='428' Height='238'
-                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                    <WebBrowser Name="foodVideoWebBrowser" Height="210" Width="380" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center"
                                 ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
                                 ScrollViewer.VerticalScrollBarVisibility="Hidden"
                                 ClipToBounds="True">
                     </WebBrowser>
                 </Border>
 
-                <Button Height="60" Content="Xem Video" Name="watchVideoButton" Click="Button_Click" Style="{StaticResource ClickButton}" Background="{StaticResource XemVideo}" Margin="144,20,146,20" FontSize="28" FontFamily="Caladea" FontStyle="Italic"/>
+                <Button Height="47" Content="Xem Video" x:Name="watchVideoButton" Click="Button_Click" Style="{StaticResource ClickButton}" Background="{StaticResource XemVideo}" Margin="144,10,140,0" FontSize="24" FontFamily="Caladea" FontWeight="Bold" FontStyle="Italic"/>
 
-                <Label Name="ingredientsLabel"  Content="Nguyên liệu: " Width="400" Foreground="Red" FontSize="24" FontWeight="Bold" Margin="56,0,14,0">
-                </Label>
+                <Label Name="ingredientsLabel"  Content="Nguyên liệu: " Foreground="Red" FontSize="24" FontWeight="Bold" Margin="38,0,20,0"/>
 
-                <ScrollViewer Width="430" Height="272" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                    <TextBlock Name="ingredientsTextBlock" Text="{Binding MainFood.Ingredients}" 
-                               TextWrapping="Wrap"  FontSize="22" Width="405"/>
+                <ScrollViewer Width="430" Height="242" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="20,0">
+                    <TextBlock Name="ingredientsTextBlock" Text="{Binding MainFood.Ingredients}" TextWrapping="Wrap"  FontSize="20" Width="422" />
                 </ScrollViewer>
             </StackPanel>
         </StackPanel>
@@ -99,21 +95,22 @@
 
             <Button x:Name="returnButton" Width="50" Background="White" Click="returnButton_Click" Margin="0 0 0 0" BorderThickness="0" BorderBrush="White" HorizontalAlignment="Left" >
 
-                <Image Source="../Data/Images/Icons/leftarrowIcon.jpg" Tag="Trở về" RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="40" RenderTransformOrigin="2.171,4.193"/>
+                <Image Source="../Data/Images/Icons/leftarrowIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="40" RenderTransformOrigin="2.171,4.193"/>
 
             </Button>
 
-            <Border Width="100" Height="120" CornerRadius="10,10,10,10" BorderBrush="Black"  BorderThickness="2" Background="LightGreen">
+            <Border Height="111" CornerRadius="10,10,10,10" BorderBrush="Black"  BorderThickness="2" Background="LightGreen" Margin="250,0,248,0">
                 <StackPanel>
                     <TextBlock Text="Bước" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"></TextBlock>
-                    <TextBlock   Name="step" FontSize="45" FontWeight="Bold" HorizontalAlignment="Center">
+                    <TextBlock   Name="step" FontSize="45" FontWeight="Bold" HorizontalAlignment="Center" Height="56" Margin="49,0">
                                 <Run Text="{Binding CurrentStep.StepIndex}" Foreground="Blue"></Run>
                     </TextBlock>
                 </StackPanel>
             </Border>
-            <Label Name="stepDetailLabel" Content="Cách thực hiện: " Height="40" Margin="84,30,40,0" FontSize="25" FontWeight="Bold">
+            <Label Name="stepDetailLabel" Content="Cách thực hiện: " Height="40" Margin="84,15,40,0" FontSize="25" FontWeight="Bold">
             </Label>
-            <ScrollViewer Height="227" Margin="40,10,40,10" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+
+            <ScrollViewer Height="264" Margin="40,7,40,10" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="5,5,7,5">
 
                 <TextBlock Name="stepDetailTextBlock" TextWrapping="Wrap" Text="{Binding CurrentStep.StepDetail, Converter={StaticResource Converter}}"  FontSize="25" HorizontalAlignment="Stretch" TextAlignment="Justify">
                 </TextBlock>

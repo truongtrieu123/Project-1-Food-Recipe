@@ -145,6 +145,10 @@ namespace DoAn01
                 }
             }
         }
+        public Food()
+        {
+            this.StepList = new BindingList<Step>();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
