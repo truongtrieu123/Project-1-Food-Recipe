@@ -10,6 +10,7 @@ namespace DoAn01
         public static List<Food> FavoriteFoodList { get; set; }
         public static List<BindingList<Food>> HomeSubLists { get; set; }
         public static List<BindingList<Food>> FavorSubLists { get; set; }
+        public static List<BindingList<Food>> SearchSubLists { get; set; }
         private void OnPropertyChanged(string name)
         {
             var handler = PropertyChanged;

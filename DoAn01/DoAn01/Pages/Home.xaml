@@ -37,7 +37,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            
+
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="LightGreen"/>
@@ -70,9 +70,12 @@
         </Style>
     </Page.Resources>
     <Canvas>
-        <StackPanel Orientation="Vertical" Canvas.Left="-5" >
+        <StackPanel Orientation="Vertical" Canvas.Left="-5" Height="850" Width="1095" >
+            <StackPanel Orientation="Vertical" Margin="10,0,0,0" Height="50">
+
+            </StackPanel>
             <ListView x:Name="mealListView" Height="690"  Width="1028"
-                      Background="Transparent" Margin="20,30,20,25"
+                      Background="Transparent" Margin="20,20,20,0"
                       BorderBrush="Transparent"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                       ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemsSource="{Binding CurrentSublist, BindsDirectlyToSource=True}" >
@@ -125,7 +128,7 @@
                                         <AccessText TextWrapping="Wrap" Text="{Binding Name}"/>
                                     </Label>
 
-                                    <Button Name="favoriteButton" Style="{StaticResource HeartButton}" Click="favoriteButton_Click" DockPanel.Dock="Right" Width="40">
+                                    <Button x:Name="favoriteButton" Style="{StaticResource HeartButton}" Click="favoriteButton_Click" DockPanel.Dock="Right" Width="40">
                                         <fa:ImageAwesome Icon="Heart"  Foreground="{Binding Favorite, Converter={StaticResource heartConverter}}"    Margin="5,0,5,0"/>
                                     </Button>
                                 </DockPanel>
@@ -135,29 +138,34 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackPanel Height="63" Orientation="Horizontal" Margin="718,10,46,30">
 
-                <Border Background="LightGreen"   BorderThickness="1" BorderBrush="Black" Width="110" Height="50" CornerRadius="40,10,10,40" Margin="5">
-
-                    <Button Name="prevPageButton" Click="prevPageButton_Click" Style="{StaticResource ClickButton}" Background="Transparent" Content="Prev" FontFamily="Caladea" BorderBrush="Transparent" FontSize="30" Margin="23,0,0,0"/>
-                </Border>
-
+            <StackPanel Height="63" Orientation="Horizontal" Margin="725,20,33,0">
+                <Button x:Name="prevPageButton" Style="{DynamicResource PrevPageButtonStyle}" Click="prevPageButton_Click"
+                        Content="Prev" FontFamily="Caladea" 
+                        FontSize="30" Margin="9,0,9,0" 
+                        Width="105" Height="50"/>
+                
                 <Border  Background="LightGreen" BorderThickness="1" BorderBrush="Black"  Width="77" Height="50" CornerRadius="20,20,20,20" Margin="5,6,5,7" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Label x:Name="pageNumber" FontSize="30" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent" Height="50" Margin="0,-1">
-                        
+
+                    <Label x:Name="pageNumber" 
+                           FontSize="30" FontFamily="Caladea" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent" Height="50"  
+                           Margin="0,-1">
+
                         <MultiBinding Converter="{StaticResource pagenumConverter}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
                             <Binding Path="PageInfor.CurrentPage" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" BindsDirectlyToSource="True"/>
                             <Binding Path="PageInfor.MaxPages" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" BindsDirectlyToSource="True"/>
                         </MultiBinding>
-                        
+
                     </Label>
                 </Border>
-
-                <Border Background="LightGreen" BorderThickness="1" BorderBrush="Black" Width="114" Height="50" CornerRadius="10,40,40,10" Margin="5,6,5,7">
-
-                    <Button Name ="nextPageButton" Click="nextPageButton_Click"   Style="{StaticResource ClickButton}"  Background="Transparent" Content="Next" FontFamily="Caladea"  BorderBrush="LightGreen"   FontSize="30" Margin="0,0,19,0" RenderTransformOrigin="1.065,0.5" />
-                </Border>
-
+                
+                <Button x:Name="nextPageButotn" Click="nextPageButton_Click" 
+                        Content="Next" Style="{DynamicResource NextPageButtonStyle}"
+                        Width="105"
+                        Height="50"
+                        FontSize="30" Margin="9,0,19,0"
+                        FontFamily="Caladea"
+                        />
             </StackPanel>
         </StackPanel>
     </Canvas>

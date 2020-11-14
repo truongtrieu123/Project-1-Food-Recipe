@@ -69,10 +69,21 @@
                     </TextBlock>
                 </ScrollViewer>
 
-                <!--<WebBrowser x:Name="foodVideo" Height="150"  Margin="100,15,103,10" ClipToBounds="True" Source="{Binding VideoSource}">
-                </WebBrowser>-->
+                <Border Height="240" Width="430"  Margin="20,15,20,10"  BorderBrush="Black" BorderThickness="2" >
+                    <Border.Background>
+                        <ImageBrush x:Name="foodCoverImage" ImageSource="{Binding MainFood.CoverSource, Converter={StaticResource Converter}}"/>
+                    </Border.Background>
 
-                <Button Width="150" Height="60" Content="Xem Video" Style="{StaticResource ClickButton}" Background="{StaticResource XemVideo}" Margin="140,20" FontSize="20" FontFamily="Caladea" FontStyle="Italic"/>
+                    <WebBrowser Name="foodVideoWebBrowser" Margin="0"
+                                Width='428' Height='238'
+                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
+                                ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                                ClipToBounds="True">
+                    </WebBrowser>
+                </Border>
+
+                <Button Height="60" Content="Xem Video" Name="watchVideoButton" Click="Button_Click" Style="{StaticResource ClickButton}" Background="{StaticResource XemVideo}" Margin="144,20,146,20" FontSize="28" FontFamily="Caladea" FontStyle="Italic"/>
 
                 <Label Name="ingredientsLabel"  Content="Nguyên liệu: " Width="400" Foreground="Red" FontSize="24" FontWeight="Bold" Margin="56,0,14,0">
                 </Label>
@@ -88,7 +99,7 @@
 
             <Button x:Name="returnButton" Width="50" Background="White" Click="returnButton_Click" Margin="0 0 0 0" BorderThickness="0" BorderBrush="White" HorizontalAlignment="Left" >
 
-                <Image Source="Data/Images/Icons/leftarrowIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="40" RenderTransformOrigin="2.171,4.193"/>
+                <Image Source="../Data/Images/Icons/leftarrowIcon.jpg" Tag="Trở về" RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="40" RenderTransformOrigin="2.171,4.193"/>
 
             </Button>
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -87,12 +88,53 @@ namespace DoAn01
         /// <param name="e"></param>
         private void DetailMeal_Loaded(object sender, RoutedEventArgs e)
         {
+
+
             CreateFoodDetailPage();
             foreach (var step in _mainVM.MainFood.StepList)
             {
                 Debug.WriteLine(step.StepDetail.ToString());
             }
             DataContext = _mainVM;
+        }
+
+        /// <summary>
+        /// Hàm xử lí khi nhấn Xem Video để khởi động video
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            foodCoverImage.Opacity = 0;
+            CreateHTMLVideo();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void CreateHTMLVideo()
+        {
+            foodVideoWebBrowser.Visibility = Visibility.Visible;
+            foodCoverImage.Opacity = 0;
+            try
+            {
+                string source = _mainVM.MainFood.VideoSource.ToString();
+                string videoCode = source.Replace($".be/", "be.com/embed/");
+                videoCode = videoCode.Replace("watch?=", "embed/");
+                //Console.WriteLine(videoCode);
+                string html = "<html><head>";
+                html += "<meta content='IE=Edge' http-equiv='X-UA-Compatible'/>";
+                html += "</head><body>";
+                html += $"<iframe width='425' height='235' src='{videoCode}' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen style='overflow-x: hidden'> ";
+                html += "</body></html>";
+                //foodVideoWebBrowser.Document.Body.Style = "overflow:hidden";
+                foodVideoWebBrowser.NavigateToString(html);
+            }
+            catch (Exception e)
+            {
+                string source = _mainVM.MainFood.VideoSource.ToString();
+                foodVideoWebBrowser.Source = new Uri(source);
+            }
         }
 
         /// <summary>
@@ -155,6 +197,7 @@ namespace DoAn01
         {
             this.NavigationService.GoBack();
         }
+
 
     }
 }

@@ -6,8 +6,10 @@ using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -269,5 +271,42 @@ namespace DoAn01
 
             ConfigurationManager.RefreshSection("appSettings");
         }
+
+        static Regex ConvertToUnsign_rg = null;
+
+        public static string ConvertToUnsign(string strInput)
+        {
+            if (ReferenceEquals(ConvertToUnsign_rg, null))
+            {
+                ConvertToUnsign_rg = new Regex("p{IsCombiningDiacriticalMarks}+");
+            }
+            var temp = strInput.Normalize(NormalizationForm.FormD);
+            return ConvertToUnsign_rg.Replace(temp, string.Empty).Replace("đ", "d").Replace("Đ", "D").ToLower();
+        }
+
+        //private bool UserFilter(object item)
+        //{
+        //    if (String.IsNullOrEmpty(txtFilter.Text))
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        ConvertToUnsign(txtFilter.Text);
+        //        (item as Food).Name = ConvertToUnsign((item as Food).Name);
+        //        return ((item as Food).Name.ToString().IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        //    }
+        //}
+
+        //private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        //{
+        //    if (e.Key == Key.Return)
+        //    {
+        //        CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(mealListView.ItemsSource);
+        //        view.Filter = UserFilter;
+        //        CollectionViewSource.GetDefaultView(mealListView.ItemsSource).Refresh();
+        //    }
+
+        //}
     }
 }

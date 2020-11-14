@@ -50,7 +50,7 @@
                 <StackPanel  Background="LightGray" Width="310" Height="850" FocusManager.FocusedElement="{Binding homeButton}">
 
                     <StackPanel Margin="15 40 10 20">
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" Visibility="Hidden">
                             <Button Name="searchButton" Click="searchButton_Click" BorderThickness="0" Background="LightGray" BorderBrush="LightGray" HorizontalAlignment="Left">
                                 <Image Source="Data/Images/Icons/searchIcon.jpg" Margin="10, 0, 0, 0" RenderOptions.BitmapScalingMode="HighQuality" Height="36" Width="48" />
                             </Button>

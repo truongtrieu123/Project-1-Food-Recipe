@@ -62,16 +62,6 @@ namespace DoAn01
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void searchButton_Click(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new Search();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void outButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -171,6 +161,14 @@ namespace DoAn01
             ExcelExportData();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void searchButton_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }

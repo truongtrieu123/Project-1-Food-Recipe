@@ -133,10 +133,12 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackPanel Height="60" Orientation="Horizontal" Margin="708,10,10,30">
-                <Border Background="LightGreen"   BorderThickness="1" BorderBrush="Black" Width="110" Height="50" CornerRadius="40,10,10,40" Margin="5">
-                    <Button Name="prevPageButton" Click="prevPageButton_Click" Style="{StaticResource ClickButton}" Background="Transparent" Content="Prev" FontFamily="Caladea" BorderBrush="Transparent" FontSize="30"/>
-                </Border>
+            <StackPanel Height="60" Orientation="Horizontal" Margin="708,10,31,30">
+                <Button x:Name="prevPageButton" Style="{DynamicResource PrevPageButtonStyle}" Click="prevPageButton_Click"
+                        Content="Prev" FontFamily="Caladea" 
+                        FontSize="30" Margin="9,0,9,0" 
+                        Width="105" Height="50"/>
+                
                 <Border  Background="LightGreen" BorderThickness="1" BorderBrush="Black"  Width="77" Height="50" CornerRadius="20,20,20,20" Margin="5">
                     <Label x:Name="pageNumber" FontSize="30" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent">
                         <Label.Content>
@@ -147,9 +149,13 @@
                         </Label.Content>
                     </Label>
                 </Border>
-                <Border Background="LightGreen" BorderThickness="1" BorderBrush="Black" Width="113" Height="50" CornerRadius="10,40,40,10" Margin="5">
-                    <Button Name="nextPageButton" Click="nextPageButton_Click"   Style="{StaticResource ClickButton}"  Background="Transparent" Content="Next" FontFamily="Caladea"  BorderBrush="Transparent"  FontSize="30" />
-                </Border>
+                <Button x:Name="nextPageButotn" Click="nextPageButton_Click" 
+                        Content="Next" Style="{DynamicResource NextPageButtonStyle}"
+                        Width="105"
+                        Height="50"
+                        FontSize="30" Margin="9,0,19,0"
+                        FontFamily="Caladea"
+                        />
             </StackPanel>
         </StackPanel>
     </Grid>
