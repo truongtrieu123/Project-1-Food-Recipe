@@ -74,6 +74,14 @@ namespace DoAn01
         {
             // Khởi tạo biến
             _mainVM = new AddRecipeViewModel();
+            Prepare();
+
+            // View Model
+            DataContext = _mainVM;
+        }
+
+        private void Prepare()
+        {
             _temp_food = new Food();
             _temp_food.DayIndex = Global.FoodList.Count;
             _dayindex = Global.FoodList.Count + 1;
@@ -94,11 +102,13 @@ namespace DoAn01
             }
 
             Directory.CreateDirectory(imageFolder);
-
-            // View Model
-            DataContext = _mainVM;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closed(object sender, EventArgs e)
         {
             Dying?.Invoke();
@@ -378,6 +388,7 @@ namespace DoAn01
                     if (confirmBox == MessageBoxResult.Yes)
                     {
                         // Tiếp tục thêm món ăn tiếp theo
+                        Prepare();
                     }
                     else
                     {
@@ -413,16 +424,7 @@ namespace DoAn01
         /// </summary>
         private void SaveImgsToData()
         {
-            var coverimgpath = _temp_food.CoverSource.ToString();
-            var coverimg = new FileInfo(coverimgpath);
-            var coverimgpath_filename = Path.GetFileName(coverimgpath);
-
-            //File.Create(_imagesFolder)
-            //File.Copy(coverimgpath, _imagesFolder + "ava.jpg", true);
-            //Path.CreateFile()
-            //coverimg.CopyTo(_imagesFolder + coverimgpath_filename);
-            //coverimg.(_imagesFolder + "ava.jpg");
-
+            
             for (var pos = 0; pos < _temp_food.StepList.Count; pos++)
             {
                 var pos2 = 1;
@@ -432,10 +434,10 @@ namespace DoAn01
                 {
                     foreach (var imgage in _mainVM.StepList[pos].StepImages)
                     {
-                        var imgpath = imgage.ImgPath.ToString();
-                        var img = new FileInfo(imgpath);
+                        var srcpath = imgage.ImgPath.ToString();
+                        var despath = _temp_food.StepList[pos].StepImages[pos2 - 1].ImgPath.ToString();
 
-                        img.CopyTo(_imagesFolder + _temp_food.StepList[pos].StepImages[pos2 - 1]);
+                        SaveImage(srcpath, despath);
                         pos2++;
                     }
                 }
@@ -449,6 +451,8 @@ namespace DoAn01
         /// </summary>
         private void UpdateFoodList()
         {
+            // Save ava
+            var save = SaveImage(_temp_food.CoverSource.ToString(), $"{_imagesFolder}ava.jpg");
             // Cập nhật đường dẫn ảnh Cover của Temp Food
             _temp_food.CoverSource = new StringBuilder($"{_imagesFolder}ava.jpg");
             // Cập nhật số bước của biến Temp Food
@@ -498,6 +502,114 @@ namespace DoAn01
                 DayIndex = _temp_food.DayIndex,
                 Favorite = new StringBuilder("Black")
             });
+        }
+
+        private bool SaveImage(string sourcePath, string desPath)
+        {
+            bool result = true;
+            var image = new BitmapImage(
+               new Uri(sourcePath, UriKind.Absolute)
+                   );
+            var encoder = CheckEncoder(sourcePath);
+            encoder.Frames.Add(BitmapFrame.Create(image));
+
+            using (var stream = new FileStream(desPath, FileMode.Create))
+            {
+                encoder.Save(stream);
+            }
+            return result;
+        }
+
+        private BitmapEncoder CheckEncoder(string filepath)
+        {
+            BitmapEncoder result = null;
+            var img = System.Drawing.Image.FromFile(filepath);
+
+            if (IsJEPGImage(img) == true)
+            {
+                result = new JpegBitmapEncoder();
+            }
+            else if (IsPNGImage(img) == true)
+            {
+                result = new PngBitmapEncoder();
+            }
+            else if (IsBMPImage(img) == true)
+            {
+                result = new BmpBitmapEncoder();
+            }
+            else if (IsTIFFImage(img) == true)
+            {
+                result = new TiffBitmapEncoder();
+            }
+            else if (IsGIFImage(img) == true)
+            {
+                result = new GifBitmapEncoder();
+            }
+
+            return result;
+        }
+        /// <summary>
+        /// Hàm kiểm tra hình là có loại JEPG hay không
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        private bool IsJEPGImage(System.Drawing.Image img)
+        {
+            var check = false;
+            check = img.RawFormat.Equals(ImageFormat.Jpeg);
+            return check;
+        }
+
+        /// <summary>
+        /// Hàm kiểm tra hình là có loại JEPG hay không
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        private bool IsBMPImage(System.Drawing.Image img)
+        {
+            var check = false;
+            check = img.RawFormat.Equals(ImageFormat.Bmp);
+
+            return check;
+        }
+
+        /// <summary>
+        /// Hàm kiểm tra hình là có loại JEPG hay không
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        private bool IsPNGImage(System.Drawing.Image img)
+        {
+            var check = false;
+            check = img.RawFormat.Equals(ImageFormat.Png);
+
+            return check;
+        }
+
+        /// <summary>
+        /// Hàm kiểm tra hình là có loại JEPG hay không
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        private bool IsTIFFImage(System.Drawing.Image img)
+        {
+            var check = false;
+            check = img.RawFormat.Equals(ImageFormat.Tiff);
+
+            return check;
+        }
+
+        /// <summary>
+        /// Hàm kiểm tra hình là có loại JEPG hay không
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        private bool IsGIFImage(System.Drawing.Image img)
+        {
+            var check = false;
+            check = img.RawFormat.Equals(ImageFormat.Gif);
+
+            return check;
         }
     }
 }
