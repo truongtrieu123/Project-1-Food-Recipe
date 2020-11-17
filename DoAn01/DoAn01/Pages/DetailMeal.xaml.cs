@@ -24,7 +24,7 @@ namespace DoAn01
             // Món ăn chính của màn hình
             public Food MainFood { get; set; }
             // Bước hiện tại hiển thị
-            private Step currentStep;
+            private Step currentStep = null;
             public Step CurrentStep
             {
                 get
@@ -84,8 +84,8 @@ namespace DoAn01
             {
                 _mainVM = new DetailMealViewModel();
                 _mainVM.MainFood = p;
-
             }
+            else { }
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace DoAn01
         }
 
         /// <summary>
-        /// 
+        /// Đây là hàm kfsndjfbhjd
         /// </summary>
         public void CreateFoodDetailPage()
         {
@@ -150,7 +150,7 @@ namespace DoAn01
         /// <summary>
         /// Hàm xử lí khi nhấn Back Step Button để chuyển qua thông tin bước trước của món ăn
         /// </summary>
-        /// <param name="sender"></param>
+        /// <param name="sender">dffffs</param>
         /// <param name="e"></param>
         private void backStepButton_Click(object sender, RoutedEventArgs e)
         {
@@ -198,6 +198,7 @@ namespace DoAn01
         {
             // Dừng video
             foodVideoWebBrowser.Dispose();
+            foodCoverImage.ImageSource = null;
             //
             this.NavigationService.GoBack();
         }

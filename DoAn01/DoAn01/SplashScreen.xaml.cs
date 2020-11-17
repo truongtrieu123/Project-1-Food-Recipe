@@ -22,7 +22,7 @@ namespace DoAn01
         private Food _food = new Food();
         private int _foodindex;
         //public delegate void DeathHandler();
-        //public event DeathHandler Dying; 
+        //public event DeathHandler Dying;
         #endregion
 
         /// <summary>
@@ -31,8 +31,9 @@ namespace DoAn01
         public SplashScreen()
         {
             InitializeComponent();
-        }
 
+
+        }
         /// <summary>
         /// Hàm khi màn hình khởi tạo xong.
         /// </summary>
@@ -45,7 +46,9 @@ namespace DoAn01
             FoodDAO dao = new ExcelFoodDAO();
             Global.FoodList = new List<Food>(dao.GetAll());
             Global.CreateFavoriteList();
+            Global.SearchResultList = new List<Food>();
 
+            //
             if (showSplash == false)
             {
                 var screen = new MainWindow();

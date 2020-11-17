@@ -378,11 +378,19 @@ namespace DoAn01
                     videoSourceTextBox.Text = "";
                     foodCoverImage.Source = null;
                     stepDetailTextBox.Text = "";
-                    // Cập nhật dữ liệu trên ứng dụng và trên bộ nhớ
+
+                    // Cập nhật dữ liệu
                     UpdateFoodList();
+
+                    // Lưu hình ảnh vào thư mục Data/Images
                     SaveImgsToData();
+
                     // Xóa dữ liệu View Model
                     _mainVM.ClearView();
+
+                    // Cập nhật Global
+                    Global.HomeSubLists = Global.ConvertListToSubLists(Global.ItemsPerPage, Global.FoodList);
+                    
                     var confirmBox = MessageBox.Show($"Thêm thành công món {_temp_food.Name} vào danh sách!\nBạn có muốn tiếp tục?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                     if (confirmBox == MessageBoxResult.Yes)
@@ -424,7 +432,6 @@ namespace DoAn01
         /// </summary>
         private void SaveImgsToData()
         {
-            
             for (var pos = 0; pos < _temp_food.StepList.Count; pos++)
             {
                 var pos2 = 1;
@@ -442,7 +449,6 @@ namespace DoAn01
                     }
                 }
                 else { }
-
             }
         }
 
@@ -504,6 +510,12 @@ namespace DoAn01
             });
         }
 
+        /// <summary>
+        /// Hàm lưu hình ảnh về thư mục
+        /// </summary>
+        /// <param name="sourcePath">đường dẫn hình ảnh gốc</param>
+        /// <param name="desPath">đường dẫn hình ảnh đích</param>
+        /// <returns></returns>
         private bool SaveImage(string sourcePath, string desPath)
         {
             bool result = true;

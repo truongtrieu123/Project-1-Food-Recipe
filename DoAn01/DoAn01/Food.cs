@@ -150,6 +150,19 @@ namespace DoAn01
             this.StepList = new BindingList<Step>();
         }
 
+        public void ClearData()
+        {
+            this.DayIndex = 0;
+            this.Name.Clear();
+            this.CoverSource.Clear();
+            this.VideoSource.Clear();
+            this.Ingredients.Clear();
+            this.Introduction.Clear();
+            this.CountSteps = 0;
+            this.StepList.Clear();
+            this.Favorite.Clear();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string name)
