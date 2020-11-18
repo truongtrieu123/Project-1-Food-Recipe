@@ -24,13 +24,49 @@ namespace DoAn01
     {
         private const int TotalItemsPerPage = 12;
 
-        public BindingList<Food> Sublist { get; set; }
+        private List<Food> _mainList { get; set; }
         // item index in current page;
         public int IndexCurrentPage { get; set; }
         //
         public class HomeViewModel : INotifyPropertyChanged
         {
-            public CPage PageInfor { get; set; }
+            // Quản lí việc phân trang
+            private CPage pageInfor = null;
+            public CPage PageInfor
+            {
+                get { return this.pageInfor; }
+                set
+                {
+                    if (value != this.pageInfor)
+                    {
+                        this.pageInfor = new CPage()
+                        {
+                            CurrentPage = value.CurrentPage,
+                            MaxPages = value.MaxPages
+                        };
+                        OnPropertyChanged("PageInfor");
+                    }
+                    else { return; }
+                }
+            }
+            // Quản lí số lượng food
+            private int totalFood;
+            public int TotalFood
+            {
+                get { return this.totalFood; }
+                set
+                {
+                    if (value != this.totalFood)
+                    {
+                        this.totalFood = value;
+                        OnPropertyChanged("TotalFood");
+                    }
+                    else { return; }
+                }
+            }
+            // Quản lí các sublist của các trang
+            public List<BindingList<Food>> MainSublists { get; set; }
+            // Quản lí sublist hiện tại để hiển thị
             private BindingList<Food> currentSubList = null;
             public BindingList<Food> CurrentSublist
             {
@@ -56,13 +92,13 @@ namespace DoAn01
                 else { }
             }
 
+            public event PropertyChangedEventHandler PropertyChanged;
             public HomeViewModel()
             {
                 this.PageInfor = new CPage(Global.HomeSubLists.Count);
                 this.CurrentSublist = new BindingList<Food>();
+                this.MainSublists = new List<BindingList<Food>>();
             }
-
-            public event PropertyChangedEventHandler PropertyChanged;
         }
 
         private HomeViewModel _mainVM;
@@ -79,7 +115,12 @@ namespace DoAn01
         /// <param name="e"></param>
         private void HomePage_Loaded(object sender, RoutedEventArgs e)
         {
+            _mainList = new List<Food>();
+            _mainList = Global.FoodList;
+
             _mainVM = new HomeViewModel();
+            _mainVM.MainSublists = Global.HomeSubLists;
+            _mainVM.TotalFood = Global.FoodList.Count;
 
             var value = ConfigurationManager.AppSettings["HomeCurrentPage"];
             var homecrtpage = int.Parse(value);
@@ -93,27 +134,9 @@ namespace DoAn01
                 // current page bằng 1
             }
 
-            _mainVM.CurrentSublist = Global.HomeSubLists[_mainVM.PageInfor.CurrentPage - 1];
+            _mainVM.CurrentSublist = _mainVM.MainSublists[_mainVM.PageInfor.CurrentPage - 1];
 
             DataContext = _mainVM;
-
-            //if(_mainVM.PageInfor.CurrentPage == 1)
-            //{
-            //    prevPageButton.IsEnabled = false;
-            //}
-            //else
-            //{
-            //    // Do nothing
-            //}
-
-            //if(_mainVM.PageInfor.CurrentPage == _mainVM.PageInfor.MaxPages)
-            //{
-            //    nextPageButton.IsEnabled = false;
-            //}
-            //else
-            //{
-            //    // Do nothing
-            //}
         }
 
         /// <summary>
@@ -143,7 +166,7 @@ namespace DoAn01
                 //{
                 //    nextPageButton.IsEnabled = false;
                 //}
-                _mainVM.CurrentSublist = Global.HomeSubLists[_mainVM.PageInfor.CurrentPage - 1];
+                _mainVM.CurrentSublist = _mainVM.MainSublists[_mainVM.PageInfor.CurrentPage - 1];
                 UpdateAppConfig("HomeCurrentPage");
             }
         }
@@ -163,7 +186,7 @@ namespace DoAn01
                 //{
                 //    prevPageButton.IsEnabled = false;
                 //}
-                _mainVM.CurrentSublist = Global.HomeSubLists[_mainVM.PageInfor.CurrentPage - 1];
+                _mainVM.CurrentSublist = _mainVM.MainSublists[_mainVM.PageInfor.CurrentPage - 1];
                 UpdateAppConfig("HomeCurrentPage");
             }
         }
@@ -179,7 +202,7 @@ namespace DoAn01
             {
                 // index of this food in food list
                 int indexInList = IndexCurrentPage + (_mainVM.PageInfor.CurrentPage - 1) * TotalItemsPerPage;
-                var food = Global.FoodList[indexInList];
+                var food = _mainList[indexInList];
                 var changeCheck = 0;
                 var btn = sender as Button;
                 var aws = btn.Content as ImageAwesome;
@@ -189,7 +212,7 @@ namespace DoAn01
                     //change heart icon's color
                     aws.Foreground = Brushes.Black;
                     // update property in food list
-                    Global.FoodList[indexInList].Favorite = new StringBuilder("Black");
+                    food.Favorite = new StringBuilder("Black");
                     changeCheck = -1;
                 }
                 else if (aws.Foreground == Brushes.Black)
@@ -197,7 +220,7 @@ namespace DoAn01
                     //change heart icon's color
                     aws.Foreground = Brushes.Red;
                     // update property in food list
-                    Global.FoodList[indexInList].Favorite = new StringBuilder("Red");
+                    food.Favorite = new StringBuilder("Red");
                     changeCheck = 1;
                 }
                 else { }
@@ -250,8 +273,8 @@ namespace DoAn01
         /// <param name="e"></param>
         private void ListViewItem_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Food p = (Food)mealListView.Items[IndexCurrentPage];
-            DetailMeal page = new DetailMeal(p);
+            var p = (Food)mealListView.Items[IndexCurrentPage];
+            var page = new DetailMeal(p);
             //
             UpdateAppConfig("HomeCurrentPage");
             // Chuyển hướng hiển thị xang page
@@ -272,41 +295,133 @@ namespace DoAn01
             ConfigurationManager.RefreshSection("appSettings");
         }
 
-        static Regex ConvertToUnsign_rg = null;
-
-        public static string ConvertToUnsign(string strInput)
+        /// <summary>
+        /// Xử lí khi nhấn enter để tìm kiếm theo tên món ăn
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void searchTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (ReferenceEquals(ConvertToUnsign_rg, null))
+            if (e.Key == Key.Enter)
             {
-                ConvertToUnsign_rg = new Regex("p{IsCombiningDiacriticalMarks}+");
+                var textbox = sender as TextBox;
+
+                if (textbox != null)
+                {
+                    if (textbox.Text == String.Empty)
+                    {
+                        RestoreViewModel();
+                    }
+                    else
+                    {
+                        PrePareSearchList(textbox.Text);
+                    }
+                }
+                else { }
             }
-            var temp = strInput.Normalize(NormalizationForm.FormD);
-            return ConvertToUnsign_rg.Replace(temp, string.Empty).Replace("đ", "d").Replace("Đ", "D").ToLower();
+            else
+            { //Do nothing 
+            }
         }
 
-        //private bool UserFilter(object item)
-        //{
-        //    if (String.IsNullOrEmpty(txtFilter.Text))
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        ConvertToUnsign(txtFilter.Text);
-        //        (item as Food).Name = ConvertToUnsign((item as Food).Name);
-        //        return ((item as Food).Name.ToString().IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
-        //    }
-        //}
+        /// <summary>
+        /// Khôi phục lại view cho trang Home
+        /// </summary>
+        private void RestoreViewModel()
+        {
+            Global.SearchResultList.Clear();
+            Global.SearchResultSubLists.Clear();
+            // Khôi phục View Model
+            _mainList = Global.FoodList;
+            _mainVM.TotalFood = Global.FoodList.Count;
+            _mainVM.PageInfor = new CPage(Global.HomeSubLists.Count);
+            _mainVM.MainSublists = Global.HomeSubLists;
+            _mainVM.CurrentSublist.Clear();
 
-        //private void OnKeyDownHandler(object sender, KeyEventArgs e)
-        //{
-        //    if (e.Key == Key.Return)
-        //    {
-        //        CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(mealListView.ItemsSource);
-        //        view.Filter = UserFilter;
-        //        CollectionViewSource.GetDefaultView(mealListView.ItemsSource).Refresh();
-        //    }
+            if (_mainVM.MainSublists.Count > 0)
+            {
+                _mainVM.CurrentSublist = _mainVM.MainSublists[0];
+            }
+            else { }
+        }
 
-        //}
+        /// <summary>
+        /// Hàm chuẩn bị list và sublists cho việc search
+        /// </summary>
+        /// <param name="searchText"></param>
+        private void PrePareSearchList(string searchText)
+        {
+            var key = ConvertToUnsignString(searchText.ToLower());
+            var food = new Food();
+            var searchlist = new List<Food>();
+
+            // Duyệt và tìm kiếm
+            foreach (var ele in Global.FoodList)
+            {
+                var name = ele.Name.ToString().ToLower();
+                var newname = ConvertToUnsignString(name);
+
+                if (newname.Contains(key) == true)
+                {
+                    searchlist.Add(ele);
+                }
+            }
+
+            // Cập nhật Search list của Global, chia lại sublist
+            Global.SearchResultList.Clear();
+            Global.SearchResultList = new List<Food>(searchlist);
+            Global.SearchResultSubLists = Global.ConvertListToSubLists(Global.ItemsPerPage, Global.SearchResultList);
+            // Cập nhật View Model
+            _mainList = Global.SearchResultList;
+            _mainVM.TotalFood = _mainList.Count;
+            _mainVM.PageInfor = new CPage(Global.SearchResultSubLists.Count);
+            _mainVM.MainSublists = Global.SearchResultSubLists;
+            _mainVM.CurrentSublist.Clear();
+
+            if (_mainVM.MainSublists.Count > 0)
+            {
+                _mainVM.CurrentSublist = _mainVM.MainSublists[0];
+            }
+            else { }
+        }
+
+        /// <summary>
+        /// Hàm chuyển từ ký tự Unicode có dấu tiếng việt sang các chữ cái không dấu
+        /// </summary>
+        /// <param name="src"></param>
+        /// <returns></returns>
+        private string ConvertToUnsignString(string src)
+        {
+            var result = src;
+            var oldchars = "áàãảạăắằẳẵặâấầẩẫậđéèẻẽẹêếềểễệíìỉĩịóòõỏọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵ";
+            var newchars = "aaaaaaaaaaaaaaaaadeeeeeeeeeeeiiiiiooooooooooooooooouuuuuuuuuuuyyyyy";
+            var len = oldchars.Length;
+
+            for (var pos = 0; pos < len; pos++)
+            {
+                result = result.Replace(oldchars[pos], newchars[pos]);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Xử lí khi nhấn Cancel Button để xóa Search TextBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cancelSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            searchTextBox.Text = String.Empty;
+            RestoreViewModel();
+        }
+
+        private void SelectCurrentItem(object sender, MouseButtonEventArgs e)
+        {
+            var item = sender as ListViewItem;
+            item.IsSelected = true;
+            IndexCurrentPage = mealListView.SelectedIndex;
+            item.IsSelected = false;
+        }
     }
 }

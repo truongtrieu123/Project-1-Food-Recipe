@@ -9,9 +9,9 @@
       Background="white"
       Title="Home" Width="1090" Height="850" Loaded="HomePage_Loaded">
     <Page.Resources>
-        <local:StringBuilderToStringConverter x:Key="heartConverter"/>
+        <local:StringBuilderToStringConverter x:Key="Converter"/>
         <local:PageNumberConverter x:Key="pagenumConverter"/>
-        <local:AbsolutePathConverter x:Key="Converter"/>
+        <local:AbsolutePathConverter x:Key="pathConverter"/>
         <LinearGradientBrush x:Key="backgroundListViewItem">
             <GradientStop Color="LightGray" Offset="0.0"/>
             <GradientStop Color="DarkGray" Offset="0.75"/>
@@ -162,8 +162,54 @@
     </Page.Resources>
     <Canvas>
         <StackPanel Orientation="Vertical" Canvas.Left="-5" Height="850" Width="1095" >
-            <StackPanel Orientation="Vertical" Margin="10,0,0,0" Height="50">
 
+            <StackPanel x:Name="searchBarStackPanel" Orientation="Horizontal" Margin="10,0,0,0" Height="58" VerticalAlignment="Center">
+                <Button Margin="10,2" Background="Transparent" BorderThickness="0" Height="Auto" Width="75">
+                    <Image Source="../Data/Images/Icons/mealIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,0,0"/>
+                </Button>
+                <TextBlock Width="150" FontSize="20" FontWeight="Bold" VerticalAlignment="Center">
+                        <Run Text="{Binding TotalFood, Converter={StaticResource Converter}}"></Run>
+                        <Run Text=" món"></Run>
+                </TextBlock>
+                <Button Name="searchButton" BorderThickness="0" Background="Transparent" BorderBrush="LightGray" HorizontalAlignment="Left">
+                    <Image Source="../Data/Images/Icons/searchIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,0,0" />
+                </Button>
+                <TextBox x:Name="searchTextBox" KeyDown="searchTextBox_KeyDown" Height="40" Margin="0" Width="350" BorderThickness="2" BorderBrush="black" Padding="5" FontSize="20" FontWeight="Medium" >
+                    <TextBox.Style>
+                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                            <Style.Resources>
+                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                    <VisualBrush.Visual>
+                                        <Label Content="   Nhập ở đây!" Foreground="Gray" FontSize="20" FontStyle="Italic" HorizontalAlignment="Center"/>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Background" Value="White" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+                <Button x:Name="cancelSearchButton" Click="cancelSearchButton_Click" Background="Transparent" BorderThickness="0" Width="55" Height="55" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0">
+                    <Image x:Name="cancelSearchImg" Source="../Data/Images/Icons/outIcon.jpg" Width="29" Height="45"/>
+                </Button>
+                <Label Name="sortLabel" Content="Sắp xếp: " FontSize="20" VerticalAlignment="Center" FontWeight="Bold" Margin="15,0,15,0"></Label>
+                <ComboBox Name="sortSelectionComboBox" Width="185" Height="40" BorderThickness="1"  Margin="0,5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ComboBoxItem>
+                        <Label Content="Theo tên từ A-Z" VerticalAlignment="Center" FontSize="20"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <Label Content="Theo tên từ Z-A" VerticalAlignment="Center" FontSize="20"/>
+                    </ComboBoxItem>
+                </ComboBox>
             </StackPanel>
             <ListView x:Name="mealListView" Height="690"  Width="1028"
                       Background="Transparent" Margin="20,20,20,0"
@@ -173,7 +219,10 @@
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <EventSetter Event="Control.PreviewMouseDoubleClick" Handler="ListViewItem_PreviewMouseDoubleClick"/>
-                        <EventSetter Event="UIElement.PreviewGotKeyboardFocus" Handler="SelectCurrentItem"/>
+                        
+                        <!--<EventSetter Event="UIElement.PreviewGotKeyboardFocus" Handler="SelectCurrentItem"/>-->
+
+                        <EventSetter Event="MouseLeftButtonUp" Handler="SelectCurrentItem"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -210,7 +259,7 @@
                             <StackPanel  Height="202">
                                 <Rectangle RadiusX="20" RadiusY="20"  Height="150">
                                     <Rectangle.Fill>
-                                        <ImageBrush ImageSource="{Binding CoverSource, Converter={StaticResource Converter}}"/>
+                                        <ImageBrush ImageSource="{Binding CoverSource, Converter={StaticResource pathConverter}}"/>
                                     </Rectangle.Fill>
                                 </Rectangle>
 
@@ -220,7 +269,7 @@
                                     </Label>
 
                                     <Button x:Name="favoriteButton" Style="{StaticResource HeartButton}" Click="favoriteButton_Click" DockPanel.Dock="Right" Width="40">
-                                        <fa:ImageAwesome Icon="Heart"  Foreground="{Binding Favorite, Converter={StaticResource heartConverter}}"    Margin="5,0,5,0"/>
+                                        <fa:ImageAwesome Icon="Heart"  Foreground="{Binding Favorite, Converter={StaticResource Converter}}"    Margin="5,0,5,0"/>
                                     </Button>
                                 </DockPanel>
 
@@ -235,12 +284,12 @@
                         Content="Prev" FontFamily="Caladea" 
                         FontSize="30" Margin="9,0,9,0" 
                         Width="105" Height="50"/>
-                
+
                 <Border  Background="LightGreen" BorderThickness="1" BorderBrush="Black"  Width="77" Height="50" CornerRadius="20,20,20,20" Margin="5,6,5,7" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                    <Label x:Name="pageNumber" 
-                           FontSize="30" FontFamily="Caladea" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent" Height="50"  
-                           Margin="0,-1">
+                    <Label x:Name="pageNumber"
+                           FontSize="30" FontFamily="Caladea" BorderBrush="Transparent" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Background="Transparent" Height="50" 
+                           Margin="0">
 
                         <MultiBinding Converter="{StaticResource pagenumConverter}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
                             <Binding Path="PageInfor.CurrentPage" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" BindsDirectlyToSource="True"/>
@@ -249,7 +298,7 @@
 
                     </Label>
                 </Border>
-                
+
                 <Button x:Name="nextPageButotn" Click="nextPageButton_Click" 
                         Content="Next" Style="{DynamicResource NextPageButtonStyle}"
                         Width="105"

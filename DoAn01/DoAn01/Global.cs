@@ -8,9 +8,12 @@ namespace DoAn01
     {
         public static List<Food> FoodList { get; set; }
         public static List<Food> FavoriteFoodList { get; set; }
+        public static List<Food> SearchResultList { get; set; }
         public static List<BindingList<Food>> HomeSubLists { get; set; }
         public static List<BindingList<Food>> FavorSubLists { get; set; }
-        public static List<BindingList<Food>> SearchSubLists { get; set; }
+        public static List<BindingList<Food>> SearchResultSubLists { get; set; }
+        public static int ItemsPerPage { get; set; } = 12;
+
         private void OnPropertyChanged(string name)
         {
             var handler = PropertyChanged;
@@ -20,10 +23,11 @@ namespace DoAn01
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-        public static int ItemsPerPage { get; set; } = 12;
-
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static void CreateFavoriteList()
         {
             var favoritelist = new List<Food>();
@@ -53,7 +57,12 @@ namespace DoAn01
             }
             FavoriteFoodList = favoritelist;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="itemsPerSublist"></param>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static List<BindingList<Food>> ConvertListToSubLists(int itemsPerSublist, List<Food> list)
         {
             var result = new List<BindingList<Food>>();

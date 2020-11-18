@@ -3,6 +3,163 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:dxca="http://schemas.devexpress.com/winfx/2008/xaml/carousel"
+      xmlns:local="clr-namespace:DoAn01"
+      xmlns:WPFCarouselControl="clr-namespace:DoAn01.WPFCarouselControl"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Background="white"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
+      Title="Home" Width="1090" Height="850" Loaded="DetailMeal_Loaded">
+
+    <Page.Resources>
+        <local:StringBuilderToStringConverter x:Key="Converter"/>
+        <local:AbsolutePathConverter x:Key="pathConverter"/>
+        <Style x:Key="ClickButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Name="Btt" CornerRadius="10,10,10,10" Background="{TemplateBinding Background}" BorderBrush="white" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Btt" Value="darkGray"/>
+                                <Setter Property="BorderBrush" TargetName="Btt" Value="darkgray"/>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightGreen"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="Green"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <LinearGradientBrush x:Key="XemVideo">
+            <GradientStop Color="Gold" Offset="0.0" />
+            <GradientStop Color="LimeGreen" Offset="1.0" />
+        </LinearGradientBrush>
+
+    </Page.Resources>
+
+    <Grid >
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="600"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Background="LightYellow">
+            <StackPanel Width="470" Margin="10,5,10,20" Panel.ZIndex="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <TextBlock  Name="foodNameTextBlock" Text="{Binding MainFood.Name, Converter={StaticResource Converter}}" Visibility="Visible" TextWrapping="Wrap"  Width="450" FontWeight="Bold" FontSize="30"  Height="92"  TextAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="blue" Margin="10" Padding="5,5,7,5">
+                </TextBlock>
+
+                <ScrollViewer  Height="112" Width="430"  IsTabStop="True" Margin="20,15,20,15" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="5">
+                        <TextBlock  x:Name="introTextBlock"  FontStyle="Italic" TextWrapping="Wrap" FontSize="18"  HorizontalAlignment="Center" TextAlignment="Justify">
+                        <Run Text="&#x09;"/>
+                        <Run Text="{Binding MainFood.Introduction, Converter={StaticResource Converter}}"/>
+                        </TextBlock>
+                    </ScrollViewer>
+
+                    <Border Height="210" Width="380" Margin="0,10"  BorderBrush="Black" BorderThickness="2" >
+                        <Border.Background>
+                            <ImageBrush x:Name="foodCoverImage" ImageSource="{Binding MainFood.CoverSource, Converter={StaticResource Converter}}"/>
+                        </Border.Background>
+
+                        <WebBrowser Name="foodVideoWebBrowser" Height="210" Width="380" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
+                                ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                                ClipToBounds="True">
+                        </WebBrowser>
+                    </Border>
+
+                    <Button Height="47" Content="Xem Video" x:Name="watchVideoButton" Click="Button_Click" Style="{StaticResource ClickButton}" Background="{StaticResource XemVideo}" Margin="144,10,140,0" FontSize="24" FontFamily="Caladea" FontWeight="Bold" FontStyle="Italic"/>
+
+                    <Label Name="ingredientsLabel"  Content="Nguyên liệu: " Foreground="Red" FontSize="24" FontWeight="Bold" Margin="38,0,20,0"/>
+
+                
+                <ScrollViewer Width="430" Height="242" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="20,10">
+                    <TextBlock Name="ingredientsTextBlock" Text="{Binding MainFood.Ingredients}" TextWrapping="Wrap"  FontSize="20" Width="422" Padding="5" />
+                </ScrollViewer>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Width="600" Height="850" Grid.Column="1">
+
+            <Button x:Name="returnButton" Width="50" Background="White" VerticalContentAlignment="Top" Click="returnButton_Click" Margin="0 0 0 0" BorderThickness="0" BorderBrush="White" HorizontalAlignment="Left" Height="44" >
+                <Image Source="../Data/Images/Icons/leftarrowIcon.jpg"  RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="40" RenderTransformOrigin="2.171,4.193"/>
+            </Button>
+
+            <Border Height="111" CornerRadius="10,10,10,10" BorderBrush="Black"  BorderThickness="2" Background="LightGreen" Margin="250,0,248,0">
+                <StackPanel>
+                    <TextBlock Text="Bước" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"></TextBlock>
+
+                    <TextBlock   Name="step" FontSize="45" FontWeight="Bold" HorizontalAlignment="Center" Height="56" >
+                            <Run Text="{Binding CurrentStep.StepIndex, Converter={StaticResource Converter}}" Foreground="Blue"></Run>
+                    </TextBlock>
+                    <TextBlock   Name="stepidTextBlock" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,0" >
+                            <Run Text="{Binding CurrentStep.StepIndex,Converter={StaticResource Converter}}" Foreground="Orange"></Run>
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+            <Label Name="stepDetailLabel" Content="Cách thực hiện: " Height="40" Margin="84,15,40,0" FontSize="25" FontWeight="Bold">
+            </Label>
+
+            <ScrollViewer Height="250" Margin="40,7,40,10" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="5,5,7,5">
+
+                <TextBlock Name="stepDetailTextBlock" TextWrapping="Wrap" Text="{Binding CurrentStep.StepDetail, Converter={StaticResource Converter}}"  FontSize="25" HorizontalAlignment="Stretch" TextAlignment="Justify">
+                </TextBlock>
+
+            </ScrollViewer>
+            <WPFCarouselControl:CarouselControl  x:Name="_carouselDABRadioStations" Width="600" Height="260" ItemsSource="{Binding CurrentStep.StepImages}" 
+                ShowRotation="True"  Margin="0,0,0,20"
+                TiltInDegrees="10" AutoSizeToParent="true" RotationSpeed="100" VerticalOrientation="False" 
+                HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <WPFCarouselControl:CarouselControl.Style>
+                    <Style TargetType="WPFCarouselControl:CarouselControl">
+                        <Setter Property="CarouselItemTemplate" >
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle RadiusX="20" RadiusY="20"  Height="250" Width="350">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="{Binding ImgPath, Converter={StaticResource pathConverter}}"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </WPFCarouselControl:CarouselControl.Style>
+            </WPFCarouselControl:CarouselControl>
+
+            <StackPanel Orientation="Horizontal">
+                <Button Name="backStepButton" Style="{StaticResource ClickButton}" Margin="55,0,0,0" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Height="50" Width="132" Content="BACK" Background="LightBlue" FontSize="30" Click="backStepButton_Click" RenderTransformOrigin="0.788,0.51">
+                </Button>
+                <Button Name="nextStepButton" Style="{StaticResource ClickButton}" Margin="220,0,50,0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="50" Width="132" Content="NEXT" Background="LightBlue" FontSize="30" Click="nextStepButton_Click"  >
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
+
+
+<!--<Page x:Class="DoAn01.DetailMeal"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:dxca="http://schemas.devexpress.com/winfx/2008/xaml/carousel"
       xmlns:local="clr-namespace:DoAn01"
       xmlns:WPFCarouselControl="clr-namespace:DoAn01.WPFCarouselControl"
       mc:Ignorable="d" 
@@ -65,6 +222,10 @@
 
                 <ScrollViewer  Height="183" Width="430"  IsTabStop="True" Margin="20,15,20,15" 
                               VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <TextBlock  Name="foodNameTextBlock" Text="{Binding MainFood.Name, Converter={StaticResource Converter}}" Visibility="Visible" TextWrapping="Wrap"  Width="450" FontWeight="Bold" FontSize="30"  Height="92"  TextAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="blue" Margin="10" Padding="5,5,7,5">
+                </TextBlock>
+
+                <ScrollViewer  Height="112" Width="430"  IsTabStop="True" Margin="20,15,20,15" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="5">
                     <TextBlock  x:Name="introTextBlock"  FontStyle="Italic" TextWrapping="Wrap" FontSize="18"  HorizontalAlignment="Center" TextAlignment="Justify">
                         <Run Text="&#x09;"/>
                         <Run Text="{Binding MainFood.Introduction, Converter={StaticResource Converter}}"/>
@@ -89,6 +250,8 @@
 
                 <ScrollViewer Width="430" Height="220" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="20,0">
                     <TextBlock Name="ingredientsTextBlock" Text="{Binding MainFood.Ingredients}" TextWrapping="Wrap"  FontSize="20" Width="422" />
+                <ScrollViewer Width="430" Height="242" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="20,10">
+                    <TextBlock Name="ingredientsTextBlock" Text="{Binding MainFood.Ingredients}" TextWrapping="Wrap"  FontSize="20" Width="422" Padding="5" />
                 </ScrollViewer>
             </StackPanel>
         </StackPanel>
@@ -97,6 +260,8 @@
 
             <Button x:Name="returnButton" Width="50" Background="White" VerticalContentAlignment="Top" Click="returnButton_Click" Margin="0 0 0 0" BorderThickness="0" BorderBrush="White" HorizontalAlignment="Left" Height="44" >
 
+            <Button x:Name="returnButton" Width="70" Background="White" Click="returnButton_Click" Margin="0 0 0 0" BorderThickness="0" BorderBrush="White" HorizontalAlignment="Left" Height="42" >
+
                 <Image Source="../Data/Images/Icons/leftarrowIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="40" RenderTransformOrigin="2.171,4.193"/>
 
             </Button>
@@ -104,15 +269,19 @@
             <Border Height="111" CornerRadius="10,10,10,10" BorderBrush="Black"  BorderThickness="2" Background="LightGreen" Margin="250,0,248,0">
                 <StackPanel>
                     <TextBlock Text="Bước" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"></TextBlock>
+<<<<<<< HEAD
                     <TextBlock   Name="step" FontSize="45" FontWeight="Bold" HorizontalAlignment="Center" Height="56" >
                                 <Run Text="{Binding CurrentStep.StepIndex, Converter={StaticResource Converter}}" Foreground="Blue"></Run>
+=======
+                    <TextBlock   Name="stepidTextBlock" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Margin="8,0" >
+                                <Run Text="{Binding CurrentStep.StepIndex,Converter={StaticResource Converter}}" Foreground="Orange"></Run>
                     </TextBlock>
                 </StackPanel>
             </Border>
             <Label Name="stepDetailLabel" Content="Cách thực hiện: " Height="40" Margin="84,15,40,0" FontSize="25" FontWeight="Bold">
             </Label>
 
-            <ScrollViewer Height="264" Margin="40,7,40,10" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="5,5,7,5">
+            <ScrollViewer Height="250" Margin="40,7,40,10" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Padding="5,5,7,5">
 
                 <TextBlock Name="stepDetailTextBlock" TextWrapping="Wrap" Text="{Binding CurrentStep.StepDetail, Converter={StaticResource Converter}}"  FontSize="25" HorizontalAlignment="Stretch" TextAlignment="Justify">
                 </TextBlock>
@@ -139,7 +308,7 @@
                     </Style>
                 </WPFCarouselControl:CarouselControl.Style>
             </WPFCarouselControl:CarouselControl>
-            
+
             <StackPanel Orientation="Horizontal">
                 <Button Name="backStepButton" Style="{StaticResource ClickButton}" Margin="55,0,0,0" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Height="50" Width="132" Content="BACK" Background="LightBlue" FontSize="30" Click="backStepButton_Click" RenderTransformOrigin="0.788,0.51">
                 </Button>
@@ -148,4 +317,4 @@
             </StackPanel>
         </StackPanel>
     </Grid>
-</Page>
+</Page>-->

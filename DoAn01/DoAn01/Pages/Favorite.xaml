@@ -161,8 +161,57 @@
     </Page.Resources>
     <Grid>
         <StackPanel Orientation="Vertical" >
+            <StackPanel x:Name="searchBarStackPanel" Orientation="Horizontal" Margin="10,0,0,0" Height="58" VerticalAlignment="Center">
+                <Button Margin="10,2" Background="Transparent" BorderThickness="0" Height="Auto" Width="75">
+                    <Image Source="../Data/Images/Icons/mealIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,0,0"/>
+                </Button>
+                <TextBlock Width="150" FontSize="20" FontWeight="Bold" VerticalAlignment="Center">
+                        <Run Text="{Binding TotalFood, Converter={StaticResource Converter}}"></Run>
+                        <Run Text=" món"></Run>
+                </TextBlock>
+                <Button Name="searchButton" BorderThickness="0" Background="Transparent" BorderBrush="LightGray" HorizontalAlignment="Left">
+                    <Image Source="../Data/Images/Icons/searchIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,0,0,0" />
+                </Button>
+                <TextBox x:Name="searchTextBox" KeyDown="searchTextBox_KeyDown" Height="40" Margin="0" Width="350" BorderThickness="2" BorderBrush="black" Padding="5" FontSize="20" FontWeight="Medium" >
+                    <TextBox.Style>
+                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                            <Style.Resources>
+                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                    <VisualBrush.Visual>
+                                        <Label Content="   Nhập ở đây!" Foreground="Gray" FontSize="20" FontStyle="Italic" HorizontalAlignment="Center"/>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Background" Value="White" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+                <Button x:Name="cancelSearchButton" Click="cancelSearchButton_Click" Background="Transparent" BorderThickness="0" Width="55" Height="55" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0">
+                    <Image x:Name="cancelSearchImg" Source="../Data/Images/Icons/outIcon.jpg" Width="29" Height="45"/>
+                </Button>
+                <Label Name="sortLabel" Content="Sort: " FontSize="20" VerticalAlignment="Center" FontWeight="Bold" Margin="15,0,15,0"></Label>
+                <ComboBox Name="sortSelectionComboBox" Width="185" Height="40" BorderThickness="1"  Margin="0,5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ComboBoxItem>
+                        <Label Content="Theo tên từ A-Z" VerticalAlignment="Center" FontSize="20"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <Label Content="Theo tên từ Z-A" VerticalAlignment="Center" FontSize="20"/>
+                    </ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
             <ListView x:Name="mealListView" Height="690"  Width="1028"
-                      Background="Transparent" Margin="20,30,20,25"
+                      Background="Transparent" Margin="20,20,20,0"
                       BorderBrush="Transparent"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                       ScrollViewer.VerticalScrollBarVisibility="Disabled" ItemsSource="{Binding CurrentSublist, BindsDirectlyToSource=True}">
@@ -175,6 +224,7 @@
                         </Style.Triggers>
                         <EventSetter Event="PreviewMouseDoubleClick" Handler="ListViewItem_PreviewMouseDoubleClick"/>
                         <EventSetter Event="PreviewGotKeyboardFocus" Handler="SelectCurrentItem"/>
+                        <EventSetter Event="MouseLeftButtonUp" Handler="SelectCurrentItem"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -230,7 +280,7 @@
                         Content="Prev" FontFamily="Caladea" 
                         FontSize="30" Margin="9,0,9,0" 
                         Width="105" Height="50"/>
-                
+
                 <Border  Background="LightGreen" BorderThickness="1" BorderBrush="Black"  Width="77" Height="50" CornerRadius="20,20,20,20" Margin="5">
                     <Label x:Name="pageNumber" FontSize="30" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent">
                         <Label.Content>
