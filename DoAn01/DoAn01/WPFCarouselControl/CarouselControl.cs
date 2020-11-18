@@ -608,46 +608,54 @@ namespace DoAn01.WPFCarouselControl
 
         private void SetElementPositions()
         {
-            if (_canvas.Children.Count <= 0)
+            var count = _canvas.Children.Count;
+
+            if (count <= 0)
             {
                 return;
             }
-
-            FrameworkElement element = GetChild(0);
-
-            double elementHalfWidth = element.ActualWidth / 2.0;
-            double elementHalfHeight = element.ActualHeight / 2.0;
-            double canvasHalfWidth = VerticalOrientation ? 0 : ActualWidth / 2.0 - elementHalfWidth;
-            double canvasHalfHeight = VerticalOrientation ? canvasHalfHeight = ActualHeight / 2.0 - elementHalfHeight : 0;
-
-            for (int index = 0; index < _canvas.Children.Count; index++)
+            if (true)
             {
-                double degrees = (360.0 * (double)index ) / (double)_canvas.Children.Count + _currentRotation;
-                double cosineAngle = Math.Cos(DegreesToRadians(degrees));
-                double sineAngle = Math.Sin(DegreesToRadians(degrees));
+                FrameworkElement element = GetChild(0);
 
-                element = GetChild(index);
+                double elementHalfWidth = element.ActualWidth / 2.0;
+                double elementHalfHeight = element.ActualHeight / 2.0;
+                double canvasHalfWidth = VerticalOrientation ? 0 : ActualWidth / 2.0 - elementHalfWidth;
+                double canvasHalfHeight = VerticalOrientation ? canvasHalfHeight = ActualHeight / 2.0 - elementHalfHeight : 0;
 
-                double x = -canvasHalfWidth * sineAngle - (double.IsNaN(canvasHalfHeight) ? 0.0 : canvasHalfHeight / 100.0) * cosineAngle * TiltInDegrees;
-                Canvas.SetLeft(element, x + ActualWidth / 2.0 - elementHalfWidth);
-
-                double y = canvasHalfHeight * sineAngle - (double.IsNaN(canvasHalfWidth) ? 0.0 : canvasHalfWidth / 100.0) * cosineAngle * TiltInDegrees;
-                Canvas.SetTop(element, y + ActualHeight / 2.0 - elementHalfHeight);
-
-                ScaleTransform scale = element.RenderTransform as ScaleTransform;
-                if (scale == null)
+                for (int index = 0; index < _canvas.Children.Count; index++)
                 {
-                    scale = new ScaleTransform();
-                    element.RenderTransform = scale;
+                    double degrees = (360.0 * (double)index) / (double)_canvas.Children.Count + _currentRotation;
+                    double cosineAngle = Math.Cos(DegreesToRadians(degrees));
+                    double sineAngle = Math.Sin(DegreesToRadians(degrees));
+
+                    element = GetChild(index);
+
+                    double x = -canvasHalfWidth * sineAngle - (double.IsNaN(canvasHalfHeight) ? 0.0 : canvasHalfHeight / 100.0) * cosineAngle * TiltInDegrees;
+                    Canvas.SetLeft(element, x + ActualWidth / 2.0 - elementHalfWidth);
+
+                    double y = canvasHalfHeight * sineAngle - (double.IsNaN(canvasHalfWidth) ? 0.0 : canvasHalfWidth / 100.0) * cosineAngle * TiltInDegrees;
+                    Canvas.SetTop(element, y + ActualHeight / 2.0 - elementHalfHeight);
+
+                    ScaleTransform scale = element.RenderTransform as ScaleTransform;
+                    if (scale == null)
+                    {
+                        scale = new ScaleTransform();
+                        element.RenderTransform = scale;
+                    }
+
+                    scale.CenterX = elementHalfWidth;
+                    scale.CenterY = elementHalfHeight;
+                    double scaledSize = GetScaledSize(degrees);
+                    scale.ScaleX = scale.ScaleY = scaledSize * scaledSize;
+                    Canvas.SetZIndex(element, GetZValue(degrees));
+
+                    SetOpacity(element, degrees);
                 }
+            }
+            else
+            {
 
-                scale.CenterX = elementHalfWidth;
-                scale.CenterY = elementHalfHeight;
-                double scaledSize = GetScaledSize(degrees);
-                scale.ScaleX = scale.ScaleY = scaledSize * scaledSize;
-                Canvas.SetZIndex(element, GetZValue(degrees));
-
-                SetOpacity(element, degrees);
             }
         }
 

@@ -35,28 +35,44 @@ namespace DoAn01
 
         private List<MemberInfo> _list = new List<MemberInfo>()
         {
-            new MemberInfo(){Name="Trương Đại Triều",ID="18120096", Gmail= "truongdaitrieu2109@gmail.com",
-                Git="truongtrieu123",Phone="0906947217", ImagePath="Data\\Images\\AnhDaiDien\\TrieuNe.jpg"},
-            new MemberInfo(){Name="Nguyễn Hoàng Khang",ID="18120039", Gmail= "n.hoangkhang23122015@gmail.com",
-                Git="n.hoangkhang23122015@gmail.com",Phone="0906947217", ImagePath="Data\\Images\\AnhDaiDien\\KhangNe.jpg"},
-            new MemberInfo(){Name="Bùi Huỳnh Trung Tín",ID="18120092", Gmail= "bhtt190800@gmail.com",
-                Git="bhtt190800@gmail.com",Phone="0906947217", ImagePath="Data\\Images\\AnhDaiDien\\TinNe.jpg"},
+            new MemberInfo(){Name="Nguyễn Hoàng Khang",
+                ID="18120039",
+                Gmail= "nhk25022016@gmail.com",
+                Git="nhk200200",
+                Phone="0906947217",
+                ImagePath=@"Data\Images\MemberAvater\0039.jpg"},
+
+            new MemberInfo(){Name="Bùi Huỳnh Trung Tín",
+                ID="18120092",
+                Gmail= "bhtt190800@gmail.com",
+                Git="bhtt190800@gmail.com",
+                Phone="0906947217",
+                ImagePath=@"Data\Images\MemberAvater\0092.jpg"},
+
+
+            new MemberInfo(){Name="Trương Đại Triều",
+                ID="18120096",
+                Gmail= "truongdaitrieu2109@gmail.com",
+                Git="truongtrieu123",
+                Phone="0906947217",
+                ImagePath=@"Data\Images\MemberAvater\0096.jpg"}
         };
 
         public About()
         {
 
             InitializeComponent();
-            string folder = AppDomain.CurrentDomain.BaseDirectory;
-            string absolutePath = $"{folder}{_list[1].ImagePath}";
-            Console.WriteLine(_list[1].ImagePath);
-            Console.WriteLine(absolutePath);
-            InfoList.ItemsSource = _list;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
+            InfoList.ItemsSource = _list;
         }
     }
 }
