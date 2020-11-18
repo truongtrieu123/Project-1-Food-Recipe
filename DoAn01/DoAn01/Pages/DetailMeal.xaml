@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DoAn01"
+      xmlns:WPFCarouselControl="clr-namespace:DoAn01.WPFCarouselControl"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Background="white"
@@ -49,6 +50,7 @@
         </LinearGradientBrush>
 
     </Page.Resources>
+    
     <Grid >
         <Grid.ColumnDefinitions >
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -58,12 +60,12 @@
         <StackPanel Background="LightYellow">
             <StackPanel Width="470" Margin="10,5,10,20" Panel.ZIndex="4" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <TextBlock  Name="foodNameTextBlock" Text="{Binding MainFood.Name, Converter={StaticResource Converter}}" Visibility="Visible" TextWrapping="Wrap"  Width="450" FontWeight="Bold" FontSize="30"  Height="92"  TextAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="blue" Margin="10,5" Padding="5,5,7,5">
+                <TextBlock  Name="foodNameTextBlock" Text="{Binding MainFood.Name, Converter={StaticResource Converter}}" Visibility="Visible" TextWrapping="Wrap"  Width="450" FontWeight="Bold" FontSize="30"  Height="62"  TextAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="blue" Margin="10,5" Padding="5,5,7,5">
                 </TextBlock>
 
-                <ScrollViewer  Height="129" Width="430"  IsTabStop="True" Margin="20,15,20,15" 
-                              VerticalScrollBarVisibility="Auto">
-                    <TextBlock  x:Name="introTextBlock"  FontStyle="Italic" TextWrapping="Wrap" FontSize="18"  HorizontalAlignment="Center" TextAlignment="Justify" Height="110">
+                <ScrollViewer  Height="183" Width="430"  IsTabStop="True" Margin="20,15,20,15" 
+                              VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <TextBlock  x:Name="introTextBlock"  FontStyle="Italic" TextWrapping="Wrap" FontSize="18"  HorizontalAlignment="Center" TextAlignment="Justify">
                         <Run Text="&#x09;"/>
                         <Run Text="{Binding MainFood.Introduction, Converter={StaticResource Converter}}"/>
                     </TextBlock>
@@ -85,7 +87,7 @@
 
                 <Label Name="ingredientsLabel"  Content="Nguyên liệu: " Foreground="Red" FontSize="24" FontWeight="Bold" Margin="38,0,20,0"/>
 
-                <ScrollViewer Width="430" Height="242" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="20,0">
+                <ScrollViewer Width="430" Height="220" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="20,0">
                     <TextBlock Name="ingredientsTextBlock" Text="{Binding MainFood.Ingredients}" TextWrapping="Wrap"  FontSize="20" Width="422" />
                 </ScrollViewer>
             </StackPanel>
@@ -93,7 +95,7 @@
 
         <StackPanel Width="600" Height="850" Grid.Column="1">
 
-            <Button x:Name="returnButton" Width="50" Background="White" Click="returnButton_Click" Margin="0 0 0 0" BorderThickness="0" BorderBrush="White" HorizontalAlignment="Left" >
+            <Button x:Name="returnButton" Width="50" Background="White" VerticalContentAlignment="Top" Click="returnButton_Click" Margin="0 0 0 0" BorderThickness="0" BorderBrush="White" HorizontalAlignment="Left" Height="44" >
 
                 <Image Source="../Data/Images/Icons/leftarrowIcon.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="40" RenderTransformOrigin="2.171,4.193"/>
 
@@ -102,8 +104,8 @@
             <Border Height="111" CornerRadius="10,10,10,10" BorderBrush="Black"  BorderThickness="2" Background="LightGreen" Margin="250,0,248,0">
                 <StackPanel>
                     <TextBlock Text="Bước" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center"></TextBlock>
-                    <TextBlock   Name="step" FontSize="45" FontWeight="Bold" HorizontalAlignment="Center" Height="56" Margin="49,0">
-                                <Run Text="{Binding CurrentStep.StepIndex}" Foreground="Blue"></Run>
+                    <TextBlock   Name="step" FontSize="45" FontWeight="Bold" HorizontalAlignment="Center" Height="56" >
+                                <Run Text="{Binding CurrentStep.StepIndex, Converter={StaticResource Converter}}" Foreground="Blue"></Run>
                     </TextBlock>
                 </StackPanel>
             </Border>
@@ -116,49 +118,28 @@
                 </TextBlock>
 
             </ScrollViewer>
-
-            <!--<ListView Name="HinhAnhTungStep" Width="550" 
-                            BorderBrush="Transparent" Height="240"  Margin="10,10,10,50"
-                              ScrollViewer.HorizontalScrollBarVisibility="auto"
-                              ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel/>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="{x:Type ListViewItem}">
-                        <Setter Property="Template">
+            <WPFCarouselControl:CarouselControl  x:Name="_carouselDABRadioStations" Width="600" Height="260" ItemsSource="{Binding CurrentStep.StepImages}" 
+                 ShowRotation="True"  Margin="0,0,0,20"
+                 TiltInDegrees="10" AutoSizeToParent="true" RotationSpeed="100" VerticalOrientation="False" 
+                 HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <WPFCarouselControl:CarouselControl.Style>
+                    <Style TargetType="WPFCarouselControl:CarouselControl">
+                        <Setter Property="CarouselItemTemplate" >
                             <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <Border x:Name="Bd" CornerRadius="10,10,10,10"  Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
-                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
-                                                <Condition Property="IsMouseOver" Value="True"/>
-                                            </MultiTrigger.Conditions>
-                                            <Setter Property="Background" TargetName="Bd" Value="WhiteSmoke"/>
-                                            <Setter Property="BorderBrush" TargetName="Bd" Value="WhiteSmoke"/>
-                                        </MultiTrigger>
-                                    </ControlTemplate.Triggers>
+                                <ControlTemplate>
+                                    <Rectangle RadiusX="20" RadiusY="20"  Height="250" Width="350">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="{Binding ImgPath, Converter={StaticResource pathConverter}}"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
                     </Style>
-                </ListView.ItemContainerStyle>
-                <ListView.ItemTemplate >
-                    <DataTemplate>
-                        <Rectangle RadiusX="20" RadiusY="20"  Height="200" Width="260">
-                            <Rectangle.Fill>
-                                <ImageBrush ImageSource="{Binding path, Converter={StaticResource Converter}}"/>
-                            </Rectangle.Fill>
-                        </Rectangle>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
-            <!--<WPFCarouselControl:CarouselControl ></WPFCarouselControl:CarouselControl>-->
+                </WPFCarouselControl:CarouselControl.Style>
+            </WPFCarouselControl:CarouselControl>
+            
             <StackPanel Orientation="Horizontal">
                 <Button Name="backStepButton" Style="{StaticResource ClickButton}" Margin="55,0,0,0" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Height="50" Width="132" Content="BACK" Background="LightBlue" FontSize="30" Click="backStepButton_Click" RenderTransformOrigin="0.788,0.51">
                 </Button>

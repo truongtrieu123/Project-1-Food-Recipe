@@ -67,6 +67,7 @@ namespace DoAn01
         /// <summary>
         /// 
         /// </summary>
+        //
         //public DetailMeal()
         //{
         //    InitializeComponent();
@@ -126,7 +127,7 @@ namespace DoAn01
                 //Console.WriteLine(videoCode);
                 string html = "<html><head>";
                 html += "<meta content='IE=Edge' http-equiv='X-UA-Compatible'/>";
-                html += "</head><body style=\"overflow: hidden;\">" ;
+                html += "</head><body style=\"overflow: hidden;\">";
                 html += $"<iframe width='380' height='210' src='{videoCode}' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' style='overflow-x: hidden'>";
                 html += "</body></html>";
                 foodVideoWebBrowser.NavigateToString(html);
@@ -141,6 +142,7 @@ namespace DoAn01
         /// <summary>
         /// 
         /// </summary>
+        /// 
         public void CreateFoodDetailPage()
         {
             _mainVM.MaxStepIndex = _mainVM.MainFood.CountSteps;
@@ -203,5 +205,4 @@ namespace DoAn01
         }
     }
 }
-
-
+    

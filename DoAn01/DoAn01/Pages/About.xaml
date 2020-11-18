@@ -4,27 +4,99 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DoAn01"
+      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.FontWeight="Regular"
+    TextElement.FontSize="13"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+      
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Background="LightBlue"
-      Title="About" Width="1090" Height="850">
-    <Border BorderThickness="10" >
-        <Canvas>
-            <Label Canvas.Left="54" Canvas.Top="10" Width="237" Height="52" FontSize="25" FontWeight="ExtraBlack" RenderTransformOrigin="0.513,-0.105">Thông tin liên hệ:</Label>
-            <Label Canvas.Left="54" Canvas.Top="62" Width="33" Height="47" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.513,-0.105">1.</Label>
-            <Label Canvas.Left="92" Canvas.Top="62" Width="286" Height="47" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.513,-0.105">Nguyễn Hoàng Khang</Label>
-            <Label Canvas.Left="92" Canvas.Top="114" Width="286" Height="47" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.513,-0.105">MSSV: 18120039</Label>
-            <Label Canvas.Left="92" Canvas.Top="161" Width="539" Height="47" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.513,-0.105">Mail: n.hoangkhang23122015@gmail.com</Label>
-            <Label Canvas.Left="59" Canvas.Top="206" Width="33" Height="47" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.513,-0.105">2.</Label>
-            <Label Canvas.Left="92" Canvas.Top="258" Width="286" Height="47" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.513,-0.105">Bùi Huỳnh Trung Tín</Label>
-            <Label Canvas.Left="92" Canvas.Top="310" Width="286" Height="47" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.513,-0.105">MSSV: 18120092</Label>
-            <Label Canvas.Left="92" Canvas.Top="362" Width="539" Height="47" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.513,-0.105">Mail: bhtt190800@gmail.com</Label>
-            <Label Canvas.Left="59" Canvas.Top="414" Width="33" Height="47" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.513,-0.105">3.</Label>
-            <Label Canvas.Left="92" Canvas.Top="461" Width="286" Height="47" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.513,-0.105">Trương Đại Triều</Label>
-            <Label Canvas.Left="92" Canvas.Top="508" Width="286" Height="47" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.513,-0.105">MSSV: 18120039</Label>
-            <Label Canvas.Left="92" Canvas.Top="555" Width="539" Height="47" FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.513,-0.105">Mail: n.hoangkhang23122015@gmail.com</Label>
+      Background="White"
+      Title="About" Width="1090" Height="850" Loaded="Page_Loaded">
+    <Page.Resources>
+        <local:AbsolutePathConverter x:Key="Converter"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="430"></ColumnDefinition>
+            <ColumnDefinition Width="640"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
-        </Canvas>
-    </Border>
+        <StackPanel Grid.Column="0" Background="WhiteSmoke">
+            <Label Content="About" Height="82" FontSize="35" FontWeight="ExtraBlack" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,30,0,0"/>
 
+            <Label  Content="Food Recipe App - Project 01"  FontSize="25" FontWeight="Bold" Margin="10,20,0,0"></Label>
+            <Label Content="Lisence - 1.0.0" FontSize="20" Margin="30,0,0,0"></Label>
+
+            <Label  Content="Window Programming - 18/31"  FontSize="25" FontWeight="Bold" Margin="10,20,0,0"></Label>
+            <Label Content="VNU - HCMUS" FontSize="20" Margin="30,0,0,0"></Label>
+
+
+            <Label  Content="WPF App"  FontSize="25" FontWeight="Bold" Margin="10,20,0,0"></Label>
+            <Label Content=".NET Core - Visual Studio 2019" FontSize="20" Margin="30,0,0,0"></Label>
+
+            <Label  Content="Contact"  FontSize="25" FontWeight="Bold" Margin="10,20,0,0"></Label>
+            <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
+                <Label Width="35" Height="35">
+                    <fa:ImageAwesome Icon="MailForward" Height="25" Width="25" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" ></fa:ImageAwesome>
+                </Label>
+                <Label FontSize="20" >n.hoangkhang23122015@gmail.com</Label>
+            </StackPanel>
+            <Label  Content="@Copyright 2020"  FontSize="25" Margin="10,20,0,0"></Label>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Margin="28,30,0,0">
+            <Label Width="237" Height="80" FontSize="35" FontWeight="ExtraBlack" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" RenderTransformOrigin="0.513,-0.105" Content="Authors" Margin="190,0,189,0"/>
+            <ListView x:Name="InfoList" 
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <materialDesign:Card Background="LightSalmon" Canvas.Left="16" Canvas.Top="16" Height="200" Margin="6,0,-1,20" RenderTransformOrigin="0.5,0.5">
+                            <StackPanel Orientation="Horizontal" Width="630"  HorizontalAlignment="Left">
+                                <Ellipse Width="180" Height="180" Margin="10,0,0,0">
+                                    <Ellipse.Fill>
+                                        <ImageBrush ImageSource="{Binding ImagePath, Converter={StaticResource Converter}}"  ></ImageBrush>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                    <Label Content='{Binding Name}' FontSize="25" FontWeight="Bold" RenderTransformOrigin="0.513,-0.105"></Label>
+                                    <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
+                                        <Label Width="35" Height="35">
+                                            <fa:ImageAwesome Icon="IdCard" Height="25" Width="25" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" ></fa:ImageAwesome>
+                                        </Label>
+                                        <Label Content="{Binding ID}" FontSize="20" ></Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
+                                        <Label Width="35" Height="35">
+                                            <fa:ImageAwesome Icon="Phone" Height="25" Width="25" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" ></fa:ImageAwesome>
+                                        </Label>
+                                        <Label Content="{Binding Phone}" FontSize="20" ></Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
+                                        <Label Width="35" Height="35">
+                                            <fa:ImageAwesome Icon="Github" Height="25" Width="25" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" ></fa:ImageAwesome>
+                                        </Label>
+                                        <Label Content="{Binding Git}" FontSize="20" ></Label>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="30,0,0,0">
+                                        <Label Width="35" Height="35">
+                                            <fa:ImageAwesome Icon="Google" Height="25" Width="25" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" ></fa:ImageAwesome>
+                                        </Label>
+                                        <Label Content="{Binding Gmail}" FontSize="20" ></Label>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+
+    </Grid>
 </Page>
