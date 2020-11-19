@@ -38,7 +38,7 @@
 
 
             <Label  Content="WPF App"  FontSize="25" FontWeight="Bold" Margin="10,20,0,0"></Label>
-            <Label Content=".NET Framwork - Visual Studio 2019" FontSize="20" Margin="30,0,0,0"></Label>
+            <Label Content=".NET Core - Visual Studio 2019" FontSize="20" Margin="30,0,0,0"></Label>
 
             <Label  Content="Contact"  FontSize="25" FontWeight="Bold" Margin="10,20,0,0"></Label>
             <StackPanel Orientation="Horizontal" Margin="30,0,0,0">

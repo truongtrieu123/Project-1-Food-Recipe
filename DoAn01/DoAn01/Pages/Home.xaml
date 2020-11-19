@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:DoAn01"
       xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d"      
@@ -203,15 +202,12 @@
                     <Image x:Name="cancelSearchImg" Source="../Data/Images/Icons/outIcon.jpg" Width="29" Height="45"/>
                 </Button>
                 <Label Name="sortLabel" Content="Sắp xếp: " FontSize="20" VerticalAlignment="Center" FontWeight="Bold" Margin="15,0,15,0"></Label>
-                <ComboBox Name="sortSelectionComboBox" Width="185" Height="40" BorderThickness="1" SelectionChanged="sortSelectionComboBox_SelectionChanged" Margin="0,5" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ComboBox Name="sortSelectionComboBox" Width="185" Height="40" BorderThickness="1"  Margin="0,5" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <ComboBoxItem>
                         <Label Content="Theo tên từ A-Z" VerticalAlignment="Center" FontSize="20"/>
                     </ComboBoxItem>
                     <ComboBoxItem>
                         <Label Content="Theo tên từ Z-A" VerticalAlignment="Center" FontSize="20"/>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <Label Content="Theo ngày tạo" VerticalAlignment="Center" FontSize="20"/>
                     </ComboBoxItem>
                 </ComboBox>
             </StackPanel>
@@ -223,8 +219,8 @@
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <EventSetter Event="Control.PreviewMouseDoubleClick" Handler="ListViewItem_PreviewMouseDoubleClick"/>
-
-                        <EventSetter Event="UIElement.PreviewGotKeyboardFocus" Handler="SelectCurrentItem"/>
+                        
+                        <!--<EventSetter Event="UIElement.PreviewGotKeyboardFocus" Handler="SelectCurrentItem"/>-->
 
                         <EventSetter Event="MouseLeftButtonUp" Handler="SelectCurrentItem"/>
                         <Setter Property="Template">
@@ -259,31 +255,26 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate >
                     <DataTemplate>
-                        <materialDesign:TransitioningContent>
-                            <materialDesign:TransitioningContent.OpeningEffects>
-                                <materialDesign:TransitionEffect Kind="SlideInFromRight"></materialDesign:TransitionEffect>
-                            </materialDesign:TransitioningContent.OpeningEffects>
-                            <StackPanel Width="235" Height="210"  Background="Transparent" Margin="5,5,5,5" >
-                                <StackPanel  Height="202">
-                                    <Rectangle RadiusX="20" RadiusY="20"  Height="150">
-                                        <Rectangle.Fill>
-                                            <ImageBrush ImageSource="{Binding CoverSource, Converter={StaticResource pathConverter}}"/>
-                                        </Rectangle.Fill>
-                                    </Rectangle>
+                        <StackPanel Width="235" Height="210"  Background="Transparent" Margin="5,5,5,5" >
+                            <StackPanel  Height="202">
+                                <Rectangle RadiusX="20" RadiusY="20"  Height="150">
+                                    <Rectangle.Fill>
+                                        <ImageBrush ImageSource="{Binding CoverSource, Converter={StaticResource pathConverter}}"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
 
-                                    <DockPanel>
-                                        <Label Background="Transparent" FontSize="18" Width="185" Height="52"  BorderBrush="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" FontFamily="Desinosaur">
-                                            <AccessText TextWrapping="Wrap" Text="{Binding Name}"/>
-                                        </Label>
+                                <DockPanel>
+                                    <Label Background="Transparent" FontSize="18" Width="185" Height="52"  BorderBrush="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" DockPanel.Dock="Left" FontFamily="Desinosaur">
+                                        <AccessText TextWrapping="Wrap" Text="{Binding Name}"/>
+                                    </Label>
 
-                                        <Button x:Name="favoriteButton" Style="{StaticResource HeartButton}" Click="favoriteButton_Click" DockPanel.Dock="Right" Width="40">
-                                            <fa:ImageAwesome Icon="Heart"  Foreground="{Binding Favorite, Converter={StaticResource Converter}}"    Margin="5,0,5,0"/>
-                                        </Button>
-                                    </DockPanel>
+                                    <Button x:Name="favoriteButton" Style="{StaticResource HeartButton}" Click="favoriteButton_Click" DockPanel.Dock="Right" Width="40">
+                                        <fa:ImageAwesome Icon="Heart"  Foreground="{Binding Favorite, Converter={StaticResource Converter}}"    Margin="5,0,5,0"/>
+                                    </Button>
+                                </DockPanel>
 
-                                </StackPanel>
                             </StackPanel>
-                        </materialDesign:TransitioningContent>
+                        </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

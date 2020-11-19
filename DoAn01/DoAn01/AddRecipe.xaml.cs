@@ -94,7 +94,7 @@ namespace DoAn01
 
             if (Directory.Exists(imageFolder))
             {
-                //Directory.Delete(imageFolder);
+                Directory.Delete(imageFolder);
             }
             else
             {
@@ -132,7 +132,7 @@ namespace DoAn01
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void foodNameTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-           {
+        {
             var textbox = sender as TextBox;
 
             if (textbox != null)
@@ -215,6 +215,7 @@ namespace DoAn01
         private void add_image_foodButton_Click(object sender, RoutedEventArgs e)
         {
             var screen = new OpenFileDialog();
+            var folder = AppDomain.CurrentDomain.BaseDirectory;
 
             // Thiết đặt bộ lọc (filter) cho file hình ảnh
             var codecs = ImageCodecInfo.GetImageEncoders();
@@ -230,6 +231,7 @@ namespace DoAn01
             screen.Filter = String.Format("{0}{1}{2} ({3})|{3}", screen.Filter, sep, "All Files", "*.*");
 
             screen.Title = "Choose food cover image";
+            screen.InitialDirectory = folder;
             screen.FilterIndex = 2;
             screen.RestoreDirectory = true;
 
@@ -274,6 +276,7 @@ namespace DoAn01
             _mainVM.ClearImgList();
 
             var screen = new OpenFileDialog();
+            var folder = AppDomain.CurrentDomain.BaseDirectory;
             var codecs = ImageCodecInfo.GetImageEncoders();
             var sep = string.Empty;
 
@@ -288,6 +291,7 @@ namespace DoAn01
 
             screen.Multiselect = true;
             screen.Title = "Choose Food Step Images";
+            screen.InitialDirectory = folder;
             screen.FilterIndex = 2;
             screen.RestoreDirectory = true;
 
@@ -496,7 +500,7 @@ namespace DoAn01
             {
                 Name = _temp_food.Name,
                 Introduction = _temp_food.Introduction,
-                Ingredients = _temp_food.Ingredients.Replace("\r",""),
+                Ingredients = _temp_food.Ingredients,
                 VideoSource = _temp_food.VideoSource,
                 CoverSource = _temp_food.CoverSource,
                 StepList = new BindingList<Step>(_temp_food.StepList.ToList<Step>()),

@@ -65,27 +65,7 @@ namespace DoAn01
                 }
             }
             // Quản lí các sublist của các trang
-            private List<BindingList<Food>> mainSublists = null;
-            public List<BindingList<Food>> MainSublists
-            {
-                get { return this.mainSublists; }
-                set
-                {
-                    if (value != this.mainSublists)
-                    {
-                        var list = new List<BindingList<Food>>();
-
-                        foreach (var sublist in value)
-                        {
-                            list.Add(new BindingList<Food>(sublist.ToList<Food>()));
-                        }
-
-                        this.mainSublists = list;
-                        OnPropertyChanged("MainSublists");
-                    }
-                    else { return; }
-                }
-            }
+            public List<BindingList<Food>> MainSublists { get; set; }
             // Quản lí sublist hiện tại để hiển thị
             private BindingList<Food> currentSubList = null;
             public BindingList<Food> CurrentSublist
@@ -156,7 +136,6 @@ namespace DoAn01
             _mainVM.TotalFood = Global.FavoriteFoodList.Count;
 
             var value = ConfigurationManager.AppSettings["FavorCurrentPage"];
-            var arrangemode = ConfigurationManager.AppSettings["FavorArrangeMode"];
             var favorcrtpage = int.Parse(value);
 
             if (Global.FavorSubLists.Count > 0)
@@ -173,26 +152,24 @@ namespace DoAn01
                 _mainVM.CurrentSublist = _mainVM.MainSublists[_mainVM.PageInfor.CurrentPage - 1];
             }
 
-            // Cập nhật sort mode
-            if (arrangemode == "none")
-            {
-
-            }
-            else
-            {
-                var index = int.Parse(arrangemode);
-
-                if (index != 0 && index != 1 && index != 2)
-                { }
-                else
-                {
-                    SortListView(index);
-                    sortSelectionComboBox.SelectedIndex = index;
-                }
-            }
-
             DataContext = _mainVM;
+            //if (_mainVM.PageInfor.CurrentPage == 1)
+            //{
+            //    prevPageButton.IsEnabled = false;
+            //}
+            //else
+            //{
+            //    // Do nothing
+            //}
 
+            //if (_mainVM.PageInfor.CurrentPage == _mainVM.PageInfor.MaxPages)
+            //{
+            //    nextPageButton.IsEnabled = false;
+            //}
+            //else
+            //{
+            //    // Doo nothing
+            //}
         }
 
         /// <summary>
@@ -205,13 +182,14 @@ namespace DoAn01
             if (_mainVM.PageInfor.CurrentPage > 0 && _mainVM.PageInfor.CurrentPage < _mainVM.PageInfor.MaxPages)
             {
                 _mainVM.PageInfor.CurrentPage++;
-                _mainVM.CurrentSublist = Global.FavorSubLists[_mainVM.PageInfor.CurrentPage - 1];
 
-                if (_mainList == Global.FavoriteFoodList)
-                {
-                    UpdateAppConfig("HomeCurrentPage", _mainVM.PageInfor.CurrentPage.ToString());
-                }
-                else { }
+                //if(_mainVM.PageInfor.CurrentPage == _mainVM.PageInfor.MaxPages)
+                //{
+                //    nextPageButton.IsEnabled = false;
+                //}
+
+                _mainVM.CurrentSublist = Global.FavorSubLists[_mainVM.PageInfor.CurrentPage - 1];
+                UpdateAppConfig("FavorCurrentPage");
             }
         }
 
@@ -232,12 +210,8 @@ namespace DoAn01
                 //}
 
                 _mainVM.CurrentSublist = Global.FavorSubLists[_mainVM.PageInfor.CurrentPage - 1];
+                UpdateAppConfig("FavorCurrentPage");
 
-                if (_mainList == Global.FavoriteFoodList)
-                {
-                    UpdateAppConfig("HomeCurrentPage", _mainVM.PageInfor.CurrentPage.ToString());
-                }
-                else { }
             }
         }
 
@@ -329,7 +303,7 @@ namespace DoAn01
         {
             Food p = (Food)mealListView.Items[IndexCurrentPage];
             DetailMeal page = new DetailMeal(p);
-            UpdateAppConfig("FavorCurrentPage", _mainVM.PageInfor.CurrentPage.ToString());
+            UpdateAppConfig("FavorCurrentPage");
             this.NavigationService.Navigate(page);
         }
 
@@ -337,11 +311,11 @@ namespace DoAn01
         /// Hàm cập nhập file App.Config
         /// </summary>
         /// <param name="_name"></param>
-        private void UpdateAppConfig(string _name, string value)
+        private void UpdateAppConfig(string _name)
         {
             // Lưu lại trang hiện tại của PageInfor
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            config.AppSettings.Settings[_name].Value = value;
+            config.AppSettings.Settings[_name].Value = _mainVM.PageInfor.CurrentPage.ToString();
             config.Save(ConfigurationSaveMode.Minimal);
 
             ConfigurationManager.RefreshSection("appSettings");
@@ -468,57 +442,6 @@ namespace DoAn01
             RestoreViewModel();
         }
 
-        /// <summary>
-        /// Hàm xử lí khi chế độ sort thay đổi
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void sortSelectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var combobox = sender as ComboBox;
 
-            if (combobox != null)
-            {
-                var index = combobox.SelectedIndex;
-
-                SortListView(index);
-            }
-            else { }
-        }
-
-        /// <summary>
-        /// Hàm xử lí sort lại listview
-        /// </summary>
-        /// <param name="index"></param>
-        private void SortListView(int index)
-        {
-            var list = _mainList;
-
-            if (index == 0)
-            {
-                list.Sort(new FoodNameIncComparer());
-            }
-            else if (index == 1)
-            {
-                list.Sort(new FoodNameDecComparer());
-            }
-            else if (index == 2)
-            {
-                list.Sort(new FoodDayIndexComparer());
-            }
-
-            if (_mainList.Equals(Global.FavoriteFoodList))
-            {
-                _mainVM.MainSublists = Global.ConvertListToSubLists(Global.ItemsPerPage, Global.FavoriteFoodList);
-            }
-            else if (_mainList.Equals(Global.SearchResultList))
-            {
-                _mainVM.MainSublists = Global.ConvertListToSubLists(Global.ItemsPerPage, Global.SearchResultList);
-            }
-
-            _mainVM.CurrentSublist = _mainVM.MainSublists[_mainVM.PageInfor.CurrentPage - 1];
-
-            UpdateAppConfig("FavorArrangeMode", index.ToString());
-        }
     }
 }

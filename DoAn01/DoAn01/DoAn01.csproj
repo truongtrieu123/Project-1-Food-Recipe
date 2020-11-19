@@ -45,8 +45,7 @@
   <PropertyGroup />
   <ItemGroup>
     <Reference Include="Aspose.Cells, Version=20.11.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Aspose.Cells\Aspose.Cells.dll</HintPath>
+      <HintPath>..\packages\Aspose.Cells.20.11.0\lib\net40\Aspose.Cells.dll</HintPath>
     </Reference>
     <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
@@ -177,9 +176,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Content Include="Data\DataBase\FoodList.xlsx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="Data\DataBase\FoodList.xlsx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -190,1549 +187,522 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Images\splash_bckgrnd.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Icons\addIcon.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Icons\add_imageIcon.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Icons\add_stepIcon.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Icons\outIcon.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Icons\food01.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Icons\homeIcon.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Icons\inforIcon.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Icons\leftarrowIcon.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Icons\loveIcon.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Icons\quitIcon.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Icons\saveIcon.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Icons\searchIcon.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Data\Images\splash_bckgrnd.jpg" />
+    <Resource Include="Data\Images\Icons\addIcon.jpg" />
+    <Resource Include="Data\Images\Icons\add_imageIcon.jpg" />
+    <Resource Include="Data\Images\Icons\add_stepIcon.jpg" />
+    <Resource Include="Data\Images\Icons\outIcon.jpg" />
+    <Resource Include="Data\Images\Icons\food01.jpg" />
+    <Resource Include="Data\Images\Icons\homeIcon.jpg" />
+    <Resource Include="Data\Images\Icons\inforIcon.jpg" />
+    <Resource Include="Data\Images\Icons\leftarrowIcon.jpg" />
+    <Resource Include="Data\Images\Icons\loveIcon.jpg" />
+    <Resource Include="Data\Images\Icons\quitIcon.jpg" />
+    <Resource Include="Data\Images\Icons\saveIcon.jpg" />
+    <Resource Include="Data\Images\Icons\searchIcon.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Images\Food\10\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step2 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\10\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step2 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\11\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\12\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\12\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\12\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\12\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\12\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\12\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\12\step2 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\12\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\12\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\12\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\12\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\12\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\12\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\12\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\12\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\13\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\13\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\13\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\13\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\13\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\13\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\13\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\13\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\13\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\13\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\13\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\13\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\13\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\14\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\14\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\14\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\14\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\14\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\14\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\14\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\14\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\14\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\14\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\14\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\14\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\14\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\14\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step2 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step5 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step5 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step5 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step5 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step6 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step6 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step6 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\15\step6 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\16\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\16\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\16\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\16\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\16\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\16\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\16\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\16\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\16\step2 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\16\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\16\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\16\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\16\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\step1 %285%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\step1 %286%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\17\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\18\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\18\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\18\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\18\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\18\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\18\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\18\step2 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\18\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\18\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\18\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\18\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\18\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\18\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\19\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\19\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\19\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\19\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\19\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\19\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\19\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\19\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\19\step2 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\19\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\19\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\19\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\1\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\1\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\1\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\1\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\1\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\1\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\1\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\1\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\1\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\1\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\1\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\1\step5 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\1\step5 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\1\step5 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\1\step5 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\20\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\20\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\20\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\20\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\20\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\20\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\20\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\20\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\20\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\20\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\20\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\20\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\20\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\20\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\20\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\21\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\21\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\21\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\21\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\21\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\21\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\21\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\21\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\21\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\21\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\21\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\21\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\21\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step2 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\22\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step2 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step5 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step5 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step5 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\23\step5 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\24\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\24\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\24\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\24\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\24\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\24\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\24\step2 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\24\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\24\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\24\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\24\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\24\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\24\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step5 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step5 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step5 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step5 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step6 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step6 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\25\step6 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step2 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step5 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step5 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step5 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step5 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step6 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step6 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step6 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step6 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step7 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step7 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step7 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\26\step7 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step5 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step5 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\27\step5 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\28\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\28\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\28\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\28\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\28\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\28\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\28\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\28\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\28\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\28\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\28\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\28\step5 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\28\step5 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\28\step5 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\28\step5 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\29\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\29\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\29\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\29\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\29\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\29\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\29\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\29\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\29\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\29\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\29\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\29\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\29\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\29\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\29\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step2 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step5 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\2\step5 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\30\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\30\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\30\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\30\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\30\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\30\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\30\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\30\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\30\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\30\step5 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\30\step5 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\30\step5 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\30\step5 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\3\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\3\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\3\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\3\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\3\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\3\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\3\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\3\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\3\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\3\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\3\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step5 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step5 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step6 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step6 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\4\step6 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\step2 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\step5 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\step5 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\5\step5 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\step5 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\step5 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\step5 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\step5 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\strp3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\strp3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\strp3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\6\strp3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step5 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step5 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step6 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step6 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step6 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\7\step6 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step2 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step3 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step3 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step4 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\8\step4 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\ava.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step1 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step1 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step1 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step1 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step2 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step2 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step2 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step2 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step3 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step3 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step4 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step4 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step5 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step5 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step5 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step5 %284%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step6 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step6 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step7 %281%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step7 %282%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\Food\9\step7 %283%29.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Data\Images\Food\10\ava.jpg" />
+    <Resource Include="Data\Images\Food\10\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\10\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\10\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\10\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\10\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\10\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\10\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\10\step2 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\10\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\10\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\10\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\10\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\10\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\10\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\10\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\10\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\11\ava.jpg" />
+    <Resource Include="Data\Images\Food\11\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\11\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\11\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\11\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\11\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\11\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\11\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\11\step2 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\11\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\11\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\11\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\11\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\11\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\11\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\11\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\11\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\12\ava.jpg" />
+    <Resource Include="Data\Images\Food\12\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\12\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\12\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\12\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\12\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\12\step2 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\12\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\12\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\12\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\12\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\12\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\12\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\12\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\12\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\13\ava.jpg" />
+    <Resource Include="Data\Images\Food\13\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\13\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\13\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\13\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\13\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\13\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\13\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\13\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\13\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\13\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\13\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\13\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\14\ava.jpg" />
+    <Resource Include="Data\Images\Food\14\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\14\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\14\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\14\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\14\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\14\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\14\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\14\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\14\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\14\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\14\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\14\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\14\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\15\ava.jpg" />
+    <Resource Include="Data\Images\Food\15\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step2 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step5 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step5 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step5 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step5 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step6 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step6 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step6 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\15\step6 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\16\ava.jpg" />
+    <Resource Include="Data\Images\Food\16\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\16\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\16\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\16\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\16\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\16\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\16\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\16\step2 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\16\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\16\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\16\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\16\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\17\ava.jpg" />
+    <Resource Include="Data\Images\Food\17\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\17\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\17\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\17\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\17\step1 %285%29.jpg" />
+    <Resource Include="Data\Images\Food\17\step1 %286%29.jpg" />
+    <Resource Include="Data\Images\Food\17\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\17\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\17\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\17\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\17\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\17\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\17\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\17\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\17\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\18\ava.jpg" />
+    <Resource Include="Data\Images\Food\18\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\18\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\18\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\18\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\18\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\18\step2 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\18\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\18\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\18\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\18\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\18\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\18\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\19\ava.jpg" />
+    <Resource Include="Data\Images\Food\19\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\19\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\19\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\19\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\19\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\19\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\19\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\19\step2 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\19\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\19\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\19\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\1\ava.jpg" />
+    <Resource Include="Data\Images\Food\1\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\1\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\1\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\1\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\1\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\1\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\1\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\1\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\1\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\1\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\1\step5 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\1\step5 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\1\step5 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\1\step5 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\20\ava.jpg" />
+    <Resource Include="Data\Images\Food\20\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\20\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\20\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\20\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\20\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\20\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\20\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\20\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\20\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\20\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\20\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\20\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\20\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\20\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\21\ava.jpg" />
+    <Resource Include="Data\Images\Food\21\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\21\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\21\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\21\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\21\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\21\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\21\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\21\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\21\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\21\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\21\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\21\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\22\ava.jpg" />
+    <Resource Include="Data\Images\Food\22\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\22\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\22\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\22\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\22\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\22\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\22\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\22\step2 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\22\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\22\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\22\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\22\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\22\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\22\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\22\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\22\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\23\ava.jpg" />
+    <Resource Include="Data\Images\Food\23\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\23\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\23\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\23\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\23\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\23\step2 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\23\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\23\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\23\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\23\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\23\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\23\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\23\step5 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\23\step5 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\23\step5 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\23\step5 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\24\ava.jpg" />
+    <Resource Include="Data\Images\Food\24\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\24\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\24\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\24\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\24\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\24\step2 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\24\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\24\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\24\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\24\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\24\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\24\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\25\ava.jpg" />
+    <Resource Include="Data\Images\Food\25\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step5 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step5 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step5 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step5 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step6 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step6 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\25\step6 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\26\ava.jpg" />
+    <Resource Include="Data\Images\Food\26\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step2 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step5 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step5 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step5 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step5 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step6 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step6 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step6 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step6 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step7 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step7 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step7 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\26\step7 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\27\ava.jpg" />
+    <Resource Include="Data\Images\Food\27\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step5 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step5 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\27\step5 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\28\ava.jpg" />
+    <Resource Include="Data\Images\Food\28\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\28\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\28\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\28\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\28\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\28\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\28\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\28\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\28\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\28\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\28\step5 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\28\step5 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\28\step5 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\28\step5 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\29\ava.jpg" />
+    <Resource Include="Data\Images\Food\29\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\29\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\29\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\29\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\29\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\29\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\29\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\29\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\29\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\29\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\29\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\29\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\29\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\29\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\2\ava.jpg" />
+    <Resource Include="Data\Images\Food\2\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\2\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\2\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\2\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\2\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\2\step2 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\2\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\2\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\2\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\2\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\2\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\2\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\2\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\2\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\2\step5 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\2\step5 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\30\ava.jpg" />
+    <Resource Include="Data\Images\Food\30\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\30\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\30\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\30\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\30\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\30\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\30\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\30\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\30\step5 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\30\step5 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\30\step5 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\30\step5 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\3\ava.jpg" />
+    <Resource Include="Data\Images\Food\3\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\3\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\3\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\3\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\3\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\3\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\3\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\3\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\3\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\3\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\4\ava.jpg" />
+    <Resource Include="Data\Images\Food\4\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step5 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step5 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step6 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step6 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\4\step6 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\5\ava.jpg" />
+    <Resource Include="Data\Images\Food\5\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\5\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\5\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\5\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\5\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\5\step2 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\5\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\5\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\5\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\5\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\5\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\5\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\5\step5 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\5\step5 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\5\step5 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\6\ava.jpg" />
+    <Resource Include="Data\Images\Food\6\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\6\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\6\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\6\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\6\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\6\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\6\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\6\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\6\step5 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\6\step5 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\6\step5 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\6\step5 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\6\strp3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\6\strp3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\6\strp3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\6\strp3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\7\ava.jpg" />
+    <Resource Include="Data\Images\Food\7\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step5 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step5 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step6 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step6 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step6 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\7\step6 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\8\ava.jpg" />
+    <Resource Include="Data\Images\Food\8\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\8\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\8\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\8\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\8\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\8\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\8\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\8\step2 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\8\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\8\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\8\step3 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\8\step3 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\8\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\8\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\8\step4 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\8\step4 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\9\ava.jpg" />
+    <Resource Include="Data\Images\Food\9\step1 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step1 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step1 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step1 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step2 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step2 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step2 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step2 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step3 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step3 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step4 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step4 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step5 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step5 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step5 %283%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step5 %284%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step6 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step6 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step7 %281%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step7 %282%29.jpg" />
+    <Resource Include="Data\Images\Food\9\step7 %283%29.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Images\Icons\appIcon.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Data\Images\Icons\appIcon.ico" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Data\Images\Icons\mealIcon.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\MemberAvater\0039.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\MemberAvater\0092.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Images\MemberAvater\0096.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Data\Images\Icons\mealIcon.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />
