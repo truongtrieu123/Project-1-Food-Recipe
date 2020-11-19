@@ -176,11 +176,19 @@ namespace DoAn01
         }
     }
 
-    public class FoodNameComparer : IComparer<Food>
+    public class FoodNameIncComparer : IComparer<Food>
     {
         public int Compare(Food x, Food y)
         {
             return (x.Name.ToString().CompareTo(y.Name.ToString()));
+        }
+    }
+
+    public class FoodNameDecComparer : IComparer<Food>
+    {
+        public int Compare(Food x, Food y)
+        {
+            return (y.Name.ToString().CompareTo(x.Name.ToString()));
         }
     }
 
@@ -191,6 +199,5 @@ namespace DoAn01
             return (x.DayIndex.CompareTo(y.DayIndex));
         }
     }
-
 
 }

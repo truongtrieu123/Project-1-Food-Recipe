@@ -111,7 +111,7 @@ namespace DoAn01
         }
 
         /// <summary>
-        /// 
+        /// Hàm xuất list food ra file excel
         /// </summary>
         private void ExcelExportData()
         {
@@ -119,11 +119,12 @@ namespace DoAn01
             var database = $"{folder}Data\\DataBase\\FoodList.xlsx";
             var workbook = new Workbook(database);
             var sheet = workbook.Worksheets[0];
-            sheet.AutoFitColumns();
-            sheet.AutoFitRows();
             var row = 1;
             var col = 7;
-            var countsteps = new int[] { };
+            var countsteps = new List<int>();
+
+            sheet.Cells.StandardWidth = 20;
+            sheet.AutoFitRows();
 
             foreach (var value in Global.FoodList)
             {
@@ -134,21 +135,21 @@ namespace DoAn01
                 sheet.Cells[row, 4].Value = value.Introduction.ToString();
                 sheet.Cells[row, 5].Value = value.Ingredients.ToString();
                 col = 7;
-                Array.Clear(countsteps, 0, countsteps.Length);
-                countsteps.Append(value.CountSteps);
+                countsteps.Clear();
+                countsteps.Add(value.CountSteps);
 
                 foreach (var step in value.StepList)
                 {
                     sheet.Cells[row, col].Value = step.StepDetail.ToString();
                     col++;
-                    countsteps.Append(step.StepImages.Count);
+                    countsteps.Add(step.StepImages.Count);
                 }
 
-                sheet.Cells[row, col].Value = String.Join(" ", countsteps);
+                sheet.Cells[row, 6].Value = String.Join(" ", countsteps);
                 row++;
             }
 
-            workbook.Save($"{folder}data.xlsx");
+            workbook.Save(database);
         }
 
         /// <summary>

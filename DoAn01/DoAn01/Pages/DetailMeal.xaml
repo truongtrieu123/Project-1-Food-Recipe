@@ -73,7 +73,7 @@
 
                     <Border Height="210" Width="380" Margin="0,10"  BorderBrush="Black" BorderThickness="2" >
                         <Border.Background>
-                            <ImageBrush x:Name="foodCoverImage" ImageSource="{Binding MainFood.CoverSource, Converter={StaticResource Converter}}"/>
+                            <ImageBrush x:Name="foodCoverImage" ImageSource="{Binding MainFood.CoverSource, Converter={StaticResource pathConverter}}"/>
                         </Border.Background>
 
                         <WebBrowser Name="foodVideoWebBrowser" Height="210" Width="380" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -96,7 +96,7 @@
 
         <StackPanel Width="600" Height="850" Grid.Column="1">
 
-            <Button x:Name="returnButton" Width="50" Background="White" VerticalContentAlignment="Top" Click="returnButton_Click" Margin="0 0 0 0" BorderThickness="0" BorderBrush="White" HorizontalAlignment="Left" Height="44" >
+            <Button x:Name="returnButton" Width="75" Background="White" VerticalContentAlignment="Top" Click="returnButton_Click" Margin="0 0 0 0" BorderThickness="0" BorderBrush="White" HorizontalAlignment="Left" Height="44" >
                 <Image Source="../Data/Images/Icons/leftarrowIcon.jpg"  RenderOptions.BitmapScalingMode="HighQuality" Height="47" Width="40" RenderTransformOrigin="2.171,4.193"/>
             </Button>
 
@@ -121,6 +121,7 @@
                 </TextBlock>
 
             </ScrollViewer>
+            
             <WPFCarouselControl:CarouselControl  x:Name="_carouselDABRadioStations" Width="600" Height="260" ItemsSource="{Binding CurrentStep.StepImages}" 
                 ShowRotation="True"  Margin="0,0,0,20"
                 TiltInDegrees="10" AutoSizeToParent="true" RotationSpeed="100" VerticalOrientation="False" 

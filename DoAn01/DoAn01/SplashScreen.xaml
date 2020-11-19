@@ -43,13 +43,13 @@
     </Window.Background>
 
     <Canvas>
-        <ProgressBar x:Name="progress" Width="200"  Minimum="0" Maximum="10" Value="0" Height="15" Canvas.Left="293" Canvas.Top="762" />
+        <ProgressBar x:Name="progress" Width="200"  Minimum="0" Maximum="10" Value="0" Height="15" Canvas.Left="268" Canvas.Top="762" />
 
         <Button Name="skipButton" Width="100" Height="25" Content="Bỏ qua" IsDefault="True" Click="skipButton_Click" Canvas.Left="599" Canvas.Top="762" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-        <CheckBox Name="neverShowAgainCheckBox" Width="15" Height="20" IsChecked="False"  Checked="neverShowAgainCheckBox_Checked" Canvas.Left="511" Canvas.Top="737" RenderTransformOrigin="0.687,1.153"/>
+        <CheckBox Name="neverShowAgainCheckBox" Width="25" Height="30" IsChecked="False"  Checked="neverShowAgainCheckBox_Checked" Canvas.Left="516" Canvas.Top="733"/>
 
-        <Label Content="Không hiện hộp thoại này khi khởi động" Canvas.Left="531" Canvas.Top="731"/>
+        <Label Content="Không hiện hộp thoại này khi khởi động" Canvas.Left="541" Canvas.Top="733"/>
 
 
         <Border RenderTransformOrigin="39.495,4.391" Canvas.Left="83" Canvas.Top="26" Height="101" Width="646">
