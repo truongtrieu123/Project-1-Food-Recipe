@@ -496,7 +496,7 @@ namespace DoAn01
             {
                 Name = _temp_food.Name,
                 Introduction = _temp_food.Introduction,
-                Ingredients = _temp_food.Ingredients,
+                Ingredients = _temp_food.Ingredients.Replace("\r",""),
                 VideoSource = _temp_food.VideoSource,
                 CoverSource = _temp_food.CoverSource,
                 StepList = new BindingList<Step>(_temp_food.StepList.ToList<Step>()),

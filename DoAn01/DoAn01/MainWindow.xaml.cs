@@ -119,11 +119,12 @@ namespace DoAn01
             var database = $"{folder}Data\\DataBase\\FoodList.xlsx";
             var workbook = new Workbook(database);
             var sheet = workbook.Worksheets[0];
-            sheet.AutoFitColumns();
-            sheet.AutoFitRows();
             var row = 1;
             var col = 7;
             var countsteps = new List<int>();
+
+            sheet.Cells.StandardWidth = 20;
+            sheet.AutoFitRows();
 
             foreach (var value in Global.FoodList)
             {
@@ -148,7 +149,7 @@ namespace DoAn01
                 row++;
             }
 
-            workbook.Save($"{folder}Data\\DataBase\\FoodList.xlsx");
+            workbook.Save(database);
         }
 
         /// <summary>
